@@ -86,7 +86,7 @@ demo.state3.prototype = {
         game.load.spritesheet('foxtail','assets/charactor/tailsheet2.png',176,205);
 
         
-        game.load.spritesheet('foxpulling','assets/charactor/pullingsheet.png',718,678);
+        game.load.spritesheet('foxpulling','assets/charactor/pullingsheet.png',359,339);
         game.load.spritesheet('fishingrodpullingsheet','assets/charactor/fishingrodpullingsheet.png',512,446);
         
         game.load.spritesheet('foxfalling','assets/charactor/fallingsheet2.png',450,328);
@@ -338,7 +338,6 @@ demo.state3.prototype = {
         foxpulling = game.add.sprite(foxpositionX+250, foxpositionY+300, "foxpulling");
         foxpulling.animations.add("pulling", [0,1,2,3,4,5,6,7,8,9]);
 
-        foxpulling.scale.setTo(0.5,0.5);
         foxpulling.anchor.setTo(0.7,0.9);
         foxpulling.alpha = 0;
 
