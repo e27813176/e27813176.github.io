@@ -1,0 +1,4 @@
+打開終端機，輸入：open -a Google\ Chrome --args --disable-web-security --user-data-dir
+(第一次開遊戲才需要輸入)
+
+輸入之後，點選 Start.html(使用 chrome)即可打開遊戲。
