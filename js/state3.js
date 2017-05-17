@@ -336,8 +336,7 @@ demo.state3.prototype = {
         fishingrodpullingsheet.alpha = 0;
         
         foxpulling = game.add.sprite(foxpositionX+250, foxpositionY+300, "foxpulling");
-        foxpulling.animations.add("pulling", [0,1,2,3,4,5,6,7,8,9]);
-
+        foxpulling.animations.add("pulling", [0,1,2,3,4]);
         foxpulling.anchor.setTo(0.7,0.9);
         foxpulling.alpha = 0;
 
