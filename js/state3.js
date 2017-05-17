@@ -83,8 +83,8 @@ demo.state3.prototype = {
  
         game.load.image('foxbody','assets/charactor/fox_fishingbody.png');
         game.load.image('shadow','assets/charactor/shadow.png');
-        game.load.spritesheet('foxtail','assets/charactor/tailsheet2.png',717,677);
-        game.load.image('tail','assets/charactor/tail.png');
+        game.load.spritesheet('foxtail','assets/charactor/tailsheet2.png',176,205);
+
         
         game.load.spritesheet('foxpulling','assets/charactor/pullingsheet.png',718,678);
         game.load.spritesheet('fishingrodpullingsheet','assets/charactor/fishingrodpullingsheet.png',512,446);
@@ -320,15 +320,13 @@ demo.state3.prototype = {
         shadow = game.add.sprite(foxpositionX+50, foxpositionY+290, "shadow");
         shadow.scale.setTo(0.6,0.5);
         
-        foxbody = game.add.sprite(foxpositionX+250, foxpositionY+300, "foxbody");
-        foxbody.scale.setTo(0.5,0.5);
+        foxbody = game.add.sprite(foxpositionX+280, foxpositionY+290, "foxbody");
         foxbody.anchor.setTo(0.7,0.9);
         foxbody_tween = game.add.tween(foxbody).to({angle:'-1'},1000,'Quad.easeInOut',true,0,false,true).loop(true); 
         
         foxtail = game.add.sprite(foxpositionX+145, foxpositionY+300, "foxtail");
         foxtail_animation = foxtail.animations.add("fishing", [0,1,2,3,4,5,6]);
-        foxtail.anchor.setTo(0.4,0.9); 
-        foxtail.scale.setTo(0.5,0.5);
+        foxtail.anchor.setTo(0.6,0.9); 
         foxtail_tween = game.add.tween(foxtail).to({angle:'-1'},1000,'Quad.easeInOut',true,0,false,true).loop(true);        
 
         fishingrodpullingsheet = game.add.sprite(foxpositionX+670, foxpositionY+290, "fishingrodpullingsheet");
