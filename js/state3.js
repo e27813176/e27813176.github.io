@@ -58,6 +58,7 @@ var promote_mode;
 demo.state3 = function() {};
 demo.state3.prototype = {
     preload: function() {
+        
         game.load.atlas('fishingpage_sheet001', 'assets/fishingpage_atlas001.png', 'assets/fishingpage_atlas001.json');
         game.load.atlas('fishingpage_sheet002', 'assets/fishingpage_atlas002.png', 'assets/fishingpage_atlas002.json');
         game.load.atlas('fishingpage_sheet003', 'assets/fishingpage_atlas003.png', 'assets/fishingpage_atlas003.json');
