@@ -69,10 +69,7 @@ demo.state3.prototype = {
         game.load.image('BG','assets/BG.jpg');
         game.load.image('correct_fx','assets/whiteBG.png');
         
-        game.load.spritesheet('fishbox_sheet_highlight','assets/fishingpage/fishbox_sheet_highlight.png',183,148);
-        
         //button--------------------------------------------------------------------------------------------------------
-        //game.load.image('getfishBG','assets/fishingpage/getfishboardBG.png');
         game.load.spritesheet('button_getfish_continue','assets/fishingpage/button_continue_sheet.png',134,82);
         game.load.spritesheet('button_getfish_backhome','assets/fishingpage/button_back_home_sheet.png',134,82);
         game.load.spritesheet('button_finish_sheet','assets/fishingpage/button_finish_sheet.png',134,82);
@@ -80,7 +77,6 @@ demo.state3.prototype = {
   
         game.load.image('mark_tutorial','assets/mark.png');
         //fx
-        game.load.spritesheet('tutorial_frame_sheet','assets/fishingpage/tutorial/tutorial_frame_sheet.png',400,300);
    
         game.load.audio('fishing', 'assets/audio/fishing.mp3');
         game.load.audio('rightFX', 'assets/audio/rightFX.mp3');
@@ -256,10 +252,10 @@ demo.state3.prototype = {
         fishbox_orange.anchor.setTo(0.5,0.5);
         fishbox_orange.scale.setTo(0,0);
         
-        fishbox_sheet_highlight = game.add.sprite(getfishboardX, getfishboardY, "fishbox_sheet_highlight");
+        fishbox_sheet_highlight = game.add.sprite(getfishboardX, getfishboardY,'fishingpage_sheet005');
         fishbox_sheet_highlight.anchor.setTo(0.5,0.5);
         fishbox_sheet_highlight.scale.setTo(0,0);
-        fishbox_sheet_highlight_animation = fishbox_sheet_highlight.animations.add("fishbox_sheet_highlight", [0,1,2,3,4,5,6,7]);
+        fishbox_sheet_highlight_animation = fishbox_sheet_highlight.animations.add("fishbox_sheet_highlight",Phaser.Animation.generateFrameNames('fishbox_highlight',1,8,'.png',4), 10, true);
         
         //open BG-----------------------------------------------------------------------------------------------------------------
         blackBG_open_fishing = game.add.sprite(0,0,"blackBG");
@@ -272,10 +268,10 @@ demo.state3.prototype = {
         correct_fx = game.add.sprite(0,0,'correct_fx');
         correct_fx.alpha = 0;
 
-        tutorial_frame_sheet = game.add.sprite(questionpositionX-440,questionpositionY+40,"tutorial_frame_sheet");
+        tutorial_frame_sheet = game.add.sprite(questionpositionX-440,questionpositionY+40,'fishingpage_sheet005');
         tutorial_frame_sheet.anchor.setTo(0.5,0.5);
         tutorial_frame_sheet.scale.setTo(0.9,0.9);
-        tutorial_frame_sheet.animations.add("tutorial_frame_sheet_dyn", [0,1,2,3,4,5,6,7,8,9]);
+        tutorial_frame_sheet.animations.add("tutorial_frame_sheet_dyn",Phaser.Animation.generateFrameNames('tutorial_frame_',1,10,'.png',5), 10, true);
         tutorial_frame_sheet.alpha = 0;
 
         //--------------------------------------------------------------------------------------------------------------------------
