@@ -93,7 +93,8 @@ demo.state3.prototype = {
         game.load.spritesheet('dropfishingrod','assets/charactor/dropfishingrodsheet.png',512,431);
         
         //fish_sheet
-        game.load.spritesheet('foxgetfishingsheet','assets/charactor/foxgetfishingsheet.png',780,651);
+        game.load.atlas('foxgetfishingsheet', 'assets/charactor/getfish_atlas.png', 'assets/charactor/getfish_atlas.json');
+        //game.load.spritesheet('foxgetfishingsheet','assets/charactor/foxgetfishingsheet.png',780,651);
         game.load.spritesheet('fishsheet','assets/charactor/fishsheet.png',157,247);
         /*
         game.load.spritesheet('foxgetfishing_purple_sheet','assets/charactor/foxgetfishing_purple_sheet.png',390,326);
@@ -354,9 +355,8 @@ demo.state3.prototype = {
         
         //get fish
         foxgetfishingsheet = game.add.sprite(foxpositionX+500, foxpositionY+300, "foxgetfishingsheet");
-        foxgetfishingsheet_animation = foxgetfishingsheet.animations.add("foxgetfishingsheet", [0,1,2,3,4,5,6,7,8,9]);
+        foxgetfishingsheet_animation = foxgetfishingsheet.animations.add("foxgetfishingsheet",  Phaser.Animation.generateFrameNames('fox_getfishsheet', 0, 8, '.png', 4), 8, true);
         foxgetfishingsheet.anchor.setTo(0.7,0.9);
-
         foxgetfishingsheet.alpha = 0;
         
         fishsheet = game.add.sprite(foxpositionX+480, foxpositionY+290, "fishsheet");
