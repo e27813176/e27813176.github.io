@@ -359,8 +359,8 @@ demo.state3.prototype = {
         foxgetfishingsheet.anchor.setTo(0.7,0.9);
         foxgetfishingsheet.alpha = 0;
         
-        fishsheet = game.add.sprite(foxpositionX+480, foxpositionY+290, "fishsheet");
-        fishsheet.anchor.setTo(0.7,0.9);
+        fishsheet = game.add.sprite(foxpositionX+380, foxpositionY+290, "fishsheet");
+        fishsheet.anchor.setTo(0.5,0.4);
         fishsheet.scale.setTo(0.5,0.5);
         fishsheet.angle = -90;
         fishsheet.alpha = 0;       
