@@ -207,9 +207,8 @@ demo.state3.prototype = {
         foxgetfishingsheet.anchor.setTo(0.7,0.9);
         foxgetfishingsheet.alpha = 0;
         
-        fishsheet = game.add.sprite(foxpositionX+380, foxpositionY+290,'fishingpage_sheet001');
+        fishsheet = game.add.sprite(foxpositionX+420, foxpositionY+290,'fishingpage_sheet001');
         fishsheet.anchor.setTo(0.5,0.4);
- 
         fishsheet.angle = -90;
         fishsheet.alpha = 0;       
         fishsheet_animation = fishsheet.animations.add("fishsheet_dynamic",Phaser.Animation.generateFrameNames('fish_sheet_orange_',0,2, '.png', 4), 10, true);
