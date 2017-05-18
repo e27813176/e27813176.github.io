@@ -11,7 +11,7 @@ var scorebar,scorebarX,scorebarY,scorebarcompleted,mask;
 
 var foxtail_time,t2;
 
-var foxpulling,shadow,fishingrodpullingsheet;
+var foxpulling,fishingrodpullingsheet;
 
 var playing_status,complete_status;
 var waitingclick;
@@ -58,149 +58,36 @@ var promote_mode;
 demo.state3 = function() {};
 demo.state3.prototype = {
     preload: function() {
-        game.load.image('blackBG','assets/fishingpage/blackBG.jpg');
-        game.load.image('blackBG2','assets/fishingpage/blackBG2.jpg');
+        game.load.atlas('fishingpage_sheet001', 'assets/fishingpage_atlas001.png', 'assets/fishingpage_atlas001.json');
+        game.load.atlas('fishingpage_sheet002', 'assets/fishingpage_atlas002.png', 'assets/fishingpage_atlas002.json');
+        game.load.atlas('fishingpage_sheet003', 'assets/fishingpage_atlas003.png', 'assets/fishingpage_atlas003.json');
+        game.load.atlas('fishingpage_sheet004', 'assets/fishingpage_atlas004.png', 'assets/fishingpage_atlas004.json');
+        game.load.atlas('scorebar_fx_atlas', 'assets/scorebar_fx_atlas.png', 'assets/scorebar_fx_atlas.json');
         
-
-        //scorebar
-        game.load.image('scorebar','assets/gameplay/scorebar.png');
-        game.load.image('scorebarred','assets/gameplay/scorebarred.png');
-        game.load.image('scorebarBG','assets/gameplay/scorebar_BG.png');
-        game.load.image('scorebar_design','assets/gameplay/scorebar_design.png');
-        game.load.image('scorebar_full','assets/gameplay/scorebar_full.png');
-        
-        game.load.image('BG','assets/fishingpage/BG.jpg');
-        game.load.image('greenatmosphere','assets/fishingpage/greenatmosphere.png');
-        game.load.image('yellowatmosphere','assets/fishingpage/yellowatmosphere.png');
-        game.load.image('whiteatmosphere','assets/fishingpage/whiteatmosphere.png');
-        game.load.image('sunlight1','assets/fishingpage/sunlight1.png');
-        game.load.image('sunlight2','assets/fishingpage/sunlight2.png');
-        
-        game.load.image('fishingrod','assets/charactor/fishingrod.png');
-        //mark
-        game.load.image('mark','assets/charactor/mark.png');
-        //game.load.image('mark_text','assets/charactor/mark_text.png');
- 
-        game.load.image('foxbody','assets/charactor/fox_fishingbody.png');
-        game.load.image('shadow','assets/charactor/shadow.png');
-        game.load.spritesheet('foxtail','assets/charactor/tailsheet2.png',176,205);
-
-        
-        game.load.spritesheet('foxpulling','assets/charactor/pullingsheet.png',359,339);
-        game.load.spritesheet('fishingrodpullingsheet','assets/charactor/fishingrodpullingsheet.png',512,446);
-        
-        game.load.spritesheet('foxfalling','assets/charactor/fallingsheet2.png',450,328);
-        game.load.spritesheet('dropfishingrod','assets/charactor/dropfishingrodsheet.png',512,431);
-        
-        //fish_sheet
-        game.load.atlas('foxgetfishingsheet', 'assets/charactor/getfish_atlas.png', 'assets/charactor/getfish_atlas.json');
-        //game.load.spritesheet('foxgetfishingsheet','assets/charactor/foxgetfishingsheet.png',780,651);
-        game.load.spritesheet('fishsheet','assets/charactor/fishsheet.png',157,247);
-        /*
-        game.load.spritesheet('foxgetfishing_purple_sheet','assets/charactor/foxgetfishing_purple_sheet.png',390,326);
-        game.load.spritesheet('fish_sheet_purple','assets/charactor/fish_sheet_purple.png',157,247);
-        game.load.spritesheet('foxgetfishing_yellow_sheet','assets/charactor/foxgetfishing_yellow_sheet.png',390,326);
-        game.load.spritesheet('fish_sheet_yellow','assets/charactor/fish_sheet_yellow.png',157,247);
-        game.load.spritesheet('foxgetfishing_green_sheet','assets/charactor/foxgetfishing_green_sheet.png',390,326);
-        game.load.spritesheet('fish_sheet_green','assets/charactor/fish_sheet_green.png',157,247);
-        game.load.spritesheet('foxgetfishing_light_blue_sheet','assets/charactor/foxgetfishing_light_blue_sheet.png',390,326);
-        game.load.spritesheet('fish_sheet_light_blue','assets/charactor/fish_sheet_light_blue.png',157,247);
-        game.load.spritesheet('foxgetfishing_grey_sheet','assets/charactor/foxgetfishing_grey_sheet.png',390,326);
-        game.load.spritesheet('fish_sheet_grey','assets/charactor/fish_sheet_grey.png',157,247);  
-        game.load.spritesheet('foxgetfishing_dark_blue_sheet','assets/charactor/foxgetfishing_dark_blue_sheet.png',390,326);
-        game.load.spritesheet('fish_sheet_dark_blue','assets/charactor/fish_sheet_dark_blue.png',157,247);
-        game.load.spritesheet('foxgetfishing_red_sheet','assets/charactor/foxgetfishing_red_sheet.png',390,326);
-        game.load.spritesheet('fish_sheet_red','assets/charactor/fish_sheet_red.png',157,247);
-        */
-        game.load.image('fox_getfishsheet_lastframe','assets/charactor/fox_getfishsheet_lastframe.png');
-        
-
-        //fishbox
-        game.load.image('fishbox_orange','assets/fishingpage/fishbox_orange.png');
-        game.load.image('fishbox_purple','assets/fishingpage/fishbox_purple.png');
-        game.load.image('fishbox_yellow','assets/fishingpage/fishbox_yellow.png');
-        game.load.image('fishbox_green','assets/fishingpage/fishbox_green.png');
-        game.load.image('fishbox_light_blue','assets/fishingpage/fishbox_light_blue.png');
-        game.load.image('fishbox_grey','assets/fishingpage/fishbox_grey.png');
-        game.load.image('fishbox_dark_blue','assets/fishingpage/fishbox_dark_blue.png');
-        game.load.image('fishbox_red','assets/fishingpage/fishbox_red.png');
+        game.load.image('blackBG','assets/blackBG.jpg');
+        game.load.image('BG','assets/BG.jpg');
+        game.load.image('correct_fx','assets/whiteBG.png');
         
         game.load.spritesheet('fishbox_sheet_highlight','assets/fishingpage/fishbox_sheet_highlight.png',183,148);
         
         //button--------------------------------------------------------------------------------------------------------
-        game.load.image('getfishBG','assets/fishingpage/getfishboardBG.png');
+        //game.load.image('getfishBG','assets/fishingpage/getfishboardBG.png');
         game.load.spritesheet('button_getfish_continue','assets/fishingpage/button_continue_sheet.png',134,82);
         game.load.spritesheet('button_getfish_backhome','assets/fishingpage/button_back_home_sheet.png',134,82);
         game.load.spritesheet('button_finish_sheet','assets/fishingpage/button_finish_sheet.png',134,82);
         game.load.spritesheet('button_restart_sheet','assets/fishingpage/button_restart_sheet.png',134,82);
-        
-        
-                
-        game.load.image('failBG','assets/fishingpage/failboardBG.png');
-        
-        //question_pannel
-        game.load.image('bonds','assets/fishingpage/question/bonds.png');
-        game.load.image('anwser_pannel','assets/fishingpage/question/anwser_pannel1.png');
-        
+  
         game.load.spritesheet('question_green_pannel','assets/fishingpage/question/question_green_sheet002.png',250,250);
         game.load.spritesheet('question_blue_pannel','assets/fishingpage/question/question_blue_sheet002.png',250,250);
-        
-        
+        game.load.image('mark_tutorial','assets/mark.png');
         //fx
-        game.load.image('anwser_pannel_light','assets/fishingpage/question/anwser_pannel_light.png');
-
-        game.load.image('correct_fx','assets/fishingpage/whiteBG.png');
-        
         game.load.spritesheet('question_pannel_create_fx','assets/fishingpage/question/question_pannel_create_fx.png',250,250);
-        
         game.load.spritesheet('blue_FX_sheet','assets/fishingpage/question/blue_FX_sheet.png',250,250);
         game.load.spritesheet('green_FX_sheet','assets/fishingpage/question/green_FX_sheet.png',250,250);
-        game.load.spritesheet('red_FX_sheet','assets/fishingpage/question/red_FX_sheet.png',250,250);
-        
+        game.load.spritesheet('red_FX_sheet','assets/fishingpage/question/red_FX_sheet.png',250,250);       
         game.load.spritesheet('energy_transfer_sheet','assets/fishingpage/question/energy_transfer_sheet.png',250,250);
-        game.load.spritesheet('scorebar_wrong_fx_sheet','assets/gameplay/scorebar_wrong_fx_sheet.png',200,728);
-        game.load.spritesheet('scorebar_right_fx_sheet','assets/gameplay/scorebar_right_fx_sheet.png',200,728);
-
-        //answer_pannel_number
-        game.load.image('0','assets/fishingpage/question/0.png');
-        game.load.image('1','assets/fishingpage/question/1.png');
-        game.load.image('2','assets/fishingpage/question/2.png');
-        game.load.image('3','assets/fishingpage/question/3.png');
-        game.load.image('4','assets/fishingpage/question/4.png');
-        game.load.image('5','assets/fishingpage/question/5.png');
-        game.load.image('6','assets/fishingpage/question/6.png');
-        game.load.image('7','assets/fishingpage/question/7.png');
-        game.load.image('8','assets/fishingpage/question/8.png');
-        game.load.image('9','assets/fishingpage/question/9.png');
-        game.load.image('10','assets/fishingpage/question/10.png');
-        
-        //question_pannel_text
-        game.load.image('Q0_blue','assets/fishingpage/question/Q0_blue.png');
-        game.load.image('Q1_blue','assets/fishingpage/question/Q1_blue.png');
-        game.load.image('Q2_blue','assets/fishingpage/question/Q2_blue.png');
-        game.load.image('Q3_blue','assets/fishingpage/question/Q3_blue.png');
-        game.load.image('Q4_blue','assets/fishingpage/question/Q4_blue.png');
-        game.load.image('Q5_blue','assets/fishingpage/question/Q5_blue.png');
-        game.load.image('Q6_blue','assets/fishingpage/question/Q6_blue.png');
-        game.load.image('Q7_blue','assets/fishingpage/question/Q7_blue.png');
-        game.load.image('Q8_blue','assets/fishingpage/question/Q8_blue.png');
-        game.load.image('Q9_blue','assets/fishingpage/question/Q9_blue.png');
-        game.load.image('Q10_blue','assets/fishingpage/question/Q10_blue.png');       
-        game.load.image('Qmark_blue','assets/fishingpage/question/Qmark_blue.png');          
-        
-        game.load.image('Q0_green','assets/fishingpage/question/Q0_green.png');
-        game.load.image('Q1_green','assets/fishingpage/question/Q1_green.png');
-        game.load.image('Q2_green','assets/fishingpage/question/Q2_green.png');
-        game.load.image('Q3_green','assets/fishingpage/question/Q3_green.png');
-        game.load.image('Q4_green','assets/fishingpage/question/Q4_green.png');
-        game.load.image('Q5_green','assets/fishingpage/question/Q5_green.png');
-        game.load.image('Q6_green','assets/fishingpage/question/Q6_green.png');
-        game.load.image('Q7_green','assets/fishingpage/question/Q7_green.png');
-        game.load.image('Q8_green','assets/fishingpage/question/Q8_green.png');
-        game.load.image('Q9_green','assets/fishingpage/question/Q9_green.png');
-        game.load.image('Q10_green','assets/fishingpage/question/Q10_green.png');       
-        game.load.image('Qmark_green','assets/fishingpage/question/Qmark_green.png'); 
-        
+        game.load.spritesheet('tutorial_frame_sheet','assets/fishingpage/tutorial/tutorial_frame_sheet.png',400,300);
+   
         game.load.audio('fishing', 'assets/audio/fishing.mp3');
         game.load.audio('rightFX', 'assets/audio/rightFX.mp3');
         game.load.audio('wrongFX', 'assets/audio/wrongFX.mp3');
@@ -212,34 +99,7 @@ demo.state3.prototype = {
         game.load.audio('clickFX', 'assets/audio/clickFX.mp3');  
         game.load.audio('add_energyFX', 'assets/audio/add_energyFX.mp3');  
 
-        
-        
-        //tutorial
-        game.load.image('continue_text','assets/fishingpage/tutorial/continue_text.png');
-        game.load.image('tutorial_text','assets/fishingpage/tutorial/tutorial_text.png');
-        game.load.image('finger_pointer','assets/fishingpage/tutorial/finger_pointer.png');
-        game.load.image('finger_pointer3','assets/fishingpage/tutorial/finger_pointer.png');
-        game.load.spritesheet('tutorial_frame_sheet','assets/fishingpage/tutorial/tutorial_frame_sheet.png',400,300);
-        
-        //tutorial_text
-        game.load.image('add_mode_text1','assets/fishingpage/tutorial/add_mode_text1.png');
-        game.load.image('add_mode_text2','assets/fishingpage/tutorial/add_mode_text2.png');
-        game.load.image('minus_mode_text1','assets/fishingpage/tutorial/minus_mode_text1.png');
-        game.load.image('minus_mode_text2','assets/fishingpage/tutorial/minus_mode_text2.png');
-        game.load.image('start_game_text','assets/fishingpage/tutorial/start_game_text.png');
-        game.load.image('get_fish_tutorial','assets/fishingpage/tutorial/get_fish_tutorial.png');
-        
-      
 
-        game.load.image('Qmark_tutorial','assets/fishingpage/tutorial/Qmark_tutorial.png');
-        game.load.image('equal_mark_tutorial','assets/fishingpage/tutorial/equal_mark_tutorial.png');
-        
-        game.load.image('plus_tutorial','assets/fishingpage/tutorial/plus.png');
-        game.load.image('minus_tutorial','assets/fishingpage/tutorial/minus.png');
-        game.load.image('tutorial_number_2','assets/fishingpage/tutorial/2_tutorial.png');
-        game.load.image('tutorial_number_4','assets/fishingpage/tutorial/4_tutorial.png');
-        game.load.image('tutorial_number_9','assets/fishingpage/tutorial/9_tutorial.png');
-        
     },
     create: function() {
         //define backgroung
@@ -262,44 +122,44 @@ demo.state3.prototype = {
         addmode = true;
 
         game.add.sprite(0,0,'BG');
-        sunlight1 = game.add.sprite(0,0,'sunlight1');
-        sunlight2 = game.add.sprite(0,0,'sunlight2');
+        sunlight1 = game.add.sprite(0,0,'fishingpage_sheet003','sunlight1.png');
+        sunlight2 = game.add.sprite(0,0,'fishingpage_sheet003','sunlight2.png');
         game.add.tween(sunlight1).to({alpha:0.2},1000,'Quad.easeInOut',true,0,false,true).loop(true); 
         game.add.tween(sunlight2).to({alpha:0.2},1000,'Quad.easeInOut',true,1000,false,true).loop(true); 
         
-        yellowatmosphere = game.add.sprite(0,0,'yellowatmosphere');
+        yellowatmosphere = game.add.sprite(0,0,'fishingpage_sheet004','yellowatmosphere.png');
         game.add.tween(yellowatmosphere).to({alpha:0.7},1000,'Quad.easeInOut',true,0,false,true).loop(true); 
 
-        whiteatmosphere = game.add.sprite(0,0,'whiteatmosphere');
+        whiteatmosphere = game.add.sprite(0,0,'fishingpage_sheet004','whiteatmosphere.png');
         game.add.tween(whiteatmosphere).to({alpha:0.7},1000,'Quad.easeInOut',true,1000,false,true).loop(true); 
 
-        greenatmosphere = game.add.sprite(0,0,'greenatmosphere');
+        greenatmosphere = game.add.sprite(0,0,'fishingpage_sheet003','greenatmosphere.png');
         game.add.tween(greenatmosphere).to({alpha:0.9},1000,'Quad.easeInOut',true,0,false,true).loop(true); 
         
 
         //scorebar-----------------------------------------------------
-        scorebarBG = game.add.sprite(scorebarX+10,110,'scorebarBG');
+        scorebarBG = game.add.sprite(scorebarX+10,110,'fishingpage_sheet002','scorebar_BG.png');
         scorebarBG.anchor.setTo(0.5, 0);
         scorebarBG.scale.setTo(1,1);
         scorebarBG.alpha = 1;
         
-        scorebar = game.add.sprite(scorebarX+10,scorebarY,'scorebar');
+        scorebar = game.add.sprite(scorebarX+10,scorebarY,'fishingpage_sheet002','scorebar.png');
         scorebar.anchor.setTo(0.5, 0);
         scorebar.scale.setTo(2,1);
         scorebar.alpha = 0;
     
         
-        scorebar_full = game.add.sprite(scorebarX+10,110,'scorebar_full');
+        scorebar_full = game.add.sprite(scorebarX+10,110,'fishingpage_sheet002','scorebar_full.png');
         scorebar_full.anchor.setTo(0.5, 0);
         scorebar_full.scale.setTo(1,1);
         scorebar_full.alpha = 0;     
         
-        scorebarred = game.add.sprite(scorebarX+10,scorebarY,'scorebarred');
+        scorebarred = game.add.sprite(scorebarX+10,scorebarY,'fishingpage_sheet002','scorebarred.png');
         scorebarred.anchor.setTo(0.5, 0);
         scorebarred.scale.setTo(2,1);
         scorebarred.alpha = 0;
         
-        scorebar_design = game.add.sprite(scorebarX+10,110,'scorebar_design');
+        scorebar_design = game.add.sprite(scorebarX+10,110,'fishingpage_sheet002','scorebar_design.png');
         scorebar_design.anchor.setTo(0.5, 0);
         scorebar_design.scale.setTo(1,1);
         scorebar_design.alpha = 1;
@@ -310,154 +170,61 @@ demo.state3.prototype = {
         mask.drawRect(scorebarX,200,20,600);
         scorebar.mask = mask;
         scorebarred.mask = mask;
-        
+        //----------------------------------------------------------------------------------------------------
         var foxpositionX = 150,
             foxpositionY = 500;
         
-        fishingrod = game.add.sprite(foxpositionX+275, foxpositionY+400,'fishingrod');
+        fishingrod = game.add.sprite(foxpositionX+275, foxpositionY+400,'fishingpage_sheet001','fishingrod.png');
         fishingrod.anchor.setTo(-0.1,1.2);
         fishingrod_tween = game.add.tween(fishingrod).to({angle:'-1'},1000,'Quad.easeInOut',true,0,false,true).loop(true);   
         
-        shadow = game.add.sprite(foxpositionX+50, foxpositionY+290, "shadow");
-        shadow.scale.setTo(0.6,0.5);
+        //------------------------------------------------------------------------------------------------------------------------
         
-        foxbody = game.add.sprite(foxpositionX+280, foxpositionY+290, "foxbody");
+        foxbody = game.add.sprite(foxpositionX+280, foxpositionY+290, 'fishingpage_sheet001',"fox_fishingbody.png");
         foxbody.anchor.setTo(0.7,0.9);
         foxbody_tween = game.add.tween(foxbody).to({angle:'-1'},1000,'Quad.easeInOut',true,0,false,true).loop(true); 
         
-        foxtail = game.add.sprite(foxpositionX+145, foxpositionY+300, "foxtail");
-        foxtail_animation = foxtail.animations.add("fishing", [0,1,2,3,4,5,6]);
+        foxtail = game.add.sprite(foxpositionX + 145, foxpositionY +300, 'fishingpage_sheet001');
+        foxtail_animation = foxtail.animations.add("fishing", Phaser.Animation.generateFrameNames('tailsheet',0,6, '.png', 4), 10, true);
         foxtail.anchor.setTo(0.6,0.9); 
         foxtail_tween = game.add.tween(foxtail).to({angle:'-1'},1000,'Quad.easeInOut',true,0,false,true).loop(true);        
 
-        fishingrodpullingsheet = game.add.sprite(foxpositionX+670, foxpositionY+290, "fishingrodpullingsheet");
-        fishingrodpullingsheet.animations.add("fishingrodpulling", [0,1,2,3,4]);
-
+        //-------------------------------------------------------------------------------------------------------------------------------
+        
+        fishingrodpullingsheet = game.add.sprite(foxpositionX+670, foxpositionY+290, 'fishingpage_sheet001');
+        fishingrodpullingsheet.animations.add("fishingrodpulling",Phaser.Animation.generateFrameNames('fishingrod',0,4, '.png', 4), 10, true);
         fishingrodpullingsheet.anchor.setTo(0.7,0.9);
         fishingrodpullingsheet.alpha = 0;
         
-        foxpulling = game.add.sprite(foxpositionX+250, foxpositionY+300, "foxpulling");
-        foxpulling.animations.add("pulling", [0,1,2,3,4]);
+        foxpulling = game.add.sprite(foxpositionX+250, foxpositionY+300, 'fishingpage_sheet001');
+        foxpulling.animations.add("pulling",Phaser.Animation.generateFrameNames('fox_pullingsheet',0,6, '.png', 4), 10, true);
         foxpulling.anchor.setTo(0.7,0.9);
         foxpulling.alpha = 0;
 
-        foxfalling = game.add.sprite(foxpositionX+400, foxpositionY+300, "foxfalling");
-        foxfalling.animations.add("foxfalling", [0,1,2,3,4,5]);
-
+        foxfalling = game.add.sprite(foxpositionX+400, foxpositionY+300, 'fishingpage_sheet001');
+        foxfalling.animations.add("foxfalling",Phaser.Animation.generateFrameNames('fox_fallingsheet',0,7, '.png', 4), 10, true);
         foxfalling.anchor.setTo(0.7,0.9);
         foxfalling.alpha = 0;
 
-        dropfishingrod = game.add.sprite(foxpositionX+400, foxpositionY+300, "dropfishingrod");
-        dropfishingrod.animations.add("dropfishingrod", [0,1,2,3]);
-
+        dropfishingrod = game.add.sprite(foxpositionX+400, foxpositionY+300, 'fishingpage_sheet001');
+        dropfishingrod.animations.add("dropfishingrod",Phaser.Animation.generateFrameNames('dropfishingrod',0,2, '.png', 4), 10, true);
         dropfishingrod.anchor.setTo(0.7,0.9);
         dropfishingrod.alpha = 0;
         
-        //get fish
-        foxgetfishingsheet = game.add.sprite(foxpositionX+500, foxpositionY+300, "foxgetfishingsheet");
-        foxgetfishingsheet_animation = foxgetfishingsheet.animations.add("foxgetfishingsheet",  Phaser.Animation.generateFrameNames('fox_getfishsheet', 0, 8, '.png', 4), 8, true);
+        //get fish      
+        foxgetfishingsheet = game.add.sprite(foxpositionX+500, foxpositionY+300,'fishingpage_sheet002');
+        foxgetfishingsheet_animation = foxgetfishingsheet.animations.add("foxgetfishingsheet",  Phaser.Animation.generateFrameNames('fox_getfishsheet_',1,10, '.png', 5), 10, true);
         foxgetfishingsheet.anchor.setTo(0.7,0.9);
         foxgetfishingsheet.alpha = 0;
         
-        fishsheet = game.add.sprite(foxpositionX+380, foxpositionY+290, "fishsheet");
+        fishsheet = game.add.sprite(foxpositionX+380, foxpositionY+290,'fishingpage_sheet001');
         fishsheet.anchor.setTo(0.5,0.4);
-        fishsheet.scale.setTo(0.5,0.5);
+ 
         fishsheet.angle = -90;
         fishsheet.alpha = 0;       
-        fishsheet_animation = fishsheet.animations.add("fishsheet_dynamic", [0,1,2]);
-        /*
-        foxgetfishing_purple_sheet = game.add.sprite(foxpositionX+500, foxpositionY+300, "foxgetfishing_purple_sheet");
-        foxgetfishing_purple_sheet_animation = foxgetfishing_purple_sheet.animations.add("foxgetfishing_purple_sheet", [0,1,2,3,4,5,6,7,8,9]);
-        foxgetfishing_purple_sheet.anchor.setTo(0.7,0.9);
-        foxgetfishing_purple_sheet.scale.setTo(2,2);
-        foxgetfishing_purple_sheet.alpha = 0;
-        
-        fish_sheet_purple = game.add.sprite(foxpositionX+480, foxpositionY+290, "fish_sheet_purple");
-        fish_sheet_purple.anchor.setTo(0.7,0.9);
-        fish_sheet_purple.scale.setTo(0.5,0.5);
-        fish_sheet_purple.angle = -90;
-        fish_sheet_purple.alpha = 0;
-        fish_sheet_purple_animation = fish_sheet_purple.animations.add("fish_sheet_purple_dynamic", [0,1,2]);
-
-        foxgetfishing_yellow_sheet = game.add.sprite(foxpositionX+500, foxpositionY+300, "foxgetfishing_yellow_sheet");
-        foxgetfishing_yellow_sheet_animation = foxgetfishing_yellow_sheet.animations.add("foxgetfishing_yellow_sheet", [0,1,2,3,4,5,6,7,8,9]);
-        foxgetfishing_yellow_sheet.anchor.setTo(0.7,0.9);
-        foxgetfishing_yellow_sheet.scale.setTo(2,2);
-        foxgetfishing_yellow_sheet.alpha = 0;
-        
-        fish_sheet_yellow = game.add.sprite(foxpositionX+480, foxpositionY+290, "fish_sheet_yellow");
-        fish_sheet_yellow.anchor.setTo(0.7,0.9);
-        fish_sheet_yellow.scale.setTo(0.5,0.5);
-        fish_sheet_yellow.angle = -90;
-        fish_sheet_yellow.alpha = 0;
-        fish_sheet_yellow_animation = fish_sheet_yellow.animations.add("fish_sheet_yellow_dynamic", [0,1,2]);        
-
-        foxgetfishing_green_sheet = game.add.sprite(foxpositionX+500, foxpositionY+300, "foxgetfishing_green_sheet");
-        foxgetfishing_green_sheet_animation = foxgetfishing_green_sheet.animations.add("foxgetfishing_green_sheet", [0,1,2,3,4,5,6,7,8,9]);
-        foxgetfishing_green_sheet.anchor.setTo(0.7,0.9);
-        foxgetfishing_green_sheet.scale.setTo(2,2);
-        foxgetfishing_green_sheet.alpha = 0;
-        
-        fish_sheet_green = game.add.sprite(foxpositionX+480, foxpositionY+290, "fish_sheet_green");
-        fish_sheet_green.anchor.setTo(0.7,0.9);
-        fish_sheet_green.scale.setTo(0.5,0.5);
-        fish_sheet_green.angle = -90;
-        fish_sheet_green.alpha = 0;
-        fish_sheet_green_animation = fish_sheet_green.animations.add("fish_sheet_green_dynamic", [0,1,2]);    
-
-        foxgetfishing_light_blue_sheet = game.add.sprite(foxpositionX+500, foxpositionY+300, "foxgetfishing_light_blue_sheet");
-        foxgetfishing_light_blue_sheet_animation = foxgetfishing_light_blue_sheet.animations.add("foxgetfishing_light_blue_sheet", [0,1,2,3,4,5,6,7,8,9]);
-        foxgetfishing_light_blue_sheet.anchor.setTo(0.7,0.9);
-        foxgetfishing_light_blue_sheet.scale.setTo(2,2);
-        foxgetfishing_light_blue_sheet.alpha = 0;
-        
-        fish_sheet_light_blue = game.add.sprite(foxpositionX+480, foxpositionY+290, "fish_sheet_light_blue");
-        fish_sheet_light_blue.anchor.setTo(0.7,0.9);
-        fish_sheet_light_blue.scale.setTo(0.5,0.5);
-        fish_sheet_light_blue.angle = -90;
-        fish_sheet_light_blue.alpha = 0;
-        fish_sheet_light_blue_animation = fish_sheet_light_blue.animations.add("fish_sheet_light_blue_dynamic", [0,1,2]);
-
-        foxgetfishing_grey_sheet = game.add.sprite(foxpositionX+500, foxpositionY+300, "foxgetfishing_grey_sheet");
-        foxgetfishing_grey_sheet_animation = foxgetfishing_grey_sheet.animations.add("foxgetfishing_grey_sheet", [0,1,2,3,4,5,6,7,8,9]);
-        foxgetfishing_grey_sheet.anchor.setTo(0.7,0.9);
-        foxgetfishing_grey_sheet.scale.setTo(2,2);
-        foxgetfishing_grey_sheet.alpha = 0;
-        
-        fish_sheet_grey = game.add.sprite(foxpositionX+480, foxpositionY+290, "fish_sheet_grey");
-        fish_sheet_grey.anchor.setTo(0.7,0.9);
-        fish_sheet_grey.scale.setTo(0.5,0.5);
-        fish_sheet_grey.angle = -90;
-        fish_sheet_grey.alpha = 0;
-        fish_sheet_grey_animation = fish_sheet_grey.animations.add("fish_sheet_grey_dynamic", [0,1,2]);
-
-        foxgetfishing_dark_blue_sheet = game.add.sprite(foxpositionX+500, foxpositionY+300, "foxgetfishing_dark_blue_sheet");
-        foxgetfishing_dark_blue_sheet_animation = foxgetfishing_dark_blue_sheet.animations.add("foxgetfishing_dark_blue_sheet", [0,1,2,3,4,5,6,7,8,9]);
-        foxgetfishing_dark_blue_sheet.anchor.setTo(0.7,0.9);
-        foxgetfishing_dark_blue_sheet.scale.setTo(2,2);
-        foxgetfishing_dark_blue_sheet.alpha = 0;
-        
-        fish_sheet_dark_blue = game.add.sprite(foxpositionX+480, foxpositionY+290, "fish_sheet_dark_blue");
-        fish_sheet_dark_blue.anchor.setTo(0.7,0.9);
-        fish_sheet_dark_blue.scale.setTo(0.5,0.5);
-        fish_sheet_dark_blue.angle = -90;
-        fish_sheet_dark_blue.alpha = 0;
-        fish_sheet_dark_blue_animation = fish_sheet_dark_blue.animations.add("fish_sheet_dark_blue_dynamic", [0,1,2]);
-        
-        foxgetfishing_red_sheet = game.add.sprite(foxpositionX+500, foxpositionY+300, "foxgetfishing_red_sheet");
-        foxgetfishing_red_sheet_animation = foxgetfishing_red_sheet.animations.add("foxgetfishing_red_sheet", [0,1,2,3,4,5,6,7,8,9]);
-        foxgetfishing_red_sheet.anchor.setTo(0.7,0.9);
-        foxgetfishing_red_sheet.scale.setTo(2,2);
-        foxgetfishing_red_sheet.alpha = 0;
-        
-        fish_sheet_red = game.add.sprite(foxpositionX+480, foxpositionY+290, "fish_sheet_red");
-        fish_sheet_red.anchor.setTo(0.7,0.9);
-        fish_sheet_red.scale.setTo(0.5,0.5);
-        fish_sheet_red.angle = -90;
-        fish_sheet_red.alpha = 0;
-        fish_sheet_red_animation = fish_sheet_red.animations.add("fish_sheet_red_dynamic", [0,1,2]);        
-        */
-        fox_getfishsheet_lastframe = game.add.sprite(foxpositionX+500, foxpositionY+300, "fox_getfishsheet_lastframe");
+        fishsheet_animation = fishsheet.animations.add("fishsheet_dynamic",Phaser.Animation.generateFrameNames('fish_sheet_orange_',0,2, '.png', 4), 10, true);
+ 
+        fox_getfishsheet_lastframe = game.add.sprite(foxpositionX+500, foxpositionY+300,'fishingpage_sheet002', "fox_getfishsheet_lastframe.png");
         fox_getfishsheet_lastframe.anchor.setTo(0.7,0.9);
         fox_getfishsheet_lastframe.alpha = 0;
         
@@ -465,11 +232,11 @@ demo.state3.prototype = {
         var getfishboardX = centerX,
             getfishboardY = 500;
         
-        getfishBG = game.add.sprite(getfishboardX, getfishboardY, "getfishBG");
+        getfishBG = game.add.sprite(getfishboardX, getfishboardY,'fishingpage_sheet002', "getfishboardBG.png");
         getfishBG.anchor.setTo(0.5,0.5);
         getfishBG.scale.setTo(0,0);
         
-        failBG = game.add.sprite(getfishboardX, getfishboardY, "failBG");
+        failBG = game.add.sprite(getfishboardX, getfishboardY,'fishingpage_sheet001', "failboardBG.png");
         failBG.anchor.setTo(0.5,0.5);
         failBG.scale.setTo(0,0);
         
@@ -491,37 +258,9 @@ demo.state3.prototype = {
 
         
         //fishbox-----------------------------------------------------------------------------------------------------------------------
-        fishbox_orange = game.add.sprite(getfishboardX, getfishboardY, "fishbox_orange");
+        fishbox_orange = game.add.sprite(getfishboardX, getfishboardY,'fishingpage_sheet001',"fishbox_orange.png");
         fishbox_orange.anchor.setTo(0.5,0.5);
         fishbox_orange.scale.setTo(0,0);
-
-        fishbox_purple = game.add.sprite(getfishboardX, getfishboardY, "fishbox_purple");
-        fishbox_purple.anchor.setTo(0.5,0.5);
-        fishbox_purple.scale.setTo(0,0);
-        
-        fishbox_yellow = game.add.sprite(getfishboardX, getfishboardY, "fishbox_yellow");
-        fishbox_yellow.anchor.setTo(0.5,0.5);
-        fishbox_yellow.scale.setTo(0,0);        
-
-        fishbox_green = game.add.sprite(getfishboardX, getfishboardY, "fishbox_green");
-        fishbox_green.anchor.setTo(0.5,0.5);
-        fishbox_green.scale.setTo(0,0);   
-
-        fishbox_light_blue = game.add.sprite(getfishboardX, getfishboardY, "fishbox_light_blue");
-        fishbox_light_blue.anchor.setTo(0.5,0.5);
-        fishbox_light_blue.scale.setTo(0,0);  
-
-        fishbox_grey = game.add.sprite(getfishboardX, getfishboardY, "fishbox_grey");
-        fishbox_grey.anchor.setTo(0.5,0.5);
-        fishbox_grey.scale.setTo(0,0);  
-
-        fishbox_dark_blue = game.add.sprite(getfishboardX, getfishboardY, "fishbox_dark_blue");
-        fishbox_dark_blue.anchor.setTo(0.5,0.5);
-        fishbox_dark_blue.scale.setTo(0,0);  
-
-        fishbox_red = game.add.sprite(getfishboardX, getfishboardY, "fishbox_red");
-        fishbox_red.anchor.setTo(0.5,0.5);
-        fishbox_red.scale.setTo(0,0); 
         
         fishbox_sheet_highlight = game.add.sprite(getfishboardX, getfishboardY, "fishbox_sheet_highlight");
         fishbox_sheet_highlight.anchor.setTo(0.5,0.5);
@@ -529,10 +268,10 @@ demo.state3.prototype = {
         fishbox_sheet_highlight_animation = fishbox_sheet_highlight.animations.add("fishbox_sheet_highlight", [0,1,2,3,4,5,6,7]);
         
         //open BG-----------------------------------------------------------------------------------------------------------------
-        blackBG_open_fishing = game.add.sprite(0,0, "blackBG");
+        blackBG_open_fishing = game.add.sprite(0,0,"blackBG");
         game.add.tween(blackBG_open_fishing).to({alpha:0},1000,'Quad.easeIn',true); 
         //close BG
-        blackBG_close_fishing = game.add.sprite(0,0, "blackBG");
+        blackBG_close_fishing = game.add.sprite(0,0,"blackBG");
         blackBG_close_fishing.alpha = 0;
         
         //fx---------------------------------------------------------------------------------------------------------------------
@@ -545,66 +284,60 @@ demo.state3.prototype = {
         tutorial_frame_sheet.animations.add("tutorial_frame_sheet_dyn", [0,1,2,3,4,5,6,7,8,9]);
         tutorial_frame_sheet.alpha = 0;
 
-        
+        //--------------------------------------------------------------------------------------------------------------------------
         
         
         for(var i = 0;i<=2;i++){
-            answerpannel[i] = game.add.sprite( questionpositionX+150*(i-1), buttonpositionY,"anwser_pannel");
+            answerpannel[i] = game.add.sprite( questionpositionX+150*(i-1), buttonpositionY,'fishingpage_sheet001','anwser_pannel1.png');
             answerpannel[i].scale.setTo(0.8,0.8); 
             answerpannel[i].anchor.setTo(0.5,0.5);
             answerpannel[i].alpha = 0; 
    
         }
         for(var i = 0;i<=2;i++){
-            answerpannel_tutorial[i] = game.add.sprite( questionpositionX+150*(i-1), buttonpositionY,"anwser_pannel");
+            answerpannel_tutorial[i] = game.add.sprite( questionpositionX+150*(i-1), buttonpositionY,'fishingpage_sheet001','anwser_pannel1.png');
             answerpannel_tutorial[i].scale.setTo(0.8,0.8); 
             answerpannel_tutorial[i].anchor.setTo(0.5,0.5);
             answerpannel_tutorial[i].alpha = 0; 
    
         }        
         //add 0~10 answer number image    
+        
         for(var i = 1;i<11;i++){
       
-            answer_number0[i] =  game.add.sprite(questionpositionX-150, buttonpositionY,i);    
+            answer_number0[i] = game.add.sprite(questionpositionX-150, buttonpositionY,'fishingpage_sheet001',i+'.png');    
             answer_number0[i].scale.setTo(0.8,0.8); 
             answer_number0[i].anchor.setTo(0.5,0.5);   
             answer_number0[i].alpha = 0;     
                 
-            answer_number1[i] =  game.add.sprite(questionpositionX, buttonpositionY,i);    
+            answer_number1[i] = game.add.sprite(questionpositionX, buttonpositionY,'fishingpage_sheet001',i+'.png');    
             answer_number1[i].scale.setTo(0.8,0.8); 
             answer_number1[i].anchor.setTo(0.5,0.5);   
             answer_number1[i].alpha = 0; 
                 
-            answer_number2[i] =  game.add.sprite(questionpositionX+150, buttonpositionY,i);    
+            answer_number2[i] = game.add.sprite(questionpositionX+150, buttonpositionY,'fishingpage_sheet001',i+'.png');    
             answer_number2[i].scale.setTo(0.8,0.8); 
             answer_number2[i].anchor.setTo(0.5,0.5);   
             answer_number2[i].alpha = 0; 
    
         }    
-        
-    
-        answer_number0[0] = game.add.sprite(questionpositionX-150, buttonpositionY,'0');    
+        answer_number0[0] = game.add.sprite(questionpositionX-150, buttonpositionY,'fishingpage_sheet001','0.png');    
         answer_number0[0].scale.setTo(0.8,0.8); 
         answer_number0[0].anchor.setTo(0.5,0.5);   
         answer_number0[0].alpha = 0;     
                 
-        answer_number1[0] =  game.add.sprite(questionpositionX, buttonpositionY,'0');    
+        answer_number1[0] =  game.add.sprite(questionpositionX, buttonpositionY,'fishingpage_sheet001','0.png');    
         answer_number1[0].scale.setTo(0.8,0.8); 
         answer_number1[0].anchor.setTo(0.5,0.5);   
         answer_number1[0].alpha = 0; 
                 
-        answer_number2[0] =  game.add.sprite(questionpositionX+150, buttonpositionY,'0');    
+        answer_number2[0] =  game.add.sprite(questionpositionX+150, buttonpositionY,'fishingpage_sheet001','0.png');    
         answer_number2[0].scale.setTo(0.8,0.8); 
         answer_number2[0].anchor.setTo(0.5,0.5);   
         answer_number2[0].alpha = 0;  
-        
-        answer_number2[0] =  game.add.sprite(questionpositionX+150, buttonpositionY,'0');    
-        answer_number2[0].scale.setTo(0.8,0.8); 
-        answer_number2[0].anchor.setTo(0.5,0.5);   
-        answer_number2[0].alpha = 0;  
-        
+
         //question number bond image------------------------------------------------------------------------------------------
-        bonds = game.add.sprite(questionpositionX,questionpositionY,"bonds");
+        bonds = game.add.sprite(questionpositionX,questionpositionY,'fishingpage_sheet001',"bonds.png");
         bonds.anchor.setTo(0.5,1);
         bonds.alpha = 0;
        
@@ -638,7 +371,7 @@ demo.state3.prototype = {
         question_pannel3_create_fx.alpha = 0;
         question_pannel3_create_fx_animation = question_pannel3_create_fx.animations.add("question_pannel3_create_fx", [0,1,2,3,4,5,6,7,8,9]);
 
-        //FX
+        //FX-----------------------------------------------------------------------------------------------------------------------------------
         blue_FX_sheet = game.add.sprite(questionpositionX+150,questionpositionY,"blue_FX_sheet");
         // blue_FX_sheet.scale.setTo(0.6,0.6);
         blue_FX_sheet.anchor.setTo(0.5,0.5);
@@ -680,101 +413,102 @@ demo.state3.prototype = {
         energy_transfer_sheet2.anchor.setTo(0.5,0.5);
         energy_transfer_sheet2.alpha = 0;
         
-        scorebar_wrong_fx_sheet = game.add.sprite(scorebarX+10,110, "scorebar_wrong_fx_sheet");
-        scorebar_wrong_fx_sheet.animations.add("scorebar_wrong_fx_dynamic", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]);
+        //-------------------------------------------------------------------------------------------------------------------
+        scorebar_wrong_fx_sheet = game.add.sprite(scorebarX+10,110, "scorebar_fx_atlas");
+        scorebar_wrong_fx_sheet.animations.add("scorebar_wrong_fx_dynamic",Phaser.Animation.generateFrameNames('scorebar_wrong_fx',0,13, '.png', 4), 10, true);
         scorebar_wrong_fx_sheet.anchor.setTo(0.5,0);
         scorebar_wrong_fx_sheet.alpha = 0;
         
-        scorebar_right_fx_sheet = game.add.sprite(scorebarX+10,110, "scorebar_right_fx_sheet");
-        scorebar_right_fx_sheet.animations.add("scorebar_right_fx_dynamic", [0,1,2,3,4,5,6,7,8,9,10,11]);
+        scorebar_right_fx_sheet = game.add.sprite(scorebarX+10,110, "scorebar_fx_atlas");
+        scorebar_right_fx_sheet.animations.add("scorebar_right_fx_dynamic",Phaser.Animation.generateFrameNames('scorebar_right_fx',0,11, '.png', 4), 10, true);
         scorebar_right_fx_sheet.anchor.setTo(0.5,0);
         scorebar_right_fx_sheet.alpha = 0;
 
-        //add question text image  
+        //add question text image  ------------------------------------------------------------------------------------------------
         for(var i = 0;i<=10;i++){
-            question_text0[i] =  game.add.sprite(questionpositionX,questionpositionY-150,'Q'+i+'_green');    
+            question_text0[i] =  game.add.sprite(questionpositionX,questionpositionY-150,'fishingpage_sheet001','Q'+i+'_green.png');    
             question_text0[i].anchor.setTo(0.5,0.5);
             question_text0[i].scale.setTo(0.8,0.8); 
             question_text0[i].alpha = 0;     
                 
-            question_text1[i] =  game.add.sprite(questionpositionX+150,questionpositionY,'Q'+i+'_blue');    
+            question_text1[i] =  game.add.sprite(questionpositionX+150,questionpositionY,'fishingpage_sheet001','Q'+i+'_blue.png');    
             question_text1[i].anchor.setTo(0.5,0.5);   
             question_text1[i].scale.setTo(0.8,0.8);
             question_text1[i].alpha = 0; 
                 
-            question_text2[i] =  game.add.sprite(questionpositionX-150,questionpositionY,'Q'+i+'_blue');    
+            question_text2[i] =  game.add.sprite(questionpositionX-150,questionpositionY,'fishingpage_sheet001','Q'+i+'_blue.png');    
             question_text2[i].anchor.setTo(0.5,0.5);
             question_text2[i].scale.setTo(0.8,0.8);
             question_text2[i].alpha = 0; 
         }
         //add question mark image 
-        question_mark0 =  game.add.sprite(questionpositionX,questionpositionY-150,'Qmark_green');    
+        question_mark0 =  game.add.sprite(questionpositionX,questionpositionY-150,'fishingpage_sheet001','Qmark_green.png');    
         question_mark0.anchor.setTo(0.5,0.5);   
         question_mark0.alpha = 0;     
                 
-        question_mark1 =  game.add.sprite(questionpositionX+150,questionpositionY,'Qmark_blue');    
+        question_mark1 =  game.add.sprite(questionpositionX+150,questionpositionY,'fishingpage_sheet001','Qmark_blue.png');    
         question_mark1.anchor.setTo(0.5,0.5);   
         question_mark1.alpha = 0; 
                 
-        tutorial_number_2 = game.add.sprite(questionpositionX-150,questionpositionY,'tutorial_number_2');    
+        tutorial_number_2 = game.add.sprite(questionpositionX-150,questionpositionY,'fishingpage_sheet001','2_tutorial.png');    
         tutorial_number_2.scale.setTo(0.8,0.8); 
         tutorial_number_2.anchor.setTo(0.5,0.5);   
         tutorial_number_2.alpha = 0; 
         
-        tutorial_number_4 = game.add.sprite(questionpositionX+150,questionpositionY,'tutorial_number_4');    
+        tutorial_number_4 = game.add.sprite(questionpositionX+150,questionpositionY,'fishingpage_sheet001','4_tutorial.png');    
         tutorial_number_4.scale.setTo(0.8,0.8); 
         tutorial_number_4.anchor.setTo(0.5,0.5);   
         tutorial_number_4.alpha = 0; 
         
-        tutorial2_number_2 = game.add.sprite(questionpositionX-150,questionpositionY,'tutorial_number_2');    
+        tutorial2_number_2 = game.add.sprite(questionpositionX-150,questionpositionY,'fishingpage_sheet001','2_tutorial.png');    
         tutorial2_number_2.scale.setTo(0.8,0.8); 
         tutorial2_number_2.anchor.setTo(0.5,0.5);   
         tutorial2_number_2.alpha = 0;
         
-        tutorial2_number_9 = game.add.sprite(questionpositionX,questionpositionY-150,'tutorial_number_9');    
+        tutorial2_number_9 = game.add.sprite(questionpositionX,questionpositionY-150,'fishingpage_sheet001','9_tutorial.png');    
         tutorial2_number_9.scale.setTo(0.8,0.8); 
         tutorial2_number_9.anchor.setTo(0.5,0.5);   
         tutorial2_number_9.alpha = 0;
         
-        plus_tutorial = game.add.sprite(questionpositionX,questionpositionY,'plus_tutorial');    
+        plus_tutorial = game.add.sprite(questionpositionX,questionpositionY,'fishingpage_sheet001','plus.png');    
         plus_tutorial.scale.setTo(0.8,0.8); 
         plus_tutorial.anchor.setTo(0.5,0.5);   
         plus_tutorial.alpha = 0;
         
-        minus_tutorial = game.add.sprite(questionpositionX-500,questionpositionY,'minus_tutorial');    
+        minus_tutorial = game.add.sprite(questionpositionX-500,questionpositionY,'fishingpage_sheet001','minus.png');    
         minus_tutorial.scale.setTo(0.4,0.4); 
         minus_tutorial.anchor.setTo(0.5,0.5);   
         minus_tutorial.alpha = 0;
         
-        Qmark_tutorial = game.add.sprite(questionpositionX,questionpositionY-150,'Qmark_tutorial');    
+        Qmark_tutorial = game.add.sprite(questionpositionX,questionpositionY-150,'fishingpage_sheet001','Qmark_tutorial.png');    
         Qmark_tutorial.anchor.setTo(0.5,0.5);   
         Qmark_tutorial.alpha = 0;    
         
-        Qmark_tutorial2 = game.add.sprite(questionpositionX+150,questionpositionY,'Qmark_tutorial');    
+        Qmark_tutorial2 = game.add.sprite(questionpositionX+150,questionpositionY,'fishingpage_sheet001','Qmark_tutorial.png');    
         Qmark_tutorial2.anchor.setTo(0.5,0.5);   
         Qmark_tutorial2.alpha = 0; 
         
-        equal_mark_tutorial = game.add.sprite(questionpositionX-390,questionpositionY,'equal_mark_tutorial');    
+        equal_mark_tutorial = game.add.sprite(questionpositionX-390,questionpositionY,'fishingpage_sheet001','equal_mark_tutorial.png');    
         equal_mark_tutorial.anchor.setTo(0.5,0.5);   
         equal_mark_tutorial.alpha = 0;
         
         //tutorial page
-        continue_text = game.add.sprite(centerX,centerY+200, "continue_text");
+        continue_text = game.add.sprite(centerX,centerY+200,'fishingpage_sheet001',"continue_text.png");
         continue_text.anchor.setTo(0.5,0.5);     
         continue_text.scale.setTo(0.5,0.5);  
         tween_continue_text = game.add.tween(continue_text).to({alpha:0.2},500,'Linear',true,0,false,false).loop(true);
         
         if( first_try == true ){
-            click_to_continue = game.add.button(0,0, "blackBG",start_tutorial);
+            click_to_continue = game.add.button(0,0,"blackBG",start_tutorial);
             click_to_continue.alpha = 0;
         }
 
         
-        mark_tutorial = game.add.button(foxpositionX+250, foxpositionY-150, "mark",startfishing_tutorial);
+        mark_tutorial = game.add.button(foxpositionX+250, foxpositionY-150,'mark_tutorial',startfishing_tutorial);
         mark_tutorial.scale.setTo(0,0);
         mark_tutorial.anchor.setTo(0.5,0.5);
         
-        mark = game.add.button(foxpositionX+250, foxpositionY-150, "mark",startfishing);
+        mark = game.add.button(foxpositionX+250, foxpositionY-150,"mark_tutorial",startfishing);
         mark.scale.setTo(0,0);
         mark.anchor.setTo(0.5,0.5);
         mark.inputEnabled = false;
@@ -782,25 +516,25 @@ demo.state3.prototype = {
         var textpositionX = 200,
             textpositionY = 250;
         
-        finger_pointer = game.add.sprite(foxpositionX+250, foxpositionY-50,"finger_pointer");
+        finger_pointer = game.add.sprite(foxpositionX+250, foxpositionY-50,'fishingpage_sheet001',"finger_pointer.png");
         finger_pointer.alpha = 0;
         finger_pointer.anchor.setTo(0.5,0.5);
         
-        get_fish_tutorial = game.add.sprite(foxpositionX+500, foxpositionY-150,"get_fish_tutorial");
+        get_fish_tutorial = game.add.sprite(foxpositionX+500, foxpositionY-150,'fishingpage_sheet001',"get_fish_tutorial.png");
         get_fish_tutorial.anchor.setTo(0.5,0.5);
         get_fish_tutorial.scale.setTo(0,0);
 
-        add_mode_text2 = game.add.sprite(questionpositionX-440,buttonpositionY-120 ,"add_mode_text2");
+        add_mode_text2 = game.add.sprite(questionpositionX-440,buttonpositionY-120 ,'fishingpage_sheet001',"add_mode_text2.png");
         add_mode_text2.alpha = 0;
         add_mode_text2.anchor.setTo(0.5,0.5);
         add_mode_text2.scale.setTo(0.5,0.5);
 
-        minus_mode_text2 = game.add.sprite(questionpositionX-440,buttonpositionY-120 ,"minus_mode_text2");
+        minus_mode_text2 = game.add.sprite(questionpositionX-440,buttonpositionY-120 ,'fishingpage_sheet001',"minus_mode_text2.png");
         minus_mode_text2.alpha = 0;
         minus_mode_text2.anchor.setTo(0.5,0.5);
         minus_mode_text2.scale.setTo(0.5,0.5);
 
-        start_game_text = game.add.sprite(centerX,centerY+200,"start_game_text");
+        start_game_text = game.add.sprite(centerX,centerY+200,'fishingpage_sheet001',"start_game_text.png");
         start_game_text.alpha = 0;
         start_game_text.scale.setTo(0.5,0.5);
         start_game_text.anchor.setTo(0.5,0.5);  
@@ -808,7 +542,7 @@ demo.state3.prototype = {
         
         //fx
         for(var i = 0;i<=2;i++){
-            anwser_pannel_light[i] = game.add.sprite(questionpositionX+150*(i-1), buttonpositionY,'anwser_pannel_light');
+            anwser_pannel_light[i] = game.add.sprite(questionpositionX+150*(i-1), buttonpositionY,'fishingpage_sheet001','anwser_pannel_light.png');
             anwser_pannel_light[i].anchor.setTo(0.5,0.5);   
             anwser_pannel_light[i].alpha = 0;  
 
@@ -877,13 +611,14 @@ demo.state3.prototype = {
         
         //foxtail_dynamic--------------------------------------------------------------------------------------
         
-        if( foxtail_time == 0   && playing_status == false && complete_status == false ){
+        if( foxtail_time == 0
+           && playing_status == false && complete_status == false ){
             foxtail_animation = foxtail.animations.play("fishing",9,false);
             foxtail_time = 200;
         }else if( foxtail_animation.isPlaying == false  && playing_status == false && complete_status == false ){
             foxtail_time--;
             foxtail_animation.stop();
-            foxtail.frame = 0;
+            foxtail_animation.frame = 0;
         }
 
     }    
@@ -937,7 +672,7 @@ function startfishing(){
     foxpulling_tween = game.add.tween(foxpulling).to({x:'-10'},1000,'Linear',true,0,false,false).loop(true); 
     fishingrodpullingsheet_tween = game.add.tween(fishingrodpullingsheet).to({x:'-10'},1000,'Linear',true,0,false,false).loop(true); 
     
-    game.add.tween(shadow).to({x:'-10'},1000,'Linear',true,0,false,false).loop(true); 
+   
     scorebar.y = 500; 
     scorebarred.y = 500; 
     mark.scale.setTo(0,0);      
@@ -1023,7 +758,7 @@ function finishfishing(){
     
     success = true;
     
-    shadow.alpha = 0;
+
     showupfishboard();    
     game_fishing_music.stop();
     successFX.play();   
@@ -1050,7 +785,7 @@ function failfishing(){
     dropfishingrod.animations.play("dropfishingrod",12,false,true);
     game.add.tween(dropfishingrod).to({x:'+500'},100,'Quad.easeOut',true);
     dropfishingrod.alpha = 1;
-    shadow.alpha = 0;
+ 
     
     showupfailboard();
     game_fishing_music.stop();

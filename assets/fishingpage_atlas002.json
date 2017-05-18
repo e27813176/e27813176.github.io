@@ -1,0 +1,164 @@
+{"frames": [
+ 
+{
+	"filename": "fox_getfishsheet_00001.png",
+	"frame": {"x":1,"y":1,"w":776,"h":328},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":294,"w":776,"h":328},
+	"sourceSize": {"w":780,"h":651}
+},
+{
+	"filename": "fox_getfishsheet_00002.png",
+	"frame": {"x":779,"y":1,"w":729,"h":336},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":51,"y":299,"w":729,"h":336},
+	"sourceSize": {"w":780,"h":651}
+},
+{
+	"filename": "fox_getfishsheet_00003.png",
+	"frame": {"x":1,"y":331,"w":645,"h":524},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":90,"y":82,"w":645,"h":524},
+	"sourceSize": {"w":780,"h":651}
+},
+{
+	"filename": "fox_getfishsheet_00004.png",
+	"frame": {"x":1510,"y":1,"w":437,"h":580},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":100,"y":0,"w":437,"h":580},
+	"sourceSize": {"w":780,"h":651}
+},
+{
+	"filename": "fox_getfishsheet_00005.png",
+	"frame": {"x":1080,"y":880,"w":358,"h":541},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":87,"w":358,"h":541},
+	"sourceSize": {"w":780,"h":651}
+},
+{
+	"filename": "fox_getfishsheet_00006.png",
+	"frame": {"x":1258,"y":1423,"w":429,"h":537},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":91,"w":429,"h":537},
+	"sourceSize": {"w":780,"h":651}
+},
+{
+	"filename": "fox_getfishsheet_00007.png",
+	"frame": {"x":1080,"y":339,"w":402,"h":539},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":89,"w":402,"h":539},
+	"sourceSize": {"w":780,"h":651}
+},
+{
+	"filename": "fox_getfishsheet_00008.png",
+	"frame": {"x":821,"y":1423,"w":435,"h":539},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":89,"w":435,"h":539},
+	"sourceSize": {"w":780,"h":651}
+},
+{
+	"filename": "fox_getfishsheet_00009.png",
+	"frame": {"x":1484,"y":583,"w":436,"h":543},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":85,"w":436,"h":543},
+	"sourceSize": {"w":780,"h":651}
+},
+{
+	"filename": "fox_getfishsheet_00010.png",
+	"frame": {"x":1,"y":1395,"w":484,"h":545},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":83,"w":484,"h":545},
+	"sourceSize": {"w":780,"h":651}
+},
+{
+	"filename": "fox_getfishsheet_lastframe.png",
+	"frame": {"x":487,"y":1395,"w":332,"h":545},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":83,"w":332,"h":545},
+	"sourceSize": {"w":780,"h":651}
+},
+{
+	"filename": "getfishboardBG.png",
+	"frame": {"x":752,"y":933,"w":326,"h":386},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":326,"h":386},
+	"sourceSize": {"w":326,"h":386}
+},
+{
+	"filename": "grove.png",
+	"frame": {"x":1,"y":857,"w":608,"h":536},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":992,"y":464,"w":608,"h":536},
+	"sourceSize": {"w":1600,"h":1000}
+},
+{
+	"filename": "scorebar.png",
+	"frame": {"x":1949,"y":1,"w":10,"h":708},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":708},
+	"sourceSize": {"w":10,"h":708}
+},
+{
+	"filename": "scorebar_BG.png",
+	"frame": {"x":1793,"y":1128,"w":97,"h":690},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":3,"w":97,"h":690},
+	"sourceSize": {"w":102,"h":728}
+},
+{
+	"filename": "scorebar_design.png",
+	"frame": {"x":648,"y":331,"w":102,"h":728},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":102,"h":728},
+	"sourceSize": {"w":102,"h":728}
+},
+{
+	"filename": "scorebar_full.png",
+	"frame": {"x":1689,"y":1128,"w":102,"h":711},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":102,"h":711},
+	"sourceSize": {"w":102,"h":728}
+},
+{
+	"filename": "scorebarBG.png",
+	"frame": {"x":752,"y":331,"w":10,"h":600},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":600},
+	"sourceSize": {"w":10,"h":600}
+},
+{
+	"filename": "scorebarred.png",
+	"frame": {"x":764,"y":331,"w":10,"h":600},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":600},
+	"sourceSize": {"w":10,"h":600}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "fishingpage_atlas002.png",
+	"format": "RGBA5555",
+	"size": {"w":1960,"h":1963},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d2a0ae2d18aeb32f75a9bfdfeae28468:238ddb1591d4629ebcd1d9d1b0e19cc3:72a71d68fc87c2fa43adead8fd3751f1$"
+}
+}

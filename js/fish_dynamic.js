@@ -103,14 +103,7 @@ function fish_sheet(){
 
 }
 function clean_fish_dynamic(){
-    game.add.tween(fishbox_purple.scale).to({x:0,y:0},250,'Quad.easeOut',true,0);
     game.add.tween(fishbox_orange.scale).to({x:0,y:0},250,'Quad.easeOut',true,0);
-    game.add.tween(fishbox_yellow.scale).to({x:0,y:0},250,'Quad.easeOut',true,0);
-    game.add.tween(fishbox_green.scale).to({x:0,y:0},250,'Quad.easeOut',true,0);
-    game.add.tween(fishbox_light_blue.scale).to({x:0,y:0},250,'Quad.easeOut',true,0);
-    game.add.tween(fishbox_grey.scale).to({x:0,y:0},250,'Quad.easeOut',true,0);
-    game.add.tween(fishbox_dark_blue.scale).to({x:0,y:0},250,'Quad.easeOut',true,0);
-    game.add.tween(fishbox_red.scale).to({x:0,y:0},250,'Quad.easeOut',true,0);
     
     game.add.tween(fishbox_sheet_highlight.scale).to({x:0,y:0},250,'Quad.easeOut',true,0);  
     fishbox_sheet_highlight_animation.stop();

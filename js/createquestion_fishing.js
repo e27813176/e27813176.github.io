@@ -32,7 +32,7 @@ function checkanswer(){
         update_question();
     }
 }
-
+ 
 function createquestion(){
         
     var questionpositionX = 1000,
