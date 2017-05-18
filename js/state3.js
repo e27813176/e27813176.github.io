@@ -18,7 +18,7 @@ var waitingclick;
 
 
 var anwser_pannel_light = new Array();
-var anwser_pannel_redlight = new Array();
+
 
 var answerpannel_tutorial= new Array();
 
@@ -95,21 +95,22 @@ demo.state3.prototype = {
         //fish_sheet
         game.load.spritesheet('foxgetfishingsheet','assets/charactor/foxgetfishingsheet.png',780,651);
         game.load.spritesheet('fishsheet','assets/charactor/fishsheet.png',157,247);
-        game.load.spritesheet('foxgetfishing_purple_sheet','assets/charactor/foxgetfishing_purple_sheet.png',780,651);
+        /*
+        game.load.spritesheet('foxgetfishing_purple_sheet','assets/charactor/foxgetfishing_purple_sheet.png',390,326);
         game.load.spritesheet('fish_sheet_purple','assets/charactor/fish_sheet_purple.png',157,247);
-        game.load.spritesheet('foxgetfishing_yellow_sheet','assets/charactor/foxgetfishing_yellow_sheet.png',780,651);
+        game.load.spritesheet('foxgetfishing_yellow_sheet','assets/charactor/foxgetfishing_yellow_sheet.png',390,326);
         game.load.spritesheet('fish_sheet_yellow','assets/charactor/fish_sheet_yellow.png',157,247);
-        game.load.spritesheet('foxgetfishing_green_sheet','assets/charactor/foxgetfishing_green_sheet.png',780,651);
+        game.load.spritesheet('foxgetfishing_green_sheet','assets/charactor/foxgetfishing_green_sheet.png',390,326);
         game.load.spritesheet('fish_sheet_green','assets/charactor/fish_sheet_green.png',157,247);
-        game.load.spritesheet('foxgetfishing_light_blue_sheet','assets/charactor/foxgetfishing_light_blue_sheet.png',780,651);
+        game.load.spritesheet('foxgetfishing_light_blue_sheet','assets/charactor/foxgetfishing_light_blue_sheet.png',390,326);
         game.load.spritesheet('fish_sheet_light_blue','assets/charactor/fish_sheet_light_blue.png',157,247);
-        game.load.spritesheet('foxgetfishing_grey_sheet','assets/charactor/foxgetfishing_grey_sheet.png',780,651);
+        game.load.spritesheet('foxgetfishing_grey_sheet','assets/charactor/foxgetfishing_grey_sheet.png',390,326);
         game.load.spritesheet('fish_sheet_grey','assets/charactor/fish_sheet_grey.png',157,247);  
-        game.load.spritesheet('foxgetfishing_dark_blue_sheet','assets/charactor/foxgetfishing_dark_blue_sheet.png',780,651);
+        game.load.spritesheet('foxgetfishing_dark_blue_sheet','assets/charactor/foxgetfishing_dark_blue_sheet.png',390,326);
         game.load.spritesheet('fish_sheet_dark_blue','assets/charactor/fish_sheet_dark_blue.png',157,247);
-        game.load.spritesheet('foxgetfishing_red_sheet','assets/charactor/foxgetfishing_red_sheet.png',780,651);
+        game.load.spritesheet('foxgetfishing_red_sheet','assets/charactor/foxgetfishing_red_sheet.png',390,326);
         game.load.spritesheet('fish_sheet_red','assets/charactor/fish_sheet_red.png',157,247);
-        
+        */
         game.load.image('fox_getfishsheet_lastframe','assets/charactor/fox_getfishsheet_lastframe.png');
         
 
@@ -146,8 +147,7 @@ demo.state3.prototype = {
         
         //fx
         game.load.image('anwser_pannel_light','assets/fishingpage/question/anwser_pannel_light.png');
-        game.load.image('anwser_pannel_redlight','assets/fishingpage/question/anwser_pannel_redlight.png');
-        
+
         game.load.image('correct_fx','assets/fishingpage/whiteBG.png');
         
         game.load.spritesheet('question_pannel_create_fx','assets/fishingpage/question/question_pannel_create_fx.png',250,250);
@@ -341,7 +341,7 @@ demo.state3.prototype = {
         foxpulling.alpha = 0;
 
         foxfalling = game.add.sprite(foxpositionX+400, foxpositionY+300, "foxfalling");
-        foxfalling.animations.add("foxfalling", [0,1,2,3,4,5,6,7,8,9]);
+        foxfalling.animations.add("foxfalling", [0,1,2,3,4,5]);
 
         foxfalling.anchor.setTo(0.7,0.9);
         foxfalling.alpha = 0;
@@ -356,6 +356,7 @@ demo.state3.prototype = {
         foxgetfishingsheet = game.add.sprite(foxpositionX+500, foxpositionY+300, "foxgetfishingsheet");
         foxgetfishingsheet_animation = foxgetfishingsheet.animations.add("foxgetfishingsheet", [0,1,2,3,4,5,6,7,8,9]);
         foxgetfishingsheet.anchor.setTo(0.7,0.9);
+
         foxgetfishingsheet.alpha = 0;
         
         fishsheet = game.add.sprite(foxpositionX+480, foxpositionY+290, "fishsheet");
@@ -364,10 +365,11 @@ demo.state3.prototype = {
         fishsheet.angle = -90;
         fishsheet.alpha = 0;       
         fishsheet_animation = fishsheet.animations.add("fishsheet_dynamic", [0,1,2]);
-        
+        /*
         foxgetfishing_purple_sheet = game.add.sprite(foxpositionX+500, foxpositionY+300, "foxgetfishing_purple_sheet");
         foxgetfishing_purple_sheet_animation = foxgetfishing_purple_sheet.animations.add("foxgetfishing_purple_sheet", [0,1,2,3,4,5,6,7,8,9]);
         foxgetfishing_purple_sheet.anchor.setTo(0.7,0.9);
+        foxgetfishing_purple_sheet.scale.setTo(2,2);
         foxgetfishing_purple_sheet.alpha = 0;
         
         fish_sheet_purple = game.add.sprite(foxpositionX+480, foxpositionY+290, "fish_sheet_purple");
@@ -380,6 +382,7 @@ demo.state3.prototype = {
         foxgetfishing_yellow_sheet = game.add.sprite(foxpositionX+500, foxpositionY+300, "foxgetfishing_yellow_sheet");
         foxgetfishing_yellow_sheet_animation = foxgetfishing_yellow_sheet.animations.add("foxgetfishing_yellow_sheet", [0,1,2,3,4,5,6,7,8,9]);
         foxgetfishing_yellow_sheet.anchor.setTo(0.7,0.9);
+        foxgetfishing_yellow_sheet.scale.setTo(2,2);
         foxgetfishing_yellow_sheet.alpha = 0;
         
         fish_sheet_yellow = game.add.sprite(foxpositionX+480, foxpositionY+290, "fish_sheet_yellow");
@@ -392,6 +395,7 @@ demo.state3.prototype = {
         foxgetfishing_green_sheet = game.add.sprite(foxpositionX+500, foxpositionY+300, "foxgetfishing_green_sheet");
         foxgetfishing_green_sheet_animation = foxgetfishing_green_sheet.animations.add("foxgetfishing_green_sheet", [0,1,2,3,4,5,6,7,8,9]);
         foxgetfishing_green_sheet.anchor.setTo(0.7,0.9);
+        foxgetfishing_green_sheet.scale.setTo(2,2);
         foxgetfishing_green_sheet.alpha = 0;
         
         fish_sheet_green = game.add.sprite(foxpositionX+480, foxpositionY+290, "fish_sheet_green");
@@ -404,6 +408,7 @@ demo.state3.prototype = {
         foxgetfishing_light_blue_sheet = game.add.sprite(foxpositionX+500, foxpositionY+300, "foxgetfishing_light_blue_sheet");
         foxgetfishing_light_blue_sheet_animation = foxgetfishing_light_blue_sheet.animations.add("foxgetfishing_light_blue_sheet", [0,1,2,3,4,5,6,7,8,9]);
         foxgetfishing_light_blue_sheet.anchor.setTo(0.7,0.9);
+        foxgetfishing_light_blue_sheet.scale.setTo(2,2);
         foxgetfishing_light_blue_sheet.alpha = 0;
         
         fish_sheet_light_blue = game.add.sprite(foxpositionX+480, foxpositionY+290, "fish_sheet_light_blue");
@@ -416,6 +421,7 @@ demo.state3.prototype = {
         foxgetfishing_grey_sheet = game.add.sprite(foxpositionX+500, foxpositionY+300, "foxgetfishing_grey_sheet");
         foxgetfishing_grey_sheet_animation = foxgetfishing_grey_sheet.animations.add("foxgetfishing_grey_sheet", [0,1,2,3,4,5,6,7,8,9]);
         foxgetfishing_grey_sheet.anchor.setTo(0.7,0.9);
+        foxgetfishing_grey_sheet.scale.setTo(2,2);
         foxgetfishing_grey_sheet.alpha = 0;
         
         fish_sheet_grey = game.add.sprite(foxpositionX+480, foxpositionY+290, "fish_sheet_grey");
@@ -428,6 +434,7 @@ demo.state3.prototype = {
         foxgetfishing_dark_blue_sheet = game.add.sprite(foxpositionX+500, foxpositionY+300, "foxgetfishing_dark_blue_sheet");
         foxgetfishing_dark_blue_sheet_animation = foxgetfishing_dark_blue_sheet.animations.add("foxgetfishing_dark_blue_sheet", [0,1,2,3,4,5,6,7,8,9]);
         foxgetfishing_dark_blue_sheet.anchor.setTo(0.7,0.9);
+        foxgetfishing_dark_blue_sheet.scale.setTo(2,2);
         foxgetfishing_dark_blue_sheet.alpha = 0;
         
         fish_sheet_dark_blue = game.add.sprite(foxpositionX+480, foxpositionY+290, "fish_sheet_dark_blue");
@@ -440,6 +447,7 @@ demo.state3.prototype = {
         foxgetfishing_red_sheet = game.add.sprite(foxpositionX+500, foxpositionY+300, "foxgetfishing_red_sheet");
         foxgetfishing_red_sheet_animation = foxgetfishing_red_sheet.animations.add("foxgetfishing_red_sheet", [0,1,2,3,4,5,6,7,8,9]);
         foxgetfishing_red_sheet.anchor.setTo(0.7,0.9);
+        foxgetfishing_red_sheet.scale.setTo(2,2);
         foxgetfishing_red_sheet.alpha = 0;
         
         fish_sheet_red = game.add.sprite(foxpositionX+480, foxpositionY+290, "fish_sheet_red");
@@ -448,7 +456,7 @@ demo.state3.prototype = {
         fish_sheet_red.angle = -90;
         fish_sheet_red.alpha = 0;
         fish_sheet_red_animation = fish_sheet_red.animations.add("fish_sheet_red_dynamic", [0,1,2]);        
-        
+        */
         fox_getfishsheet_lastframe = game.add.sprite(foxpositionX+500, foxpositionY+300, "fox_getfishsheet_lastframe");
         fox_getfishsheet_lastframe.anchor.setTo(0.7,0.9);
         fox_getfishsheet_lastframe.alpha = 0;
@@ -804,9 +812,6 @@ demo.state3.prototype = {
             anwser_pannel_light[i].anchor.setTo(0.5,0.5);   
             anwser_pannel_light[i].alpha = 0;  
 
-            anwser_pannel_redlight[i] = game.add.sprite(questionpositionX+150*(i-1),buttonpositionY,'anwser_pannel_redlight');
-            anwser_pannel_redlight[i].anchor.setTo(0.5,0.5);   
-            anwser_pannel_redlight[i].alpha = 0;  
         }
      
         //sound----------------------------------------------------------------------------------------------------------------

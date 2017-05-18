@@ -104,5 +104,5 @@ function scorebar_wrong_fx(i){
     red_FX_sheet3.alpha = 1;            
     scorebar_wrong_fx_sheet.animations.play("scorebar_wrong_fx_dynamic",20,false);
     scorebar_wrong_fx_sheet.alpha= 1;
-    anwser_pannel_redlight[i].alpha = wrongFX;
+
 }

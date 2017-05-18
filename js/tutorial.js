@@ -6,7 +6,7 @@ function start_tutorial(){
     click_to_continue.inputEnabled = false;
     show_up_continue_text = false;
 }
-
+ 
 var finger_pointer_tween,
     mark_tutorial_tween,
     get_fish_tutorial_tween,

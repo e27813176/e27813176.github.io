@@ -1,8 +1,9 @@
 var rand_fish;
 function fish_sheet(){
     
-    rand_fish= Math.floor(Math.random()*8);
-
+    //rand_fish = Math.floor(Math.random()*8);
+    rand_fish = 0;
+    
     console.log(rand_fish);
     if( rand_fish == 0 ){
         foxgetfishingsheet.animations.play("foxgetfishingsheet",8,false);
@@ -17,7 +18,7 @@ function fish_sheet(){
     }else if( rand_fish == 1 ){
 
         foxgetfishing_purple_sheet.animations.play("foxgetfishing_purple_sheet",8,false);
-        foxgetfishing_purple_sheet.alpha = 1;
+        foxgetfishing_purple_sheet.alfpha = 1;
 
         foxgetfishing_purple_sheet_animation.onComplete.add(function () {	
             fish_sheet_purple.alpha = 1;
@@ -116,6 +117,7 @@ function clean_fish_dynamic(){
     
     fishsheet_animation.stop();
     fishsheet.alpha = 0;
+    /*
     fish_sheet_purple_animation.stop();
     fish_sheet_purple.alpha = 0;
     fish_sheet_yellow_animation.stop();
@@ -130,6 +132,7 @@ function clean_fish_dynamic(){
     fish_sheet_dark_blue.alpha = 0;
     fish_sheet_red_animation.stop();
     fish_sheet_red.alpha = 0;    
+    */
     fox_getfishsheet_lastframe.alpha = 0;    
 }
 function fish_box_dynamic(){
