@@ -583,8 +583,8 @@ demo.state3.prototype = {
         }       
             
         if(scorebar.y < 800 && playing_status == true){
-            scorebar.y += 0.8;
-            scorebarred.y += 0.8;
+            scorebar.y += 1.2;
+            scorebarred.y += 1.2;
             
         }
         if(scorebar.y >= 800 && playing_status == true){
