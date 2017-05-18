@@ -62,6 +62,7 @@ demo.state3.prototype = {
         game.load.atlas('fishingpage_sheet002', 'assets/fishingpage_atlas002.png', 'assets/fishingpage_atlas002.json');
         game.load.atlas('fishingpage_sheet003', 'assets/fishingpage_atlas003.png', 'assets/fishingpage_atlas003.json');
         game.load.atlas('fishingpage_sheet004', 'assets/fishingpage_atlas004.png', 'assets/fishingpage_atlas004.json');
+        game.load.atlas('fishingpage_sheet005', 'assets/fishingpage_atlas005.png', 'assets/fishingpage_atlas005.json');
         game.load.atlas('scorebar_fx_atlas', 'assets/scorebar_fx_atlas.png', 'assets/scorebar_fx_atlas.json');
         
         game.load.image('blackBG','assets/blackBG.jpg');
@@ -77,15 +78,8 @@ demo.state3.prototype = {
         game.load.spritesheet('button_finish_sheet','assets/fishingpage/button_finish_sheet.png',134,82);
         game.load.spritesheet('button_restart_sheet','assets/fishingpage/button_restart_sheet.png',134,82);
   
-        game.load.spritesheet('question_green_pannel','assets/fishingpage/question/question_green_sheet002.png',250,250);
-        game.load.spritesheet('question_blue_pannel','assets/fishingpage/question/question_blue_sheet002.png',250,250);
         game.load.image('mark_tutorial','assets/mark.png');
         //fx
-        game.load.spritesheet('question_pannel_create_fx','assets/fishingpage/question/question_pannel_create_fx.png',250,250);
-        game.load.spritesheet('blue_FX_sheet','assets/fishingpage/question/blue_FX_sheet.png',250,250);
-        game.load.spritesheet('green_FX_sheet','assets/fishingpage/question/green_FX_sheet.png',250,250);
-        game.load.spritesheet('red_FX_sheet','assets/fishingpage/question/red_FX_sheet.png',250,250);       
-        game.load.spritesheet('energy_transfer_sheet','assets/fishingpage/question/energy_transfer_sheet.png',250,250);
         game.load.spritesheet('tutorial_frame_sheet','assets/fishingpage/tutorial/tutorial_frame_sheet.png',400,300);
    
         game.load.audio('fishing', 'assets/audio/fishing.mp3');
@@ -341,75 +335,76 @@ demo.state3.prototype = {
         bonds.anchor.setTo(0.5,1);
         bonds.alpha = 0;
        
-        question_green_pannel = game.add.sprite(questionpositionX,questionpositionY-150,"question_green_pannel");
+        question_green_pannel = game.add.sprite(questionpositionX,questionpositionY-150,'fishingpage_sheet005');
         question_green_pannel.anchor.setTo(0.5,0.5);
         question_green_pannel.alpha = 0;
-        question_green_pannel_animation = question_green_pannel.animations.add("question_green_pannel_dyn", [0,1,2,3,4,5,6,7]);
+        question_green_pannel_animation = question_green_pannel.animations.add("question_green_pannel_dyn",Phaser.Animation.generateFrameNames('question_pannel_green_',1,8, '.png', 4), 10, true);
         
-        question_blue_pannel1 = game.add.sprite(questionpositionX+150,questionpositionY,"question_blue_pannel");
+        
+        
+        question_blue_pannel1 = game.add.sprite(questionpositionX+150,questionpositionY,'fishingpage_sheet005');
         question_blue_pannel1.anchor.setTo(0.5,0.5);
         question_blue_pannel1.alpha = 0;
-        question_blue_pannel1_animation = question_blue_pannel1.animations.add("question_blue_pannel_dyn1", [0,1,2,3,4,5,6,7]);
+        question_blue_pannel1_animation = question_blue_pannel1.animations.add("question_blue_pannel_dyn1",Phaser.Animation.generateFrameNames('question_pannel_blue_',1,8, '.png', 4), 10, true);
         
-        question_blue_pannel2 = game.add.sprite(questionpositionX-150,questionpositionY,"question_blue_pannel");
+        question_blue_pannel2 = game.add.sprite(questionpositionX-150,questionpositionY,'fishingpage_sheet005');
         question_blue_pannel2.anchor.setTo(0.5,0.5);
         question_blue_pannel2.alpha = 0;
-        question_blue_pannel2_animation = question_blue_pannel2.animations.add("question_blue_pannel_dyn2", [0,1,2,3,4,5,6,7]);
+        question_blue_pannel2_animation = question_blue_pannel2.animations.add("question_blue_pannel_dyn2", Phaser.Animation.generateFrameNames('question_pannel_blue_',1,8, '.png', 4), 10, true);
         
-        question_pannel1_create_fx = game.add.sprite(questionpositionX,questionpositionY-150,"question_pannel_create_fx");
+        question_pannel1_create_fx = game.add.sprite(questionpositionX,questionpositionY-150,'fishingpage_sheet005');
         question_pannel1_create_fx.anchor.setTo(0.5,0.5);
         question_pannel1_create_fx.alpha = 0;
-        question_pannel1_create_fx_animation = question_pannel1_create_fx.animations.add("question_pannel1_create_fx", [0,1,2,3,4,5,6,7,8,9]);
+        question_pannel1_create_fx_animation = question_pannel1_create_fx.animations.add("question_pannel1_create_fx",Phaser.Animation.generateFrameNames('question_pannel_create_fx',1,9, '.png', 4), 10, true);
         
-        question_pannel2_create_fx = game.add.sprite(questionpositionX+150,questionpositionY,"question_pannel_create_fx");
+        question_pannel2_create_fx = game.add.sprite(questionpositionX+150,questionpositionY,'fishingpage_sheet005');
         question_pannel2_create_fx.anchor.setTo(0.5,0.5);
         question_pannel2_create_fx.alpha = 0;
-        question_pannel2_create_fx_animation = question_pannel2_create_fx.animations.add("question_pannel2_create_fx", [0,1,2,3,4,5,6,7,8,9]);
+        question_pannel2_create_fx_animation = question_pannel2_create_fx.animations.add("question_pannel2_create_fx",Phaser.Animation.generateFrameNames('question_pannel_create_fx',1,9, '.png', 4), 10, true);
 
-        question_pannel3_create_fx = game.add.sprite(questionpositionX-150,questionpositionY,"question_pannel_create_fx");
+        question_pannel3_create_fx = game.add.sprite(questionpositionX-150,questionpositionY,'fishingpage_sheet005');
         question_pannel3_create_fx.anchor.setTo(0.5,0.5);
         question_pannel3_create_fx.alpha = 0;
-        question_pannel3_create_fx_animation = question_pannel3_create_fx.animations.add("question_pannel3_create_fx", [0,1,2,3,4,5,6,7,8,9]);
+        question_pannel3_create_fx_animation = question_pannel3_create_fx.animations.add("question_pannel3_create_fx",Phaser.Animation.generateFrameNames('question_pannel_create_fx',1,9, '.png', 4), 10, true);
 
         //FX-----------------------------------------------------------------------------------------------------------------------------------
-        blue_FX_sheet = game.add.sprite(questionpositionX+150,questionpositionY,"blue_FX_sheet");
-        // blue_FX_sheet.scale.setTo(0.6,0.6);
+        blue_FX_sheet = game.add.sprite(questionpositionX+150,questionpositionY,'fishingpage_sheet005');
         blue_FX_sheet.anchor.setTo(0.5,0.5);
-        blue_FX_sheet.animations.add("blue_FX", [0,1,2,3,4,5,6,7]);
+        blue_FX_sheet.animations.add("blue_FX",Phaser.Animation.generateFrameNames('blue_FX_sheet',0,8,'.png', 4), 10, true);
         blue_FX_sheet.alpha = 0;
         
-        green_FX_sheet = game.add.sprite(questionpositionX,questionpositionY-150,"blue_FX_sheet");
+        green_FX_sheet = game.add.sprite(questionpositionX,questionpositionY-150,'fishingpage_sheet005');
         green_FX_sheet.anchor.setTo(0.5,0.5);
-        green_FX_sheet.animations.add("green_FX", [0,1,2,3,4,5,6,7]);
+        green_FX_sheet.animations.add("green_FX",Phaser.Animation.generateFrameNames('blue_FX_sheet',0,8, '.png', 4), 10, true);
         green_FX_sheet.alpha = 0;
 
-        red_FX_sheet1 = game.add.sprite(questionpositionX,questionpositionY-150,"red_FX_sheet");
+        red_FX_sheet1 = game.add.sprite(questionpositionX,questionpositionY-150,'fishingpage_sheet005');
         red_FX_sheet1.anchor.setTo(0.5,0.5);
-        red_FX_sheet1.animations.add("red_FX1", [0,1,2,3,4,5,6,7]);
+        red_FX_sheet1.animations.add("red_FX1",Phaser.Animation.generateFrameNames('redlight_FX',1,8, '.png', 4), 10, true);
         red_FX_sheet1.alpha = 0;
 
-        red_FX_sheet2 = game.add.sprite(questionpositionX+150,questionpositionY,"red_FX_sheet");
+        red_FX_sheet2 = game.add.sprite(questionpositionX+150,questionpositionY,'fishingpage_sheet005');
         red_FX_sheet2.anchor.setTo(0.5,0.5);
-        red_FX_sheet2.animations.add("red_FX2", [0,1,2,3,4,5,6,7]);
+        red_FX_sheet2.animations.add("red_FX2",Phaser.Animation.generateFrameNames('redlight_FX',1,8, '.png', 4), 10, true);
         red_FX_sheet2.alpha = 0;
         
-        red_FX_sheet3 = game.add.sprite(questionpositionX-150,questionpositionY,"red_FX_sheet");
+        red_FX_sheet3 = game.add.sprite(questionpositionX-150,questionpositionY,'fishingpage_sheet005');
         red_FX_sheet3.anchor.setTo(0.5,0.5);
-        red_FX_sheet3.animations.add("red_FX3", [0,1,2,3,4,5,6,7]);
+        red_FX_sheet3.animations.add("red_FX3",Phaser.Animation.generateFrameNames('redlight_FX',1,8, '.png', 4), 10, true);
         red_FX_sheet3.alpha = 0;
         
-        energy_transfer_sheet = game.add.sprite(questionpositionX,questionpositionY-150, "energy_transfer_sheet");
-        energy_transfer_sheet.animations.add("energy_transfer_sheet1_dynamic", [0,1,2,3,4,5,6,7]);
+        energy_transfer_sheet = game.add.sprite(questionpositionX,questionpositionY-150,'fishingpage_sheet005');
+        energy_transfer_sheet.animations.add("energy_transfer_sheet_dynamic",Phaser.Animation.generateFrameNames('energy_transfer_',0,7, '.png', 5), 10, true);
         energy_transfer_sheet.anchor.setTo(0.5,0.5);
         energy_transfer_sheet.alpha = 0;
         
-        energy_transfer_sheet1 = game.add.sprite(questionpositionX,questionpositionY-150, "energy_transfer_sheet");
-        energy_transfer_sheet1.animations.add("energy_transfer_sheet1_dynamic", [0,1,2,3,4,5,6,7]);
+        energy_transfer_sheet1 = game.add.sprite(questionpositionX,questionpositionY-150,'fishingpage_sheet005');
+        energy_transfer_sheet1.animations.add("energy_transfer_sheet1_dynamic",Phaser.Animation.generateFrameNames('energy_transfer_',0,7, '.png', 5), 10, true);
         energy_transfer_sheet1.anchor.setTo(0.5,0.5);
         energy_transfer_sheet1.alpha = 0;
         
-        energy_transfer_sheet2 = game.add.sprite(questionpositionX+150,questionpositionY, "energy_transfer_sheet");
-        energy_transfer_sheet2.animations.add("energy_transfer_sheet2_dynamic", [0,1,2,3,4,5,6,7]);
+        energy_transfer_sheet2 = game.add.sprite(questionpositionX+150,questionpositionY,'fishingpage_sheet005');
+        energy_transfer_sheet2.animations.add("energy_transfer_sheet2_dynamic",Phaser.Animation.generateFrameNames('energy_transfer_',0,7, '.png', 5), 10, true);
         energy_transfer_sheet2.anchor.setTo(0.5,0.5);
         energy_transfer_sheet2.alpha = 0;
         
