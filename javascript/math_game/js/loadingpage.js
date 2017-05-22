@@ -1,10 +1,12 @@
 demo.loadingpage = function() {};
 demo.loadingpage.prototype = {
     preload: function() {
-       this.fox_logo = this.add.sprite(centerX,centerY,'fox_logo');
+       
+        this.fox_logo = this.add.sprite(centerX,centerY,'fox_logo');
         this.fox_logo.anchor.setTo(0.5);
-         game.add.tween(this.fox_logo).to({alpha:0.3},500,'Quad.easeInOut',true,0,false,true).loop(true); 
-                game.load.atlas('fishingpage_sheet001', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.json');
+        game.add.tween(this.fox_logo).to({alpha:0.3},800,'Quad.easeInOut',true,0,false,true).loop(true); 
+                
+        game.load.atlas('fishingpage_sheet001', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.json');
         game.load.atlas('fishingpage_sheet002', 'javascript/math_game/assets/fishingpage/fishingpage_atlas002.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas002.json');
         game.load.atlas('fishingpage_sheet003', 'javascript/math_game/assets/fishingpage/fishingpage_atlas003.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas003.json');
         game.load.atlas('fishingpage_sheet004', 'javascript/math_game/assets/fishingpage/fishingpage_atlas004.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas004.json');

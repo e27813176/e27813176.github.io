@@ -12,5 +12,5 @@ game.state.add("loadingpage", demo.loadingpage);
 game.state.add("tutorial", demo.tutorial);
 game.state.add("energy_transfer_FX", demo.energy_transfer_FX);
 
-game.state.start("state2");
+game.state.start("state8");
 

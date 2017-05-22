@@ -93,7 +93,7 @@ function gofishing(){
         sunlight1_tween.pause();
         sunlight2_tween.pause();
         game_menu_music.stop();
-        game.state.start('state3',true,true);
+        game.state.start('state2',true,true);
       }, this);
         
 }
