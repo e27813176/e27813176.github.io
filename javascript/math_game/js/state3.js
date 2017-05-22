@@ -56,7 +56,10 @@ demo.state3 = function() {};
 demo.state3.prototype = {
     preload: function() {
         
-      game.time.advancedTiming = true;  game.load.atlas('fishingpage_sheet001', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.json');
+     
+        game.time.advancedTiming = true; 
+        /*
+        game.load.atlas('fishingpage_sheet001', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.json');
         game.load.atlas('fishingpage_sheet002', 'javascript/math_game/assets/fishingpage/fishingpage_atlas002.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas002.json');
         game.load.atlas('fishingpage_sheet003', 'javascript/math_game/assets/fishingpage/fishingpage_atlas003.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas003.json');
         game.load.atlas('fishingpage_sheet004', 'javascript/math_game/assets/fishingpage/fishingpage_atlas004.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas004.json');
@@ -90,6 +93,7 @@ demo.state3.prototype = {
         game.load.audio('fishingBG', 'javascript/math_game/assets/audio/fishingBG.mp3');
         game.load.audio('clickFX', 'javascript/math_game/assets/audio/clickFX.mp3');  
         game.load.audio('add_energyFX', 'javascript/math_game/assets/audio/add_energyFX.mp3');  
+        */
     },
     create: function() {
         //define backgroung
