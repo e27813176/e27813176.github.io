@@ -38,6 +38,7 @@ var foxtail_animation,
     question_blue_pannel1_animation,
     question_blue_pannel2_animation,
     foxgetfishingsheet_animation,
+    get_stone_fish_animation,
     foxgetfishing_purple_sheet_animation,
     foxgetfishing_yellow_sheet_animation,
     fishsheet_animation,
@@ -62,7 +63,12 @@ demo.state3.prototype = {
         game.load.atlas('fishingpage_sheet003', 'javascript/math_game/assets/fishingpage/fishingpage_atlas003.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas003.json');
         game.load.atlas('fishingpage_sheet004', 'javascript/math_game/assets/fishingpage/fishingpage_atlas004.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas004.json');
         game.load.atlas('fishingpage_sheet005', 'javascript/math_game/assets/fishingpage/fishingpage_atlas005.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas005.json');
+        game.load.atlas('get_stone_fish_atlas', 'javascript/math_game/assets/fishingpage/get_stone_fish_atlas.png', 'javascript/math_game/assets/fishingpage/get_stone_fish_atlas.json');
+
+        
         game.load.atlas('scorebar_fx_atlas', 'javascript/math_game/assets/fishingpage/scorebar_fx_atlas.png', 'javascript/math_game/assets/fishingpage/scorebar_fx_atlas.json');
+        
+        
         
         game.load.image('blackBG','javascript/math_game/assets/fishingpage/blackBG.jpg');
         game.load.image('BG','javascript/math_game/assets/fishingpage/BG.jpg');
@@ -201,6 +207,11 @@ demo.state3.prototype = {
         foxgetfishingsheet.anchor.setTo(0.7,0.9);
         foxgetfishingsheet.alpha = 0;
         
+        get_stone_fish = game.add.sprite(foxpositionX+500, foxpositionY+300,'get_stone_fish_atlas');
+        get_stone_fish_animation = get_stone_fish.animations.add("get_stone_fish",  Phaser.Animation.generateFrameNames('fox_get_stone_fish_',1,11, '.png',5), 10, true);
+        get_stone_fish.anchor.setTo(0.7,0.9);
+        get_stone_fish.alpha = 0;
+        
         fishsheet = game.add.sprite(foxpositionX+420, foxpositionY+290,'fishingpage_sheet001');
         fishsheet.anchor.setTo(0.5,0.4);
         fishsheet.angle = -90;
@@ -244,6 +255,10 @@ demo.state3.prototype = {
         fishbox_orange = game.add.sprite(getfishboardX, getfishboardY,'fishingpage_sheet001',"fishbox_orange.png");
         fishbox_orange.anchor.setTo(0.5,0.5);
         fishbox_orange.scale.setTo(0,0);
+        
+        fishbox_stone_fish = game.add.sprite(getfishboardX, getfishboardY,'get_stone_fish_atlas',"fishbox_stone_fish.png");
+        fishbox_stone_fish.anchor.setTo(0.5,0.5);
+        fishbox_stone_fish.scale.setTo(0,0);
         
         fishbox_sheet_highlight = game.add.sprite(getfishboardX, getfishboardY,'fishingpage_sheet005');
         fishbox_sheet_highlight.anchor.setTo(0.5,0.5);

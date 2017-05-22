@@ -1,8 +1,8 @@
 var rand_fish;
 function fish_sheet(){
     
-    //rand_fish = Math.floor(Math.random()*8);
-    rand_fish = 0;
+    rand_fish = Math.floor(Math.random()*2);
+
     
     console.log(rand_fish);
     if( rand_fish == 0 ){
@@ -17,16 +17,9 @@ function fish_sheet(){
         }, this);        
     }else if( rand_fish == 1 ){
 
-        foxgetfishing_purple_sheet.animations.play("foxgetfishing_purple_sheet",8,false);
-        foxgetfishing_purple_sheet.alfpha = 1;
+        get_stone_fish.animations.play("get_stone_fish",9,false);
+        get_stone_fish.alpha = 1;
 
-        foxgetfishing_purple_sheet_animation.onComplete.add(function () {	
-            fish_sheet_purple.alpha = 1;
-            fish_sheet_purple.animations.play("fish_sheet_purple_dynamic",15,true);
-            foxgetfishing_purple_sheet.alpha = 0;
-            fox_getfishsheet_lastframe.alpha = 1;
-        }, this);        
-        
     }else if( rand_fish == 2 ){
 
         foxgetfishing_yellow_sheet.animations.play("foxgetfishing_yellow_sheet",8,false);
@@ -104,15 +97,17 @@ function fish_sheet(){
 }
 function clean_fish_dynamic(){
     game.add.tween(fishbox_orange.scale).to({x:0,y:0},250,'Quad.easeOut',true,0);
+    game.add.tween(fishbox_stone_fish.scale).to({x:0,y:0},250,'Quad.easeOut',true,0);
     
     game.add.tween(fishbox_sheet_highlight.scale).to({x:0,y:0},250,'Quad.easeOut',true,0);  
     fishbox_sheet_highlight_animation.stop();
     
     fishsheet_animation.stop();
     fishsheet.alpha = 0;
+    
+    get_stone_fish_animation.stop();
+    get_stone_fish.alpha = 0;
     /*
-    fish_sheet_purple_animation.stop();
-    fish_sheet_purple.alpha = 0;
     fish_sheet_yellow_animation.stop();
     fish_sheet_yellow.alpha = 0;
     fish_sheet_green_animation.stop();
@@ -135,7 +130,7 @@ function fish_box_dynamic(){
     if( rand_fish == 0 ){
         game.add.tween(fishbox_orange.scale).to({x:1,y:1},500,'Quad.easeOut',true,2000);
     }else if ( rand_fish == 1 ){
-        game.add.tween(fishbox_purple.scale).to({x:1,y:1},500,'Quad.easeOut',true,2000);
+        game.add.tween(fishbox_stone_fish.scale).to({x:1,y:1},500,'Quad.easeOut',true,2000);
     }else if ( rand_fish == 2 ){
         game.add.tween(fishbox_yellow.scale).to({x:1,y:1},500,'Quad.easeOut',true,2000);
     }else if ( rand_fish == 3 ){
