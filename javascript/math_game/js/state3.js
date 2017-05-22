@@ -6,14 +6,12 @@ var blackBG_open_fishing,blackBG_close_fishing;
 
 var scorebar,scorebarX,scorebarY,scorebarcompleted,mask;
 
-
 var foxtail_time,t2;
 
 var foxpulling,fishingrodpullingsheet;
 
 var playing_status,complete_status;
 var waitingclick;
-
 
 var anwser_pannel_light = new Array();
 
@@ -58,7 +56,7 @@ demo.state3 = function() {};
 demo.state3.prototype = {
     preload: function() {
         
-        game.load.atlas('fishingpage_sheet001', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.json');
+      game.time.advancedTiming = true;  game.load.atlas('fishingpage_sheet001', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.json');
         game.load.atlas('fishingpage_sheet002', 'javascript/math_game/assets/fishingpage/fishingpage_atlas002.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas002.json');
         game.load.atlas('fishingpage_sheet003', 'javascript/math_game/assets/fishingpage/fishingpage_atlas003.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas003.json');
         game.load.atlas('fishingpage_sheet004', 'javascript/math_game/assets/fishingpage/fishingpage_atlas004.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas004.json');
@@ -68,7 +66,8 @@ demo.state3.prototype = {
         
         game.load.atlas('scorebar_fx_atlas', 'javascript/math_game/assets/fishingpage/scorebar_fx_atlas.png', 'javascript/math_game/assets/fishingpage/scorebar_fx_atlas.json');
         
-        
+        console.log(loading);
+        loading++;
         
         game.load.image('blackBG','javascript/math_game/assets/fishingpage/blackBG.jpg');
         game.load.image('BG','javascript/math_game/assets/fishingpage/BG.jpg');
@@ -498,13 +497,17 @@ demo.state3.prototype = {
             continue_text.anchor.setTo(0.5,0.5);     
             continue_text.scale.setTo(0.5,0.5);  
             tween_continue_text = game.add.tween(continue_text).to({alpha:0.2},500,'Linear',true,0,false,false).loop(true);
+            
+            mark_tutorial = game.add.button(foxpositionX+250, foxpositionY-150,'mark_tutorial',startfishing_tutorial);
+            mark_tutorial.scale.setTo(0,0);
+            mark_tutorial.anchor.setTo(0.5,0.5);
+        }else{
+            tween_continue_text.stop();
         }
 
 
         
-        mark_tutorial = game.add.button(foxpositionX+250, foxpositionY-150,'mark_tutorial',startfishing_tutorial);
-        mark_tutorial.scale.setTo(0,0);
-        mark_tutorial.anchor.setTo(0.5,0.5);
+
         
         mark = game.add.button(foxpositionX+250, foxpositionY-150,"mark_tutorial",startfishing);
         mark.scale.setTo(0,0);
@@ -565,7 +568,7 @@ demo.state3.prototype = {
             waiting_time = Math.floor(Math.random()*4+1);
             show_up_time = waiting_time*60;
             waitingclick = true;
-            console.log(waitingclick);
+
         }
         
         if(show_up_time > 0 && mark.scale.x == 0 && playing_status == false && complete_status == false ){
@@ -576,7 +579,7 @@ demo.state3.prototype = {
             t2 = 120;
             mark.inputEnabled = true;
             mark_tween = game.add.tween(mark.scale).to({x:1,y:1},200,Phaser.Easing.Elastic.Out,true);
-            mark_tween.onComplete.add(completed_mark_tween,this);
+            
         }
         
         if(t2>0 && waitingclick == true ){
@@ -618,11 +621,13 @@ demo.state3.prototype = {
             foxtail_animation.frame = 0;
         }
 
-    }    
+    },
+    render: function(){
+        //game.debug.text(game.time.fps || '--', 10, 20, "#ffffff");   
+    }
+    
 }
-function completed_mark_tween(){
-    //mark_showing_tween = game.add.tween(mark.scale).to({x:'-0.1',y:'-0.1'},400,'Quad.easeInOut',true,0,false,true).loop(true); 
-}
+
 
 function restartfishing(){
     
@@ -784,7 +789,7 @@ var blackBG_close_fishing_tween;
 function backhome(){
     blackBG_close_fishing_tween = game.add.tween(blackBG_close_fishing).to({alpha:1},1000,'Quad.easeIn',true); 
     blackBG_close_fishing_tween.onComplete.add(function () {
-        game.state.start('state8');
+        game.state.start('state8',true,true);
       }, this);
     
 }

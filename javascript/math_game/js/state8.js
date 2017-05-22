@@ -1,3 +1,5 @@
+var loading = 0;
+
 var newscardX = centerX - 250,
     newscardY = centerY - 44;
 
@@ -12,7 +14,7 @@ demo.state8 = function(){};
 demo.state8.prototype = {
   preload: function(){
         
-
+      game.time.advancedTiming = true;
       //button--------------------------------------------------------------------------------------------------
       game.load.atlas('fishing_button', 'javascript/math_game/assets/game_menu/fishing_button_atlas.png', 'javascript/math_game/assets/game_menu/fishing_button_atlas.json');
       game.load.atlas('home_button', 'javascript/math_game/assets/game_menu/home_button_atlas.png', 'javascript/math_game/assets/game_menu/home_button_atlas.json');
@@ -63,11 +65,21 @@ demo.state8.prototype = {
       black_BG = game.add.sprite(0,0,'blackBG'); 
       black_BG.alpha = 0;
       
+  
   },
-    
+      
 
-  update: function(){
-  }
+    
+    update: function(){
+    },
+
+    shutdown: function(){
+ 
+
+    },
+    render: function(){
+        //game.debug.text(game.time.fps || '--', 10, 20, "#000000");   
+    }
 }
 function gohome(){
     
@@ -81,7 +93,7 @@ function gofishing(){
         sunlight1_tween.pause();
         sunlight2_tween.pause();
         game_menu_music.stop();
-        game.state.start('state3');
+        game.state.start('state3',true,true);
       }, this);
         
 }
