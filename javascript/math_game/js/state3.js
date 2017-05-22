@@ -726,10 +726,6 @@ var success;
 
 function finishfishing(){
 
-    if(daily_task_status == false){
-        daily_task_status = true;
-    }
-    
     complete_status = true;
     playing_status = false; 
     
