@@ -24,7 +24,7 @@ var game_fishing_music,rightFX,wrongFX,successFX,alertFX,startFX,failureFX,fishi
 
 var buttonpositionY;
 
-var first_try;
+var first_try = true;
 
 var show_up_time,waiting_time;
 
@@ -108,7 +108,7 @@ demo.state3.prototype = {
         playing_status = false;
         waitingclick = false;
         complete_status = false;
-        first_try = true;
+
 
 
         game.add.sprite(0,0,'BG');
@@ -490,15 +490,16 @@ demo.state3.prototype = {
         equal_mark_tutorial.alpha = 0;
         
         //tutorial page
-        continue_text = game.add.sprite(centerX,centerY+200,'fishingpage_sheet001',"continue_text.png");
-        continue_text.anchor.setTo(0.5,0.5);     
-        continue_text.scale.setTo(0.5,0.5);  
-        tween_continue_text = game.add.tween(continue_text).to({alpha:0.2},500,'Linear',true,0,false,false).loop(true);
-        
+    
         if( first_try == true ){
             click_to_continue = game.add.button(0,0,"blackBG",start_tutorial);
             click_to_continue.alpha = 0;
+            continue_text = game.add.sprite(centerX,centerY+200,'fishingpage_sheet001',"continue_text.png");
+            continue_text.anchor.setTo(0.5,0.5);     
+            continue_text.scale.setTo(0.5,0.5);  
+            tween_continue_text = game.add.tween(continue_text).to({alpha:0.2},500,'Linear',true,0,false,false).loop(true);
         }
+
 
         
         mark_tutorial = game.add.button(foxpositionX+250, foxpositionY-150,'mark_tutorial',startfishing_tutorial);
@@ -777,13 +778,15 @@ function failfishing(){
     game_fishing_music.stop();
     failureFX.play();
 }
-function backhome(){
-    game.add.tween(blackBG_close_fishing).to({alpha:1},1000,'Quad.easeIn',true); 
-    
-}
-function level_up_fishing(){
 
-    continuefishing();
+var blackBG_close_fishing_tween;
+
+function backhome(){
+    blackBG_close_fishing_tween = game.add.tween(blackBG_close_fishing).to({alpha:1},1000,'Quad.easeIn',true); 
+    blackBG_close_fishing_tween.onComplete.add(function () {
+        game.state.start('state8');
+      }, this);
+    
 }
 
 function continuefishing(){

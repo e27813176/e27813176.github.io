@@ -4,9 +4,9 @@ var newscardX = centerX - 250,
 var daitytaskcardX = centerX + 100,
     daitytaskcardY = centerY - 44;
 
-var white_BG_animation,black_BG_animation;
+var white_BG_animation;
 
-var sunlight1_tween,sunlight2_tween;
+var sunlight1_tween,sunlight2_tween,black_BG_tween;
 
 demo.state8 = function(){};
 demo.state8.prototype = {
@@ -30,7 +30,7 @@ demo.state8.prototype = {
   create: function(){
   	
       game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-      game.stage.backgroundColor = "#ffffff";
+      game.stage.backgroundColor = "#000000";
 
       game_menu_music = game.add.audio('menu');
       game_menu_music.loopFull(1);
@@ -74,9 +74,9 @@ function gohome(){
 }
 
 function gofishing(){
-    black_BG_animation = game.add.tween(black_BG).to({alpha:1},2000,'Quad.easeInOut',true);
+    black_BG_tween = game.add.tween(black_BG).to({alpha:1},2000,'Quad.easeInOut',true);
     
-    black_BG_animation.onComplete.add(function () {
+    black_BG_tween.onComplete.add(function () {
          
         sunlight1_tween.pause();
         sunlight2_tween.pause();
