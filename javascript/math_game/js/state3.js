@@ -515,6 +515,11 @@ demo.state3.prototype = {
             anwser_pannel_light[i].alpha = 0;  
 
         }
+        
+        //opening
+        blackBG_opening = game.add.sprite(0,0,'blackBG');
+        blackBG_opening.alpha = 1;
+        game.add.tween(blackBG_opening).to({alpha:0},500,'Quad.easeOut',true,0);
      
         //sound----------------------------------------------------------------------------------------------------------------
         rightFX = game.add.audio('rightFX');
