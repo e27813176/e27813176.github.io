@@ -515,7 +515,6 @@ demo.state3.prototype = {
             anwser_pannel_light[i].alpha = 0;  
 
         }
-        
         //opening
         blackBG_opening = game.add.sprite(0,0,'blackBG');
         blackBG_opening.alpha = 1;
@@ -565,8 +564,8 @@ demo.state3.prototype = {
         }       
             
         if(scorebar.y < 800 && playing_status == true){
-            scorebar.y += 1.2;
-            scorebarred.y += 1.2;
+            scorebar.y += 0.8;
+            scorebarred.y += 0.8;
             
         }
         if(scorebar.y >= 800 && playing_status == true){
@@ -593,6 +592,9 @@ demo.state3.prototype = {
             foxtail_animation.frame = 0;
         }
 
+    },
+    shutdown: function(){
+        
     },
     render: function(){
         //game.debug.text(game.time.fps || '--', 10, 20, "#ffffff");   
@@ -761,6 +763,7 @@ var blackBG_close_fishing_tween;
 function backhome(){
     blackBG_close_fishing_tween = game.add.tween(blackBG_close_fishing).to({alpha:1},1000,'Quad.easeIn',true); 
     blackBG_close_fishing_tween.onComplete.add(function () {
+        //game.state.clearCurrentState();
         game.state.start('state8',true,true);
       }, this);
     
