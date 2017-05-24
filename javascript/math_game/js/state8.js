@@ -86,6 +86,7 @@ function gohome(){
 }
 
 function gofishing(){
+    fishing_button.inputEnabled = false;
     black_BG_tween = game.add.tween(black_BG).to({alpha:1},2000,'Quad.easeInOut',true);
     
     black_BG_tween.onComplete.add(function () {
