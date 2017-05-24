@@ -78,20 +78,12 @@ demo.state3.prototype = {
 
 
         game.add.sprite(0,0,'BG');
-        sunlight1 = game.add.sprite(0,0,'fishingpage_sheet003','sunlight1.png');
+        sunlight1 = game.add.sprite(200,0,'fishingpage_sheet003','sunlight1.png');
         sunlight2 = game.add.sprite(0,0,'fishingpage_sheet003','sunlight2.png');
         game.add.tween(sunlight1).to({alpha:0.2},1000,'Quad.easeInOut',true,0,false,true).loop(true); 
         game.add.tween(sunlight2).to({alpha:0.2},1000,'Quad.easeInOut',true,1000,false,true).loop(true); 
         
-        yellowatmosphere = game.add.sprite(0,0,'fishingpage_sheet004','yellowatmosphere.png');
-        game.add.tween(yellowatmosphere).to({alpha:0.7},1000,'Quad.easeInOut',true,0,false,true).loop(true); 
 
-        whiteatmosphere = game.add.sprite(0,0,'fishingpage_sheet004','whiteatmosphere.png');
-        game.add.tween(whiteatmosphere).to({alpha:0.7},1000,'Quad.easeInOut',true,1000,false,true).loop(true); 
-
-        greenatmosphere = game.add.sprite(0,0,'fishingpage_sheet003','greenatmosphere.png');
-        game.add.tween(greenatmosphere).to({alpha:0.9},1000,'Quad.easeInOut',true,0,false,true).loop(true); 
-        
 
         //scorebar-----------------------------------------------------
         scorebarBG = game.add.sprite(scorebarX+10,110,'fishingpage_sheet002','scorebar_BG.png');
@@ -413,47 +405,7 @@ demo.state3.prototype = {
         question_mark1.anchor.setTo(0.5,0.5);   
         question_mark1.alpha = 0; 
                 
-        tutorial_number_2 = game.add.sprite(questionpositionX-150,questionpositionY,'fishingpage_sheet001','2_tutorial.png');    
-        tutorial_number_2.scale.setTo(0.8,0.8); 
-        tutorial_number_2.anchor.setTo(0.5,0.5);   
-        tutorial_number_2.alpha = 0; 
-        
-        tutorial_number_4 = game.add.sprite(questionpositionX+150,questionpositionY,'fishingpage_sheet001','4_tutorial.png');    
-        tutorial_number_4.scale.setTo(0.8,0.8); 
-        tutorial_number_4.anchor.setTo(0.5,0.5);   
-        tutorial_number_4.alpha = 0; 
-        
-        tutorial2_number_2 = game.add.sprite(questionpositionX-150,questionpositionY,'fishingpage_sheet001','2_tutorial.png');    
-        tutorial2_number_2.scale.setTo(0.8,0.8); 
-        tutorial2_number_2.anchor.setTo(0.5,0.5);   
-        tutorial2_number_2.alpha = 0;
-        
-        tutorial2_number_9 = game.add.sprite(questionpositionX,questionpositionY-150,'fishingpage_sheet001','9_tutorial.png');    
-        tutorial2_number_9.scale.setTo(0.8,0.8); 
-        tutorial2_number_9.anchor.setTo(0.5,0.5);   
-        tutorial2_number_9.alpha = 0;
-        
-        plus_tutorial = game.add.sprite(questionpositionX,questionpositionY,'fishingpage_sheet001','plus.png');    
-        plus_tutorial.scale.setTo(0.8,0.8); 
-        plus_tutorial.anchor.setTo(0.5,0.5);   
-        plus_tutorial.alpha = 0;
-        
-        minus_tutorial = game.add.sprite(questionpositionX-500,questionpositionY,'fishingpage_sheet001','minus.png');    
-        minus_tutorial.scale.setTo(0.4,0.4); 
-        minus_tutorial.anchor.setTo(0.5,0.5);   
-        minus_tutorial.alpha = 0;
-        
-        Qmark_tutorial = game.add.sprite(questionpositionX,questionpositionY-150,'fishingpage_sheet001','Qmark_tutorial.png');    
-        Qmark_tutorial.anchor.setTo(0.5,0.5);   
-        Qmark_tutorial.alpha = 0;    
-        
-        Qmark_tutorial2 = game.add.sprite(questionpositionX+150,questionpositionY,'fishingpage_sheet001','Qmark_tutorial.png');    
-        Qmark_tutorial2.anchor.setTo(0.5,0.5);   
-        Qmark_tutorial2.alpha = 0; 
-        
-        equal_mark_tutorial = game.add.sprite(questionpositionX-390,questionpositionY,'fishingpage_sheet001','equal_mark_tutorial.png');    
-        equal_mark_tutorial.anchor.setTo(0.5,0.5);   
-        equal_mark_tutorial.alpha = 0;
+
         
         //tutorial page
     
@@ -468,8 +420,48 @@ demo.state3.prototype = {
             mark_tutorial = game.add.button(foxpositionX+250, foxpositionY-150,'mark_tutorial',startfishing_tutorial);
             mark_tutorial.scale.setTo(0,0);
             mark_tutorial.anchor.setTo(0.5,0.5);
-        }else{
-            tween_continue_text.stop();
+            
+            tutorial_number_2 = game.add.sprite(questionpositionX-150,questionpositionY,'fishingpage_sheet001','2_tutorial.png');    
+            tutorial_number_2.scale.setTo(0.8,0.8); 
+            tutorial_number_2.anchor.setTo(0.5,0.5);   
+            tutorial_number_2.alpha = 0; 
+        
+            tutorial_number_4 = game.add.sprite(questionpositionX+150,questionpositionY,'fishingpage_sheet001','4_tutorial.png');    
+            tutorial_number_4.scale.setTo(0.8,0.8); 
+            tutorial_number_4.anchor.setTo(0.5,0.5);   
+            tutorial_number_4.alpha = 0; 
+        
+            tutorial2_number_2 = game.add.sprite(questionpositionX-150,questionpositionY,'fishingpage_sheet001','2_tutorial.png');    
+            tutorial2_number_2.scale.setTo(0.8,0.8); 
+            tutorial2_number_2.anchor.setTo(0.5,0.5);   
+            tutorial2_number_2.alpha = 0;
+        
+            tutorial2_number_9 = game.add.sprite(questionpositionX,questionpositionY-150,'fishingpage_sheet001','9_tutorial.png');    
+            tutorial2_number_9.scale.setTo(0.8,0.8); 
+            tutorial2_number_9.anchor.setTo(0.5,0.5);   
+            tutorial2_number_9.alpha = 0;
+        
+            plus_tutorial = game.add.sprite(questionpositionX,questionpositionY,'fishingpage_sheet001','plus.png');    
+            plus_tutorial.scale.setTo(0.8,0.8); 
+            plus_tutorial.anchor.setTo(0.5,0.5);   
+            plus_tutorial.alpha = 0;
+        
+            minus_tutorial = game.add.sprite(questionpositionX-500,questionpositionY,'fishingpage_sheet001','minus.png');    
+            minus_tutorial.scale.setTo(0.4,0.4); 
+            minus_tutorial.anchor.setTo(0.5,0.5);   
+            minus_tutorial.alpha = 0;
+        
+            Qmark_tutorial = game.add.sprite(questionpositionX,questionpositionY-150,'fishingpage_sheet001','Qmark_tutorial.png');    
+            Qmark_tutorial.anchor.setTo(0.5,0.5);   
+            Qmark_tutorial.alpha = 0;    
+        
+            Qmark_tutorial2 = game.add.sprite(questionpositionX+150,questionpositionY,'fishingpage_sheet001','Qmark_tutorial.png');    
+            Qmark_tutorial2.anchor.setTo(0.5,0.5);   
+            Qmark_tutorial2.alpha = 0; 
+        
+            equal_mark_tutorial = game.add.sprite(questionpositionX-390,questionpositionY,'fishingpage_sheet001','equal_mark_tutorial.png');    
+            equal_mark_tutorial.anchor.setTo(0.5,0.5);   
+            equal_mark_tutorial.alpha = 0;
         }
 
 
@@ -531,6 +523,8 @@ demo.state3.prototype = {
         alertFX = game.add.audio('alertFX');
         fishingBG = game.add.audio('fishingBG');
         fishingBG.loopFull(1);
+        
+        console.log("game.tweens getALL:"+ game.tweens.getAll());
     },   
             
     update: function() {
@@ -594,7 +588,11 @@ demo.state3.prototype = {
 
     },
     shutdown: function(){
+        console.log("game.tweens getALL:"+ game.tweens.getAll());
+        //game.tweens.removeAll();
+        //console.log("game.tweens getALL after: "+ game.tweens.getAll());
         
+        this.rightFX = 'null';
     },
     render: function(){
         //game.debug.text(game.time.fps || '--', 10, 20, "#ffffff");   
@@ -763,7 +761,7 @@ var blackBG_close_fishing_tween;
 function backhome(){
     blackBG_close_fishing_tween = game.add.tween(blackBG_close_fishing).to({alpha:1},1000,'Quad.easeIn',true); 
     blackBG_close_fishing_tween.onComplete.add(function () {
-        //game.state.clearCurrentState();
+
         game.state.start('state8',true,true);
       }, this);
     

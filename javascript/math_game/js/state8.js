@@ -94,6 +94,7 @@ function gofishing(){
         sunlight2_tween.pause();
         game_menu_music.stop();
         game.state.start('state2',true,true);
+
       }, this);
         
 }
