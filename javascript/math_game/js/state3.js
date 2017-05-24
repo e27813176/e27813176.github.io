@@ -541,8 +541,8 @@ demo.state3.prototype = {
         }
         if(show_up_time == 0 && mark.scale.x == 0 && playing_status == false && complete_status == false ){
             alertFX.play();
-            t2 = 120;
-            mark.inputEnabled = true;
+            t2 = 60;
+            mark.inputEnabled = false;
             mark_tween = game.add.tween(mark.scale).to({x:1,y:1},200,Phaser.Easing.Elastic.Out,true);
             
         }
@@ -555,6 +555,7 @@ demo.state3.prototype = {
             waitingclick = false;
             mark.scale.setTo(0,0);
             mark.inputEnabled = false;
+            startfishing();
         }       
             
         if(scorebar.y < 800 && playing_status == true){
@@ -635,7 +636,7 @@ function finishfishing_promote(){}
 var foxpulling_tween,fishingrodpullingsheet_tween;
 function startfishing(){
 
-    foxpulling.animations.play("pulling",100,true);
+    foxpulling.animations.play("pulling",25,true);
     foxpulling.alpha = 1;
     fishingrodpullingsheet.animations.play("fishingrodpulling",20,true);
     fishingrodpullingsheet.alpha = 1;

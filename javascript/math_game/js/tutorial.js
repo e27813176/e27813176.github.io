@@ -65,7 +65,7 @@ function tutorial_q1(){
     show_question_text(4,1);
     show_question_text(2,2);  
     for(var i = 0;i<=2;i++){
-        game.add.tween(answerpannel_tutorial[i]).to({alpha:0.9},500,'Linear',true,100*i);
+        game.add.tween(answerpannel_tutorial[i]).to({alpha:0.8},500,'Linear',true,100*i);
 
     }
 

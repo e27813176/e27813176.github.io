@@ -158,7 +158,7 @@ function update_question(){
 function create_answer_button(){
 
     for(var i = 0;i<=2;i++){
-        game.add.tween(answerpannel[i]).to({alpha:0.9},200,'Quad.easeInOut',true,100*i);
+        game.add.tween(answerpannel[i]).to({alpha:0.8},200,'Quad.easeInOut',true,100*i);
         answerpannel[i].inputEnabled = true;  
     }
     answerpannel[0].events.onInputDown.add(checkanswer_fishing0);
