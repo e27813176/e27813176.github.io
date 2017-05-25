@@ -652,6 +652,12 @@ function finishfishing_promote(){}
 
 var foxpulling_tween,fishingrodpullingsheet_tween;
 function startfishing(){
+    
+    var foxpositionX = 150,
+        foxpositionY = 500;
+    
+    foxpulling.x = foxpositionX+250;
+    foxpulling.y = foxpositionY+300;
 
     foxpulling.animations.play("pulling",25,true);
     foxpulling.alpha = 1;

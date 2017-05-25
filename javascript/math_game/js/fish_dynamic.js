@@ -1,7 +1,7 @@
 var rand_fish;
 function fish_sheet(){
     
-    rand_fish = Math.floor(Math.random()*20);
+    rand_fish = Math.floor(Math.random()*7);
     
     
     console.log(rand_fish);
