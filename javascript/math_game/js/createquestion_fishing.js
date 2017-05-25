@@ -5,10 +5,12 @@ var answerpannel = new Array();
 var answerpannelstring = new Array();
 var addmode,minusmode;
 
+var correct_amount=100;
+
 function checkanswer(){
     if(this.param1 == questionlevel1[rand][0] && minusmode == true){
-        game.add.tween(scorebar).to({y:'-100'},100,'Linear',true); 
-        game.add.tween(scorebarred).to({y:'-100'},100,'Linear',true); 
+        game.add.tween(scorebar).to({y:'-correct_amount'},100,'Linear',true); 
+        game.add.tween(scorebarred).to({y:'-correct_amount'},100,'Linear',true); 
         update_question();
         answercount++;
 
@@ -19,8 +21,8 @@ function checkanswer(){
         update_question();
         
     }else if(this.param1 == answerlevel1[rand] && addmode == true){
-        game.add.tween(scorebar).to({y:'-100'},100,'Linear',true); 
-        game.add.tween(scorebarred).to({y:'-100'},100,'Linear',true); 
+        game.add.tween(scorebar).to({y:'-correct_amount'},100,'Linear',true); 
+        game.add.tween(scorebarred).to({y:'-correct_amount'},100,'Linear',true); 
         update_question();
         answercount++;
         

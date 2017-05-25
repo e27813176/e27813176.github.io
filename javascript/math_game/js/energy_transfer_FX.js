@@ -78,6 +78,8 @@ function energy_transfer(i){
 
 }
 
+var correct_amount = 100;
+
 function completed_energy_transfer_sheet(){
     energy_transfer_sheet.alpha = 0;
     game.add.tween(scorebar).to({y:'-100'},200,'Linear',true); 

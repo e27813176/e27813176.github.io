@@ -37,9 +37,11 @@ var foxtail_animation,
     question_blue_pannel2_animation,
     foxgetfishingsheet_animation,
     get_stone_fish_animation,
+    get_light_blue_fish_animation,
     foxgetfishing_purple_sheet_animation,
     foxgetfishing_yellow_sheet_animation,
     fishsheet_animation,
+    fish_blue_light_animation,
     fish_sheet_purple_animation,
     fish_sheet_light_blue_animation,
     fish_sheet_grey_animation,
@@ -170,11 +172,22 @@ demo.state3.prototype = {
         get_stone_fish.anchor.setTo(0.7,0.9);
         get_stone_fish.alpha = 0;
         
+        get_light_blue_fish = game.add.sprite(foxpositionX+504, foxpositionY+300,'get_light_blue_fish_atlas');
+        get_light_blue_fish_animation = get_light_blue_fish.animations.add("get_light_blue_fish",  Phaser.Animation.generateFrameNames('fox_get_light_blue_fish_',2,10,'.png',5),10, true);
+        get_light_blue_fish.anchor.setTo(0.7,0.9);
+        get_light_blue_fish.alpha = 0;
+        
+        
         fishsheet = game.add.sprite(foxpositionX+420, foxpositionY+290,'fishingpage_sheet001');
         fishsheet.anchor.setTo(0.5,0.4);
         fishsheet.angle = -90;
         fishsheet.alpha = 0;       
         fishsheet_animation = fishsheet.animations.add("fishsheet_dynamic",Phaser.Animation.generateFrameNames('fish_sheet_orange_',0,2, '.png', 4), 10, true);
+        
+        fish_blue_light = game.add.sprite(foxpositionX+300, foxpositionY-50,'get_light_blue_fish_atlas');
+        fish_blue_light.anchor.setTo(0.5,0.4);
+        fish_blue_light.alpha = 0;       
+        fish_blue_light_animation = fish_blue_light.animations.add("fish_blue_light",Phaser.Animation.generateFrameNames('fish_blue_light',1,3,'.png',4), 10, true);
  
         fox_getfishsheet_lastframe = game.add.sprite(foxpositionX+500, foxpositionY+300,'fishingpage_sheet002', "fox_getfishsheet_lastframe.png");
         fox_getfishsheet_lastframe.anchor.setTo(0.7,0.9);
@@ -217,6 +230,10 @@ demo.state3.prototype = {
         fishbox_stone_fish = game.add.sprite(getfishboardX, getfishboardY,'get_stone_fish_atlas',"fishbox_stone_fish.png");
         fishbox_stone_fish.anchor.setTo(0.5,0.5);
         fishbox_stone_fish.scale.setTo(0,0);
+        
+        fishbox_light_blue = game.add.sprite(getfishboardX, getfishboardY,'get_light_blue_fish_atlas',"fishbox_light_blue.png");
+        fishbox_light_blue.anchor.setTo(0.5,0.5);
+        fishbox_light_blue.scale.setTo(0,0);
         
         fishbox_sheet_highlight = game.add.sprite(getfishboardX, getfishboardY,'fishingpage_sheet005');
         fishbox_sheet_highlight.anchor.setTo(0.5,0.5);
