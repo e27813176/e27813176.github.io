@@ -1,10 +1,22 @@
+function skip_tutorial(){
+    tween_button_tutorial_sheet = game.add.tween(button_start_sheet).to({alpha:0},500,'Linear',true);
+    button_tutorial_sheet.inputEnabled = false;
+    button_start_sheet = game.add.tween(button_tutorial_sheet).to({alpha:0},500,'Linear',true);
+    button_start_sheet.inputEnabled = false;    
+
+    first_try = false;
+}
 
 function start_tutorial(){
-    tween_continue_text.stop();
-    tween_continue_text = game.add.tween(continue_text).to({alpha:0},500,'Linear',true);
-    tween_continue_text.onComplete.add(completed_continue_text, this);
-    click_to_continue.inputEnabled = false;
+
+
+    tween_button_tutorial_sheet = game.add.tween(button_start_sheet).to({alpha:0},500,'Linear',true);
+    tween_button_tutorial_sheet.onComplete.add(completed_button_tutorial_sheet, this);
+    button_tutorial_sheet.inputEnabled = false;
     show_up_continue_text = false;
+    
+    button_start_sheet = game.add.tween(button_tutorial_sheet).to({alpha:0},500,'Linear',true);
+    button_start_sheet.inputEnabled = false;
 }
  
 var finger_pointer_tween,
@@ -13,7 +25,7 @@ var finger_pointer_tween,
     mark_tutorial_show_up_tween,
     mark_text_tween;
 
-function completed_continue_text(){
+function completed_button_tutorial_sheet(){
     alertFX.play();
     mark_tutorial_show_up_tween = game.add.tween(mark_tutorial.scale).to({x:1,y:1},200,Phaser.Easing.Elastic.Out,true);
     //game.add.tween(mark_text.scale).to({x:1,y:1},200,Phaser.Easing.Elastic.Out,true);
@@ -36,8 +48,10 @@ function startfishing_tutorial(){
     finger_pointer_tween.stop();
     mark_tutorial.scale.setTo(0,0);
     mark_tutorial.inputEnabled = false;
+    
+    
     scorebar.alpha = 1;
-    scorebar_tween = game.add.tween(scorebar).to({alpha:'-0.4'},500,'Quad.easeInOut',true,0,false,true).loop(true);
+    scorebar_tween.resume();
     
     question_pannel1_create_fx.alpha = 1;
     question_pannel1_create_fx_animation = question_pannel1_create_fx.animations.play("question_pannel1_create_fx",20,false);
@@ -256,7 +270,7 @@ function finish_tutorial(){
 
     game.add.tween(scorebar).to({alpha:0},500,'Quad.easeInOut',true);
     scorebar_tween.pause();
-
+    
     for(var i = 0;i<=2;i++){
         game.add.tween(answerpannel_tutorial[i]).to({alpha:0},500,'Quad.easeInOut',true);
     }

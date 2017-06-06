@@ -100,13 +100,17 @@ function create_question(){
     question_pannel1_create_fx_animation = question_pannel1_create_fx.animations.play("question_pannel1_create_fx",25,false);
     question_pannel2_create_fx_animation = question_pannel2_create_fx.animations.play("question_pannel2_create_fx",25,false);
     question_pannel3_create_fx_animation = question_pannel3_create_fx.animations.play("question_pannel3_create_fx",25,false);
-    question_green_pannel.animations.play("question_green_pannel_dyn",10,true);
-    question_blue_pannel1.animations.play("question_blue_pannel_dyn1",10,true);
-    question_blue_pannel2.animations.play("question_blue_pannel_dyn2",10,true);
-    game.add.tween(question_green_pannel).to({alpha:1},300,'Linear',true,300);
-    game.add.tween(question_blue_pannel1).to({alpha:1},300,'Linear',true,300);
-    game.add.tween(question_blue_pannel2).to({alpha:1},300,'Linear',true,300);
-    game.add.tween(bonds).to({alpha:1},500,'Linear',true,600);
+    //question_green_pannel.animations.play("question_green_pannel_dyn",10,true);
+    //question_blue_pannel1.animations.play("question_blue_pannel_dyn1",10,true);
+    //question_blue_pannel2.animations.play("question_blue_pannel_dyn2",10,true);
+    //game.add.tween(question_green_pannel).to({alpha:1},300,'Linear',true,300);
+    //game.add.tween(question_blue_pannel1).to({alpha:1},300,'Linear',true,300);
+    //game.add.tween(question_blue_pannel2).to({alpha:1},300,'Linear',true,300);
+    //game.add.tween(bonds).to({alpha:1},500,'Linear',true,600);
+    question_green_pannel.alpha = 1;
+    question_blue_pannel1.alpha = 1;
+    question_blue_pannel2.alpha = 1;
+    bonds.alpha = 1; 
     
     if( rand%2 == 0 ){
 

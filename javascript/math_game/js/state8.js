@@ -47,7 +47,7 @@ demo.state8.prototype = {
       sunlight2.alpha = 1;
       sunlight2_tween = game.add.tween(sunlight2).to({alpha:0.2},1200,'Quad.easeInOut',true,0,false,true).loop(true);
       
-      home_button = game.add.button(1210, 40, 'home_button', gohome, this,'home_button_hover.png','home_button.png');    
+      home_button = game.add.button(1207, 40, 'home_button', gohome, this,'home_button_hover.png','home_button.png');    
       home_button.inputEnabled = false;
       
       fishing_button = game.add.button(260, 440, 'fishing_button', gofishing, this,"fishingboard_btn_hover.png","fishingboard_btn.png");
@@ -82,7 +82,7 @@ demo.state8.prototype = {
     }
 }
 function gohome(){
-    
+    game.state.start('state9',true,true);
 }
 
 function gofishing(){

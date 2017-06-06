@@ -54,3 +54,214 @@ for(var i = 0; i < questionlevel4_size;i++){
 for(var i = 0; i < questionlevel5_size;i++){
     answerlevel5[i] = questionlevel5[i][0] + questionlevel5[i][1];
 }
+
+
+
+
+//Create plus_questions of level one, including 3 numbers - A, B, Sum (A + B = Sum).  
+function createPlusLevelOne() {
+
+    var numberA = 0;
+    var numberB = 0;
+
+    var numberSum = 100; //initialize numberSum,and make it bigger than 10.
+
+    while (numberSum > 10) {
+        createPlusLevelOne()
+        numberA = rangeA[Math.floor(Math.random() * 11)];
+        numberB = rangeB[Math.floor(Math.random() * 4)];
+
+        numberSum = numberA + numberB;
+    }
+
+    var plusEquation = [numberA, numberB, numberSum];
+    return plusEquation;
+};
+
+
+//Create minus_questions of level one, including 3 numbers - A, B, Diff (A - B = Diff).  
+function createMinusLevelOne() {
+    var rangeA = range(1, 10);
+    var rangeB = range(1, 3);
+    var numberA = 0;
+    var numberB = 0;
+
+    var numberDiff = -100; //initialize numberDiff,and make it less than 1.
+
+    while (numberDiff < 1) {
+        numberA = rangeA[Math.floor(Math.random() * rangeA.length)];
+        numberB = rangeB[Math.floor(Math.random() * rangeB.length)];
+
+        numberDiff = numberA - numberB;
+    }
+
+    var plusEquation = [numberA, numberB, numberDiff];
+    return plusEquation;
+};
+
+
+//Create plus_questions of level two, including 3 numbers - A, B, Sum (A + B = Sum).  
+function createPlusLevelTwo() {
+    var rangeA = range(1, 10);
+    var rangeB = range(1, 10);
+    var numberA = 0;
+    var numberB = 0;
+
+    var numberSum = 100; //initialize numberSum,and make it bigger than 10.
+
+    while (numberSum > 10) {
+        numberA = rangeA[Math.floor(Math.random() * rangeA.length)];
+        numberB = rangeB[Math.floor(Math.random() * rangeB.length)];
+
+        numberSum = numberA + numberB;
+    }
+
+    var plusEquation = [numberA, numberB, numberSum];
+    return plusEquation;
+};
+
+
+//Create minus_questions of level two, including 3 numbers - A, B, Diff (A - B = Diff).  
+function createMinusLevelTwo() {
+    var rangeA = range(1, 10);
+    var rangeB = range(1, 9);
+    var numberA = 0;
+    var numberB = 0;
+
+    var numberDiff = -100; //initialize numberDiff,and make it less than 1.
+
+    while (numberDiff < 1) {
+        numberA = rangeA[Math.floor(Math.random() * rangeA.length)];
+        numberB = rangeB[Math.floor(Math.random() * rangeB.length)];
+
+        numberDiff = numberA - numberB;
+    }
+
+    var plusEquation = [numberA, numberB, numberDiff];
+    return plusEquation;
+};
+
+
+//Create plus_questions of level three, including 3 numbers - A, B, Sum (A + B = Sum).  
+function createPlusLevelThree() {
+    var rangeB = range(1, 10);
+    var numberA = 10;
+    var numberB = rangeB[Math.floor(Math.random() * rangeB.length)];
+
+    numberSum = numberA + numberB;
+
+    var plusEquation = [numberA, numberB, numberSum];
+    return plusEquation;
+};
+
+
+//Create minus_questions of level three, including 3 numbers - A, B, Diff (A - B = Diff).  
+function createMinusLevelThree() {
+    var rangeA = range(11, 20);
+    var numberA = rangeA[Math.floor(Math.random() * rangeA.length)];
+    var numberB = 10;
+
+    var numberDiff = numberA - numberB;
+
+    var plusEquation = [numberA, numberB, numberDiff];
+    return plusEquation;
+};
+
+
+//Create plus_questions of level four, including 3 numbers - A, B, Sum (A + B = Sum).
+//In level four, A = B. So there is only numberA.
+function createPlusLevelFour() {
+    var rangeA = range(1, 11);
+    var numberA = rangeA[Math.floor(Math.random() * rangeA.length)];
+
+    var numberSum = numberA * 2;
+
+    var plusEquation = [numberA, numberA, numberSum];
+    return plusEquation;
+};
+
+
+//Create minus_questions of level four, including 3 numbers - A, B, Diff (A - B = Diff).  
+function createMinusLevelFour() {
+    var rangeB = range(1, 10);
+    var numberA = 10;
+    var numberB = rangeB[Math.floor(Math.random() * rangeB.length)];
+
+    var numberDiff = numberA - numberB;
+
+    var plusEquation = [numberA, numberB, numberDiff];
+    return plusEquation;
+};
+
+
+//Create plus_questions of level five, including 3 numbers - A, B, Sum (A + B = Sum).  
+function createPlusLevelFive() {
+    var rangeAB = range(1, 11);
+    var numberA = 0;
+    var numberB = 0;
+
+    var numberSum = 100; //initialize numberSum,and make it bigger than 10.
+
+    while (numberSum > 21 || numberSum < 10) {
+        numberA = rangeAB[Math.floor(Math.random() * rangeAB.length)];
+        numberB = rangeAB[Math.floor(Math.random() * rangeAB.length)];
+
+        numberSum = numberA + numberB;
+    }
+
+    var plusEquation = [numberA, numberB, numberSum];
+    return plusEquation;
+};
+
+
+//Create minus_questions of level five, including 3 numbers - A, B, Diff (A - B = Diff).  
+function createMinusLevelFive() {
+    var rangeA = range(11, 19);
+    var rangeB = range(2, 10);
+    var numberA = 0;
+    var numberB = 0;
+
+    var numberDiff = 100; //initialize numberDiff,and make it bigger than 9.
+
+    while (numberDiff > 9) {
+        numberA = rangeA[Math.floor(Math.random() * rangeA.length)];
+        numberB = rangeB[Math.floor(Math.random() * rangeB.length)];
+
+        numberDiff = numberA - numberB;
+    }
+
+    var plusEquation = [numberA, numberB, numberDiff];
+    return plusEquation;
+};
+
+
+//Create plus_questions of level six, including 3 numbers - A, B, Sum (A + B = Sum).  
+function createPlusLevelSix() {
+    var rangeAB = range(1, 11);
+    var numberA = rangeAB[Math.floor(Math.random() * rangeAB.length)];
+    var numberB = rangeAB[Math.floor(Math.random() * rangeAB.length)];
+
+    var numberSum = numberA + numberB;
+    
+    var plusEquation = [numberA, numberB, numberSum];
+    return plusEquation;
+};
+
+
+//Create minus_questions of level Six, including 3 numbers - A, B, Diff (A - B = Diff).  
+function createMinusLevelSix() {
+    var rangeA = range(2, 19);
+    var rangeB = range(1, 10);
+
+    var numberDiff = -100; //initialize numberDiff,and make it less than 1.
+
+    while (numberDiff < 1) {
+        numberA = rangeA[Math.floor(Math.random() * rangeA.length)];
+        numberB = rangeB[Math.floor(Math.random() * rangeB.length)];
+
+        numberDiff = numberA - numberB;
+    }
+
+    var plusEquation = [numberA, numberB, numberDiff];
+    return plusEquation;
+};

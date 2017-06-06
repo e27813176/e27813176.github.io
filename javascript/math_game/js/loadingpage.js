@@ -30,7 +30,10 @@ demo.loadingpage.prototype = {
         game.load.spritesheet('button_getfish_backhome','javascript/math_game/assets/fishingpage/button_back_home_sheet.png',134,82);
         game.load.spritesheet('button_finish_sheet','javascript/math_game/assets/fishingpage/button_finish_sheet.png',134,82);
         game.load.spritesheet('button_restart_sheet','javascript/math_game/assets/fishingpage/button_restart_sheet.png',134,82);
+        game.load.spritesheet('button_start_sheet','javascript/math_game/assets/fishingpage/start_button_sheet.png',239,239);
+        game.load.spritesheet('button_tutorial_sheet','javascript/math_game/assets/fishingpage/tutorial_button_sheet.png',239,239);
         game.load.image('mark_tutorial','javascript/math_game/assets/fishingpage/mark.png');
+        game.load.image('skip_text','javascript/math_game/assets/fishingpage/skip_text.png');
         //audio-----------------------------------------------------------------------------------------------------------------------   
         game.load.audio('fishing', 'javascript/math_game/assets/audio/fishing.mp3');
         game.load.audio('rightFX', 'javascript/math_game/assets/audio/rightFX.mp3');
