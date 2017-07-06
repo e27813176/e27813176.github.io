@@ -19,6 +19,10 @@ function completed_energy_transfer_sheet1_tutorial(){
     game.add.tween(scorebarred).to({y:'-100'},500,'Linear',true);
     correct_fx.alpha = correctFX;
     game.add.tween(correct_fx).to({alpha:0},200,'Quad.easeOut',true);
+    
+    scorebar_top_light.alpha = 1;
+    game.add.tween(scorebar_top_light).to({alpha:0},1000,'Quad.easeOut',true);
+    
     scorebar_right_fx_sheet.animations.play("scorebar_right_fx_dynamic",15,false);
     scorebar_right_fx_sheet.alpha = 1;    
     add_energyFX.play();
@@ -43,6 +47,10 @@ function completed_energy_transfer_sheet2_tutorial(){
     game.add.tween(scorebarred).to({y:'-100'},500,'Linear',true);
     correct_fx.alpha = correctFX;
     game.add.tween(correct_fx).to({alpha:0},200,'Quad.easeOut',true);
+    
+    scorebar_top_light.alpha = 1;
+    game.add.tween(scorebar_top_light).to({alpha:0},1000,'Quad.easeOut',true);
+    
     scorebar_right_fx_sheet.animations.play("scorebar_right_fx_dynamic",15,false);
     scorebar_right_fx_sheet.alpha = 1;
     add_energyFX.play();
@@ -85,6 +93,10 @@ function completed_energy_transfer_sheet(){
     game.add.tween(scorebar).to({y:'-100'},200,'Linear',true); 
     game.add.tween(scorebarred).to({y:'-100'},200,'Linear',true);
     correct_fx.alpha = correctFX;
+    
+    scorebar_top_light.alpha = 1;
+    game.add.tween(scorebar_top_light).to({alpha:0},1000,'Quad.easeOut',true);
+    
     game.add.tween(correct_fx).to({alpha:0},200,'Quad.easeOut',true);
     scorebar_right_fx_sheet.animations.play("scorebar_right_fx_dynamic",20,false);
     scorebar_right_fx_sheet.alpha= 1;
@@ -96,8 +108,12 @@ function completed_energy_transfer_sheet(){
 function scorebar_wrong_fx(i){
     game.add.tween(scorebar).to({y:'+50'},50,'Linear',true); 
     game.add.tween(scorebarred).to({y:'+50'},50,'Linear',true);
-    scorebarred.alpha = 0.6;
+    
     wrongFX.play();
+    
+    scorebarred.alpha = 1;
+    game.add.tween(scorebarred).to({alpha:0},500,'Quad.easeOut',true);
+    
     red_FX_sheet1.animations.play("red_FX1",25,false);
     red_FX_sheet1.alpha = 1;
     red_FX_sheet2.animations.play("red_FX2",25,false);

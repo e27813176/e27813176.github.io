@@ -1,22 +1,17 @@
-function skip_tutorial(){
-    tween_button_tutorial_sheet = game.add.tween(button_start_sheet).to({alpha:0},500,'Linear',true);
-    button_tutorial_sheet.inputEnabled = false;
-    button_start_sheet = game.add.tween(button_tutorial_sheet).to({alpha:0},500,'Linear',true);
-    button_start_sheet.inputEnabled = false;    
 
-    first_try = false;
-}
 
 function start_tutorial(){
 
-
     tween_button_tutorial_sheet = game.add.tween(button_start_sheet).to({alpha:0},500,'Linear',true);
-    tween_button_tutorial_sheet.onComplete.add(completed_button_tutorial_sheet, this);
+
     button_tutorial_sheet.inputEnabled = false;
-    show_up_continue_text = false;
+
+    game.add.tween(fishingpage_center).to({alpha:0},500,'Linear',true);
     
-    button_start_sheet = game.add.tween(button_tutorial_sheet).to({alpha:0},500,'Linear',true);
+    button_tutorial_sheet_tween = game.add.tween(button_tutorial_sheet).to({alpha:0},500,'Linear',true);
+    button_tutorial_sheet_tween.onComplete.add(completed_button_tutorial_sheet_tween, this);
     button_start_sheet.inputEnabled = false;
+
 }
  
 var finger_pointer_tween,
@@ -24,33 +19,27 @@ var finger_pointer_tween,
     get_fish_tutorial_tween,
     mark_tutorial_show_up_tween,
     mark_text_tween;
-
+/*
 function completed_button_tutorial_sheet(){
     alertFX.play();
     mark_tutorial_show_up_tween = game.add.tween(mark_tutorial.scale).to({x:1,y:1},200,Phaser.Easing.Elastic.Out,true);
-    //game.add.tween(mark_text.scale).to({x:1,y:1},200,Phaser.Easing.Elastic.Out,true);
     mark_tutorial_show_up_tween.onComplete.add(completed_mark_tutorial_show_up_tween, this);
     
     finger_pointer.alpha = 1;
     finger_pointer_tween = game.add.tween(finger_pointer).to({y:'+20'},500,'Linear',true,0,false,false).loop(true); 
-    game.add.tween(get_fish_tutorial.scale).to({x:0.5,y:0.5},200,Phaser.Easing.Elastic.Out,true,200); 
 }
 function completed_mark_tutorial_show_up_tween(){
     mark_tutorial_tween = game.add.tween(mark_tutorial.scale).to({x:'-0.1',y:'-0.1'},400,'Quad.easeInOut',true,0,false,true).loop(true); 
     get_fish_tutorial_tween = game.add.tween(get_fish_tutorial).to({alpha:'-0.2'},400,'Quad.easeInOut',true,0,false,true).loop(true);
 }
+*/
+function completed_button_tutorial_sheet_tween(){
 
-function startfishing_tutorial(){
-    mark_tutorial_tween.stop();
-    get_fish_tutorial_tween.stop();
-    get_fish_tutorial.alpha = 0;
-    finger_pointer.alpha = 0;
-    finger_pointer_tween.stop();
-    mark_tutorial.scale.setTo(0,0);
-    mark_tutorial.inputEnabled = false;
     
-    
-    scorebar.alpha = 1;
+    game.add.tween(scorebar).to({alpha:1},300,'Quad.easeInOut',true);  
+    game.add.tween(scorebarBG).to({alpha:1},300,'Quad.easeInOut',true);  
+    game.add.tween(scorebar_body_Glass).to({alpha:1},300,'Quad.easeInOut',true);  
+    game.add.tween(scorebar_top).to({alpha:1},300,'Quad.easeInOut',true); 
     scorebar_tween.resume();
     
     question_pannel1_create_fx.alpha = 1;
@@ -66,7 +55,12 @@ function startfishing_tutorial(){
 var tutorial_number_4_tween;
 
 function tutorial_q1(){
+    tutorial_number_2.x = questionpositionX-150;    
+    tutorial_number_2.y = questionpositionY;    
+    tutorial_number_4.x = questionpositionX+150;
+    tutorial_number_4.y = questionpositionY;    
     
+ 
     question_green_pannel.animations.play("question_green_pannel_dyn",10,true);
     question_blue_pannel1.animations.play("question_blue_pannel_dyn1",10,true);
     question_blue_pannel2.animations.play("question_blue_pannel_dyn2",10,true);
@@ -116,18 +110,15 @@ function completed_tutorial_number_4_tween(){
     game.add.tween(Qmark_tutorial).to({x:'-330',y:'+150'},1000,'Quad.easeInOut',true,2200);
     game.add.tween(Qmark_tutorial.scale).to({x:0.5,y:0.5},500,'Quad.easeInOut',true,2200);
     equal_mark_tutorial_tween.onComplete.add(completed_equal_mark_tutorial_tween, this);
-    
 }
 
 var add_mode_text2_tween;
 
 function completed_equal_mark_tutorial_tween(){
-
     add_mode_text2_tween = game.add.tween(add_mode_text2).to({alpha:1},500,'Linear',true,500);
     add_mode_text2_tween.onComplete.add(completed_add_mode_text2, this);
     tutorial_frame_sheet.alpha = 1;
     tutorial_frame_sheet.animations.play("tutorial_frame_sheet_dyn",10,false);
-
 }
 
 var finger_pointer2_tween;
@@ -140,8 +131,6 @@ function completed_add_mode_text2(){
     answerpannel_tutorial[2].events.onInputDown.add(correct_answer_tutorial);
     answerpannel_tutorial[2].inputEnabled = true;
 }
-
-
 
 function correct_answer_tutorial(){
     
@@ -253,7 +242,6 @@ function correct_answer_tutorial2(){
     rightFX.play();
 }
 
-
 function completed_start_game_text(){
     start_game_text_tween = game.add.tween(start_game_text).to({alpha:0.2},500,'Linear',true,0,false,false).loop(true);
     start_game_text.events.onInputDown.add(finish_tutorial);
@@ -265,15 +253,24 @@ function finish_tutorial(){
     start_game_text.inputEnabled = false;
     start_game_text_tween.stop();
     start_game_text_tween = game.add.tween(start_game_text).to({alpha:0},500,'Linear',true);
+    start_game_text_tween.onComplete.add(completed_start_game_text_tween, this);
     clean_pannel();
 
-
-    game.add.tween(scorebar).to({alpha:0},500,'Quad.easeInOut',true);
+    game.add.tween(scorebar).to({alpha:0},300,'Quad.easeInOut',true);  
+    game.add.tween(scorebarBG).to({alpha:0},300,'Quad.easeInOut',true);  
+    game.add.tween(scorebar_body_Glass).to({alpha:0},300,'Quad.easeInOut',true);  
+    game.add.tween(scorebar_top).to({alpha:0},300,'Quad.easeInOut',true); 
     scorebar_tween.pause();
     
     for(var i = 0;i<=2;i++){
         game.add.tween(answerpannel_tutorial[i]).to({alpha:0},500,'Quad.easeInOut',true);
     }
-   
-    first_try = false;
+
+}
+
+function completed_start_game_text_tween(){
+    game.add.tween(button_start_sheet).to({alpha:1},500,'Linear',true);
+    button_tutorial_sheet.inputEnabled = true;
+    game.add.tween(button_tutorial_sheet).to({alpha:1},500,'Linear',true);
+    button_start_sheet.inputEnabled = true;
 }

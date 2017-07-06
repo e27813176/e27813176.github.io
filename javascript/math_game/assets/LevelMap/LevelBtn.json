@@ -1,0 +1,60 @@
+{"frames": [
+
+{
+	"filename": "FoxAx.png",
+	"frame": {"x":613,"y":1,"w":190,"h":231},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":190,"h":231},
+	"sourceSize": {"w":190,"h":231}
+},
+{
+	"filename": "FoxAxHover.png",
+	"frame": {"x":211,"y":1,"w":202,"h":243},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":202,"h":243},
+	"sourceSize": {"w":202,"h":243}
+},
+{
+	"filename": "FoxFishing.png",
+	"frame": {"x":1143,"y":1,"w":324,"h":218},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":324,"h":218},
+	"sourceSize": {"w":324,"h":218}
+},
+{
+	"filename": "FoxFishingHover.png",
+	"frame": {"x":805,"y":1,"w":336,"h":230},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":336,"h":230},
+	"sourceSize": {"w":336,"h":230}
+},
+{
+	"filename": "FoxLogging.png",
+	"frame": {"x":415,"y":1,"w":196,"h":233},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":196,"h":233},
+	"sourceSize": {"w":196,"h":233}
+},
+{
+	"filename": "FoxLoggingHover.png",
+	"frame": {"x":1,"y":1,"w":208,"h":246},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":208,"h":246},
+	"sourceSize": {"w":208,"h":296}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "LevelBtn.png",
+	"format": "RGBA8888",
+	"size": {"w":1468,"h":248},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:9eef7ebceffeaa8536bc23c2de22d9af:9179c1da4e6ebeb61832a6313a1058a8:9dc6e89eed91681a297962f399c8b1c8$"
+}
+}

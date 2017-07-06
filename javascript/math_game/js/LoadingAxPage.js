@@ -1,6 +1,6 @@
 
-demo.state2 = function() {};
-demo.state2.prototype = {
+demo.LoadingAxPage = function() {};
+demo.LoadingAxPage.prototype = {
     init: function(){
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     },
@@ -10,9 +10,8 @@ demo.state2.prototype = {
     create: function() {
         //define backgroung
         game.stage.backgroundColor = "#000000";
-        game.state.start('loadingpage');
+        game.state.start('AxPage');
   
     }
 
 }
-    

@@ -24,7 +24,7 @@ function checkanswer_fishing0(){
 
     }else if(answerpannelcheck[0] == false && minusmode == true){
         scorebar_wrong_fx(0);
-        update_question();
+        //update_question();
         
     }else if(answerpannelcheck[0] == true && addmode == true){
         energy_transfer(0);     
@@ -34,7 +34,7 @@ function checkanswer_fishing0(){
         
     }else if(answerpannelcheck[0] == false && addmode == true){
         scorebar_wrong_fx(0);
-        update_question();
+        //update_question();
     }
 }
 
@@ -46,7 +46,7 @@ function checkanswer_fishing1(){
 
     }else if(answerpannelcheck[1] == false && minusmode == true){
         scorebar_wrong_fx(1);      
-        update_question();
+        //update_question();
         
     }else if(answerpannelcheck[1] == true && addmode == true){
         energy_transfer(1);
@@ -56,7 +56,7 @@ function checkanswer_fishing1(){
         
     }else if(answerpannelcheck[1] == false && addmode == true){
         scorebar_wrong_fx(1);        
-        update_question();
+        //update_question();
     }
 }
 
@@ -68,7 +68,7 @@ function checkanswer_fishing2(){
 
     }else if(answerpannelcheck[2] == false && minusmode == true){
         scorebar_wrong_fx(2);     
-        update_question();
+        //update_question();
         
     }else if(answerpannelcheck[2] == true && addmode == true){
         energy_transfer(2);
@@ -78,82 +78,63 @@ function checkanswer_fishing2(){
         
     }else if(answerpannelcheck[2] == false && addmode == true){      
         scorebar_wrong_fx(2);      
-        update_question();
+        //update_question();
     }
 }
 
 //create question---------------------------------------------------------------------------------------
-var questionrandseed;
+
 var rand;
 var question_circle1,question_circle2,question_circle3,bonds;
 
-function create_question_index(){         
-    questionrandseed = 16;
-    rand = Math.floor(Math.random()*questionrandseed);      
-}
-
-
 
 function create_question(){
-    create_question_index();
-    
+
+    question_pannel1_create_fx.alpha = 1;
+    question_pannel2_create_fx.alpha = 1;
+    question_pannel3_create_fx.alpha = 1;
     question_pannel1_create_fx_animation = question_pannel1_create_fx.animations.play("question_pannel1_create_fx",25,false);
     question_pannel2_create_fx_animation = question_pannel2_create_fx.animations.play("question_pannel2_create_fx",25,false);
     question_pannel3_create_fx_animation = question_pannel3_create_fx.animations.play("question_pannel3_create_fx",25,false);
+    /*
     question_green_pannel.animations.play("question_green_pannel_dyn",10,true);
     question_blue_pannel1.animations.play("question_blue_pannel_dyn1",10,true);
     question_blue_pannel2.animations.play("question_blue_pannel_dyn2",10,true);
+    */
     game.add.tween(question_green_pannel).to({alpha:1},300,'Linear',true,300);
     game.add.tween(question_blue_pannel1).to({alpha:1},300,'Linear',true,300);
     game.add.tween(question_blue_pannel2).to({alpha:1},300,'Linear',true,300);
-    game.add.tween(bonds).to({alpha:1},500,'Linear',true,600);
+    game.add.tween(bonds).to({alpha:1},500,'Linear',true,300);
 
-    
-    if( rand%2 == 0 ){
-
-        show_question_text(-1,0);
-        show_question_text(questionlevel1[rand][0],1);
-        show_question_text(questionlevel1[rand][1],2);
-        
-        addmode = true;
-        minusmode = false;           
-        
-    }
-    if( rand%2 == 1 ){
-
-        show_question_text(answerlevel1[rand],0);
-        show_question_text(-1,1);
-        show_question_text(questionlevel1[rand][1],2);
-        
-        addmode = false;
-        minusmode = true;       
-        
-    }
+    update_question();
 }
 
 function update_question(){
-
-    create_question_index();
+    var equation = createEquation(20);
+    //console.log(equation)
+    //rand = Math.floor(Math.random()*6);   
+    //rand = Math.floor(Math.random()*3)*2+mode;
+    rand = Math.floor(Math.random()*3);
     if( rand%2 == 0 ){
-
+        console.log('123');
         show_question_text(-1,0);
-        show_question_text(questionlevel1[rand][0],1);
-        show_question_text(questionlevel1[rand][1],2);
+        show_question_text(equation[0],1);
+        show_question_text(equation[1],2);
 
         minusmode = false;
         addmode = true;
 
     }
     if( rand%2 == 1 ){
-
-        show_question_text(answerlevel1[rand],0);
+        console.log('321');
+        show_question_text(equation[2],0);
         show_question_text(-1,1);
-        show_question_text(questionlevel1[rand][1],2);
+        show_question_text(equation[1],2);
        
         addmode = false;
         minusmode = true;  
     }
-    update_answerstring();
+    create_answerstring(equation);
 }
 
 function create_answer_button(){
@@ -165,25 +146,25 @@ function create_answer_button(){
     answerpannel[0].events.onInputDown.add(checkanswer_fishing0);
     answerpannel[1].events.onInputDown.add(checkanswer_fishing1);
     answerpannel[2].events.onInputDown.add(checkanswer_fishing2);
-    create_answerstring();
+ 
 }
 
 var answernumberX = 775,
     answernumberY = 460;
 
-function create_answerstring(){
+function create_answerstring(equation){
 
     var answerindex = 0;
-    createanswervalue();
+    createanswervalue(equation);
    
     for(var i = 0;i<=2;i++){
         if( rand%3 == i ){
             if(addmode == true){
-                show_number(answerlevel1[rand],i);
+                show_number(equation[2],i);
                 answerpannelcheck[i] = true;
             }
             if(minusmode == true){
-                show_number(questionlevel1[rand][0],i);
+                show_number(equation[0],i);
                 answerpannelcheck[i] = true;
             }
         }else{
@@ -194,45 +175,26 @@ function create_answerstring(){
     }
 }
 
-function update_answerstring(){
-    var answerindex = 0;
-    createanswervalue();
-    for(var i = 0;i<=2;i++){
-        if( rand%3 == i ){
-            if(addmode == true){
-                show_number(answerlevel1[rand],i);
-                answerpannelcheck[i] = true;
-            }
-            if(minusmode == true){
-                show_number(questionlevel1[rand][0],i);
-                answerpannelcheck[i] = true;
-            }
-        }else{
-            show_number(answer[answerindex],i);
-            answerpannelcheck[i] = false;
-            answerindex++;
-        }
-    }
-}
 
-function createanswervalue(){
+function createanswervalue(equation){
+    console.log(equation);
+    
     answer[0] = Math.floor(Math.random()*10);
     answer[1] = Math.floor(Math.random()*10);
     if(addmode == true){
-        if(answer[0] == answer[1] || answer[0] == answerlevel1[rand] || answer[1] == answerlevel1[rand]){
-            createanswervalue();
+        if(answer[0] == answer[1] || answer[0] == equation[2] || answer[1] == equation[2]){
+            createanswervalue(equation);
         
         }
     }
     if(minusmode == true){
-        if(answer[0] == answer[1] || answer[0] == questionlevel1[rand][0] || answer[1] == questionlevel1[rand][0]){
-            createanswervalue();
+        if(answer[0] == answer[1] || answer[0] == equation[0] || answer[1] == equation[0]){
+            createanswervalue(equation);
         
         }
     }
 
 }
-
 
 //show number image------------------------------------------------------------------------------------------------------
 

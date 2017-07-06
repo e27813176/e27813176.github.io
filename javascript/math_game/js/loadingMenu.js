@@ -1,12 +1,13 @@
-demo.loadingpage = function() {};
-demo.loadingpage.prototype = {
+demo.loadingMenu = function() {};
+demo.loadingMenu.prototype = {
     preload: function() {
        
         this.fox_logo = this.add.sprite(centerX,centerY,'fox_logo');
         this.fox_logo.anchor.setTo(0.5);
         fox_logo_tween = game.add.tween(this.fox_logo).to({alpha:0.3},800,'Quad.easeInOut',true,0,false,true).loop(true); 
-                
+
         game.load.atlas('fishingpage_sheet001', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.json');
+               /*        
         game.load.atlas('fishingpage_sheet002', 'javascript/math_game/assets/fishingpage/fishingpage_atlas002.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas002.json');
         game.load.atlas('fishingpage_sheet003', 'javascript/math_game/assets/fishingpage/fishingpage_atlas003.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas003.json');
        
@@ -22,7 +23,6 @@ demo.loadingpage.prototype = {
         loading++;
         //BG--------------------------------------------------------------------------------------------
         game.load.image('blackBG','javascript/math_game/assets/fishingpage/blackBG.jpg');
-        game.load.image('HomePageBG','javascript/math_game/assets/HomePage/HomePage.jpg');
         
         game.load.image('correct_fx','javascript/math_game/assets/fishingpage/whiteBG.png');
         
@@ -64,10 +64,11 @@ demo.loadingpage.prototype = {
         game.load.audio('fishingBG', 'javascript/math_game/assets/audio/fishingBG.mp3');
         game.load.audio('clickFX', 'javascript/math_game/assets/audio/clickFX.mp3');  
         game.load.audio('add_energyFX', 'javascript/math_game/assets/audio/add_energyFX.mp3'); 
+        */
     },
 
     create: function() {
-        game.state.start('state3',true,false);
+        game.state.start('HomeMenu',true,false);
     },
     shutdown: function(){
         this.fox_logo = null; 
@@ -76,4 +77,3 @@ demo.loadingpage.prototype = {
 
     
 };
-
