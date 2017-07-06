@@ -1,5 +1,5 @@
 var answer_panel = new Array();
-var AxBarX = -343;
+var AxBarX = -243;
 
 demo.AxPage = function(){};
 demo.AxPage = {
@@ -36,6 +36,9 @@ demo.AxPage = {
       //---------------------------------------------------------------------------------------------------------------------------------
     
       game.load.atlas('ArrowSheet', 'javascript/math_game/assets/HomePage/ArrowSheet.png', 'javascript/math_game/assets/HomePage/ArrowSheet.json');
+      
+        //audio-----------------------------------------------------------------------------------------------------------------------   
+        game.load.audio('rightFX', 'javascript/math_game/assets/audio/rightFX.mp3');      
 
   },
   create: function(){
@@ -49,7 +52,7 @@ demo.AxPage = {
       game.add.sprite(0,100,'AxPageBG');
      
       //AxBar------------------------------------------------------------------------------------------------------
-      AxBarBG = game.add.sprite(0,100,'AxBar','AxBarBG.png');
+      AxBarBG = game.add.sprite(100,100,'AxBar','AxBarBG.png');
       AxBarBG.alpha = 0;
       AxBarSharp = game.add.sprite(AxBarX,100,'AxBar','AxBarSharp.png');
       AxBarSharpTween = game.add.tween(AxBarSharp).to({alpha:'-0.4'},500,'Quad.easeInOut',true,0,false,true).loop(true);
@@ -58,16 +61,16 @@ demo.AxPage = {
       
       AxBarmask = game.add.graphics();
       AxBarmask.beginFill(0xffffff);
-      AxBarmask.drawRect(150,170,350,50);
+      AxBarmask.drawRect(250,170,350,50);
       AxBarSharp.mask = AxBarmask;
      
-      AxBar = game.add.sprite(0,100,'AxBar','AxBar.png');
+      AxBar = game.add.sprite(100,100,'AxBar','AxBar.png');
       AxBar.alpha = 0;
-      AxBarLight = game.add.sprite(0,100,'AxBar','AxBarLight.png');
+      AxBarLight = game.add.sprite(100,100,'AxBar','AxBarLight.png');
       AxBarLight.alpha = 0;
       
         
-      AxBarFullLight = game.add.sprite(0,100,'AxBar','AxBarLight.png');
+      AxBarFullLight = game.add.sprite(100,100,'AxBar','AxBarLight.png');
       AxBarFullLightTween = game.add.tween(AxBarFullLight).to({alpha:'-0.4'},500,'Quad.easeInOut',true,0,false,true).loop(true);
       AxBarFullLightTween.pause();  
       AxBarFullLight.alpha = 0;      
@@ -121,10 +124,10 @@ demo.AxPage = {
       StartSharpenText.mask = AxPagemask;
       StopSharpenText.mask = AxPagemask;
       ExitAxPageText.mask = AxPagemask;
-      //---------------------------------------------------------------------------------------------------------------------
+      //Panel---------------------------------------------------------------------------------------------------------------------
       QuestionPanel = game.add.sprite(0,100,'Panel','QuestionPanel.png');
       
-      //question_panel.scale.setTo(0.5);
+
       QuestionPanel.alpha = 0;
       for(let i = 0;i<5;i++){
           answer_panel[i] = game.add.sprite(centerX+100*i,centerY+98,'Panel','AnswerPanel.png');
@@ -135,7 +138,13 @@ demo.AxPage = {
           answer_panel[i].events.onInputDown.add(CleanAxPageButton, this);
           answer_panel[i].inputEnabled = false;
       }
-    
+      //PanelGlow------------------------------------------------------------------------------------------------------------------
+      PanelGlowNumSum = game.add.sprite(0,100,'Panel','PanelGlowNumSum.png');
+      PanelGlowNumSum.alpha = 0;
+      
+      PanelGlowNumAdd = game.add.sprite(0,100,'Panel','PanelGlowNumAdd.png');
+        
+      PanelGlowNumAdd.alpha = 0;
       //ArrowSheet------------------------------------------------------------------------------------------------------------------
         
       ArrowSheet = game.add.sprite(0,100,'ArrowSheet');
@@ -149,10 +158,15 @@ demo.AxPage = {
       ExitBtn.inputEnabled = true;
       ExitBtn.input.useHandCursor = true; 
       
+        
+      //sound----------------------------------------------------------------------------------------------------------------
+      rightFX = game.add.audio('rightFX');      
+      
   },
   update: function(){} 
 }
 function ExitAxPage(){
+    AxBarX = AxBarSharp.x;
     game.state.start('LevelMap');
 }
 function FoxSittingOver(){
@@ -189,13 +203,13 @@ function StartSharpening(){
     FoxSitting002.alpha = 0;
     FoxSitting002.animations.stop();    
     FoxSitting.inputEnabled = false;
-    if( AxBarSharp.x > 0 ){
+    if( AxBarSharp.x > 100 ){
         FoxWithGoldenAx.alpha = 1;
         FoxWithGoldenAx.animations.play("FoxWithGoldenAxDynamic",15,true); 
         AxBarFullLight.alpha = 1;
         AxBarFullLightTween.resume();       
     }
-    if( AxBarSharp.x < 0 ){
+    if( AxBarSharp.x < 100 ){
         FoxWithAx.alpha = 1;
         FoxWithAx.animations.play("FoxWithAxDynamic",15,true); 
         
@@ -316,16 +330,28 @@ function CreateAxPageNumber(){
 }
 
 function CleanAxPageButton(){
+    rightFX.play();
+    if( level == 1 ){
+        PanelGlowNumSum.alpha = 1;
+        game.add.tween(PanelGlowNumSum).to({alpha:0},500,'Quad.easeOut',true,0);
+        
+    }
+    if( level == 2 ){
+        PanelGlowNumAdd.alpha = 1;
+        game.add.tween(PanelGlowNumAdd).to({alpha:0},500,'Quad.easeOut',true,0);
+        
+    }
+        
     AxBarLight.alpha = 1;
     game.add.tween(AxBarLight).to({alpha:0},1000,'Quad.easeOut',true,0);
     if( AxBarSharp.x >= -50 ){
         level = 2;
     }
-    if( AxBarSharp.x <= 0 ){
+    if( AxBarSharp.x <= 100 ){
         AxBarSharpPlusTween = game.add.tween(AxBarSharp).to({x:'+50'},250,'Quad.easeOut',true,0);
         AxBarSharpPlusTween.onComplete.add(function () {	
     
-            if( AxBarSharp.x > 0 ){
+            if( AxBarSharp.x > 100 ){
         
                 console.log('Light');
                 AxBarFullLight.alpha = 1;

@@ -2,11 +2,27 @@
 
 {
 	"filename": "AnswerPanel.png",
-	"frame": {"x":347,"y":1,"w":83,"h":84},
+	"frame": {"x":347,"y":141,"w":83,"h":84},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":4,"y":3,"w":83,"h":84},
 	"sourceSize": {"w":90,"h":90}
+},
+{
+	"filename": "PanelGlowAdd.png",
+	"frame": {"x":347,"y":1,"w":138,"h":138},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1299,"y":258,"w":138,"h":138},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "PanelGlowSum.png",
+	"frame": {"x":347,"y":1,"w":138,"h":138},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1191,"y":150,"w":138,"h":138},
+	"sourceSize": {"w":1600,"h":800}
 },
 {
 	"filename": "QuestionPanel.png",
@@ -21,8 +37,8 @@
 	"version": "1.0",
 	"image": "Panel.png",
 	"format": "RGBA8888",
-	"size": {"w":431,"h":243},
+	"size": {"w":486,"h":243},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:14ad5f379d3a7d0200a3cb98766ac82e:dbdb98d2eac39ab1bd5fc5951b609cf7:484f28e93f06386cc2110410f9ccc8a0$"
+	"smartupdate": "$TexturePacker:SmartUpdate:f04f7f32d92952ff5aff030b9d4ef5f4:f0b469ff0114fcd947d473e7a7ceb9e2:484f28e93f06386cc2110410f9ccc8a0$"
 }
 }

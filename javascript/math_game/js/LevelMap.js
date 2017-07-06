@@ -55,7 +55,7 @@ function FoxAxBtnOut(){
 
 function GoLogging(){
     
-    game.state.start('LoggingPage');    
+    game.state.start('LoggingPage',true,false);    
 }
 function FoxLoggingBtnOver(){
     FoxLoggingHover.alpha = 1;
