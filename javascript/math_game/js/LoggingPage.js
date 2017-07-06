@@ -29,6 +29,11 @@ demo.LoggingPage = {
         game.load.atlas('FoxLogging002', 'javascript/math_game/assets/LoggingPage/FoxLogging002.png', 'javascript/math_game/assets/LoggingPage/FoxLogging002.json');
 
         game.load.atlas('FoxLogging003', 'javascript/math_game/assets/LoggingPage/FoxLogging003.png', 'javascript/math_game/assets/LoggingPage/FoxLogging003.json');
+        //FoxBounce--------------------------------------------------------------------------------------------
+        game.load.atlas('FoxBounce001', 'javascript/math_game/assets/LoggingPage/FoxBounce001.png', 'javascript/math_game/assets/LoggingPage/FoxBounce001.json');
+
+        game.load.atlas('FoxBounce002', 'javascript/math_game/assets/LoggingPage/FoxBounce002.png', 'javascript/math_game/assets/LoggingPage/FoxBounce002.json');
+        
         //FoxStanding--------------------------------------------------------------------------------------------        
 
         game.load.atlas('FoxStanding', 'javascript/math_game/assets/LoggingPage/FoxStanding.png', 'javascript/math_game/assets/LoggingPage/FoxStanding.json');
@@ -48,6 +53,27 @@ demo.LoggingPage = {
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
         game.stage.backgroundColor = "#100010";
         game.add.sprite(0,100,'LoggingPage')
+        
+        //FoxBounceAnimation------------------------------------------------------------------------------------------------------
+        FoxBounce001 = game.add.sprite(-10,100,'FoxBounce001');
+        FoxBounce001Animation = FoxBounce001.animations.add("FoxBounce001Dynamic",Phaser.Animation.generateFrameNames('FoxBounce_',100,128,'.png',5),10,true);
+        FoxBounce001.alpha = 0;
+        
+        FoxBounce002 = game.add.sprite(-10,100,'FoxBounce002');
+        FoxBounce002Animation = FoxBounce002.animations.add("FoxBounce002Dynamic",Phaser.Animation.generateFrameNames('FoxBounce_',120,128,'.png',5),10,true);
+        FoxBounce002.alpha = 0;
+        
+         
+        FoxBounce001Animation.onComplete.add(function () {	
+            FoxBounce001.alpha = 0;
+            FoxBounce002.alpha = 1;
+            FoxBounce002.animations.play("FoxBounce002Dynamic",15,false);
+        }, this);   
+        FoxBounce002Animation.onComplete.add(function () {	
+            FoxBounce002.alpha = 0;
+            FoxBounce001.alpha = 1;
+            FoxBounce001.animations.play("FoxBounce001Dynamic",15,false);
+        }, this);   
         //FoxLoggingAnimation------------------------------------------------------------------------------------------------------
         /*
         FoxLogging = game.add.sprite(420,420,'FoxLogging');
@@ -67,7 +93,7 @@ demo.LoggingPage = {
         FoxLogging003.alpha = 0;
 
         
-        //FoxLoggingBtn
+        //FoxLoggingBtn------------------------------------------------------------------------------------------------------
         FoxLoggingBtn = game.add.sprite(600,470,'FoxLoggingBtn');
         FoxLoggingBtn.alpha = 0;
         FoxLoggingBtn.events.onInputDown.add(StartLogging, this);
@@ -75,7 +101,7 @@ demo.LoggingPage = {
         FoxLoggingBtn.events.onInputOut.add(StartLoggingOut, this);
         FoxLoggingBtn.inputEnabled = true;
         FoxLoggingBtn.input.useHandCursor = true; 
-        //FoxStopLoggingBtn
+        //FoxStopLoggingBtn---------------------------------------------------------------------------------------------------
         FoxStopLoggingBtn = game.add.sprite(600,470,'FoxLoggingBtn');
         FoxStopLoggingBtn.alpha = 0;
         FoxStopLoggingBtn.events.onInputDown.add(StopLogging, this);
@@ -101,8 +127,15 @@ demo.LoggingPage = {
         
         FoxLogging003Animation.onComplete.add(function () {	
             FoxLogging003.alpha = 0;
-            FoxLogging001.alpha = 1;
-            FoxLogging001.animations.play("FoxLogging001Dynamic",30,false);
+            if( AxBarSharp.x <= -243 ){
+                FoxBounce001.alpha = 1;
+                FoxBounce001.animations.play("FoxBounce001Dynamic",15,false);        
+            }
+            if( AxBarSharp.x > -243 ){
+                FoxLogging001.alpha = 1;
+                FoxLogging001.animations.play("FoxLogging001Dynamic",30,false);
+
+            }
         }, this);        
         
         //FoxStandingAnimation------------------------------------------------------------------------------------------------------
@@ -191,10 +224,16 @@ function ExitLoggingPage(){
 function StartLogging(){
     FoxStanding.alpha = 0;
     FoxStanding.animations.stop();
-    
-    FoxLogging001.alpha = 1;
-    FoxLogging001.animations.play("FoxLogging001Dynamic",30,false);
+    if( AxBarSharp.x <= -243 ){
+        FoxBounce001.alpha = 1;
+        FoxBounce001.animations.play("FoxBounce001Dynamic",15,false);        
+    }
+    if( AxBarSharp.x > -243 ){
+        FoxLogging001.alpha = 1;
+        FoxLogging001.animations.play("FoxLogging001Dynamic",30,false);
 
+    }
+    
     FoxLoggingBtn.inputEnabled = false;
     
     FoxStopLoggingBtn.inputEnabled = true;
@@ -226,6 +265,11 @@ function StopLogging(){
     FoxLogging002.animations.stop();
     FoxLogging003.alpha = 0;
     FoxLogging003.animations.stop();
+    
+    FoxBounce001.alpha = 0;
+    FoxBounce001.animations.stop();
+    FoxBounce002.alpha = 0;
+    FoxBounce002.animations.stop();
     
     FoxLoggingBtn.inputEnabled = true;
     FoxLoggingBtn.input.useHandCursor = true;
