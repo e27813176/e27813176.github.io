@@ -36,6 +36,8 @@ demo.LoggingPage = {
         //AxBar-------------------------------------------------------------------------------------------------------------------------
         game.load.atlas('AxBar', 'javascript/math_game/assets/AxPage/AxBar.png', 'javascript/math_game/assets/AxPage/AxBar.json');
         
+        //Btn---------------------------------------------------------------------------------------------------------------------------
+        game.load.image('ExitLoggingBtn','javascript/math_game/assets/LoggingPage/ExitLoggingPage.jpg');
         
     },
     create: function(){
@@ -151,12 +153,20 @@ demo.LoggingPage = {
       AxBarFullLightTween = game.add.tween(AxBarFullLight).to({alpha:'-0.4'},500,'Quad.easeInOut',true,0,false,true).loop(true);
       AxBarFullLightTween.pause();  
       AxBarFullLight.alpha = 0;      
-        
       
+        //ExitLoggingBtn-----------------------------------------------------------------------------------------------------
+        ExitLoggingBtn = game.add.sprite(150,420,'ExitLoggingBtn');
+        ExitLoggingBtn.alpha = 0;
+        ExitLoggingBtn.events.onInputDown.add(ExitLoggingPage, this);
+        ExitLoggingBtn.inputEnabled = true;
+        ExitLoggingBtn.input.useHandCursor = true; 
     },
     update: function(){
 
     } 
+}
+function ExitLoggingPage(){
+    game.state.start('LevelMap');
 }
 
 function StartLogging(){
@@ -182,6 +192,7 @@ function StartLogging(){
     AxBar.alpha = 1;
     
     CreateLoggingPageNumber();
+    ExitLoggingBtn.inputEnabled = false;
 }
 function StartLoggingOver(){}
 function StartLoggingOut(){}
@@ -220,6 +231,9 @@ function StopLogging(){
     AxBarLight.alpha = 0;
     AxBarFullLightTween.pause();
     AxBarFullLight.alpha = 0;
+        
+    ExitLoggingBtn.inputEnabled = true;
+    ExitLoggingBtn.input.useHandCursor = true;     
     
 }
 function StopLoggingOver(){}
