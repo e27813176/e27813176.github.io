@@ -124,7 +124,7 @@ demo.AxPage = {
       QuestionPanel = game.add.sprite(0,100,'Panel','QuestionPanel.png');
       
       //question_panel.scale.setTo(0.5);
-      //question_panel.alpha = 0;
+      QuestionPanel.alpha = 0;
       for(let i = 0;i<5;i++){
           answer_panel[i] = game.add.sprite(centerX+100*i,centerY+98,'Panel','AnswerPanel.png');
           answer_panel[i].anchor.setTo(0.5);
@@ -198,10 +198,13 @@ function StartSharpening(){
     AxBarBG.alpha = 1;
     AxBarSharp.alpha = 1;
     AxBarSharpTween.resume();
+    
     AxBar.alpha = 1;
-    QuestionPanel.alpha = 1;
+    game.add.tween(QuestionPanel).to({alpha:1},500,'Quad.easeOut',true,0); 
+    
     for(let i = 0;i<5;i++){
-        answer_panel[i].alpha = 1;    
+        game.add.tween(answer_panel[i]).to({alpha:1},500,'Quad.easeOut',true,0); 
+        //answer_panel[i].alpha = 1;    
     }
     CreateAxPageNumber();
 }
@@ -236,9 +239,11 @@ function StopSharpening(){
     AxBarLight.alpha = 0;
     AxBarFullLightTween.pause();
     AxBarFullLight.alpha = 0;
-    QuestionPanel.alpha = 0;
+    game.add.tween(QuestionPanel).to({alpha:0},500,'Quad.easeOut',true,0); 
+    //QuestionPanel.alpha = 0;
     for(let i = 0;i<5;i++){
-        answer_panel[i].alpha = 0;    
+        game.add.tween(answer_panel[i]).to({alpha:0},500,'Quad.easeOut',true,0); 
+        //answer_panel[i].alpha = 0;    
     }
     NumSum.destroy();
     NumAdd1.destroy();
