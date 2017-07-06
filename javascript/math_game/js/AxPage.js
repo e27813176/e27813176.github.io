@@ -347,11 +347,11 @@ function CleanAxPageButton(){
     if( AxBarSharp.x >= -50 ){
         level = 2;
     }
-    if( AxBarSharp.x <= 100 ){
+    if( AxBarSharp.x < 100 ){
         AxBarSharpPlusTween = game.add.tween(AxBarSharp).to({x:'+50'},250,'Quad.easeOut',true,0);
         AxBarSharpPlusTween.onComplete.add(function () {	
     
-            if( AxBarSharp.x > 100 ){
+            if( AxBarSharp.x >= 100 ){
         
                 console.log('Light');
                 AxBarFullLight.alpha = 1;

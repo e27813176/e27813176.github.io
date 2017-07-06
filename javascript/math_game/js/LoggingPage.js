@@ -1,5 +1,5 @@
 var AnswerPanel = new Array();
-
+var TreeBloodBarX = 0;
 
 demo.LoggingPage = function(){};
 demo.LoggingPage = {
@@ -40,6 +40,9 @@ demo.LoggingPage = {
      
         //AxBar-------------------------------------------------------------------------------------------------------------------------
         game.load.atlas('AxBar', 'javascript/math_game/assets/AxPage/AxBar.png', 'javascript/math_game/assets/AxPage/AxBar.json');
+        
+        //TreeBloodBar----------------------------------------------------------------------------------------------------------------------
+        game.load.atlas('TreeBloodBar', 'javascript/math_game/assets/LoggingPage/TreeBloodBar.png', 'javascript/math_game/assets/LoggingPage/TreeBloodBar.json');
         
         //Btn---------------------------------------------------------------------------------------------------------------------------
         game.load.image('ExitLoggingBtn','javascript/math_game/assets/LoggingPage/ExitLoggingPage.jpg');
@@ -160,7 +163,7 @@ demo.LoggingPage = {
         //QuestionPanel.scale.setTo(0.5);
       
         for(let i = 0;i<5;i++){
-            AnswerPanel[i] = game.add.sprite(centerX+90*i+280,centerY+240,'Panel',"AnswerPanel.png");
+            AnswerPanel[i] = game.add.sprite(centerX+90*i+280,centerY+140,'Panel',"AnswerPanel.png");
             AnswerPanel[i].anchor.setTo(0.5);
             AnswerPanel[i].alpha = 0;
       
@@ -201,6 +204,22 @@ demo.LoggingPage = {
         AxBarFullLightTween.pause();  
         AxBarFullLight.alpha = 0;      
       
+        //TreeBloodBar------------------------------------------------------------------------------------------------------
+        TreeBloodBarBG = game.add.sprite(0,100,'TreeBloodBar','TreeBloodBarBG.png');
+        TreeBloodBarBG.alpha = 0;
+        
+        TreeBloodBar = game.add.sprite(TreeBloodBarX,100,'TreeBloodBar','TreeBloodBar.png');
+        TreeBloodBarTween = game.add.tween(TreeBloodBar).to({alpha:'-0.4'},500,'Quad.easeInOut',true,0,false,true).loop(true);
+        TreeBloodBarTween.pause();      
+        TreeBloodBar.alpha = 0;
+        
+        TreeBloodBarmask = game.add.graphics();
+        TreeBloodBarmask.beginFill(0xffffff);
+        TreeBloodBarmask.drawRect(827,800,360,50);
+        TreeBloodBar.mask = TreeBloodBarmask;        
+        
+        TreeBloodBarTop = game.add.sprite(0,100,'TreeBloodBar','TreeBloodBarTop.png');
+        TreeBloodBarTop.alpha = 0;
         //ExitLoggingBtn-----------------------------------------------------------------------------------------------------
         ExitLoggingBtn = game.add.sprite(150,420,'ExitLoggingBtn');
         ExitLoggingBtn.alpha = 0;
@@ -218,6 +237,7 @@ demo.LoggingPage = {
 }
 function ExitLoggingPage(){
     AxBarX = AxBarSharp.x;
+    TreeBloodBarX = TreeBloodBar.x;
     game.state.start('LevelMap');
 }
 
@@ -249,6 +269,12 @@ function StartLogging(){
     AxBarSharpTween.resume();
     AxBar.alpha = 1;
     
+    game.add.tween(TreeBloodBarTop).to({alpha:1},300,'Linear',true,0);
+    game.add.tween(TreeBloodBar).to({alpha:1},300,'Linear',true,0);
+    game.add.tween(TreeBloodBarBG).to({alpha:1},300,'Linear',true,0);
+    TreeBloodBarTween.resume();      
+        
+    
     CreateLoggingPageNumber();
     ExitLoggingBtn.inputEnabled = false;
 }
@@ -279,6 +305,11 @@ function StopLogging(){
     for(let i = 0;i<5;i++){
         game.add.tween(AnswerPanel[i]).to({alpha:0},300,'Linear',true,0);
     }
+    game.add.tween(TreeBloodBarTop).to({alpha:0},300,'Linear',true,0);
+    game.add.tween(TreeBloodBar).to({alpha:0},300,'Linear',true,0);
+    game.add.tween(TreeBloodBarBG).to({alpha:0},300,'Linear',true,0);    
+    TreeBloodBarTween.pause();      
+
     NumSum.destroy();
     NumAdd1.destroy();
     NumAdd2.destroy();
@@ -356,7 +387,21 @@ function CleanLoggingPageButton(){
     PanelGlowNumSum.alpha = 1;
     game.add.tween(PanelGlowNumSum).to({alpha:0},500,'Quad.easeOut',true,0);
     rightFX.play();
+    if( AxBarSharp.x <= -243 && TreeBloodBar.x > -364 ){
+        game.add.tween(TreeBloodBar).to({x:'-1'},300,'Linear',true,0);
+    }
+    if( AxBarSharp.x > -243 ){
+        TreeBloodBarMinusTween = game.add.tween(TreeBloodBar).to({x:'-20'},300,'Linear',true,0);
+        TreeBloodBarMinusTween.onComplete.add(function () {	
+            if( TreeBloodBar.x <= -364 ){
+                
+                StopLogging();
+            }
+        }, this);
     
+    }
+    
+
     for(let i = 0;i<5;i++){
         AnswerPanel[i].inputEnabled = false;
     }
@@ -411,7 +456,7 @@ function CreateLoggingPageAnswerNum(param){
     if( param == 0 ){
         for(let i = 0;i<5;i++){
             var style = { font: "50px Arial", fill: "#fef1ba", align: "center" };
-            answerNum[i] = game.add.text(centerX+90*i+280,centerY+240,i+1, style);
+            answerNum[i] = game.add.text(centerX+90*i+280,centerY+140,i+1, style);
             answerNum[i].anchor.setTo(0.5);
             
         }
