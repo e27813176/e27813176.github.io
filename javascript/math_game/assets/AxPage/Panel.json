@@ -1,0 +1,28 @@
+{"frames": [
+
+{
+	"filename": "AnswerPanel.png",
+	"frame": {"x":385,"y":1,"w":81,"h":82},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":81,"h":82},
+	"sourceSize": {"w":81,"h":82}
+},
+{
+	"filename": "QuestionPanel.png",
+	"frame": {"x":1,"y":1,"w":382,"h":260},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":816,"y":146,"w":382,"h":260},
+	"sourceSize": {"w":1600,"h":800}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Panel.png",
+	"format": "RGBA8888",
+	"size": {"w":467,"h":262},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:675613091ecb14b5a6dd7f67a469ebc8:a9bb149bda9bddf17ef8130ebcdb45b5:484f28e93f06386cc2110410f9ccc8a0$"
+}
+}

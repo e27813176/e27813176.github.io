@@ -12,10 +12,11 @@ demo.AxPage = {
   },
   preload: function(){
       
-      game.load.image('question_panel','javascript/math_game/assets/practiceMode/panel.png');
-      game.load.image('answer_panel','javascript/math_game/assets/practiceMode/answer_panel.png');
       game.load.image('AxPageBG','javascript/math_game/assets/AxPage/AxPage.jpg');
-  
+      //Panel-----------------------------------------------------------------------------------------------------------------------
+        
+      game.load.atlas('Panel', 'javascript/math_game/assets/AxPage/Panel.png', 'javascript/math_game/assets/AxPage/Panel.json');
+
     
       //FoxWithAx--------------------------------------------------------------------------------------------------------------------------
       game.load.atlas('FoxWithAx001', 'javascript/math_game/assets/AxPage/FoxWithAx001.png', 'javascript/math_game/assets/AxPage/FoxWithAx001.json');
@@ -120,14 +121,14 @@ demo.AxPage = {
       StopSharpenText.mask = AxPagemask;
       ExitAxPageText.mask = AxPagemask;
       //---------------------------------------------------------------------------------------------------------------------
-      question_panel = game.add.sprite(centerX+200,centerY-200,'question_panel');
-      question_panel.anchor.setTo(0.5);
-      question_panel.scale.setTo(0.5);
-      question_panel.alpha = 0;
+      QuestionPanel = game.add.sprite(0,100,'Panel','QuestionPanel.png');
+      
+      //question_panel.scale.setTo(0.5);
+      //question_panel.alpha = 0;
       for(let i = 0;i<5;i++){
-          answer_panel[i] = game.add.sprite(centerX+100*i,centerY,'answer_panel');
+          answer_panel[i] = game.add.sprite(centerX+100*i,centerY+98,'Panel','AnswerPanel.png');
           answer_panel[i].anchor.setTo(0.5);
-          answer_panel[i].scale.setTo(0.5);
+          
           answer_panel[i].alpha = 0;
           
           answer_panel[i].events.onInputDown.add(CleanAxPageButton, this);
@@ -198,7 +199,7 @@ function StartSharpening(){
     AxBarSharp.alpha = 1;
     AxBarSharpTween.resume();
     AxBar.alpha = 1;
-    question_panel.alpha = 1;
+    QuestionPanel.alpha = 1;
     for(let i = 0;i<5;i++){
         answer_panel[i].alpha = 1;    
     }
@@ -235,7 +236,7 @@ function StopSharpening(){
     AxBarLight.alpha = 0;
     AxBarFullLightTween.pause();
     AxBarFullLight.alpha = 0;
-    question_panel.alpha = 0;
+    QuestionPanel.alpha = 0;
     for(let i = 0;i<5;i++){
         answer_panel[i].alpha = 0;    
     }
@@ -252,25 +253,25 @@ var NumSum,NumAdd1,NumAdd2;
 function CreateAxPageNumber(){
     AxPageRand = 0;
     var equation = createEquation(level);
-    var style = { font: "60px Arial", fill: "#ffffff", align: "center" };      
+    var style = { font: "60px Arial", fill: "#d8cdaa", align: "center" };      
     if( level == 1 ){
-        NumSum = game.add.text(centerX+200,centerY-265,'?', style);
+        NumSum = game.add.text(centerX+208,centerY-179,'?', style);
         NumSum.anchor.set(0.5);
     
-        NumAdd1 = game.add.text(centerX+85,centerY-150,equation[0], style);
+        NumAdd1 = game.add.text(centerX+208-120,centerY-63,equation[0], style);
         NumAdd1.anchor.set(0.5);    
 
-        NumAdd2 = game.add.text(centerX+315,centerY-150,equation[1], style);
+        NumAdd2 = game.add.text(centerX+208+120,centerY-63,equation[1], style);
         NumAdd2.anchor.set(0.5);  
     }
     if( level == 2 ){
-        NumSum = game.add.text(centerX+200,centerY-265,equation[2], style);
+        NumSum = game.add.text(centerX+200,centerY-165,equation[2], style);
         NumSum.anchor.set(0.5);
     
-        NumAdd1 = game.add.text(centerX+85,centerY-150,equation[0], style);
+        NumAdd1 = game.add.text(centerX+85,centerY-50,equation[0], style);
         NumAdd1.anchor.set(0.5);    
 
-        NumAdd2 = game.add.text(centerX+315,centerY-150,'?', style);
+        NumAdd2 = game.add.text(centerX+315,centerY-50,'?', style);
         NumAdd2.anchor.set(0.5);  
     }
 
@@ -370,8 +371,8 @@ function CreateAxPageAnswerNum(param){
     
     if( param == 0 ){
         for(let i = 0;i<5;i++){
-            var style = { font: "60px Arial", fill: "#100010", align: "center" };
-            answerNum[i] = game.add.text(centerX+100*i,centerY,i+1, style);
+            var style = { font: "40px Arial", fill: "#dfc985", align: "center" };
+            answerNum[i] = game.add.text(centerX+100*i,centerY+100,i+1, style);
             answerNum[i].anchor.setTo(0.5);
             
         }

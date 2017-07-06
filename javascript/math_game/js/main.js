@@ -28,8 +28,8 @@ game.state.add("HomeInsidePage", demo.HomeInsidePage);
 game.state.add("LevelMap", demo.LevelMap);
 
 
-//game.state.start("GameBootPage");
+game.state.start("GameBootPage");
 //game.state.start("LoadingFishingPage");
 //game.state.start("LevelMap");
-game.state.start("AxPage");
+//game.state.start("AxPage");
 //game.state.start("LoggingPage");
