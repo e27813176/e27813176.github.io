@@ -14,10 +14,11 @@ demo.AxPage = {
       
       game.load.image('AxPageBG','javascript/math_game/assets/AxPage/AxPage.jpg');
       //Panel-----------------------------------------------------------------------------------------------------------------------
-        
       game.load.atlas('Panel', 'javascript/math_game/assets/AxPage/Panel.png', 'javascript/math_game/assets/AxPage/Panel.json');
-
-    
+      //Btn------------------------------------------------------------------------------------------------------------------------
+        
+      game.load.image('ExitBtn','javascript/math_game/assets/AxPage/ExitBtn.jpg');
+      
       //FoxWithAx--------------------------------------------------------------------------------------------------------------------------
       game.load.atlas('FoxWithAx001', 'javascript/math_game/assets/AxPage/FoxWithAx001.png', 'javascript/math_game/assets/AxPage/FoxWithAx001.json');
       game.load.atlas('FoxSitting002', 'javascript/math_game/assets/AxPage/FoxSitting002.png', 'javascript/math_game/assets/AxPage/FoxSitting002.json');
@@ -141,12 +142,19 @@ demo.AxPage = {
       ArrowSheet.animations.add("ArrowSheetDynamic",Phaser.Animation.generateFrameNames('ArrowSheet_',0,8,'.png',5),10,true);
       ArrowSheet.alpha = 0;
       
-      
+      //ExitBtn---------------------------------------------------------------------------------------------------
+      ExitBtn = game.add.sprite(1150,550,'ExitBtn');
+      ExitBtn.alpha = 0;      
+      ExitBtn.events.onInputDown.add(ExitAxPage, this);
+      ExitBtn.inputEnabled = true;
+      ExitBtn.input.useHandCursor = true; 
       
   },
   update: function(){} 
 }
-
+function ExitAxPage(){
+    game.state.start('LevelMap');
+}
 function FoxSittingOver(){
     ArrowSheet.x = -330;
     ArrowSheet.y = -50;
@@ -194,6 +202,7 @@ function StartSharpening(){
     }
     FoxWithAx.inputEnabled = true;
     FoxWithAx.input.useHandCursor = true;
+    ExitBtn.inputEnabled = false;
     
     AxBarBG.alpha = 1;
     AxBarSharp.alpha = 1;
@@ -229,7 +238,9 @@ function StopSharpening(){
 
     FoxSitting.inputEnabled = true;
     FoxSitting.input.useHandCursor = true;
-    
+      
+    ExitBtn.inputEnabled = true;
+    ExitBtn.input.useHandCursor = true;     
     
     AxBarBG.alpha = 0;
     AxBarSharpTween.pause();
