@@ -281,13 +281,13 @@ function CreateAxPageNumber(){
         NumAdd2.anchor.set(0.5);  
     }
     if( level == 2 ){
-        NumSum = game.add.text(centerX+200,centerY-165,equation[2], style);
+        NumSum = game.add.text(centerX+208,centerY-179,equation[2], style);
         NumSum.anchor.set(0.5);
     
-        NumAdd1 = game.add.text(centerX+85,centerY-50,equation[0], style);
+        NumAdd1 = game.add.text(centerX+208-120,centerY-63,equation[0], style);
         NumAdd1.anchor.set(0.5);    
 
-        NumAdd2 = game.add.text(centerX+315,centerY-50,'?', style);
+        NumAdd2 = game.add.text(centerX+208+120,centerY-63,'?', style);
         NumAdd2.anchor.set(0.5);  
     }
 
