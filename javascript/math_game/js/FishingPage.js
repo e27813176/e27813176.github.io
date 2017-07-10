@@ -137,6 +137,7 @@ demo.FishingPage.prototype = {
         fox_getfishsheet_lastframe.anchor.setTo(0.7,0.9);
         fox_getfishsheet_lastframe.alpha = 0;
         
+        
         //fishboard---------------------------------------------------------------------------------------------------------------------
         var getfishboardX = centerX,
             getfishboardY = 500;
@@ -184,12 +185,7 @@ demo.FishingPage.prototype = {
         fishbox_sheet_highlight.scale.setTo(0,0);
         fishbox_sheet_highlight_animation = fishbox_sheet_highlight.animations.add("fishbox_sheet_highlight",Phaser.Animation.generateFrameNames('fishbox_highlight',1,8,'.png',4), 10, true);
         
-        //open BG-----------------------------------------------------------------------------------------------------------------
-        blackBG_open_fishing = game.add.sprite(0,0,"blackBG");
-        game.add.tween(blackBG_open_fishing).to({alpha:0},1000,'Quad.easeIn',true); 
-        //close BG
-        blackBG_close_fishing = game.add.sprite(0,0,"blackBG");
-        blackBG_close_fishing.alpha = 0;
+
         
         //fx---------------------------------------------------------------------------------------------------------------------
         correct_fx = game.add.sprite(0,0,'correct_fx');
@@ -428,8 +424,13 @@ demo.FishingPage.prototype = {
         start_game_text.scale.setTo(0.5,0.5);
         start_game_text.anchor.setTo(0.5,0.5);  
 
-        
-        //fx
+        //Opening BG-----------------------------------------------------------------------------------------------------------------
+        BlackOpeningBG = game.add.sprite(0,0,"blackBG");
+        BlackOpeningBG.alpha = 1;
+        game.add.tween(BlackOpeningBG).to({alpha:0},1000,'Quad.easeIn',true); 
+        //close BG
+        blackBG_close_fishing = game.add.sprite(0,0,"blackBG");
+        blackBG_close_fishing.alpha = 0;
 
      
         //sound----------------------------------------------------------------------------------------------------------------
