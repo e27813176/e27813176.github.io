@@ -58,11 +58,11 @@ demo.FishingPage.prototype = {
         ScoreBarRed.mask = ScoreBarMask;
         
         ScorebarWrongFx = game.add.sprite(0,100, "ScoreBar");
-        ScorebarWrongFxAnimate = ScorebarWrongFx.animations.add("ScorebarWrongFx",Phaser.Animation.generateFrameNames('ScoreBarWrongFx_',0,15, '.png', 5), 10, true);
+        ScorebarWrongFxAnimate = ScorebarWrongFx.animations.add("ScorebarWrongFx",Phaser.Animation.generateFrameNames('ScoreBarWrongFx_',0,10, '.png', 5), 10, true);
         ScorebarWrongFx.alpha = 0;
         
         ScorebarRightFx = game.add.sprite(0,100, "ScoreBar");
-        ScorebarRightFxAnimate = ScorebarRightFx.animations.add("ScorebarRightFx",Phaser.Animation.generateFrameNames('ScoreBarRightFx_',0,15, '.png', 5), 10, true);
+        ScorebarRightFxAnimate = ScorebarRightFx.animations.add("ScorebarRightFx",Phaser.Animation.generateFrameNames('ScoreBarRightFx_',0,10, '.png', 5), 10, true);
         ScorebarRightFx.alpha = 0;
         //-------------------------------------------------------------------------------------------------------------
         
