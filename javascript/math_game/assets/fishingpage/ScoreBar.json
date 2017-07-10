@@ -2,7 +2,7 @@
 
 {
 	"filename": "EnergyBar.png",
-	"frame": {"x":1653,"y":1052,"w":85,"h":551},
+	"frame": {"x":1502,"y":487,"w":85,"h":551},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1438,"y":208,"w":85,"h":551},
@@ -10,7 +10,7 @@
 },
 {
 	"filename": "EnergyBarRed.png",
-	"frame": {"x":102,"y":1177,"w":85,"h":461},
+	"frame": {"x":510,"y":1174,"w":85,"h":461},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1438,"y":208,"w":85,"h":461},
@@ -18,7 +18,7 @@
 },
 {
 	"filename": "ScoreBarBG.png",
-	"frame": {"x":1708,"y":1,"w":31,"h":424},
+	"frame": {"x":1582,"y":1,"w":31,"h":424},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1465,"y":225,"w":31,"h":424},
@@ -26,7 +26,7 @@
 },
 {
 	"filename": "ScoreBarRightFx_00000.png",
-	"frame": {"x":482,"y":1174,"w":71,"h":409},
+	"frame": {"x":1551,"y":1040,"w":71,"h":409},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1446,"y":231,"w":71,"h":409},
@@ -74,7 +74,7 @@
 },
 {
 	"filename": "ScoreBarRightFx_00006.png",
-	"frame": {"x":1030,"y":1,"w":238,"h":546},
+	"frame": {"x":1096,"y":1120,"w":238,"h":546},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1362,"y":161,"w":238,"h":546},
@@ -82,7 +82,7 @@
 },
 {
 	"filename": "ScoreBarRightFx_00007.png",
-	"frame": {"x":802,"y":1133,"w":227,"h":530},
+	"frame": {"x":1272,"y":1,"w":227,"h":530},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1368,"y":169,"w":227,"h":530},
@@ -90,7 +90,7 @@
 },
 {
 	"filename": "ScoreBarRightFx_00008.png",
-	"frame": {"x":1502,"y":539,"w":213,"h":511},
+	"frame": {"x":1336,"y":1042,"w":213,"h":511},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1375,"y":178,"w":213,"h":511},
@@ -98,23 +98,15 @@
 },
 {
 	"filename": "ScoreBarRightFx_00009.png",
-	"frame": {"x":1512,"y":1,"w":194,"h":500},
+	"frame": {"x":314,"y":1174,"w":194,"h":500},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1385,"y":177,"w":194,"h":500},
 	"sourceSize": {"w":1600,"h":800}
 },
 {
-	"filename": "ScoreBarRightFx_00010.png",
-	"frame": {"x":1476,"y":1052,"w":175,"h":500},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":1392,"y":162,"w":175,"h":500},
-	"sourceSize": {"w":1600,"h":800}
-},
-{
 	"filename": "ScoreBarTop.png",
-	"frame": {"x":189,"y":1177,"w":79,"h":484},
+	"frame": {"x":1501,"y":1,"w":79,"h":484},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1441,"y":165,"w":79,"h":484},
@@ -122,7 +114,7 @@
 },
 {
 	"filename": "ScoreBarTopLight.png",
-	"frame": {"x":1283,"y":1552,"w":89,"h":89},
+	"frame": {"x":213,"y":1586,"w":89,"h":89},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1436,"y":160,"w":89,"h":89},
@@ -130,7 +122,7 @@
 },
 {
 	"filename": "ScoreBarWrongFx_00000.png",
-	"frame": {"x":1,"y":1177,"w":99,"h":407},
+	"frame": {"x":213,"y":1177,"w":99,"h":407},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1432,"y":244,"w":99,"h":407},
@@ -170,7 +162,7 @@
 },
 {
 	"filename": "ScoreBarWrongFx_00005.png",
-	"frame": {"x":1031,"y":1120,"w":250,"h":542},
+	"frame": {"x":844,"y":1133,"w":250,"h":542},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1350,"y":191,"w":250,"h":542},
@@ -178,7 +170,7 @@
 },
 {
 	"filename": "ScoreBarWrongFx_00006.png",
-	"frame": {"x":555,"y":1136,"w":245,"h":527},
+	"frame": {"x":597,"y":1136,"w":245,"h":527},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1355,"y":199,"w":245,"h":527},
@@ -186,7 +178,7 @@
 },
 {
 	"filename": "ScoreBarWrongFx_00007.png",
-	"frame": {"x":1270,"y":1,"w":240,"h":536},
+	"frame": {"x":1030,"y":1,"w":240,"h":536},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1360,"y":183,"w":240,"h":536},
@@ -194,7 +186,7 @@
 },
 {
 	"filename": "ScoreBarWrongFx_00008.png",
-	"frame": {"x":1274,"y":539,"w":226,"h":507},
+	"frame": {"x":1274,"y":533,"w":226,"h":507},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1367,"y":203,"w":226,"h":507},
@@ -202,18 +194,10 @@
 },
 {
 	"filename": "ScoreBarWrongFx_00009.png",
-	"frame": {"x":270,"y":1174,"w":210,"h":494},
+	"frame": {"x":1,"y":1177,"w":210,"h":494},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1375,"y":206,"w":210,"h":494},
-	"sourceSize": {"w":1600,"h":800}
-},
-{
-	"filename": "ScoreBarWrongFx_00010.png",
-	"frame": {"x":1283,"y":1048,"w":191,"h":502},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":1383,"y":185,"w":191,"h":502},
 	"sourceSize": {"w":1600,"h":800}
 }],
 "meta": {
@@ -221,8 +205,8 @@
 	"version": "1.0",
 	"image": "ScoreBar.png",
 	"format": "RGBA8888",
-	"size": {"w":1740,"h":1669},
+	"size": {"w":1623,"h":1676},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:9ebfb6ddb3ac7cb0c199b074abc94de5:cc4d1fd16293972cf4bcbff21576d113:47672c330dafbb8ede71df98a45006c4$"
+	"smartupdate": "$TexturePacker:SmartUpdate:ad82a5ac614ba017568de0c694d5c1b3:b054684279ab2582c0ab130c750818bf:47672c330dafbb8ede71df98a45006c4$"
 }
 }
