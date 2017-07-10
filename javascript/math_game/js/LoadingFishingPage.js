@@ -1,11 +1,11 @@
 demo.LoadingFishingPage = function() {};
 demo.LoadingFishingPage.prototype = {
     preload: function() {
-       /*
-        this.fox_logo = this.add.sprite(centerX,centerY,'fox_logo');
-        this.fox_logo.anchor.setTo(0.5);
-        fox_logo_tween = game.add.tween(this.fox_logo).to({alpha:0.3},800,'Quad.easeInOut',true,0,false,true).loop(true); 
-         */       
+       
+        this.FoxLogo = this.add.sprite(centerX,centerY,'FoxLogo');
+        this.FoxLogo.anchor.setTo(0.5);
+        FoxLogoTween = game.add.tween(this.FoxLogo).to({alpha:0.3},800,'Quad.easeInOut',true,0,false,true).loop(true); 
+             
          game.load.atlas('fishingpage_sheet001', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.json');
         game.load.atlas('fishingpage_sheet002', 'javascript/math_game/assets/fishingpage/fishingpage_atlas002.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas002.json');
         game.load.atlas('fishingpage_sheet003', 'javascript/math_game/assets/fishingpage/fishingpage_atlas003.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas003.json');
@@ -92,7 +92,7 @@ demo.LoadingFishingPage.prototype = {
         game.state.start('FishingPage',true,false);
     },
     shutdown: function(){
-        this.fox_logo = null; 
+        this.FoxLogo = null; 
         this.tweens.removeAll();
     }
 

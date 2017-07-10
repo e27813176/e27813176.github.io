@@ -68,7 +68,7 @@ function FoxLoggingBtnOut(){
 }
 
 function GoFishing(){
-    game.state.start('LoadingFishingPage',true,true);
+    game.state.start('BootFishingPage',true,true);
 }
 function FoxFishingBtnOver(){
     FoxFishingHover.alpha = 1;
