@@ -42,7 +42,7 @@ demo.LoadingFishingPage.prototype = {
         game.load.image('scorebar_top','javascript/math_game/assets/fishingpage/scorebar_top.png');     
         game.load.image('scorebar_top_light','javascript/math_game/assets/fishingpage/scorebar_top_light.png');    
         */
-        game.load.atlas('ScoreBar', 'javascript/math_game/assets/fishingpage/ScoreBar.png', 'javascript/math_game/assets/fishingpage/ScoreBar.json');
+        game.load.atlas('ScoreBarAtlas', 'javascript/math_game/assets/fishingpage/ScoreBarAtlas.png', 'javascript/math_game/assets/fishingpage/ScoreBarAtlas.json');
         //BG--------------------------------------------------------------------------------------------
         game.load.image('blackBG','javascript/math_game/assets/fishingpage/blackBG.jpg');
         game.load.image('BG','javascript/math_game/assets/fishingpage/BG.jpg');

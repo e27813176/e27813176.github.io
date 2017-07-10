@@ -28,27 +28,28 @@ demo.FishingPage.prototype = {
         game.add.sprite(0,100,'BG');
 
         //ScoreBar-------------------------------------------------------------------------------------------------
-        ScoreBarBG = game.add.sprite(0,100,'ScoreBar','ScoreBarBG.png');
+    
+        ScoreBarBG = game.add.sprite(0,100,'ScoreBarAtlas','ScoreBarBG.png');
         ScoreBarBG.alpha = 0;
         
-        ScoreBar = game.add.sprite(0,100,'ScoreBar','EnergyBar.png');
+        ScoreBar = game.add.sprite(0,100,'ScoreBarAtlas','EnergyBar.png');
         ScoreBar.alpha = 1;
         ScoreBarTween = game.add.tween(ScoreBar).to({alpha:'-0.4'},500,'Quad.easeInOut',true,0,false,true).loop(true);
         ScoreBarTween.pause();
         ScoreBar.alpha = 0;
 
         
-        ScoreBarRed = game.add.sprite(0,100,'ScoreBar','EnergyBarRed.png');
+        ScoreBarRed = game.add.sprite(0,100,'ScoreBarAtlas','EnergyBarRed.png');
         ScoreBarRed.alpha = 0;
         
 
-        ScoreBarTop = game.add.sprite(0,100,'ScoreBar','ScoreBarTop.png');
+        ScoreBarTop = game.add.sprite(0,100,'ScoreBarAtlas','ScoreBarTop.png');
         ScoreBarTop.alpha = 0;   
         
-        ScoreBarTopLight = game.add.sprite(0,100,'ScoreBar','ScoreBarTopLight.png');
+        ScoreBarTopLight = game.add.sprite(0,100,'ScoreBarAtlas','ScoreBarTopLight.png');
         ScoreBarTopLight.alpha = 0;   
         
-        ScorebarTopSuccessLight = game.add.sprite(0,100,'ScoreBar','ScoreBarTopLight.png');
+        ScorebarTopSuccessLight = game.add.sprite(0,100,'ScoreBarAtlas','ScoreBarTopLight.png');
         ScorebarTopSuccessLight.alpha = 0;
         
         ScoreBarMask = game.add.graphics();
@@ -57,11 +58,11 @@ demo.FishingPage.prototype = {
         ScoreBar.mask = ScoreBarMask;
         ScoreBarRed.mask = ScoreBarMask;
         
-        ScorebarWrongFx = game.add.sprite(0,100, "ScoreBar");
+        ScorebarWrongFx = game.add.sprite(0,100, "ScoreBarAtlas");
         ScorebarWrongFxAnimate = ScorebarWrongFx.animations.add("ScorebarWrongFx",Phaser.Animation.generateFrameNames('ScoreBarWrongFx_',0,9, '.png', 5), 10, true);
         ScorebarWrongFx.alpha = 0;
         
-        ScorebarRightFx = game.add.sprite(0,100, "ScoreBar");
+        ScorebarRightFx = game.add.sprite(0,100, "ScoreBarAtlas");
         ScorebarRightFxAnimate = ScorebarRightFx.animations.add("ScorebarRightFx",Phaser.Animation.generateFrameNames('ScoreBarRightFx_',0,9, '.png', 5), 10, true);
         ScorebarRightFx.alpha = 0;
         //-------------------------------------------------------------------------------------------------------------
