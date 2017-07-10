@@ -393,7 +393,7 @@ function CleanLoggingPageButton(){
     if( AxBarSharp.x > -243 ){
         TreeBloodBarMinusTween = game.add.tween(TreeBloodBar).to({x:'-20'},300,'Linear',true,0);
         TreeBloodBarMinusTween.onComplete.add(function () {	
-            if( TreeBloodBar.x <= -364 ){
+            if( TreeBloodBar.x <= -362 ){
                 
                 StopLogging();
             }

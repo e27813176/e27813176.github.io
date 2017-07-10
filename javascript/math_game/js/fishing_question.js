@@ -19,8 +19,9 @@ function checkanswer_fishing0(){
     
     if(answerpannelcheck[0] == true && minusmode == true){
         energy_transfer(0);
-        update_question();
         answercount++;
+        UpdateQuestion();
+        
 
     }else if(answerpannelcheck[0] == false && minusmode == true){
         scorebar_wrong_fx(0);
@@ -28,8 +29,9 @@ function checkanswer_fishing0(){
         
     }else if(answerpannelcheck[0] == true && addmode == true){
         energy_transfer(0);     
-        update_question();
         answercount++;
+        UpdateQuestion();
+        
         
         
     }else if(answerpannelcheck[0] == false && addmode == true){
@@ -41,8 +43,9 @@ function checkanswer_fishing0(){
 function checkanswer_fishing1(){
     if(answerpannelcheck[1] == true && minusmode == true){
         energy_transfer(1);
-        update_question();
         answercount++;
+        UpdateQuestion();
+        
 
     }else if(answerpannelcheck[1] == false && minusmode == true){
         scorebar_wrong_fx(1);      
@@ -50,8 +53,9 @@ function checkanswer_fishing1(){
         
     }else if(answerpannelcheck[1] == true && addmode == true){
         energy_transfer(1);
-        update_question();
         answercount++;
+        UpdateQuestion();
+        
         
         
     }else if(answerpannelcheck[1] == false && addmode == true){
@@ -63,8 +67,9 @@ function checkanswer_fishing1(){
 function checkanswer_fishing2(){
     if(answerpannelcheck[2] == true && minusmode == true){
         energy_transfer(2);
-        update_question();
         answercount++;
+        UpdateQuestion();
+        
 
     }else if(answerpannelcheck[2] == false && minusmode == true){
         scorebar_wrong_fx(2);     
@@ -72,8 +77,9 @@ function checkanswer_fishing2(){
         
     }else if(answerpannelcheck[2] == true && addmode == true){
         energy_transfer(2);
-        update_question();
         answercount++;
+        UpdateQuestion();
+        
         
         
     }else if(answerpannelcheck[2] == false && addmode == true){      
@@ -88,51 +94,96 @@ var rand;
 var question_circle1,question_circle2,question_circle3,bonds;
 
 
-function create_question(){
+function CreateFishingPagePanel(){
 
-    question_pannel1_create_fx.alpha = 1;
-    question_pannel2_create_fx.alpha = 1;
-    question_pannel3_create_fx.alpha = 1;
-    question_pannel1_create_fx_animation = question_pannel1_create_fx.animations.play("question_pannel1_create_fx",25,false);
-    question_pannel2_create_fx_animation = question_pannel2_create_fx.animations.play("question_pannel2_create_fx",25,false);
-    question_pannel3_create_fx_animation = question_pannel3_create_fx.animations.play("question_pannel3_create_fx",25,false);
+    PanelStartFx001.alpha = 1;
+    PanelStartFx002.alpha = 1;
+    PanelStartFx003.alpha = 1;
+    PanelStartFx001Animation = PanelStartFx001.animations.play("PanelStartFx001",30,false);
+    PanelStartFx002Animation = PanelStartFx002.animations.play("PanelStartFx002",30,false);
+    PanelStartFx003Animation = PanelStartFx003.animations.play("PanelStartFx003",30,false);
+    PanelStartFx003Animation.onComplete.add(function () {	
+        PanelStartFx001.alpha = 0;
+        PanelStartFx002.alpha = 0;
+        PanelStartFx003.alpha = 0;
+    }, this);
     /*
     question_green_pannel.animations.play("question_green_pannel_dyn",10,true);
     question_blue_pannel1.animations.play("question_blue_pannel_dyn1",10,true);
     question_blue_pannel2.animations.play("question_blue_pannel_dyn2",10,true);
-    */
+    
     game.add.tween(question_green_pannel).to({alpha:1},300,'Linear',true,300);
     game.add.tween(question_blue_pannel1).to({alpha:1},300,'Linear',true,300);
     game.add.tween(question_blue_pannel2).to({alpha:1},300,'Linear',true,300);
     game.add.tween(bonds).to({alpha:1},500,'Linear',true,300);
-
-    update_question();
+    */
+    game.add.tween(QuestionPanel).to({alpha:1},300,'Linear',true,300);
+    UpdateQuestion();
 }
 
-function update_question(){
+function UpdateQuestion(){
     var equation = createEquation(20);
-    //console.log(equation)
+    console.log(equation)
     //rand = Math.floor(Math.random()*6);   
     //rand = Math.floor(Math.random()*3)*2+mode;
+    var style = { font: "60px Arial", fill: "#5981A7", align: "center" };
     rand = Math.floor(Math.random()*3);
-    if( rand%2 == 0 ){
-        console.log('123');
-        show_question_text(-1,0);
-        show_question_text(equation[0],1);
-        show_question_text(equation[1],2);
+    //console.log(answercount);
+    if( answercount == 0 ){
+        if( rand%2 == 0 ){
+            NumSum = game.add.text(centerX+295,centerY-229,'?', style);
+            NumSum.anchor.set(0.5);
+        
+            NumAdd1 = game.add.text(centerX+295-95,centerY-121,equation[0], style);
+            NumAdd1.anchor.set(0.5);    
 
-        minusmode = false;
-        addmode = true;
+            NumAdd2 = game.add.text(centerX+295+95,centerY-121,equation[1], style);
+            NumAdd2.anchor.set(0.5);  
+            /*
+            show_question_text(-1,0);
+            show_question_text(equation[0],1);
+            show_question_text(equation[1],2);
+            */
+            minusmode = false;
+            addmode = true;
 
+        }
+        if( rand%2 == 1 ){
+            NumSum = game.add.text(centerX+295,centerY-229,equation[2], style);
+            NumSum.anchor.set(0.5);
+    
+            NumAdd1 = game.add.text(centerX+295-95,centerY-121,equation[0], style);
+            NumAdd1.anchor.set(0.5);    
+
+            NumAdd2 = game.add.text(centerX+295+95,centerY-121,'?', style);
+            NumAdd2.anchor.set(0.5);
+            /*
+            show_question_text(equation[2],0);
+            show_question_text(-1,1);
+            show_question_text(equation[1],2);
+            */
+            addmode = false;
+            minusmode = true;
+        }
     }
-    if( rand%2 == 1 ){
-        console.log('321');
-        show_question_text(equation[2],0);
-        show_question_text(-1,1);
-        show_question_text(equation[1],2);
-       
-        addmode = false;
-        minusmode = true;  
+    if( answercount >= 1 ){
+        //console.log('UpdateQuestion');
+        if( rand%2 == 0 ){
+            NumSum.setText('?');
+            NumAdd1.setText(equation[0]);
+            NumAdd2.setText(equation[1]);
+            minusmode = false;
+            addmode = true;
+
+        }   
+        if( rand%2 == 1 ){
+            NumAdd1.setText(equation[0]);
+            NumAdd2.setText('?');
+            NumSum.setText(equation[2]);
+            addmode = false;
+            minusmode = true;          
+        }
+
     }
     create_answerstring(equation);
 }
@@ -152,25 +203,59 @@ function create_answer_button(){
 var answernumberX = 775,
     answernumberY = 460;
 
-function create_answerstring(equation){
+var FishingAnswerNum = new Array();
 
+function create_answerstring(equation){
+    var style = { font: "40px Arial", fill: "#ffffff", align: "center" };
     var answerindex = 0;
     createanswervalue(equation);
-   
+   console.log(answer);
     for(var i = 0;i<=2;i++){
-        if( rand%3 == i ){
-            if(addmode == true){
-                show_number(equation[2],i);
-                answerpannelcheck[i] = true;
+        if( answercount == 0 ){
+            if( rand%3 == i ){
+                if(addmode == true){
+                    FishingAnswerNum[i] = game.add.text(1000+100*i, 552,equation[2], style);
+                    FishingAnswerNum[i].anchor.set(0.5);
+                
+                    //show_number(equation[2],i);
+                    answerpannelcheck[i] = true;
+                }
+                if(minusmode == true){
+                    FishingAnswerNum[i] = game.add.text(1000+100*i, 552,equation[1], style);
+                    FishingAnswerNum[i].anchor.set(0.5);
+                    //show_number(equation[1],i);
+                    answerpannelcheck[i] = true;
+                }
+            }else{
+                FishingAnswerNum[i] = game.add.text(1000+100*i, 552,answer[answerindex], style);
+                FishingAnswerNum[i].anchor.set(0.5);           
+                //show_number(answer[answerindex],i);
+                answerpannelcheck[i] = false;
+                answerindex++;
             }
-            if(minusmode == true){
-                show_number(equation[0],i);
-                answerpannelcheck[i] = true;
-            }
-        }else{
-            show_number(answer[answerindex],i);
-            answerpannelcheck[i] = false;
-            answerindex++;
+        }
+        if( answercount >= 1 ){
+             if( rand%3 == i ){
+                if(addmode == true){
+                    FishingAnswerNum[i].setText(equation[2]);
+             
+                
+                    //show_number(equation[2],i);
+                    answerpannelcheck[i] = true;
+                }
+                if(minusmode == true){
+                    FishingAnswerNum[i].setText(equation[1]);
+            
+                    //show_number(equation[1],i);
+                    answerpannelcheck[i] = true;
+                }
+            }else{
+                FishingAnswerNum[i].setText(answer[answerindex]);
+                
+                //show_number(answer[answerindex],i);
+                answerpannelcheck[i] = false;
+                answerindex++;
+            }           
         }
     }
 }
@@ -188,7 +273,7 @@ function createanswervalue(equation){
         }
     }
     if(minusmode == true){
-        if(answer[0] == answer[1] || answer[0] == equation[0] || answer[1] == equation[0]){
+        if(answer[0] == answer[1] || answer[0] == equation[1] || answer[1] == equation[1]){
             createanswervalue(equation);
         
         }

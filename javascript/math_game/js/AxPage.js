@@ -126,9 +126,13 @@ demo.AxPage = {
       ExitAxPageText.mask = AxPagemask;
       //Panel---------------------------------------------------------------------------------------------------------------------
       QuestionPanel = game.add.sprite(0,100,'Panel','QuestionPanel.png');
-      
-
       QuestionPanel.alpha = 0;
+
+      QuestionPanelGolden = game.add.sprite(0,100,'Panel','QuestionPanelGolden.png');
+      QuestionPanelGolden.alpha = 1;
+      QuestionPanelGoldenTween = game.add.tween(QuestionPanelGolden).to({alpha:'-0.5'},500,'Quad.easeInOut',true,0,false,true).loop(true);
+      QuestionPanelGoldenTween.pause();
+      QuestionPanelGolden.alpha = 0;      
       for(let i = 0;i<5;i++){
           answer_panel[i] = game.add.sprite(centerX+100*i,centerY+98,'Panel','AnswerPanel.png');
           answer_panel[i].anchor.setTo(0.5);
@@ -264,7 +268,10 @@ function StopSharpening(){
     AxBarLight.alpha = 0;
     AxBarFullLightTween.pause();
     AxBarFullLight.alpha = 0;
-    game.add.tween(QuestionPanel).to({alpha:0},500,'Quad.easeOut',true,0); 
+    game.add.tween(QuestionPanel).to({alpha:0},500,'Quad.easeOut',true,0);
+    game.add.tween(QuestionPanelGolden).to({alpha:0},500,'Quad.easeOut',true,0);
+        
+    QuestionPanelGoldenTween.pause();    
     //QuestionPanel.alpha = 0;
     for(let i = 0;i<5;i++){
         game.add.tween(answer_panel[i]).to({alpha:0},500,'Quad.easeOut',true,0); 
@@ -360,6 +367,9 @@ function CleanAxPageButton(){
                 FoxWithAx.animations.play("FoxWithAxDynamic",15,true); 
                 FoxWithGoldenAx.alpha = 1;
                 FoxWithGoldenAx.animations.play("FoxWithGoldenAxDynamic",17,true); 
+                 
+                game.add.tween(QuestionPanelGoldenTween).to({alpha:1},500,'Quad.easeOut',true,0);
+                QuestionPanelGoldenTween.resume();
             }    
         }, this);
     }

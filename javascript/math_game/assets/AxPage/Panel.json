@@ -2,7 +2,7 @@
 
 {
 	"filename": "AnswerPanel.png",
-	"frame": {"x":141,"y":263,"w":81,"h":82},
+	"frame": {"x":769,"y":141,"w":81,"h":82},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":81,"h":82},
@@ -10,7 +10,7 @@
 },
 {
 	"filename": "PanelGlowNumAdd.png",
-	"frame": {"x":1,"y":263,"w":138,"h":138},
+	"frame": {"x":769,"y":1,"w":138,"h":138},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1057,"y":266,"w":138,"h":138},
@@ -18,7 +18,7 @@
 },
 {
 	"filename": "PanelGlowNumSum.png",
-	"frame": {"x":1,"y":263,"w":138,"h":138},
+	"frame": {"x":769,"y":1,"w":138,"h":138},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":939,"y":148,"w":138,"h":138},
@@ -31,14 +31,22 @@
 	"trimmed": true,
 	"spriteSourceSize": {"x":816,"y":146,"w":382,"h":260},
 	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "QuestionPanelGolden.png",
+	"frame": {"x":385,"y":1,"w":382,"h":260},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":816,"y":146,"w":382,"h":260},
+	"sourceSize": {"w":1600,"h":800}
 }],
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "Panel.png",
 	"format": "RGBA8888",
-	"size": {"w":384,"h":402},
+	"size": {"w":908,"h":262},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:188b8d9e23a14e09b704d1ace9b32ec7:e625eb47647e78551aa2c3906b6ef28d:484f28e93f06386cc2110410f9ccc8a0$"
+	"smartupdate": "$TexturePacker:SmartUpdate:38115dbe8e79120743cb801d27602d82:fad95733485429bf06bdb92d2ca41be1:484f28e93f06386cc2110410f9ccc8a0$"
 }
 }
