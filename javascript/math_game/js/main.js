@@ -18,6 +18,7 @@ game.state.add("state8", demo.state8);
 game.state.add("state9", demo.state9);
 game.state.add("loadingpage", demo.loadingpage);
 
+
 game.state.add("LoadingMenu", demo.LoadingMenu);
 game.state.add("HomeMenu", demo.HomeMenu);
 
