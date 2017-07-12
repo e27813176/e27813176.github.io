@@ -5,16 +5,20 @@ demo.LoadingLoggingPage.prototype = {
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     },
     preload: function() {
-        LoggingPageLoadingBar = this.add.sprite(game.width/2-300,690,"LoadingBar");
+        LoggingPageLoadingBar = this.add.sprite(game.width/2-300,720,"LoadingBar");
         LoggingPageLoadingBar.alpha = 1;
-        game.add.tween(LoggingPageLoadingBar).to({alpha:'-0.3'},800,'Quad.easeInOut',true,0,false,true).loop(true); 
-        LoggingPageLoadingBar.anchor.setTo(0,1);
+        
+        LoggingPageLoadingBar.anchor.setTo(0,0.5);
         this.load.setPreloadSprite(LoggingPageLoadingBar,0);
        
         this.FoxLogo = this.add.sprite(centerX,centerY,'FoxLogo');
         this.FoxLogo.anchor.setTo(0.5);
         FoxLogoTween = game.add.tween(this.FoxLogo).to({alpha:0.3},800,'Quad.easeInOut',true,0,false,true).loop(true);         
         
+        LoadingBarFrame = this.add.sprite(game.width/2,720,"LoadingBarFrame");
+        LoadingBarFrame.alpha = 1;
+        LoadingBarFrame.anchor.setTo(0.5,0.5);
+                 
         //Panel------------------------------------------------------------------------------------------
         game.load.atlas('Panel','javascript/math_game/assets/LoggingPage/Panel.png', 'javascript/math_game/assets/LoggingPage/Panel.json');
         //game.load.image('answer_panel','javascript/math_game/assets/practiceMode/answer_panel.png');

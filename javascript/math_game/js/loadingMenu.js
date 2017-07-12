@@ -1,16 +1,19 @@
-demo.loadingMenu = function() {};
-demo.loadingMenu.prototype = {
+demo.LoadingMenu = function() {};
+demo.LoadingMenu.prototype = {
     preload: function() {
        
-        loadingBar = this.add.sprite(game.width/2-300,690,"LoadingBar");
+        loadingBar = this.add.sprite(game.width/2-300,720,"LoadingBar");
         loadingBar.alpha = 1;
-        loadingBarTween = game.add.tween(loadingBar).to({alpha:'-0.3'},800,'Quad.easeInOut',true,0,false,true).loop(true); 
-        loadingBar.anchor.setTo(0,1);
+        
+        loadingBar.anchor.setTo(0,0.5);
         this.load.setPreloadSprite(loadingBar,0);
+        
+        LoadingBarFrame = this.add.sprite(game.width/2,720,"LoadingBarFrame");
+        LoadingBarFrame.alpha = 1;
+        LoadingBarFrame.anchor.setTo(0.5,0.5);
         
         this.FoxLogo = this.add.sprite(centerX,centerY,'FoxLogo');
         this.FoxLogo.anchor.setTo(0.5);
-        //this.FoxLogo.scale.set(0.8);
         FoxLogoTween = game.add.tween(this.FoxLogo).to({alpha:0.3},800,'Quad.easeInOut',true,0,false,true).loop(true); 
 
         game.load.atlas('fishingpage_sheet001', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.json');
@@ -111,8 +114,8 @@ demo.loadingMenu.prototype = {
         FoxIconCenter = game.add.sprite(0,100, 'FoxIconCenter');
         FoxIconCenter.alpha = 0;
         game.add.tween(FoxIconCenter).to({alpha:1},1000,'Linear',true);
-        loadingBarTween.pause();
-        game.add.tween(loadingBar).to({alpha:0},500,'Linear',true);
+        //loadingBarTween.pause();
+        loadingBarTween = game.add.tween(loadingBar).to({alpha:'-0.5'},400,'Quad.easeInOut',true,0,false,true).loop(true); 
         FoxLogoTween.pause();  
         game.add.tween(this.FoxLogo).to({alpha:0},500,'Linear',true);
         
@@ -137,7 +140,9 @@ function StartGame(){
     console.log('Hello');
     start_game_text_tween.stop();
     start_game_text.inputEnabled = false;
-
+    loadingBarTween.pause();
+    game.add.tween(loadingBar).to({alpha:0},500,'Linear',true);
+    game.add.tween(LoadingBarFrame).to({alpha:0},500,'Linear',true);
     game.add.tween(FoxIconCenter).to({alpha:0},500,'Linear',true);
     StartGameTextTween = game.add.tween(start_game_text).to({alpha:0},500,'Linear',true);
     StartGameTextTween.onComplete.add(function () {	

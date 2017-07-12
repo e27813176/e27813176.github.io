@@ -7,6 +7,7 @@ demo.BootLoggingPage.prototype = {
     preload: function() {
         game.load.image('FoxLogo','javascript/math_game/assets/loadingpage/LOGO.jpg');
         game.load.image('LoadingBar','javascript/math_game/assets/loadingpage/LoadingBar.jpg');
+        game.load.image('LoadingBarFrame','javascript/math_game/assets/loadingpage/LoadingBarFrame.png');
     },
     create: function() {
         //define backgroung
