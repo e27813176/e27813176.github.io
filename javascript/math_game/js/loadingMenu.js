@@ -2,14 +2,16 @@ demo.loadingMenu = function() {};
 demo.loadingMenu.prototype = {
     preload: function() {
        
-        loadingBar = this.add.sprite(game.width/2,game.height/2,"LoadingBar");
+        loadingBar = this.add.sprite(game.width/2-200,700,"LoadingBar");
         loadingBar.alpha = 1;
-        loadingBar.anchor.setTo(0.5,1);
+        loadingBarTween = game.add.tween(loadingBar).to({alpha:0.3},800,'Quad.easeInOut',true,0,false,true).loop(true); 
+        loadingBar.anchor.setTo(0,1);
         this.load.setPreloadSprite(loadingBar,0);
         
-        this.fox_logo = this.add.sprite(centerX,centerY,'fox_logo');
-        this.fox_logo.anchor.setTo(0.5);
-        fox_logo_tween = game.add.tween(this.fox_logo).to({alpha:0.3},800,'Quad.easeInOut',true,0,false,true).loop(true); 
+        this.FoxLogo = this.add.sprite(centerX,centerY,'FoxLogo');
+        this.FoxLogo.anchor.setTo(0.5);
+        this.FoxLogo.scale.set(0.8);
+        FoxLogoTween = game.add.tween(this.FoxLogo).to({alpha:0.3},800,'Quad.easeInOut',true,0,false,true).loop(true); 
 
         game.load.atlas('fishingpage_sheet001', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.json');
         
