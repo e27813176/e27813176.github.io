@@ -2,7 +2,7 @@ demo.loadingMenu = function() {};
 demo.loadingMenu.prototype = {
     preload: function() {
        
-        loadingBar = this.add.sprite(game.width/2-300,700,"LoadingBar");
+        loadingBar = this.add.sprite(game.width/2-300,650,"LoadingBar");
         loadingBar.alpha = 1;
         loadingBarTween = game.add.tween(loadingBar).to({alpha:0.3},800,'Quad.easeInOut',true,0,false,true).loop(true); 
         loadingBar.anchor.setTo(0,1);
