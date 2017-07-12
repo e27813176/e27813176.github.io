@@ -1,6 +1,11 @@
 demo.LoadingFishingPage = function() {};
 demo.LoadingFishingPage.prototype = {
     preload: function() {
+        loadingBar = this.add.sprite(game.width/2-300,650,"LoadingBar");
+        loadingBar.alpha = 1;
+        loadingBarTween = game.add.tween(loadingBar).to({alpha:'-0.3'},800,'Quad.easeInOut',true,0,false,true).loop(true); 
+        loadingBar.anchor.setTo(0,1);
+        this.load.setPreloadSprite(loadingBar,0);
        
         this.FoxLogo = this.add.sprite(centerX,centerY,'FoxLogo');
         this.FoxLogo.anchor.setTo(0.5);
@@ -56,15 +61,7 @@ demo.LoadingFishingPage.prototype = {
         game.load.image('answer_panel','javascript/math_game/assets/fishingpage/answer_panel.png');
         game.load.image('answer_panel_circle','javascript/math_game/assets/fishingpage/answer_panel_circle.png');
         
-        //scorebar-------------------------------------------------------------------------------------------------------------------
-        /*
-        game.load.image('scorebar','javascript/math_game/assets/fishingpage/scorebar.png');
-        game.load.image('scorebar_red','javascript/math_game/assets/fishingpage/scorebarred.png');
-        game.load.image('scorebar_body_BG','javascript/math_game/assets/fishingpage/scorebar_body_BG.png');       
-        game.load.image('scorebar_body_Glass','javascript/math_game/assets/fishingpage/scorebar_body_Glass.png');       
-        game.load.image('scorebar_top','javascript/math_game/assets/fishingpage/scorebar_top.png');     
-        game.load.image('scorebar_top_light','javascript/math_game/assets/fishingpage/scorebar_top_light.png');     
-        */
+
         //button---------------------------------------------------------------------------------------------------------------------
         game.load.spritesheet('button_getfish_continue','javascript/math_game/assets/fishingpage/button_continue_sheet.png',134,82);
         game.load.spritesheet('button_getfish_backhome','javascript/math_game/assets/fishingpage/button_back_home_sheet.png',134,82);
