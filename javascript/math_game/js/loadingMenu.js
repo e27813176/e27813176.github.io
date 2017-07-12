@@ -3,6 +3,7 @@ demo.loadingMenu.prototype = {
     preload: function() {
        
         loadingBar = this.add.sprite(game.width/2,game.height/2,"LoadingBar");
+        loadingBar.alpha = 1;
         loadingBar.anchor.setTo(0.5,1);
         this.load.setPreloadSprite(loadingBar,0);
         
@@ -11,6 +12,39 @@ demo.loadingMenu.prototype = {
         fox_logo_tween = game.add.tween(this.fox_logo).to({alpha:0.3},800,'Quad.easeInOut',true,0,false,true).loop(true); 
 
         game.load.atlas('fishingpage_sheet001', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.json');
+        
+        game.load.image('HomePageBG','javascript/math_game/assets/HomePage/Home_page.jpg');
+        game.load.spritesheet('button_start_sheet','javascript/math_game/assets/fishingpage/start_button_sheet.png',239,239);
+        game.load.spritesheet('button_tutorial_sheet','javascript/math_game/assets/fishingpage/tutorial_button_sheet.png',239,239);
+
+        game.load.image('fishingpage_center','javascript/math_game/assets/HomePage/HomePageIcon.png');
+        game.load.image('grass','javascript/math_game/assets/HomePage/grass.png');
+        game.load.image('HomeTreeFrame1','javascript/math_game/assets/HomePage/HomeTreeFrame1.png');
+
+        
+        game.load.image('blackBG','javascript/math_game/assets/fishingpage/blackBG.jpg');
+ 
+        game.load.audio('menu', 'javascript/math_game/assets/audio/game_menu_BG.mp3');
+        
+        //btn---------------------------------------------------------------------------------------------------------------
+        game.load.atlas('DoorBtn', 'javascript/math_game/assets/HomePage/DoorBtn.png', 'javascript/math_game/assets/HomePage/DoorBtn.json');
+        game.load.atlas('HomeMailBtn', 'javascript/math_game/assets/HomePage/HomeMailBtn.png', 'javascript/math_game/assets/HomePage/HomeMailBtn.json');
+        
+        game.load.image('SettingBtnBG', 'javascript/math_game/assets/HomePage/SettingBtnBG.png');
+        game.load.atlas('SettingBtnSheet', 'javascript/math_game/assets/HomePage/SettingBtnSheet.png', 'javascript/math_game/assets/HomePage/SettingBtnSheet.json');
+         
+        game.load.atlas('HomePageTreeSheet', 'javascript/math_game/assets/HomePage/HomeTree.png', 'javascript/math_game/assets/HomePage/HomeTree.json');  
+        
+        game.load.atlas('ArrowSheet', 'javascript/math_game/assets/HomePage/ArrowSheet.png', 'javascript/math_game/assets/HomePage/ArrowSheet.json');  
+        
+        game.load.image('RoadHover', 'javascript/math_game/assets/HomePage/RoadHover.png');
+        
+        //Text----------------------------------------------------------------------------------------------------------------------------
+        game.load.image('FoxHomeText','javascript/math_game/assets/HomePage/FoxHomeText.jpg');
+        game.load.image('HomeMailText','javascript/math_game/assets/HomePage/HomeMailText.jpg');
+        game.load.image('GameSettingText','javascript/math_game/assets/HomePage/GameSettingText.jpg');
+        game.load.image('HomeTreeText','javascript/math_game/assets/HomePage/HomeTreeText.jpg');
+        game.load.image('FoxGoFishingText','javascript/math_game/assets/HomePage/FoxGoFishingText.jpg');        
                /*        
         game.load.atlas('fishingpage_sheet002', 'javascript/math_game/assets/fishingpage/fishingpage_atlas002.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas002.json');
         game.load.atlas('fishingpage_sheet003', 'javascript/math_game/assets/fishingpage/fishingpage_atlas003.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas003.json');
