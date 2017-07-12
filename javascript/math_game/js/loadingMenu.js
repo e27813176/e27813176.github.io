@@ -2,7 +2,7 @@ demo.loadingMenu = function() {};
 demo.loadingMenu.prototype = {
     preload: function() {
        
-        loadingBar = this.add.sprite(game.width/2-200,700,"LoadingBar");
+        loadingBar = this.add.sprite(game.width/2-300,700,"LoadingBar");
         loadingBar.alpha = 1;
         loadingBarTween = game.add.tween(loadingBar).to({alpha:0.3},800,'Quad.easeInOut',true,0,false,true).loop(true); 
         loadingBar.anchor.setTo(0,1);
@@ -10,7 +10,7 @@ demo.loadingMenu.prototype = {
         
         this.FoxLogo = this.add.sprite(centerX,centerY,'FoxLogo');
         this.FoxLogo.anchor.setTo(0.5);
-        this.FoxLogo.scale.set(0.8);
+        //this.FoxLogo.scale.set(0.8);
         FoxLogoTween = game.add.tween(this.FoxLogo).to({alpha:0.3},800,'Quad.easeInOut',true,0,false,true).loop(true); 
 
         game.load.atlas('fishingpage_sheet001', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.json');
@@ -19,7 +19,7 @@ demo.loadingMenu.prototype = {
         game.load.spritesheet('button_start_sheet','javascript/math_game/assets/fishingpage/start_button_sheet.png',239,239);
         game.load.spritesheet('button_tutorial_sheet','javascript/math_game/assets/fishingpage/tutorial_button_sheet.png',239,239);
 
-        game.load.image('fishingpage_center','javascript/math_game/assets/HomePage/HomePageIcon.png');
+        game.load.image('FoxIconCenter','javascript/math_game/assets/loadingpage/FoxIconCenter.png');
         game.load.image('grass','javascript/math_game/assets/HomePage/grass.png');
         game.load.image('HomeTreeFrame1','javascript/math_game/assets/HomePage/HomeTreeFrame1.png');
 
@@ -108,7 +108,22 @@ demo.loadingMenu.prototype = {
     },
 
     create: function() {
-        game.state.start('HomeMenu',true,false);
+        FoxIconCenter = game.add.sprite(0,100, 'FoxIconCenter');
+        FoxIconCenter.alpha = 0;
+        game.add.tween(FoxIconCenter).to({alpha:1},1000,'Linear',true);
+        loadingBarTween.pause();
+        game.add.tween(loadingBar).to({alpha:0},500,'Linear',true);
+        FoxLogoTween.pause();  
+        game.add.tween(this.FoxLogo).to({alpha:0},500,'Linear',true);
+        
+        start_game_text = game.add.sprite(centerX,centerY+280,'fishingpage_sheet001',"start_game_text.png");
+        start_game_text.alpha = 1;
+        start_game_text.scale.setTo(0.5,0.5);
+        start_game_text.anchor.setTo(0.5,0.5);          
+        start_game_text.events.onInputDown.add(StartGame, this);
+        start_game_text.inputEnabled = true;
+        start_game_text_tween = game.add.tween(start_game_text).to({alpha:0.2},500,'Linear',true,0,false,false).loop(true);           
+        //game.state.start('HomeMenu',true,false);
     },
     shutdown: function(){
         this.fox_logo = null; 
@@ -117,3 +132,22 @@ demo.loadingMenu.prototype = {
 
     
 };
+function StartGame(){
+    
+    console.log('Hello');
+    start_game_text_tween.stop();
+    start_game_text.inputEnabled = false;
+
+    game.add.tween(FoxIconCenter).to({alpha:0},500,'Linear',true);
+    StartGameTextTween = game.add.tween(start_game_text).to({alpha:0},500,'Linear',true);
+    StartGameTextTween.onComplete.add(function () {	
+        game.state.start('HomeMenu',true,false);    
+        /*
+        DoorBtn.inputEnabled = true;
+        HomeMailBtn.inputEnabled = true;
+        SettingBtnSheet.inputEnabled = true;
+        HomeTreeFrame1.inputEnabled = true; 
+        RoadBtn.inputEnabled = true;
+        */
+    }, this);
+}

@@ -23,6 +23,7 @@ demo.HomeMenu.prototype = {
         HomePageBG = game.add.sprite(0,100,'HomePageBG');
       
         if(FromInside == false){
+            /*
             fishingpage_center = game.add.sprite(centerX,centerY-50, 'fishingpage_center');
             fishingpage_center.anchor.setTo(0.5,0.5);
             
@@ -33,7 +34,7 @@ demo.HomeMenu.prototype = {
             start_game_text.events.onInputDown.add(StartGame, this);
             start_game_text.inputEnabled = true;
             start_game_text_tween = game.add.tween(start_game_text).to({alpha:0.2},500,'Linear',true,0,false,false).loop(true);   
-            
+            */
                     
             game_menu_music = game.add.audio('menu');
         
@@ -410,6 +411,12 @@ demo.HomeMenu.prototype = {
         blackBG_opening.alpha = 1;
         BlackOpeningTween = game.add.tween(blackBG_opening).to({alpha:0},2000,'Linear',true,0);           
         BlackOpeningTween.onComplete.add(function () {	
+            DoorBtn.inputEnabled = true;
+            HomeMailBtn.inputEnabled = true;
+            SettingBtnSheet.inputEnabled = true;
+            HomeTreeFrame1.inputEnabled = true; 
+            RoadBtn.inputEnabled = true;            
+            /*
             if(FromInside == true){
                 DoorBtn.inputEnabled = true;
                 HomeMailBtn.inputEnabled = true;
@@ -417,6 +424,7 @@ demo.HomeMenu.prototype = {
                 HomeTreeFrame1.inputEnabled = true; 
                 RoadBtn.inputEnabled = true;
             }
+            */
         }, this);
 
     },     
@@ -536,23 +544,7 @@ function GoInsideHouse(){
         game.state.start('HomeInsidePage',true);
     }, this); 
 }
-function StartGame(){
-    
-    console.log('Hello');
-    start_game_text_tween.stop();
-    start_game_text.inputEnabled = false;
-    game.add.tween(fishingpage_center).to({alpha:0},500,'Linear',true);
-    
-    StartGameTextTween = game.add.tween(start_game_text).to({alpha:0},500,'Linear',true);
-    StartGameTextTween.onComplete.add(function () {	
-            
-        DoorBtn.inputEnabled = true;
-        HomeMailBtn.inputEnabled = true;
-        SettingBtnSheet.inputEnabled = true;
-        HomeTreeFrame1.inputEnabled = true; 
-        RoadBtn.inputEnabled = true;
-    }, this);
-}
+
 
 function skip_tutorial(){
     game.add.tween(button_start_sheet).to({alpha:0},500,'Linear',true);
