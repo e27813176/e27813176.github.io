@@ -24,6 +24,8 @@ game.state.add("BootFishingPage", demo.BootFishingPage);
 game.state.add("LoadingFishingPage", demo.LoadingFishingPage);
 game.state.add("LoadingAxPage", demo.LoadingAxPage);
 
+game.state.add("BootLoggingPage", demo.BootLoggingPage);
+game.state.add("LoadingLoggingPage", demo.LoadingLoggingPage);
 
 game.state.add("HomeMenu", demo.HomeMenu);
 game.state.add("fishingLevel", demo.fishingLevel);
