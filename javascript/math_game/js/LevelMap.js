@@ -7,6 +7,9 @@ demo.LevelMap.prototype = {
     preload: function() {
         game.load.image('LevelMapBG','javascript/math_game/assets/LevelMap/LevelMapBG.jpg');
         game.load.atlas('LevelBtn', 'javascript/math_game/assets/LevelMap/LevelBtn.png', 'javascript/math_game/assets/LevelMap/LevelBtn.json');
+        
+        //Audio--------------------------------------------------------------------------------
+        game.load.audio('BtnOver', 'javascript/math_game/assets/audio/BtnOver.mp3');
     },
     create: function() {
         //define backgroung
@@ -35,7 +38,10 @@ demo.LevelMap.prototype = {
         FoxFishingBtn.inputEnabled = true;
         FoxFishingBtn.alpha = 1;  
         FoxFishingHover = game.add.sprite(794, 594, 'LevelBtn','FoxFishingHover.png'); 
-        FoxFishingHover.alpha = 0;             
+        FoxFishingHover.alpha = 0;     
+        //Audio----------------------------------------------------------------------------------------
+        BtnOver = game.add.audio('BtnOver');
+        
     }
 
 }
@@ -46,6 +52,7 @@ function GoToFoxAx(){
 function FoxAxBtnOver(){
     FoxAxHover.alpha = 1;
     FoxAxHoverTween = game.add.tween(FoxAxHover).to({alpha:0.2},500,'Linear',true,0,false,true).loop(true);
+    BtnOver.play();
     
 }
 function FoxAxBtnOut(){
@@ -60,7 +67,7 @@ function GoLogging(){
 function FoxLoggingBtnOver(){
     FoxLoggingHover.alpha = 1;
     FoxLoggingHoverTween = game.add.tween(FoxLoggingHover).to({alpha:0.2},500,'Linear',true,0,false,true).loop(true);
-      
+    BtnOver.play();  
 }
 function FoxLoggingBtnOut(){
     FoxLoggingHover.alpha = 0;
@@ -72,7 +79,8 @@ function GoFishing(){
 }
 function FoxFishingBtnOver(){
     FoxFishingHover.alpha = 1;
-    FoxFishingHoverTween = game.add.tween(FoxFishingHover).to({alpha:0.2},500,'Linear',true,0,false,true).loop(true);    
+    FoxFishingHoverTween = game.add.tween(FoxFishingHover).to({alpha:0.2},500,'Linear',true,0,false,true).loop(true); 
+    BtnOver.play();
 }
 function FoxFishingBtnOut(){
     FoxFishingHover.alpha = 0;

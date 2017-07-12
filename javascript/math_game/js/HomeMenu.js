@@ -21,26 +21,15 @@ demo.HomeMenu.prototype = {
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
         
         HomePageBG = game.add.sprite(0,100,'HomePageBG');
-      
+    
+        //Audio-------------------------------------------------------------------------------------------
         if(FromInside == false){
-            /*
-            fishingpage_center = game.add.sprite(centerX,centerY-50, 'fishingpage_center');
-            fishingpage_center.anchor.setTo(0.5,0.5);
-            
-            start_game_text = game.add.sprite(centerX,centerY+280,'fishingpage_sheet001',"start_game_text.png");
-            start_game_text.alpha = 1;
-            start_game_text.scale.setTo(0.5,0.5);
-            start_game_text.anchor.setTo(0.5,0.5);          
-            start_game_text.events.onInputDown.add(StartGame, this);
-            start_game_text.inputEnabled = true;
-            start_game_text_tween = game.add.tween(start_game_text).to({alpha:0.2},500,'Linear',true,0,false,false).loop(true);   
-            */
-                    
+    
             game_menu_music = game.add.audio('menu');
         
             game_menu_music.loopFull(1);        
         }
-
+        BtnOver = game.add.audio('BtnOver');
        
        /*
        //scorebar----------------------------------------------------------------------------------------------------
@@ -443,7 +432,7 @@ function RoadBtnOver(){
     ArrowSheet.alpha = 1;
     
     game.add.tween(FoxGoFishingText).to({y:150},500,'Quad.easeOut',true,0); 
-
+    BtnOver.play();
 
 }
 function RoadBtnOut(){
@@ -473,6 +462,7 @@ function HomeTreeBtnOver(){
     ArrowSheet.animations.play("ArrowSheetDynamic",15,true);
     ArrowSheet.alpha = 1;
     game.add.tween(HomeTreeText).to({y:150},500,'Quad.easeOut',true,0); 
+    BtnOver.play();
 }
 function HomeTreeBtnOut(){
     ArrowSheet.animations.stop();
@@ -489,7 +479,7 @@ function SettingBtnOver(){
     SettingBtnSheet.alpha = 0.8;
     
     game.add.tween(GameSettingText).to({y:150},500,'Quad.easeOut',true,0); 
-    
+    BtnOver.play();
 }
 function SettingBtnOut(){
     
@@ -510,6 +500,7 @@ function HomeMailOver(){
     //FoxHomeText.y = 0;
     game.add.tween(HomeMailBtn).to({alpha:0.2},500,'Linear',true,0,false,true).loop(true);
     game.add.tween(HomeMailText).to({y:150},500,'Quad.easeOut',true,0); 
+    BtnOver.play();
         
 }
 function HomeMailOut(){
@@ -530,6 +521,7 @@ function DoorBtnOver(){
     //FoxHomeText.y = 0;
     game.add.tween(DoorBtn).to({alpha:0.2},500,'Linear',true,0,false,true).loop(true);
     game.add.tween(FoxHomeText).to({y:150},500,'Quad.easeOut',true,0); 
+    BtnOver.play();
     
 }
 function DoorBtnOut(){
@@ -544,7 +536,7 @@ function GoInsideHouse(){
         game.state.start('HomeInsidePage',true);
     }, this); 
 }
-
+/*
 
 function skip_tutorial(){
     game.add.tween(button_start_sheet).to({alpha:0},500,'Linear',true);
@@ -554,7 +546,7 @@ function skip_tutorial(){
     button_start_sheet.inputEnabled = false;    
     fishingpage_center_tween = game.add.tween(fishingpage_center).to({alpha:0},500,'Linear',true);
     
-    /*
+    
     first_try = false;
     
     fishingrod_tween.resume();
@@ -564,7 +556,7 @@ function skip_tutorial(){
     game.add.tween(foxtail).to({alpha:1},500,'Linear',true);
     game.add.tween(foxbody).to({alpha:1},500,'Linear',true);
     game.add.tween(fishingrod).to({alpha:1},500,'Linear',true);
-    */
+    
     
     fishingpage_center_tween.onComplete.add(completed_fishingpage_center_tween, this);    
 }
@@ -572,3 +564,4 @@ function skip_tutorial(){
 function completed_fishingpage_center_tween(){
     game.state.start('fishingLevel');
 }
+*/

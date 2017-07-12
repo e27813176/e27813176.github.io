@@ -49,7 +49,8 @@ demo.LoadingHomeMenu.prototype = {
         game.load.image('HomeMailText','javascript/math_game/assets/HomePage/HomeMailText.jpg');
         game.load.image('GameSettingText','javascript/math_game/assets/HomePage/GameSettingText.jpg');
         game.load.image('HomeTreeText','javascript/math_game/assets/HomePage/HomeTreeText.jpg');
-        game.load.image('FoxGoFishingText','javascript/math_game/assets/HomePage/FoxGoFishingText.jpg');        
+        game.load.image('FoxGoFishingText','javascript/math_game/assets/HomePage/FoxGoFishingText.jpg');       
+        game.load.image('StartText','javascript/math_game/assets/loadingpage/StartText.png');        
                /*        
         game.load.atlas('fishingpage_sheet002', 'javascript/math_game/assets/fishingpage/fishingpage_atlas002.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas002.json');
         game.load.atlas('fishingpage_sheet003', 'javascript/math_game/assets/fishingpage/fishingpage_atlas003.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas003.json');
@@ -108,6 +109,9 @@ demo.LoadingHomeMenu.prototype = {
         game.load.audio('clickFX', 'javascript/math_game/assets/audio/clickFX.mp3');  
         game.load.audio('add_energyFX', 'javascript/math_game/assets/audio/add_energyFX.mp3'); 
         */
+        //Audio-----------------------------------------------------------------------------------------------
+        game.load.audio('StartBtnDown', 'javascript/math_game/assets/audio/StartBtnDown.mp3');
+        game.load.audio('BtnOver', 'javascript/math_game/assets/audio/BtnOver.mp3');
     },
 
     create: function() {
@@ -119,14 +123,16 @@ demo.LoadingHomeMenu.prototype = {
         FoxLogoTween.pause();  
         game.add.tween(this.FoxLogo).to({alpha:0},500,'Linear',true);
         
-        start_game_text = game.add.sprite(centerX,centerY+280,'fishingpage_sheet001',"start_game_text.png");
-        start_game_text.alpha = 1;
-        start_game_text.scale.setTo(0.5,0.5);
-        start_game_text.anchor.setTo(0.5,0.5);          
-        start_game_text.events.onInputDown.add(StartGame, this);
-        start_game_text.inputEnabled = true;
-        start_game_text_tween = game.add.tween(start_game_text).to({alpha:0.2},500,'Linear',true,0,false,false).loop(true);           
-        //game.state.start('HomeMenu',true,false);
+        StartText = game.add.sprite(0,100,'StartText');
+        StartText.alpha = 1;
+           
+        StartText.events.onInputDown.add(StartGame, this);
+        StartText.inputEnabled = true;
+        StartTextTween = game.add.tween(StartText).to({alpha:0.2},500,'Linear',true,0,false,false).loop(true);   
+        
+        
+        //Audio-------------------------------------------------------------------------------------------------------
+        StartBtnDown = game.add.audio('StartBtnDown');
     },
     shutdown: function(){
         this.fox_logo = null; 
@@ -136,15 +142,15 @@ demo.LoadingHomeMenu.prototype = {
     
 };
 function StartGame(){
-    
+    StartBtnDown.play();
     console.log('Hello');
-    start_game_text_tween.stop();
-    start_game_text.inputEnabled = false;
+    StartTextTween.stop();
+    StartText.inputEnabled = false;
     loadingBarTween.pause();
     game.add.tween(loadingBar).to({alpha:0},500,'Linear',true);
     game.add.tween(LoadingBarFrame).to({alpha:0},500,'Linear',true);
     game.add.tween(FoxIconCenter).to({alpha:0},500,'Linear',true);
-    StartGameTextTween = game.add.tween(start_game_text).to({alpha:0},500,'Linear',true);
+    StartGameTextTween = game.add.tween(StartText).to({alpha:0},500,'Linear',true);
     StartGameTextTween.onComplete.add(function () {	
         game.state.start('HomeMenu',true,false);    
         /*
