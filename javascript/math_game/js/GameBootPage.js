@@ -12,7 +12,7 @@ demo.GameBootPage.prototype = {
     create: function() {
         //define backgroung
         game.stage.backgroundColor = "#000000";
-        game.state.start('LoadingMenu');
+        game.state.start('LoadingHomeMenu');
   
     }
 

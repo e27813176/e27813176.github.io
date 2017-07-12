@@ -19,7 +19,7 @@ game.state.add("state9", demo.state9);
 game.state.add("loadingpage", demo.loadingpage);
 
 
-game.state.add("LoadingMenu", demo.LoadingMenu);
+game.state.add("LoadingHomeMenu", demo.LoadingHomeMenu);
 game.state.add("HomeMenu", demo.HomeMenu);
 
 game.state.add("BootFishingPage", demo.BootFishingPage);

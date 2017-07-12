@@ -1,5 +1,5 @@
-demo.LoadingMenu = function() {};
-demo.LoadingMenu.prototype = {
+demo.LoadingHomeMenu = function() {};
+demo.LoadingHomeMenu.prototype = {
     preload: function() {
        
         loadingBar = this.add.sprite(game.width/2-300,720,"LoadingBar");
