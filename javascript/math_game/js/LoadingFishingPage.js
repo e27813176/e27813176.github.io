@@ -1,11 +1,11 @@
 demo.LoadingFishingPage = function() {};
 demo.LoadingFishingPage.prototype = {
     preload: function() {
-        loadingBar = this.add.sprite(game.width/2-300,650,"LoadingBar");
-        loadingBar.alpha = 1;
-        loadingBarTween = game.add.tween(loadingBar).to({alpha:'-0.3'},800,'Quad.easeInOut',true,0,false,true).loop(true); 
-        loadingBar.anchor.setTo(0,1);
-        this.load.setPreloadSprite(loadingBar,0);
+        FishingPageLoadingBar = this.add.sprite(game.width/2-300,690,"LoadingBar");
+        FishingPageLoadingBar.alpha = 1;
+        game.add.tween(FishingPageLoadingBar).to({alpha:'-0.3'},800,'Quad.easeInOut',true,0,false,true).loop(true); 
+        FishingPageLoadingBar.anchor.setTo(0,1);
+        this.load.setPreloadSprite(FishingPageLoadingBar,0);
        
         this.FoxLogo = this.add.sprite(centerX,centerY,'FoxLogo');
         this.FoxLogo.anchor.setTo(0.5);
@@ -27,25 +27,11 @@ demo.LoadingFishingPage.prototype = {
         console.log(loading);
         loading++;
         //panel----------------------------------------------------------------------------------------------------------------------
-        /*
-        game.load.image('bonds','javascript/math_game/assets/fishingpage/bonds.png');
-        game.load.image('green_panel','javascript/math_game/assets/fishingpage/green_panel.png');
-        game.load.image('blue_panel','javascript/math_game/assets/fishingpage/blue_panel.png');
-        
-        game.load.image('answer_panel','javascript/math_game/assets/fishingpage/answer_panel.png');
-        game.load.image('answer_panel_circle','javascript/math_game/assets/fishingpage/answer_panel_circle.png');
-        */
+
         game.load.atlas('Panel', 'javascript/math_game/assets/fishingpage/Panel.png', 'javascript/math_game/assets/fishingpage/Panel.json');
         
         //scorebar-------------------------------------------------------------------------------------------------------------------
-        /*
-        game.load.image('scorebar','javascript/math_game/assets/fishingpage/scorebar.png');
-        game.load.image('scorebar_red','javascript/math_game/assets/fishingpage/scorebarred.png');
-        game.load.image('scorebar_body_BG','javascript/math_game/assets/fishingpage/scorebar_body_BG.png');       
-        game.load.image('scorebar_body_Glass','javascript/math_game/assets/fishingpage/scorebar_body_Glass.png');       
-        game.load.image('scorebar_top','javascript/math_game/assets/fishingpage/scorebar_top.png');     
-        game.load.image('scorebar_top_light','javascript/math_game/assets/fishingpage/scorebar_top_light.png');    
-        */
+
         game.load.atlas('ScoreBarAtlas', 'javascript/math_game/assets/fishingpage/ScoreBarAtlas.png', 'javascript/math_game/assets/fishingpage/ScoreBarAtlas.json');
         //BG--------------------------------------------------------------------------------------------
         game.load.image('blackBG','javascript/math_game/assets/fishingpage/blackBG.jpg');
