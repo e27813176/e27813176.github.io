@@ -2,6 +2,10 @@ demo.loadingMenu = function() {};
 demo.loadingMenu.prototype = {
     preload: function() {
        
+        loadingBar = this.add.sprite(game.width/2,game.height/2,"LoadingBar");
+        loadingBar.anchor.setTo(0.5,1);
+        this.load.setPreloadSprite(loadingBar,0);
+        
         this.fox_logo = this.add.sprite(centerX,centerY,'fox_logo');
         this.fox_logo.anchor.setTo(0.5);
         fox_logo_tween = game.add.tween(this.fox_logo).to({alpha:0.3},800,'Quad.easeInOut',true,0,false,true).loop(true); 

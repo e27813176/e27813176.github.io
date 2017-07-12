@@ -19,8 +19,8 @@ demo.LoggingPage = {
     
         //FoxLoggingBtn-------------------------------------------------------------------------------------------
         game.load.image('FoxLoggingBtn','javascript/math_game/assets/LoggingPage/FoxLoggingBtn.jpg');
-
-        
+        //BlackBG--------------------------------------------------------------------------------------------------
+        game.load.image('BlackBG','javascript/math_game/assets/fishingpage/blackBG.jpg');
         //FoxLogging--------------------------------------------------------------------------------------------
         game.load.atlas('FoxLogging', 'javascript/math_game/assets/LoggingPage/FoxLogging.png', 'javascript/math_game/assets/LoggingPage/FoxLogging.json');
 
@@ -49,6 +49,8 @@ demo.LoggingPage = {
        //audio-----------------------------------------------------------------------------------------------------------------------   
         game.load.audio('rightFX', 'javascript/math_game/assets/audio/rightFX.mp3');      
         
+        //ScoreBoard------------------------------------------------------------------------------------------------------------------
+        game.load.atlas('ScoreBoard', 'javascript/math_game/assets/LoggingPage/ScoreBoard.png', 'javascript/math_game/assets/LoggingPage/ScoreBoard.json');
     },
     create: function(){
         console.log('Level2');
@@ -226,10 +228,49 @@ demo.LoggingPage = {
         ExitLoggingBtn.events.onInputDown.add(ExitLoggingPage, this);
         ExitLoggingBtn.inputEnabled = true;
         ExitLoggingBtn.input.useHandCursor = true; 
-      
+        //ScoreBoard------------------------------------------------------------------------------------------------------------
+        ScoreBoardBG = game.add.sprite(800,500,'ScoreBoard','ScoreBoardBG.png');
+        ScoreBoardBG.anchor.set(0.5);
+        ScoreBoardBG.alpha = 0;    
+        
+        ScoreBoardBtn = game.add.sprite(0,100,'ScoreBoard','ScoreBoardBtn.png');
+        ScoreBoardBtn.alpha = 0; 
+
+        ScoreBoardHomeBtnHover = game.add.sprite(0,100,'ScoreBoard','ScoreBoardHomeBtnHover.png');
+        ScoreBoardHomeBtnHover.alpha = 0;
+        
+        ScoreBoardContinueBtnHover = game.add.sprite(0,100,'ScoreBoard','ScoreBoardContinueBtnHover.png');
+        ScoreBoardContinueBtnHover.alpha = 0;        
+
+        ScoreBoardHomeBtn = game.add.sprite(885,563,'ScoreBoard','ScoreBoardBtnHover.png');        
+        ScoreBoardHomeBtn.alpha = 0;
+        ScoreBoardHomeBtn.events.onInputDown.add(ScoreBoardHomeBtnDown, this);
+        ScoreBoardHomeBtn.events.onInputOver.add(ScoreBoardHomeBtnOver, this);
+        ScoreBoardHomeBtn.events.onInputOut.add(ScoreBoardHomeBtnOut, this);
+        
+        ScoreBoardContinueBtn = game.add.sprite(783,563,'ScoreBoard','ScoreBoardBtnHover.png');        
+        ScoreBoardContinueBtn.alpha = 0;
+        ScoreBoardContinueBtn.events.onInputDown.add(ScoreBoardContinueBtnDown, this);
+        ScoreBoardContinueBtn.events.onInputOver.add(ScoreBoardContinueBtnOver, this);
+        ScoreBoardContinueBtn.events.onInputOut.add(ScoreBoardContinueBtnOut, this);
+        
+        ScoreBoardSeal = game.add.sprite(800,500,'ScoreBoard','ScoreBoardSeal.png');
+        ScoreBoardSeal.anchor.set(0.5);
+        ScoreBoardSeal.alpha = 0; 
         //sound----------------------------------------------------------------------------------------------------------------
       
-        rightFX = game.add.audio('rightFX');        
+        rightFX = game.add.audio('rightFX');     
+        
+        //BlackBGOpening-----------------------------------------------------------------------------------------
+        BlackBGOpening = game.add.sprite(0,100,'BlackBG');
+        BlackBGOpening.alpha = 1;
+        game.add.tween(BlackBGOpening).to({alpha:0},1000,'Linear',true,0);
+        
+        //BlackBGClosing-----------------------------------------------------------------------------------------
+        BlackBGClosing = game.add.sprite(0,100,'BlackBG');
+        BlackBGClosing.alpha = 0;
+        
+        
     },
     update: function(){
 
@@ -238,7 +279,12 @@ demo.LoggingPage = {
 function ExitLoggingPage(){
     AxBarX = AxBarSharp.x;
     TreeBloodBarX = TreeBloodBar.x;
-    game.state.start('LevelMap');
+    LoggingPageClosingTween001 = game.add.tween(BlackBGClosing).to({alpha:1},1000,'Linear',true,0);        
+
+    LoggingPageClosingTween001.onComplete.add(function () {	
+        game.state.start('LevelMap');
+    }, this);      
+    
 }
 
 function StartLogging(){
@@ -316,7 +362,7 @@ function StopLogging(){
     for(let i = 0;i<5;i++){
         answerNum[i].destroy();
     }    
-    //AxBarBG------------------------------------------------------------------
+    
     AxBarBG.alpha = 0;
     AxBarSharpTween.pause();
     AxBarSharp.alpha = 0;
@@ -329,6 +375,105 @@ function StopLogging(){
     ExitLoggingBtn.inputEnabled = true;
     ExitLoggingBtn.input.useHandCursor = true;     
     
+}
+function FinishLogging(){
+    FoxStanding.alpha = 1;
+    FoxStanding.animations.play("FoxStandingDynamic",15,true);
+    
+    FoxLogging001.alpha = 0;
+    FoxLogging001.animations.stop();
+    FoxLogging002.alpha = 0;
+    FoxLogging002.animations.stop();
+    FoxLogging003.alpha = 0;
+    FoxLogging003.animations.stop();
+    
+    FoxBounce001.alpha = 0;
+    FoxBounce001.animations.stop();
+    FoxBounce002.alpha = 0;
+    FoxBounce002.animations.stop();
+    
+    FoxStopLoggingBtn.inputEnabled = false;
+
+    game.add.tween(QuestionPanel).to({alpha:0},300,'Linear',true,0); 
+    for(let i = 0;i<5;i++){
+        game.add.tween(AnswerPanel[i]).to({alpha:0},300,'Linear',true,0);
+    }
+    game.add.tween(TreeBloodBarTop).to({alpha:0},300,'Linear',true,0);
+    game.add.tween(TreeBloodBar).to({alpha:0},300,'Linear',true,0);
+    game.add.tween(TreeBloodBarBG).to({alpha:0},300,'Linear',true,0);    
+    TreeBloodBarTween.pause();      
+
+    NumSum.destroy();
+    NumAdd1.destroy();
+    NumAdd2.destroy();
+    for(let i = 0;i<5;i++){
+        answerNum[i].destroy();
+    }    
+    
+    AxBarBG.alpha = 0;
+    AxBarSharpTween.pause();
+    AxBarSharp.alpha = 0;
+    
+    AxBar.alpha = 0;
+    AxBarLight.alpha = 0;
+    AxBarFullLightTween.pause();
+    AxBarFullLight.alpha = 0;   
+    
+    ScoreBoardBG.scale.set(0);
+    ScoreBoardBG.alpha = 1;
+    game.add.tween(ScoreBoardBG.scale).to({x:1,y:1},500,'Quad.easeOut',true,1000);
+    
+    ScoreBoardSeal.scale.set(20);
+    game.add.tween(ScoreBoardSeal).to({alpha:1},1000,'Quad.easeIn',true,1500);        
+    game.add.tween(ScoreBoardSeal.scale).to({x:1,y:1},1000,'Quad.easeIn',true,1500);    
+    
+    ScoreBoardBtnTween = game.add.tween(ScoreBoardBtn).to({alpha:1},500,'Linear',true,3000);        
+    ScoreBoardBtnTween.onComplete.add(function () {	
+    
+        ScoreBoardHomeBtn.inputEnabled = true;
+        ScoreBoardContinueBtn.inputEnabled = true;
+        
+    }, this);      
+}
+
+function ScoreBoardHomeBtnDown(){
+        
+    ScoreBoardHomeBtn.inputEnabled = false;
+    ScoreBoardContinueBtn.inputEnabled = false;    
+    LoggingPageClosingTween002 = game.add.tween(BlackBGClosing).to({alpha:1},1000,'Linear',true,0);        
+
+    
+    LoggingPageClosingTween002.onComplete.add(function () {	
+        game.state.start('loadingMenu',true,true);
+    }, this);      
+    
+}
+function ScoreBoardHomeBtnOver(){
+    ScoreBoardHomeBtnHover.alpha = 1;
+    ScoreBoardHomeBtnHoverTween = game.add.tween(ScoreBoardHomeBtnHover).to({alpha:'-0.4'},500,'Quad.easeInOut',true,0,false,true).loop(true);
+}
+function ScoreBoardHomeBtnOut(){
+    ScoreBoardHomeBtnHover.alpha = 0;
+    ScoreBoardHomeBtnHoverTween.pause();
+}
+function ScoreBoardContinueBtnDown(){
+    game.add.tween(ScoreBoardBG).to({alpha:0},500,'Quad.easeIn',true);
+    game.add.tween(ScoreBoardBtn).to({alpha:0},500,'Quad.easeIn',true);
+    game.add.tween(ScoreBoardSeal).to({alpha:0},500,'Quad.easeIn',true);
+    
+    ScoreBoardHomeBtn.inputEnabled = false;
+    ScoreBoardContinueBtn.inputEnabled = false;
+    TreeBloodBar.x = 0;
+    StopLogging();
+    
+}
+function ScoreBoardContinueBtnOver(){
+    ScoreBoardContinueBtnHover.alpha = 1;
+    ScoreBoardContinueBtnHoverTween = game.add.tween(ScoreBoardContinueBtnHover).to({alpha:'-0.4'},500,'Quad.easeInOut',true,0,false,true).loop(true);    
+}
+function ScoreBoardContinueBtnOut(){
+    ScoreBoardContinueBtnHover.alpha = 0;
+    ScoreBoardContinueBtnHoverTween.pause();
 }
 function StopLoggingOver(){}
 function StopLoggingOut(){}
@@ -389,13 +534,16 @@ function CleanLoggingPageButton(){
     rightFX.play();
     if( AxBarSharp.x <= -243 && TreeBloodBar.x > -364 ){
         game.add.tween(TreeBloodBar).to({x:'-1'},300,'Linear',true,0);
+        //test
+        //game.add.tween(TreeBloodBar).to({x:'-200'},300,'Linear',true,0);
     }
     if( AxBarSharp.x > -243 ){
-        TreeBloodBarMinusTween = game.add.tween(TreeBloodBar).to({x:'-20'},300,'Linear',true,0);
+        //TreeBloodBarMinusTween = game.add.tween(TreeBloodBar).to({x:'-20'},300,'Linear',true,0);
+        TreeBloodBarMinusTween = game.add.tween(TreeBloodBar).to({x:'-200'},300,'Linear',true,0);
         TreeBloodBarMinusTween.onComplete.add(function () {	
             if( TreeBloodBar.x <= -362 ){
                 
-                StopLogging();
+                FinishLogging();
             }
         }, this);
     
