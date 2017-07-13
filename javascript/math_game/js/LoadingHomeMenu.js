@@ -10,14 +10,16 @@ demo.LoadingHomeMenu.prototype = {
         loadingBar.anchor.setTo(0,0.5);
         this.load.setPreloadSprite(loadingBar,0);
         
-        LoadingBarFrame = this.add.sprite(game.width/2,720,"LoadingBarFrame");
-        LoadingBarFrame.alpha = 1;
-        LoadingBarFrame.anchor.setTo(0.5,0.5);
+
         
         this.FoxLogo = this.add.sprite(centerX,centerY,'FoxLogo');
         this.FoxLogo.anchor.setTo(0.5);
         FoxLogoTween = game.add.tween(this.FoxLogo).to({alpha:0.3},800,'Quad.easeInOut',true,0,false,true).loop(true); 
 
+        LoadingBarFrame = this.add.sprite(game.width/2,720,"LoadingBarFrame");
+        LoadingBarFrame.alpha = 1;
+        LoadingBarFrame.anchor.setTo(0.5,0.5);
+        
         game.load.atlas('fishingpage_sheet001', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.json');
         
         game.load.image('HomePageBG','javascript/math_game/assets/HomePage/Home_page.jpg');
