@@ -120,7 +120,10 @@ demo.LevelMap.prototype = {
                 
             }
         
-        }, this);        
+        }, this);
+        //LevelMapClosing--------------------------------------------------------------------------------
+        LevelMapClosingBG = game.add.sprite(0,0,'blackBG');
+        LevelMapClosingBG.alpha = 0;        
     }
 
 }

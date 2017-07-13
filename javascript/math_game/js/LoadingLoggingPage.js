@@ -28,8 +28,10 @@ demo.LoadingLoggingPage.prototype = {
     
         //FoxLoggingBtn-------------------------------------------------------------------------------------------
         game.load.image('FoxLoggingBtn','javascript/math_game/assets/LoggingPage/FoxLoggingBtn.jpg');
+        
         //BlackBG--------------------------------------------------------------------------------------------------
         game.load.image('BlackBG','javascript/math_game/assets/fishingpage/blackBG.jpg');
+        
         //FoxLogging--------------------------------------------------------------------------------------------
         game.load.atlas('FoxLogging', 'javascript/math_game/assets/LoggingPage/FoxLogging.png', 'javascript/math_game/assets/LoggingPage/FoxLogging.json');
 
@@ -38,13 +40,13 @@ demo.LoadingLoggingPage.prototype = {
         game.load.atlas('FoxLogging002', 'javascript/math_game/assets/LoggingPage/FoxLogging002.png', 'javascript/math_game/assets/LoggingPage/FoxLogging002.json');
 
         game.load.atlas('FoxLogging003', 'javascript/math_game/assets/LoggingPage/FoxLogging003.png', 'javascript/math_game/assets/LoggingPage/FoxLogging003.json');
+        
         //FoxBounce--------------------------------------------------------------------------------------------
         game.load.atlas('FoxBounce001', 'javascript/math_game/assets/LoggingPage/FoxBounce001.png', 'javascript/math_game/assets/LoggingPage/FoxBounce001.json');
 
         game.load.atlas('FoxBounce002', 'javascript/math_game/assets/LoggingPage/FoxBounce002.png', 'javascript/math_game/assets/LoggingPage/FoxBounce002.json');
         
         //FoxStanding--------------------------------------------------------------------------------------------        
-
         game.load.atlas('FoxStanding', 'javascript/math_game/assets/LoggingPage/FoxStanding.png', 'javascript/math_game/assets/LoggingPage/FoxStanding.json');
      
         //AxBar-------------------------------------------------------------------------------------------------------------------------
