@@ -198,9 +198,16 @@ function FoxFishingBtnOut(){
 }
 //LevelMapClosing--------------------------------------------------------------------------------------------------------
 function LevelMapClosing(Page){
-    
+    HomeBtnHoverArea.inputEnabled = false;
+    TutorialBtnHoverArea.inputEnabled = false;
+    FoxAxBtnHoverArea.inputEnabled = false;
     FoxLoggingBtnHoverArea.inputEnabled = false;
     FoxFishingBtnHoverArea.inputEnabled = false;
     
-    game.state.start(Page,true,false);
+    LevelMapClosingBGTween = game.add.tween(LevelMapClosingBG).to({alpha:1},500,'Linear',true,0); 
+    LevelMapClosingBGTween.onComplete.add(function () {	
+            
+        game.state.start(Page,true,false);
+    }, this);
+
 }
