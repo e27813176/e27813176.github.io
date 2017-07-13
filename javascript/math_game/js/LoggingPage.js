@@ -1,6 +1,6 @@
 var AnswerPanel = new Array();
 var TreeBloodBarX = 0;
-
+var LoggingPageComplete = false;
 demo.LoggingPage = function(){};
 demo.LoggingPage = {
     
@@ -224,7 +224,7 @@ demo.LoggingPage = {
         //BlackBGOpening-----------------------------------------------------------------------------------------
         BlackBGOpening = game.add.sprite(0,100,'BlackBG');
         BlackBGOpening.alpha = 1;
-        game.add.tween(BlackBGOpening).to({alpha:0},1000,'Linear',true,0);
+        game.add.tween(BlackBGOpening).to({alpha:0},500,'Linear',true,0);
         
         //BlackBGClosing-----------------------------------------------------------------------------------------
         BlackBGClosing = game.add.sprite(0,100,'BlackBG');
@@ -337,6 +337,7 @@ function StopLogging(){
     
 }
 function FinishLogging(){
+    LoggingPageComplete = true;
     FoxStanding.alpha = 1;
     FoxStanding.animations.play("FoxStandingDynamic",15,true);
     
@@ -404,7 +405,7 @@ function ScoreBoardHomeBtnDown(){
 
     
     LoggingPageClosingTween002.onComplete.add(function () {	
-        game.state.start('loadingMenu',true,true);
+        game.state.start('GameBootPage',true,true);
     }, this);      
     
 }

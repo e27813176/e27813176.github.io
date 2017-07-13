@@ -1,5 +1,6 @@
 var answer_panel = new Array();
 var AxBarX = -243;
+var AxPageComplete = false;
 
 demo.AxPage = function(){};
 demo.AxPage = {
@@ -11,34 +12,6 @@ demo.AxPage = {
       level = 1;
   },
   preload: function(){
-      
-      game.load.image('AxPageBG','javascript/math_game/assets/AxPage/AxPage.jpg');
-      //Panel-----------------------------------------------------------------------------------------------------------------------
-      game.load.atlas('Panel', 'javascript/math_game/assets/AxPage/Panel.png', 'javascript/math_game/assets/AxPage/Panel.json');
-      //Btn------------------------------------------------------------------------------------------------------------------------
-        
-      game.load.image('ExitBtn','javascript/math_game/assets/AxPage/ExitBtn.jpg');
-      
-      //FoxWithAx--------------------------------------------------------------------------------------------------------------------------
-      game.load.atlas('FoxWithAx001', 'javascript/math_game/assets/AxPage/FoxWithAx001.png', 'javascript/math_game/assets/AxPage/FoxWithAx001.json');
-      game.load.atlas('FoxSitting002', 'javascript/math_game/assets/AxPage/FoxSitting002.png', 'javascript/math_game/assets/AxPage/FoxSitting002.json');
-
-      game.load.atlas('FoxWithAx', 'javascript/math_game/assets/AxPage/FoxWithAx.png', 'javascript/math_game/assets/AxPage/FoxWithAx.json');
-      game.load.atlas('FoxWithAx003', 'javascript/math_game/assets/AxPage/FoxWithAx003.png', 'javascript/math_game/assets/AxPage/FoxWithAx003.json');
-
-    
-      //AxBar-------------------------------------------------------------------------------------------------------------------------------
-      game.load.atlas('AxBar', 'javascript/math_game/assets/AxPage/AxBar.png', 'javascript/math_game/assets/AxPage/AxBar.json');
-      
-      //Text-------------------------------------------------------------------------------------------------------------------------------
-      game.load.atlas('AxPageText', 'javascript/math_game/assets/AxPage/AxPageText.png', 'javascript/math_game/assets/AxPage/AxPageText.json');
-      
-      //---------------------------------------------------------------------------------------------------------------------------------
-    
-      game.load.atlas('ArrowSheet', 'javascript/math_game/assets/HomePage/ArrowSheet.png', 'javascript/math_game/assets/HomePage/ArrowSheet.json');
-      
-        //audio-----------------------------------------------------------------------------------------------------------------------   
-        game.load.audio('rightFX', 'javascript/math_game/assets/audio/rightFX.mp3');      
 
   },
   create: function(){
@@ -162,16 +135,30 @@ demo.AxPage = {
       ExitBtn.inputEnabled = true;
       ExitBtn.input.useHandCursor = true; 
       
-        
+      //AxPageOpening--------------------------------------------------------------------------------------------------------
+      AxPageOpening = game.add.sprite(0,100,'BlackBG');
+      AxPageOpening.alpha = 1;      
+      game.add.tween(AxPageOpening).to({alpha:0},500,'Linear',true,0);  
+      
+      //AxPageClosing--------------------------------------------------------------------------------------------------------
+      AxPageClosing = game.add.sprite(0,100,'BlackBG');
+      AxPageClosing.alpha = 0;      
+      
       //sound----------------------------------------------------------------------------------------------------------------
-      rightFX = game.add.audio('rightFX');      
+      rightFX = game.add.audio('rightFX');
+      AxFX = game.add.audio('AxFX');
       
   },
   update: function(){} 
 }
 function ExitAxPage(){
+    ExitBtn.inputEnabled = false;
     AxBarX = AxBarSharp.x;
-    game.state.start('LevelMap');
+    AxPageClosingTween = game.add.tween(AxPageClosing).to({alpha:1},500,'Linear',true,0);  
+    AxPageClosingTween.onComplete.add(function(){
+        game.state.start('LevelMap');
+
+    },this);
 }
 function FoxSittingOver(){
     ArrowSheet.x = -330;
@@ -200,7 +187,8 @@ function FoxWithAxOut(){
 }
 
 function StartSharpening(){
-    //game.add.tween(StartSharpenText).to({y:0},500,'Quad.easeOut',true,0); 
+    //game.add.tween(StartSharpenText).to({y:0},500,'Quad.easeOut',true,0);
+    
     FoxSitting.alpha = 0;
     FoxSitting.animations.stop();
     
@@ -215,9 +203,14 @@ function StartSharpening(){
     }
     if( AxBarSharp.x < 100 ){
         FoxWithAx.alpha = 1;
-        FoxWithAx.animations.play("FoxWithAxDynamic",15,true); 
-        
+        FoxWithAxAnimate = FoxWithAx.animations.play("FoxWithAxDynamic",15,true); 
+        /*
+        if(FoxWithAxAnimate.frame == 0){
+            AxFX.play();
+        }
+        */
     }
+    AxFX.loopFull(1);
     FoxWithAx.inputEnabled = true;
     FoxWithAx.input.useHandCursor = true;
     ExitBtn.inputEnabled = false;
@@ -237,6 +230,7 @@ function StartSharpening(){
 }
 
 function StopSharpening(){
+    AxFX.stop();
     game.add.tween(StopSharpenText).to({y:0},500,'Quad.easeOut',true,0); 
     FoxWithAx.alpha = 0;
     FoxWithAx.animations.stop();
@@ -359,7 +353,7 @@ function CleanAxPageButton(){
         AxBarSharpPlusTween.onComplete.add(function () {	
     
             if( AxBarSharp.x >= 100 ){
-        
+                AxPageComplete = true;
                 console.log('Light');
                 AxBarFullLight.alpha = 1;
                 AxBarFullLightTween.resume();

@@ -22,11 +22,11 @@ function createFishingEquation() {
     var numberB;
 
     var numberSum = 100; //initialize numberSum,and make it bigger than 10.
-            while (numberSum > 10) {
+            while (numberSum > 20) {
 
        
-                numberA = Math.floor(Math.random() * 2) + 1;
-                numberB = Math.floor(Math.random() * 9) + 1;
+                numberA = Math.floor(Math.random() * 19) + 1;
+                numberB = Math.floor(Math.random() * 19) + 1;
 
                 numberSum = numberA + numberB;
             }

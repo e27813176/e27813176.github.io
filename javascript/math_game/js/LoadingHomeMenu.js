@@ -1,3 +1,5 @@
+var FirstStart = true;
+
 demo.LoadingHomeMenu = function() {};
 demo.LoadingHomeMenu.prototype = {
     preload: function() {
@@ -115,24 +117,30 @@ demo.LoadingHomeMenu.prototype = {
     },
 
     create: function() {
-        FoxIconCenter = game.add.sprite(0,100, 'FoxIconCenter');
-        FoxIconCenter.alpha = 0;
-        game.add.tween(FoxIconCenter).to({alpha:1},1000,'Linear',true);
-        //loadingBarTween.pause();
-        loadingBarTween = game.add.tween(loadingBar).to({alpha:'-0.5'},400,'Quad.easeInOut',true,0,false,true).loop(true); 
-        FoxLogoTween.pause();  
-        game.add.tween(this.FoxLogo).to({alpha:0},500,'Linear',true);
+        if( FirstStart == true ){
+            FirstStart = false;
+            FoxIconCenter = game.add.sprite(0,100, 'FoxIconCenter');
+            FoxIconCenter.alpha = 0;
+            game.add.tween(FoxIconCenter).to({alpha:1},1000,'Linear',true);
+            //loadingBarTween.pause();
+            loadingBarTween = game.add.tween(loadingBar).to({alpha:'-0.5'},400,'Quad.easeInOut',true,0,false,true).loop(true); 
+            FoxLogoTween.pause();  
+            game.add.tween(this.FoxLogo).to({alpha:0},500,'Linear',true);
         
-        StartText = game.add.sprite(0,100,'StartText');
-        StartText.alpha = 1;
+            StartText = game.add.sprite(0,100,'StartText');
+            StartText.alpha = 1;
            
-        StartText.events.onInputDown.add(StartGame, this);
-        StartText.inputEnabled = true;
-        StartTextTween = game.add.tween(StartText).to({alpha:0.2},500,'Linear',true,0,false,false).loop(true);   
+            StartText.events.onInputDown.add(StartGame, this);
+            StartText.inputEnabled = true;
+            StartTextTween = game.add.tween(StartText).to({alpha:0.2},500,'Linear',true,0,false,false).loop(true);   
         
         
-        //Audio-------------------------------------------------------------------------------------------------------
-        StartBtnDown = game.add.audio('StartBtnDown');
+            //Audio-------------------------------------------------------------------------------------------------------
+            StartBtnDown = game.add.audio('StartBtnDown');
+            
+        }else{
+            game.state.start('HomeMenu',true,false);
+        }
     },
     shutdown: function(){
         this.fox_logo = null; 
