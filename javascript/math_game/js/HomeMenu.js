@@ -773,14 +773,14 @@ function FoxTurnRightWalkingAnimateComplete(){
     }    
     
     FoxDynamicRand = Math.floor(Math.random() * 21);
-    if( FoxDynamicRand <= 17 ){
+    if( FoxDynamicRand <= 18 ){
         FoxTurnRightStanding.animations.play("FoxTurnRightStanding",15,false);
         FoxTurnRightStandingAnimate.onComplete.add(FoxTurnRightStandingAnimateComplete, this);
         FoxTurnRightStanding.alpha = 1; 
         FoxTurnRightWalking.alpha = 0;
         
     }
-    if( FoxDynamicRand == 18 ){
+    if( FoxDynamicRand == 19 ){
         FoxStanding.animations.play("FoxStanding",15,false);
         FoxStanding.alpha = 1;
         FoxStandingAnimate.onComplete.add(FoxStandingAnimateComplete, this);
@@ -789,14 +789,6 @@ function FoxTurnRightWalkingAnimateComplete(){
         //console.log(FoxDynamicRand+'TurnLeft');
     }
 
-    if( FoxDynamicRand == 19 ){
-        FoxTurnLeftWalking.animations.play("FoxTurnLeftWalking",15,false); 
-        FoxTurnLeftWalking.alpha = 1;
-        FoxTurnLeftWalkingAnimate.onComplete.add(FoxTurnLeftWalkingAnimateComplete, this);
-        
-        FoxTurnRightWalking.alpha = 0;
-
-    }
     if( FoxDynamicRand == 20 ){
         FoxTurnRightWalking.animations.play("FoxTurnRightWalking",15,false); 
         FoxTurnRightWalkingAnimate.onComplete.add(FoxTurnRightWalkingAnimateComplete, this);        
@@ -820,14 +812,14 @@ function FoxTurnLeftWalkingAnimateComplete(){
     }
     
     
-    if( FoxDynamicRand <= 17 ){
+    if( FoxDynamicRand <= 18 ){
         FoxTurnLeftStanding.animations.play("FoxTurnLeftStanding",15,false);
         FoxTurnLeftStandingAnimate.onComplete.add(FoxTurnLeftStandingAnimateComplete, this);
         FoxTurnLeftStanding.alpha = 1; 
         FoxTurnLeftWalking.alpha = 0;
         
     }
-    if( FoxDynamicRand == 18 ){
+    if( FoxDynamicRand == 19 ){
         FoxStanding.animations.play("FoxStanding",15,false);
         FoxStanding.alpha = 1;
         FoxStandingAnimate.onComplete.add(FoxStandingAnimateComplete, this);
@@ -835,16 +827,7 @@ function FoxTurnLeftWalkingAnimateComplete(){
         FoxTurnLeftWalking.alpha = 0;
         //console.log(FoxDynamicRand+'TurnLeft');
     }
-
-    if( FoxDynamicRand == 19 ){
-        FoxTurnRightWalking.animations.play("FoxTurnRightWalking",15,false); 
-        FoxTurnRightWalkingAnimate.onComplete.add(FoxTurnRightWalkingAnimateComplete, this);        
-        FoxTurnRightWalking.alpha = 1;
-        FoxTurnLeftWalking.alpha = 0;
-
-
-
-    }
+=
     if( FoxDynamicRand == 20 ){
         FoxTurnLeftWalking.animations.play("FoxTurnLeftWalking",15,false); 
         
