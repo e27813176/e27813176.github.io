@@ -827,7 +827,7 @@ function FoxTurnLeftWalkingAnimateComplete(){
         FoxTurnLeftWalking.alpha = 0;
         //console.log(FoxDynamicRand+'TurnLeft');
     }
-=
+
     if( FoxDynamicRand == 20 ){
         FoxTurnLeftWalking.animations.play("FoxTurnLeftWalking",15,false); 
         
