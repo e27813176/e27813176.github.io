@@ -1,0 +1,116 @@
+{"frames": [
+
+{
+	"filename": "FoxStanding_00000.png",
+	"frame": {"x":1701,"y":1,"w":189,"h":194},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":519,"y":457,"w":189,"h":194},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "FoxStanding_00001.png",
+	"frame": {"x":1,"y":1,"w":188,"h":195},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":519,"y":456,"w":188,"h":195},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "FoxStanding_00002.png",
+	"frame": {"x":571,"y":1,"w":187,"h":195},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":519,"y":456,"w":187,"h":195},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "FoxStanding_00003.png",
+	"frame": {"x":949,"y":1,"w":186,"h":195},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":519,"y":456,"w":186,"h":195},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "FoxStanding_00004.png",
+	"frame": {"x":1137,"y":1,"w":186,"h":195},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":519,"y":456,"w":186,"h":195},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "FoxStanding_00005.png",
+	"frame": {"x":1325,"y":1,"w":186,"h":195},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":519,"y":456,"w":186,"h":195},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "FoxStanding_00006.png",
+	"frame": {"x":1513,"y":1,"w":186,"h":195},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":519,"y":456,"w":186,"h":195},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "FoxStanding_00007.png",
+	"frame": {"x":760,"y":1,"w":187,"h":195},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":519,"y":456,"w":187,"h":195},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "FoxStanding_00008.png",
+	"frame": {"x":191,"y":1,"w":188,"h":195},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":519,"y":456,"w":188,"h":195},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "FoxStanding_00009.png",
+	"frame": {"x":381,"y":1,"w":188,"h":195},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":519,"y":456,"w":188,"h":195},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "FoxStanding_00010.png",
+	"frame": {"x":1701,"y":1,"w":189,"h":194},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":519,"y":457,"w":189,"h":194},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "FoxStanding_00011.png",
+	"frame": {"x":1701,"y":1,"w":189,"h":194},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":519,"y":457,"w":189,"h":194},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "FoxStandingHover.jpg",
+	"frame": {"x":1892,"y":1,"w":65,"h":143},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":65,"h":143},
+	"sourceSize": {"w":65,"h":143}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "FoxStanding.png",
+	"format": "RGBA8888",
+	"size": {"w":1958,"h":197},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:a3eec2c6903100f5dcbdee462559f3ba:0e5944ebcbaccccdc4656afd79290941:eb0be42321fc8778432bb2a4e5ebb348$"
+}
+}

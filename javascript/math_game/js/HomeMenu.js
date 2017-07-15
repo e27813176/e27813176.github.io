@@ -187,13 +187,13 @@ demo.HomeMenu.prototype = {
         SettingBtnSheet.onInputOut.add(SettingBtnOut, this);
         SettingBtnSheet.inputEnabled = false;
         SettingBtnSheet.alpha = 1;
-        
+        /*
         RoadBtn = game.add.button(300, 800, 'RoadHover', GoToFishingMenu);
         RoadBtn.onInputOver.add(RoadBtnOver, this);
         RoadBtn.onInputOut.add(RoadBtnOut, this);
         RoadBtn.inputEnabled = false;
         RoadBtn.alpha = 0;
-        
+        */
         //Text--------------------------------------------------------------------------------------------------------------------
         FoxHomeText = game.add.sprite(centerX,0,'FoxHomeText');
         FoxHomeText.anchor.setTo(0.5,0);
@@ -386,6 +386,18 @@ demo.HomeMenu.prototype = {
         ArrowSheet.animations.add("ArrowSheetDynamic",Phaser.Animation.generateFrameNames('ArrowSheet_',0,8,'.png',5),10,true);
         ArrowSheet.alpha = 0;
         
+        //Fox----------------------------------------------------------------------------------------------------------------------
+        FoxStanding = game.add.sprite(0,100,'FoxStanding');
+        FoxStanding.animations.add("FoxStandingDynamic",Phaser.Animation.generateFrameNames('FoxStanding_',0,11,'.png',5),10,true);
+        FoxStanding.animations.play("FoxStandingDynamic",15,true); 
+        
+        FoxStandingHover = game.add.sprite(535,600,'FoxStanding','FoxStandingHover.jpg');
+        FoxStandingHover.events.onInputDown.add(FoxStandingDown, this);
+        FoxStandingHover.events.onInputOver.add(FoxStandingOver, this);
+        FoxStandingHover.events.onInputOut.add(FoxStandingOut, this);
+        FoxStandingHover.inputEnabled = false;
+        FoxStandingHover.alpha = 0;
+        
         //sound-------------------------------------------------------------------------------------------------------------------
         rightFX = game.add.audio('rightFX');
         wrongFX = game.add.audio('wrongFX');
@@ -404,7 +416,7 @@ demo.HomeMenu.prototype = {
             HomeMailBtn.inputEnabled = true;
             SettingBtnSheet.inputEnabled = true;
             HomeTreeFrame1.inputEnabled = true; 
-            RoadBtn.inputEnabled = true;            
+            FoxStandingHover.inputEnabled = true;            
             /*
             if(FromInside == true){
                 DoorBtn.inputEnabled = true;
@@ -419,15 +431,15 @@ demo.HomeMenu.prototype = {
     },     
     update: function() {}    
 }
-function GoToFishingMenu(){
+function FoxStandingDown(){
     BlackClosingTween1 = game.add.tween(blackBG_opening).to({alpha:1},1000,'Quad.easeOut',true,0); 
     BlackClosingTween1.onComplete.add(function () {	
         game.state.start('LevelMap',true,true);
     }, this); 
 }
-function RoadBtnOver(){
-    ArrowSheet.x = -300;
-    ArrowSheet.y = 350;
+function FoxStandingOver(){
+    ArrowSheet.x = -232;
+    ArrowSheet.y = 120;
     ArrowSheet.animations.play("ArrowSheetDynamic",15,true);
     ArrowSheet.alpha = 1;
     
@@ -435,7 +447,7 @@ function RoadBtnOver(){
     BtnOver.play();
 
 }
-function RoadBtnOut(){
+function FoxStandingOut(){
     ArrowSheet.animations.stop();
     ArrowSheet.alpha = 0;    
 

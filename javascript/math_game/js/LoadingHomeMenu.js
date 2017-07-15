@@ -55,7 +55,11 @@ demo.LoadingHomeMenu.prototype = {
         game.load.image('HomeTreeText','javascript/math_game/assets/HomePage/HomeTreeText.jpg');
         game.load.image('FoxGoFishingText','javascript/math_game/assets/HomePage/FoxGoFishingText.jpg');       
         game.load.image('StartText','javascript/math_game/assets/loadingpage/StartText.png');        
-               /*        
+              
+        //Fox------------------------------------------------------------------------------------------------
+        game.load.atlas('FoxStanding', 'javascript/math_game/assets/HomePage/FoxStanding.png', 'javascript/math_game/assets/HomePage/FoxStanding.json'); 
+        
+        /*        
         game.load.atlas('fishingpage_sheet002', 'javascript/math_game/assets/fishingpage/fishingpage_atlas002.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas002.json');
         game.load.atlas('fishingpage_sheet003', 'javascript/math_game/assets/fishingpage/fishingpage_atlas003.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas003.json');
        
@@ -125,7 +129,7 @@ demo.LoadingHomeMenu.prototype = {
             FoxIconCenter.alpha = 0;
             game.add.tween(FoxIconCenter).to({alpha:1},1000,'Linear',true);
             //loadingBarTween.pause();
-            loadingBarTween = game.add.tween(loadingBar).to({alpha:'-0.5'},400,'Quad.easeInOut',true,0,false,true).loop(true); 
+            //loadingBarTween = game.add.tween(loadingBar).to({alpha:'-0.5'},400,'Quad.easeInOut',true,0,false,true).loop(true); 
             FoxLogoTween.pause();  
             game.add.tween(this.FoxLogo).to({alpha:0},500,'Linear',true);
         
@@ -156,7 +160,7 @@ function StartGame(){
     console.log('Hello');
     StartTextTween.stop();
     StartText.inputEnabled = false;
-    loadingBarTween.pause();
+    //loadingBarTween.pause();
     game.add.tween(loadingBar).to({alpha:0},500,'Linear',true);
     game.add.tween(LoadingBarFrame).to({alpha:0},500,'Linear',true);
     game.add.tween(FoxIconCenter).to({alpha:0},500,'Linear',true);
