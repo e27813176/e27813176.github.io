@@ -3,6 +3,7 @@ demo.HomeMenu = function() {};
 demo.HomeMenu.prototype = {
     init: function(){
        
+        FoxDynamicRand = Math.floor(Math.random() * 11);
         scorebarX = 1450;
         scorebarY = 500;
         buttonpositionY = 500;
@@ -366,6 +367,46 @@ demo.HomeMenu.prototype = {
 
         }        
         */
+        //FoxDynamic----------------------------------------------------------------------------------------------------------------------
+        
+        FoxStanding = game.add.sprite(0,100,'FoxStanding');
+        FoxStandingAnimate = FoxStanding.animations.add("FoxStanding",Phaser.Animation.generateFrameNames('FoxStanding_',0,11,'.png',5),10,true);
+
+        FoxStanding.alpha = 0;
+        
+        //FoxTurnLeft--------------------------------------------------------------------------------------------------------------
+        FoxTurnLeftStanding = game.add.sprite(0,100,'FoxStanding');
+        FoxTurnLeftStandingAnimate = FoxTurnLeftStanding.animations.add("FoxTurnLeftStanding",Phaser.Animation.generateFrameNames('FoxTurnLeftStanding_',0,11,'.png',5),10,true);
+        
+        FoxTurnLeftStanding.alpha = 0;
+
+        FoxTurnLeftWalking = game.add.sprite(0,100,'FoxStanding');
+        FoxTurnLeftWalkingAnimate = FoxTurnLeftWalking.animations.add("FoxTurnLeftWalking",Phaser.Animation.generateFrameNames('FoxTurnLeftWalking_',12,30,'.png',5),10,true);      
+        FoxTurnLeftWalking.alpha = 0;       
+        
+        //FoxTurnRight--------------------------------------------------------------------------------------------------------------
+        FoxTurnRightStanding = game.add.sprite(0,100,'FoxStanding');
+        FoxTurnRightStandingAnimate = FoxTurnRightStanding.animations.add("FoxTurnRightStanding",Phaser.Animation.generateFrameNames('FoxTurnRightStanding_',0,11,'.png',5),10,true);
+             
+        FoxTurnRightStanding.alpha = 0;
+ 
+        FoxTurnRightWalking = game.add.sprite(0,100,'FoxStanding');
+        FoxTurnRightWalkingAnimate = FoxTurnRightWalking.animations.add("FoxTurnRightWalking",Phaser.Animation.generateFrameNames('FoxTurnRightWalking_',12,30,'.png',5),10,true);
+     
+        FoxTurnRightWalking.alpha = 0;        
+        
+        
+        FoxStandingHover = game.add.sprite(535,600,'FoxStanding','FoxStandingHover.jpg');
+        FoxStandingHover.events.onInputDown.add(FoxStandingDown, this);
+        FoxStandingHover.events.onInputOver.add(FoxStandingOver, this);
+        FoxStandingHover.events.onInputOut.add(FoxStandingOut, this);
+        FoxStandingHover.inputEnabled = false;
+        FoxStandingHover.alpha = 0;
+        
+        FoxDynamic();        
+        
+        
+        
         //animation----------------------------------------------------------------------------------------------------------------------
         
         HomeTreeFrame1 = game.add.button(1,159, 'HomeTreeFrame1', HomePageTree);
@@ -386,18 +427,7 @@ demo.HomeMenu.prototype = {
         ArrowSheet.animations.add("ArrowSheetDynamic",Phaser.Animation.generateFrameNames('ArrowSheet_',0,8,'.png',5),10,true);
         ArrowSheet.alpha = 0;
         
-        //Fox----------------------------------------------------------------------------------------------------------------------
-        FoxStanding = game.add.sprite(0,100,'FoxStanding');
-        FoxStanding.animations.add("FoxStandingDynamic",Phaser.Animation.generateFrameNames('FoxStanding_',0,11,'.png',5),10,true);
-        FoxStanding.animations.play("FoxStandingDynamic",15,true); 
-        
-        FoxStandingHover = game.add.sprite(535,600,'FoxStanding','FoxStandingHover.jpg');
-        FoxStandingHover.events.onInputDown.add(FoxStandingDown, this);
-        FoxStandingHover.events.onInputOver.add(FoxStandingOver, this);
-        FoxStandingHover.events.onInputOut.add(FoxStandingOut, this);
-        FoxStandingHover.inputEnabled = false;
-        FoxStandingHover.alpha = 0;
-        
+
         //sound-------------------------------------------------------------------------------------------------------------------
         rightFX = game.add.audio('rightFX');
         wrongFX = game.add.audio('wrongFX');
@@ -415,7 +445,7 @@ demo.HomeMenu.prototype = {
             DoorBtn.inputEnabled = true;
             HomeMailBtn.inputEnabled = true;
             SettingBtnSheet.inputEnabled = true;
-            HomeTreeFrame1.inputEnabled = true; 
+            //HomeTreeFrame1.inputEnabled = true; 
             FoxStandingHover.inputEnabled = true;            
             /*
             if(FromInside == true){
@@ -438,7 +468,7 @@ function FoxStandingDown(){
     }, this); 
 }
 function FoxStandingOver(){
-    ArrowSheet.x = -232;
+    ArrowSheet.x = FoxStanding.x -232;
     ArrowSheet.y = 120;
     ArrowSheet.animations.play("ArrowSheetDynamic",15,true);
     ArrowSheet.alpha = 1;
@@ -577,3 +607,247 @@ function completed_fishingpage_center_tween(){
     game.state.start('fishingLevel');
 }
 */
+
+function FoxDynamic(){
+    
+    console.log(FoxDynamicRand);
+    if( FoxDynamicRand <= 2 ){
+        FoxStanding.animations.play("FoxStanding",15,false);
+        FoxStanding.alpha = 1;
+        FoxStandingAnimate.onComplete.add(FoxStandingAnimateComplete, this); ;
+        
+    }
+    if( FoxDynamicRand <= 5 && FoxDynamicRand >= 3 ){
+        FoxTurnLeftStanding.animations.play("FoxTurnLeftStanding",15,false);
+        FoxTurnLeftStanding.alpha = 1;
+        FoxTurnLeftStandingAnimate.onComplete.add(FoxTurnLeftStandingAnimateComplete, this);
+        
+        //console.log(FoxDynamicRand+'TurnLeft');
+    }
+    if( FoxDynamicRand <= 8 && FoxDynamicRand >= 6 ){
+        FoxTurnRightStanding.animations.play("FoxTurnRightStanding",15,false);
+        FoxTurnRightStanding.alpha = 1;
+        FoxTurnRightStandingAnimate.onComplete.add(FoxTurnRightStandingAnimateComplete, this);       
+        //console.log(FoxDynamicRand+'TurnRight');
+    }
+    if( FoxDynamicRand == 9 ){
+        FoxTurnRightWalking.animations.play("FoxTurnRightWalking",15,false); 
+        FoxTurnRightWalking.alpha = 1;
+        FoxTurnRightWalkingAnimate.onComplete.add(FoxTurnRightWalkingAnimateComplete, this);
+    }
+    if( FoxDynamicRand == 10 ){
+        FoxTurnLeftWalking.animations.play("FoxTurnLeftWalking",15,false); 
+        FoxTurnLeftWalking.alpha = 1;
+        FoxTurnLeftWalkingAnimate.onComplete.add(FoxTurnLeftWalkingAnimateComplete, this);
+        
+    }
+}
+function FoxStandingAnimateComplete(){
+    FoxStandingHover.inputEnabled = true;
+    FoxDynamicRand = Math.floor(Math.random() * 21);
+    if( FoxDynamicRand <= 16 ){
+        FoxStanding.animations.play("FoxStanding",15,false);
+        FoxStandingAnimate.onComplete.add(FoxStandingAnimateComplete, this);
+        
+    }
+    if( FoxDynamicRand == 17 ){
+        FoxTurnLeftStanding.animations.play("FoxTurnLeftStanding",15,false);
+        FoxTurnLeftStanding.alpha = 1;
+        FoxTurnLeftStandingAnimate.onComplete.add(FoxTurnLeftStandingAnimateComplete, this);
+
+        FoxStanding.alpha = 0;
+        //console.log(FoxDynamicRand+'TurnLeft');
+    }
+    if( FoxDynamicRand == 18 ){
+        FoxTurnRightStanding.animations.play("FoxTurnRightStanding",15,false);
+        FoxTurnRightStanding.alpha = 1;
+        FoxTurnRightStandingAnimate.onComplete.add(FoxTurnRightStandingAnimateComplete, this);       
+        
+        FoxStanding.alpha = 0;
+        //console.log(FoxDynamicRand+'TurnRight');
+    }
+    
+    if( FoxDynamicRand == 19 ){
+        if( FoxStanding.x == -200 ){
+            FoxStanding.animations.play("FoxStanding",15,false);
+            FoxStandingAnimate.onComplete.add(FoxStandingAnimateComplete, this);        
+        }else{
+            FoxTurnRightWalking.animations.play("FoxTurnRightWalking",15,false); 
+            FoxTurnRightWalking.alpha = 1;
+            FoxTurnRightWalkingAnimate.onComplete.add(FoxTurnRightWalkingAnimateComplete, this);
+    
+            FoxStanding.alpha = 0;           
+        }
+
+    }
+    if( FoxDynamicRand == 20 ){
+        if( FoxStanding.x == 200 ){
+            FoxStanding.animations.play("FoxStanding",15,false);
+            FoxStandingAnimate.onComplete.add(FoxStandingAnimateComplete, this);        
+        }else{
+            FoxTurnLeftWalking.animations.play("FoxTurnLeftWalking",15,false); 
+            FoxTurnLeftWalking.alpha = 1;
+            FoxTurnLeftWalkingAnimate.onComplete.add(FoxTurnLeftWalkingAnimateComplete, this);
+        
+            FoxStanding.alpha = 0;            
+        }        
+
+    } 
+    
+}
+function FoxTurnLeftStandingAnimateComplete(){
+    FoxStandingHover.inputEnabled = true;
+    if( FoxStanding.x == 0 || FoxStanding.x == -200 ){
+        FoxDynamicRand = Math.floor(Math.random() * 21);   
+    }else{
+        FoxDynamicRand = Math.floor(Math.random() * 20);
+    }   
+    
+    if( FoxDynamicRand <= 18 ){
+        FoxTurnLeftStanding.animations.play("FoxTurnLeftStanding",15,false);
+        FoxTurnLeftStandingAnimate.onComplete.add(FoxTurnLeftStandingAnimateComplete, this); ;
+        
+    }
+    if( FoxDynamicRand == 19 ){
+        FoxStanding.animations.play("FoxStanding",15,false);
+        FoxStanding.alpha = 1;
+        FoxStandingAnimate.onComplete.add(FoxStandingAnimateComplete, this);
+
+        FoxTurnLeftStanding.alpha = 0;
+        //console.log(FoxDynamicRand+'TurnLeft');
+    }
+
+    if( FoxDynamicRand == 20 ){
+        FoxTurnLeftWalking.animations.play("FoxTurnLeftWalking",15,false); 
+        FoxTurnLeftWalking.alpha = 1;
+        FoxTurnLeftWalkingAnimate.onComplete.add(FoxTurnLeftWalkingAnimateComplete, this);
+        
+        FoxTurnLeftStanding.alpha = 0;
+    }    
+}
+function FoxTurnRightStandingAnimateComplete(){
+    FoxStandingHover.inputEnabled = true;
+    if( FoxStanding.x == 0 || FoxStanding.x == 200 ){
+        FoxDynamicRand = Math.floor(Math.random() * 21);   
+    }else{
+        FoxDynamicRand = Math.floor(Math.random() * 20);
+    }   
+    
+    if( FoxDynamicRand <= 18 ){
+        FoxTurnRightStanding.animations.play("FoxTurnRightStanding",15,false);
+        FoxTurnRightStandingAnimate.onComplete.add(FoxTurnRightStandingAnimateComplete, this); ;
+        
+    }
+    if( FoxDynamicRand == 19 ){
+        FoxStanding.animations.play("FoxStanding",15,false);
+        FoxStanding.alpha = 1;
+        FoxStandingAnimate.onComplete.add(FoxStandingAnimateComplete, this);
+
+        FoxTurnRightStanding.alpha = 0;
+        //console.log(FoxDynamicRand+'TurnLeft');
+    }
+
+    if( FoxDynamicRand == 20 ){
+        FoxTurnRightWalking.animations.play("FoxTurnRightWalking",15,false); 
+        FoxTurnRightWalking.alpha = 1;
+        FoxTurnRightWalkingAnimate.onComplete.add(FoxTurnRightWalkingAnimateComplete, this);
+    
+        FoxTurnRightStanding.alpha = 0;
+    }
+
+}
+function FoxTurnRightWalkingAnimateComplete(){
+    FoxStandingHover.inputEnabled = false;
+    FoxTurnLeftStanding.x -= 200;
+    FoxTurnRightStanding.x -= 200;
+    FoxStanding.x -= 200;
+    FoxTurnRightWalking.x -= 200;
+    FoxTurnLeftWalking.x -= 200;
+    FoxStandingHover.x -= 200;
+
+    
+    if( FoxStanding.x == 0){
+        FoxDynamicRand = Math.floor(Math.random() * 21);   
+    }else{
+        FoxDynamicRand = Math.floor(Math.random() * 20);
+    }    
+    
+    FoxDynamicRand = Math.floor(Math.random() * 21);
+    if( FoxDynamicRand <= 17 ){
+        FoxTurnRightStanding.animations.play("FoxTurnRightStanding",15,false);
+        FoxTurnRightStandingAnimate.onComplete.add(FoxTurnRightStandingAnimateComplete, this);
+        FoxTurnRightStanding.alpha = 1; 
+        FoxTurnRightWalking.alpha = 0;
+        
+    }
+    if( FoxDynamicRand == 18 ){
+        FoxStanding.animations.play("FoxStanding",15,false);
+        FoxStanding.alpha = 1;
+        FoxStandingAnimate.onComplete.add(FoxStandingAnimateComplete, this);
+
+        FoxTurnRightWalking.alpha = 0;
+        //console.log(FoxDynamicRand+'TurnLeft');
+    }
+
+    if( FoxDynamicRand == 19 ){
+        FoxTurnLeftWalking.animations.play("FoxTurnLeftWalking",15,false); 
+        FoxTurnLeftWalking.alpha = 1;
+        FoxTurnLeftWalkingAnimate.onComplete.add(FoxTurnLeftWalkingAnimateComplete, this);
+        
+        FoxTurnRightWalking.alpha = 0;
+
+    }
+    if( FoxDynamicRand == 20 ){
+        FoxTurnRightWalking.animations.play("FoxTurnRightWalking",15,false); 
+        FoxTurnRightWalkingAnimate.onComplete.add(FoxTurnRightWalkingAnimateComplete, this);        
+
+    }     
+}
+function FoxTurnLeftWalkingAnimateComplete(){
+    FoxStandingHover.inputEnabled = false;
+    FoxTurnLeftStanding.x += 200;
+    FoxTurnRightStanding.x += 200;
+    FoxStanding.x += 200;
+    FoxTurnRightWalking.x += 200;
+    FoxTurnLeftWalking.x += 200;
+    FoxStandingHover.x += 200;
+
+    
+    if( FoxStanding.x == 0){
+        FoxDynamicRand = Math.floor(Math.random() * 21);   
+    }else{
+        FoxDynamicRand = Math.floor(Math.random() * 20);
+    }
+    
+    
+    if( FoxDynamicRand <= 17 ){
+        FoxTurnLeftStanding.animations.play("FoxTurnLeftStanding",15,false);
+        FoxTurnLeftStandingAnimate.onComplete.add(FoxTurnLeftStandingAnimateComplete, this);
+        FoxTurnLeftStanding.alpha = 1; 
+        FoxTurnLeftWalking.alpha = 0;
+        
+    }
+    if( FoxDynamicRand == 18 ){
+        FoxStanding.animations.play("FoxStanding",15,false);
+        FoxStanding.alpha = 1;
+        FoxStandingAnimate.onComplete.add(FoxStandingAnimateComplete, this);
+
+        FoxTurnLeftWalking.alpha = 0;
+        //console.log(FoxDynamicRand+'TurnLeft');
+    }
+
+    if( FoxDynamicRand == 19 ){
+        FoxTurnRightWalking.animations.play("FoxTurnRightWalking",15,false); 
+        FoxTurnRightWalkingAnimate.onComplete.add(FoxTurnRightWalkingAnimateComplete, this);        
+        FoxTurnRightWalking.alpha = 1;
+        FoxTurnLeftWalking.alpha = 0;
+
+
+
+    }
+    if( FoxDynamicRand == 20 ){
+        FoxTurnLeftWalking.animations.play("FoxTurnLeftWalking",15,false); 
+        
+        FoxTurnLeftWalkingAnimate.onComplete.add(FoxTurnLeftWalkingAnimateComplete, this);        
+    }    
+}
