@@ -367,6 +367,22 @@ demo.HomeMenu.prototype = {
 
         }        
         */
+        
+        HomeTreeFrame1 = game.add.sprite(-10,100, 'HomePageTreeSheet','HomeTree_00001.png');
+        HomeTreeFrame1.alpha = 1;
+        
+        HomeTreeBtn = game.add.sprite(40,250, 'HomeTreeHover');
+        //HomeTreeBtn.events.onInputDown.add(HomeTreeBtnDown, this);
+        HomeTreeBtn.events.onInputOver.add(HomeTreeBtnOver, this);
+        HomeTreeBtn.events.onInputOut.add(HomeTreeBtnOut, this);
+        HomeTreeBtn.events.onInputUp.add(HomeTreeBtnUp, this);
+        HomeTreeBtn.inputEnabled = false; 
+        HomeTreeBtn.alpha = 0; 
+        
+        
+        HomeTreeAnimate = game.add.sprite(-10,100,'HomePageTreeSheet');
+        HomeTreeAnimate.animations.add("HomeTreeDynamic",Phaser.Animation.generateFrameNames('HomeTree_',0,8,'.png',5),10,true);
+        HomeTreeAnimate.alpha = 0;        
         //FoxDynamic----------------------------------------------------------------------------------------------------------------------
         
         FoxStanding = game.add.sprite(0,100,'FoxStanding');
@@ -409,16 +425,7 @@ demo.HomeMenu.prototype = {
         
         //animation----------------------------------------------------------------------------------------------------------------------
         
-        HomeTreeFrame1 = game.add.button(1,159, 'HomeTreeFrame1', HomePageTree);
-        HomeTreeFrame1.onInputOver.add(HomeTreeBtnOver, this);
-        HomeTreeFrame1.onInputOut.add(HomeTreeBtnOut, this);
-        HomeTreeFrame1.onInputUp.add(HomeTreeBtnUp, this);
-        HomeTreeFrame1.inputEnabled = false; 
-        HomeTreeFrame1.alpha = 1;
-        
-        HomeTreeAnimate = game.add.sprite(0,100,'HomePageTreeSheet');
-        HomeTreeAnimate.animations.add("HomeTreeDynamic",Phaser.Animation.generateFrameNames('HomeTree_',0,14,'.png',5),10,true);
-        HomeTreeAnimate.alpha = 0;
+
         
         grass = game.add.sprite(0,100,'grass');
         
@@ -445,7 +452,7 @@ demo.HomeMenu.prototype = {
             DoorBtn.inputEnabled = true;
             HomeMailBtn.inputEnabled = true;
             SettingBtnSheet.inputEnabled = true;
-            //HomeTreeFrame1.inputEnabled = true; 
+            HomeTreeBtn.inputEnabled = true; 
             FoxStandingHover.inputEnabled = true;            
             /*
             if(FromInside == true){
@@ -485,9 +492,7 @@ function FoxStandingOut(){
 
 }
 
-function HomePageTree(){
-    
-}
+
 function HomeTreeBtnUp(){
      
     HomeTreeFrame1.alpha = 0;
@@ -499,8 +504,8 @@ function HomeTreeBtnUp(){
     }, this);
 }
 function HomeTreeBtnOver(){
-    ArrowSheet.x = -600;
-    ArrowSheet.y = -160;
+    ArrowSheet.x = -700;
+    ArrowSheet.y = -200;
     ArrowSheet.animations.play("ArrowSheetDynamic",15,true);
     ArrowSheet.alpha = 1;
     game.add.tween(HomeTreeText).to({y:150},500,'Quad.easeOut',true,0); 
