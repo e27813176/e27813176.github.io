@@ -1,4 +1,6 @@
-
+var demo = {};
+var centerX = 1600 / 2,
+    centerY = 1000 / 2;
 demo.GameBootPage = function() {};
 demo.GameBootPage.prototype = {
     init: function(){

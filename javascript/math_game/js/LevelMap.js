@@ -143,7 +143,7 @@ function HomeBtnOut(){
 
 //Tutorial page function----------------------------------------------------------------------------------------------------
 function TutorialBtnDown(){
-    //game.state.start('GameBootPage');
+    game.state.start('Tutorial');
 }
 function TutorialBtnOver(){
     TutorialBtnHover.alpha = 1;

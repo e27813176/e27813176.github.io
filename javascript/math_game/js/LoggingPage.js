@@ -18,7 +18,12 @@ demo.LoggingPage = {
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
         game.stage.backgroundColor = "#100010";
         game.add.sprite(0,100,'LoggingPage')
-        
+        //sound----------------------------------------------------------------------------------------------------------------
+      
+        rightFX = game.add.audio('rightFX');
+        Logging = game.add.audio('Logging');
+        LoggingBounce = game.add.audio('LoggingBounce');
+                
         //FoxBounceAnimation------------------------------------------------------------------------------------------------------
         FoxBounce001 = game.add.sprite(-10,100,'FoxBounce001');
         FoxBounce001Animation = FoxBounce001.animations.add("FoxBounce001Dynamic",Phaser.Animation.generateFrameNames('FoxBounce_',100,128,'.png',5),10,true);
@@ -29,7 +34,8 @@ demo.LoggingPage = {
         FoxBounce002.alpha = 0;
         
          
-        FoxBounce001Animation.onComplete.add(function () {	
+        FoxBounce001Animation.onComplete.add(function () {
+            //LoggingBounce.play();
             FoxBounce001.alpha = 0;
             FoxBounce002.alpha = 1;
             FoxBounce002.animations.play("FoxBounce002Dynamic",15,false);
@@ -76,6 +82,7 @@ demo.LoggingPage = {
 
         
         FoxLogging001Animation.onComplete.add(function () {	
+            Logging.play();
             FoxLogging001.alpha = 0;
             FoxLogging002.alpha = 1;
             FoxLogging002.animations.play("FoxLogging002Dynamic",30,false);
@@ -217,10 +224,7 @@ demo.LoggingPage = {
         ScoreBoardSeal = game.add.sprite(800,500,'ScoreBoard','ScoreBoardSeal.png');
         ScoreBoardSeal.anchor.set(0.5);
         ScoreBoardSeal.alpha = 0; 
-        //sound----------------------------------------------------------------------------------------------------------------
-      
-        rightFX = game.add.audio('rightFX');     
-        
+
         //BlackBGOpening-----------------------------------------------------------------------------------------
         BlackBGOpening = game.add.sprite(0,100,'BlackBG');
         BlackBGOpening.alpha = 1;

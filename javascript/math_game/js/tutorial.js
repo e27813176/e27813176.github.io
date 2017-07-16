@@ -1,3 +1,181 @@
+var AnswerNum = new Array();
+var AnswerTutorialNumber;
+demo.Tutorial = function() {};
+demo.Tutorial.prototype = {
+    preload: function() {
+       
+        game.load.image('TutorialBG','javascript/math_game/assets/Tutorial/TutorialBG.jpg');
+        
+        //Panel-----------------------------------------------------------------------------------------------------------------------
+        game.load.atlas('Panel', 'javascript/math_game/assets/Tutorial/Panel.png', 'javascript/math_game/assets/Tutorial/Panel.json');
+        //audio-----------------------------------------------------------------------------------------------------------------------   
+        game.load.audio('RightFX', 'javascript/math_game/assets/audio/rightFX.mp3');
+        game.load.audio('WrongFX', 'javascript/math_game/assets/audio/wrongFX.mp3');
+        game.load.audio('StartFX', 'javascript/math_game/assets/audio/startFX.mp3');
+        game.load.audio('ClickFX', 'javascript/math_game/assets/audio/clickFX.mp3');
+    },
+
+    create: function() {
+        game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+                
+        //sound----------------------------------------------------------------------------------------------------------------
+        RightFX = game.add.audio('RightFX');
+        WrongFX = game.add.audio('WrongFX');
+        StartFX = game.add.audio('StartFX');
+        ClickFX = game.add.audio('ClickFX');
+
+        
+        //BG---------------------------------------------------------------
+        game.add.sprite(0,100,'TutorialBG');
+        //Btn------------------------------------------------------------
+        StartTutorialBtn = game.add.sprite(centerX+110,centerY,'Panel','StartPanel.png');
+        StartTutorialBtn.anchor.setTo(0.5);
+        StartTutorialBtn.events.onInputDown.add(StartTutorialBtnDown, this);
+        StartTutorialBtn.events.onInputOver.add(StartTutorialBtnOver, this);
+        StartTutorialBtn.events.onInputOut.add(StartTutorialBtnOut, this);
+        StartTutorialBtn.inputEnabled = true;
+        
+        BackTutorialBtn = game.add.sprite(centerX-90,centerY,'Panel','BackPanel.png');
+        BackTutorialBtn.anchor.setTo(0.5);
+        BackTutorialBtn.events.onInputDown.add(BackTutorialBtnDown, this);
+        BackTutorialBtn.events.onInputOver.add(BackTutorialBtnOver, this);
+        BackTutorialBtn.events.onInputOut.add(BackTutorialBtnOut, this);
+        BackTutorialBtn.inputEnabled = true;
+        
+        //Panel----------------------------------------------------------------------
+        QuestionTutorialPanel = game.add.sprite(0,100,'Panel','QuestionPanel.png');
+        QuestionTutorialPanel.alpha = 0;
+
+      
+        for(let i = 0;i<5;i++){
+            AnswerPanel[i] = game.add.sprite(centerX-130-200+100*i,centerY+150,'Panel','AnswerPanel.png');
+            AnswerPanel[i].anchor.setTo(0.5);
+            AnswerPanel[i].alpha = 0;
+            AnswerPanel[i].events.onInputDown.add(AnswerTutorialPanelDown, this);
+            AnswerPanel[i].inputEnabled = false;
+            AnswerPanel[i].variable = i+1; 
+        }            
+        AnswerPanelLight = game.add.sprite(0,0,'Panel','AnswerPanelLight.png');
+        AnswerPanelLight.anchor.setTo(0.5);
+        AnswerPanelLight.alpha = 1;
+        AnswerPanelLightTween = game.add.tween(AnswerPanelLight).to({alpha:0.2},500,'Linear',true,0,false,true).loop(true);
+        AnswerPanelLightTween.pause();
+        
+        AnswerPanelLight.alpha = 0;
+    },
+    update: function() {}
+    
+};
+function BackTutorialBtnDown(){
+    game.state.start('LevelMap',true,true); 
+}
+function BackTutorialBtnOver(){}
+function BackTutorialBtnOut(){}
+
+function StartTutorialBtnDown(){
+    game.add.tween(StartTutorialBtn).to({alpha:0},500,'Linear',true);
+    game.add.tween(BackTutorialBtn).to({alpha:0},500,'Linear',true);
+
+    StartTutorialBtn.inputEnabled = false;
+    BackTutorialBtn.inputEnabled = false;
+    
+    QuestionTutorialPanelTween = game.add.tween(QuestionTutorialPanel).to({alpha:1},500,'Linear',true,1000);
+    QuestionTutorialPanelTween.onComplete.add(function(){
+        var style = { font: "60px Arial", fill: "#ffffff", align: "center" };      
+        var equation = createEquation('Tutorial');
+        AnswerTutorialNumber = equation[2];
+        console.log(equation);
+        NumSum = game.add.text(centerX-140,centerY-115,'?', style);
+        NumSum.anchor.set(0.5);
+        NumTutorialSum = game.add.text(centerX-140,centerY-115,'?', style);
+        NumTutorialSum.anchor.set(0.5);
+    
+        NumAdd1 = game.add.text(centerX-240,centerY-20,equation[0], style);
+        NumAdd1.anchor.set(0.5);    
+        NumTutorialAdd1 = game.add.text(centerX-240,centerY-20,equation[0], style);
+        NumTutorialAdd1.anchor.set(0.5);
+
+        NumAdd2 = game.add.text(centerX-40,centerY-20,equation[1], style);
+        NumAdd2.anchor.set(0.5); 
+        NumTutorialAdd2 = game.add.text(centerX-40,centerY-20,equation[1], style);
+        NumTutorialAdd2.anchor.set(0.5);
+        
+        for(let i = 0;i<5;i++){
+            AnswerNum[i] = game.add.text(centerX-136-200+100*i,centerY+148,i+1, style);
+            AnswerNum[i].anchor.setTo(0.5);
+            AnswerNum[i].alpha = 0;
+            game.add.tween(AnswerNum[i]).to({alpha:1},500,'Linear',true);
+            
+            game.add.tween(AnswerPanel[i]).to({alpha:1},500,'Linear',true);        
+           
+        }
+        
+        game.add.tween(NumTutorialAdd1).to({x:1000},1000,'Quad.easeOut',true,1000);
+        game.add.tween(NumTutorialAdd2).to({x:1100},1000,'Quad.easeOut',true,1000);
+        
+        Add = game.add.text(1050,centerY-20,'+', style);
+        Add.anchor.set(0.5);    
+        Add.alpha = 0;
+        
+        Equal = game.add.text(1150,centerY-20,'=', style);
+        Equal.anchor.set(0.5);    
+        Equal.alpha = 0;
+        
+        game.add.tween(Add).to({alpha:1},500,Phaser.Easing.Elastic.Out,true,2000);        
+        game.add.tween(Equal).to({alpha:1},500,Phaser.Easing.Elastic.Out,true,2000);        
+
+        NumTutorialSumTween = game.add.tween(NumTutorialSum).to({x:1200,y:centerY-20},1000,'Quad.easeOut',true,3000);        
+        NumTutorialSumTween.onComplete.add(function(){
+         
+            AnswerPanelLight.x = centerX-130-200+100*( equation[2] - 1 );
+            AnswerPanelLight.y = centerY+150;
+            AnswerPanelLight.alpha = 1;
+            AnswerPanelLightTween.resume();
+            for(let i = 0;i<5;i++){
+                AnswerPanel[i].inputEnabled = true;
+                
+            }
+        },this);
+    
+    },this);
+    
+}
+function StartTutorialBtnOver(){}
+function StartTutorialBtnOut(){}
+
+function AnswerTutorialPanelDown(AnswerPanel){
+    
+    if( AnswerPanel.variable == AnswerTutorialNumber ){
+        CorrectTutorial();
+    }else{
+        WrongFX.play();
+        
+    }
+    console.log(AnswerPanel.variable);
+    //console.log(equation[2]);
+}
+function CorrectTutorial(){
+    RightFX.play();
+    for(let i = 0;i<5;i++){
+        AnswerPanel[i].inputEnabled = false;            
+    }
+    AnswerPanelLightTween.pause();
+    AnswerPanelLight.alpha = 0;
+    Add.alpha = 0;
+    Equal.alpha = 0;
+    NumTutorialAdd1.alpha = 0;
+    NumTutorialAdd2.alpha = 0;
+    NumTutorialSum.alpha = 0;
+    var style = { font: "50px Arial", fill: "#ffffff", align: "center" };
+    
+    CorrectText = game.add.text(1070,centerY-20,'答對囉!!!', style);
+    CorrectText.anchor.set(0.5);
+    CorrectText.alpha = 0;
+    game.add.tween(CorrectText).to({alpha:1},500,Phaser.Easing.Elastic.Out,true);         
+}
+
+/*
+
 
 
 function start_tutorial(){
@@ -33,6 +211,7 @@ function completed_mark_tutorial_show_up_tween(){
     get_fish_tutorial_tween = game.add.tween(get_fish_tutorial).to({alpha:'-0.2'},400,'Quad.easeInOut',true,0,false,true).loop(true);
 }
 */
+/*
 function completed_button_tutorial_sheet_tween(){
 
     
@@ -274,3 +453,4 @@ function completed_start_game_text_tween(){
     game.add.tween(button_tutorial_sheet).to({alpha:1},500,'Linear',true);
     button_start_sheet.inputEnabled = true;
 }
+*/

@@ -14,7 +14,28 @@ function createEquation(level){
     if( level == 20 ){
         return createFishingEquation();
     }
+    if( level == 'Tutorial' ){
+        return createTutorialEquation();
         
+    }
+}
+function createTutorialEquation(){
+    var numberA;
+    var numberB;
+
+    var numberSum = 100;
+    while (numberSum > 5) {
+
+     
+        numberA = Math.floor(Math.random() * 5) + 1;
+        numberB = Math.floor(Math.random() * 5) + 1;
+
+        numberSum = numberA + numberB;
+    }
+            
+
+    var plusEquation = [numberA, numberB, numberSum];
+    return plusEquation;
     
 }
 function createFishingEquation() {

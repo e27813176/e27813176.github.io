@@ -1,5 +1,7 @@
+
+
 var game = new Phaser.Game(1600, 1000, Phaser.AUTO,"phaser-canvas");
-game.state.add("startpage", demo.startpage);
+//game.state.add("startpage", demo.startpage);
 game.state.add("GameBootPage", demo.GameBootPage);
 game.state.add("HomePage", demo.HomePage);
 
@@ -16,6 +18,8 @@ game.state.add("state6", demo.state6);
 game.state.add("state7", demo.state7);
 game.state.add("state8", demo.state8);
 game.state.add("state9", demo.state9);
+game.state.add("Tutorial", demo.Tutorial);
+
 game.state.add("loadingpage", demo.loadingpage);
 
 
@@ -38,8 +42,10 @@ game.state.add("HomeInsidePage", demo.HomeInsidePage);
 game.state.add("LevelMap", demo.LevelMap);
 
 
-game.state.start("GameBootPage");
+//game.state.start("GameBootPage");
 //game.state.start("LoadingFishingPage");
 //game.state.start("LevelMap");
 //game.state.start("AxPage");
 //game.state.start("LoggingPage");
+
+game.state.start("Tutorial");
