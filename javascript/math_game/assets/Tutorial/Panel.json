@@ -2,7 +2,7 @@
 
 {
 	"filename": "AnswerPanel.png",
-	"frame": {"x":1,"y":231,"w":85,"h":92},
+	"frame": {"x":321,"y":321,"w":85,"h":92},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":85,"h":92},
@@ -10,7 +10,7 @@
 },
 {
 	"filename": "AnswerPanelLight.png",
-	"frame": {"x":88,"y":231,"w":85,"h":92},
+	"frame": {"x":408,"y":321,"w":85,"h":92},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":85,"h":92},
@@ -19,6 +19,22 @@
 {
 	"filename": "BackPanel.png",
 	"frame": {"x":329,"y":1,"w":158,"h":158},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":158,"h":158},
+	"sourceSize": {"w":158,"h":158}
+},
+{
+	"filename": "ContinuePanel.png",
+	"frame": {"x":329,"y":161,"w":158,"h":158},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":158,"h":158},
+	"sourceSize": {"w":158,"h":158}
+},
+{
+	"filename": "HomePanel.png",
+	"frame": {"x":1,"y":231,"w":158,"h":158},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":158,"h":158},
@@ -34,7 +50,7 @@
 },
 {
 	"filename": "StartPanel.png",
-	"frame": {"x":329,"y":161,"w":158,"h":158},
+	"frame": {"x":161,"y":231,"w":158,"h":158},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":158,"h":158},
@@ -45,8 +61,8 @@
 	"version": "1.0",
 	"image": "Panel.png",
 	"format": "RGBA8888",
-	"size": {"w":488,"h":324},
+	"size": {"w":494,"h":414},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:23254f44ff8ccfffdc6da34aa88a1b5e:cdb4b2e49dfed553c3b9e891c67984be:484f28e93f06386cc2110410f9ccc8a0$"
+	"smartupdate": "$TexturePacker:SmartUpdate:a094c970da44dd1fd2882ee2234a9276:c95b1efcb6388876e41c4236ee48fcd1:484f28e93f06386cc2110410f9ccc8a0$"
 }
 }

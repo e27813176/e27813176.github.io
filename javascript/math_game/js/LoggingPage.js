@@ -151,12 +151,18 @@ demo.LoggingPage = {
         //AxBar------------------------------------------------------------------------------------------------------
         AxBarBG = game.add.sprite(100,100,'AxBar','AxBarBG.png');
         AxBarBG.alpha = 0;
+        //Bar---------------------------------------------------------------------------------------------------------------
         AxBarSharp = game.add.sprite(AxBarX,100,'AxBar','AxBarSharp.png');
         AxBarSharpTween = game.add.tween(AxBarSharp).to({alpha:'-0.4'},500,'Quad.easeInOut',true,0,false,true).loop(true);
-        
         AxBarSharpTween.pause();      
         AxBarSharp.alpha = 0;
-      
+
+        /*
+        AxBarSharpLevel2 = game.add.sprite(AxBarXLevel2,100,'AxBar','AxBarSharpLevel2.png');
+        AxBarSharpLevel2Tween = game.add.tween(AxBarSharpLevel2).to({alpha:'-0.4'},500,'Quad.easeInOut',true,0,false,true).loop(true);
+        AxBarSharpLevel2Tween.pause();      
+        AxBarSharpLevel2.alpha = 0;
+        */
         AxBarmask = game.add.graphics();
         AxBarmask.beginFill(0xffffff);
         AxBarmask.drawRect(250,170,350,50);
@@ -409,7 +415,7 @@ function ScoreBoardHomeBtnDown(){
 
     
     LoggingPageClosingTween002.onComplete.add(function () {	
-        game.state.start('GameBootPage',true,true);
+        game.state.start('LevelMap',true,true);
     }, this);      
     
 }

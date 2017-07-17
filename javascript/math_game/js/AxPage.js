@@ -1,6 +1,8 @@
 var answer_panel = new Array();
-var AxBarX = -243;
+var AxBarX = -243,AxBarLevel2X = - 243;
 var AxPageComplete = false;
+
+var AxBarCenterX = (AxBarX + 100) /2; 
 
 demo.AxPage = function(){};
 demo.AxPage = {
@@ -16,7 +18,7 @@ demo.AxPage = {
   },
   create: function(){
       
-        console.log('Level1'); 
+ 
         console.log(level); 
         
       game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
@@ -27,16 +29,24 @@ demo.AxPage = {
       //AxBar------------------------------------------------------------------------------------------------------
       AxBarBG = game.add.sprite(100,100,'AxBar','AxBarBG.png');
       AxBarBG.alpha = 0;
+      //Bar----------------------------------------------------------------------------------------------------------------
       AxBarSharp = game.add.sprite(AxBarX,100,'AxBar','AxBarSharp.png');
-      AxBarSharpTween = game.add.tween(AxBarSharp).to({alpha:'-0.4'},500,'Quad.easeInOut',true,0,false,true).loop(true);
+      AxBarSharpTween = game.add.tween(AxBarSharp).to({alpha:'-0.2'},500,'Quad.easeInOut',true,0,false,true).loop(true);
       AxBarSharpTween.pause();      
       AxBarSharp.alpha = 0;
-      
+    
+
+      AxBarSharpLevel2 = game.add.sprite(AxBarLevel2X,100,'AxBar','AxBarSharpLevel2.png');
+      AxBarSharpLevel2Tween = game.add.tween(AxBarSharpLevel2).to({alpha:'-0.4'},500,'Quad.easeInOut',true,0,false,true).loop(true);
+      AxBarSharpLevel2Tween.pause();      
+      AxBarSharpLevel2.alpha = 0;
+              
       AxBarmask = game.add.graphics();
       AxBarmask.beginFill(0xffffff);
       AxBarmask.drawRect(250,170,350,50);
       AxBarSharp.mask = AxBarmask;
-     
+      AxBarSharpLevel2.mask = AxBarmask;
+      
       AxBar = game.add.sprite(100,100,'AxBar','AxBar.png');
       AxBar.alpha = 0;
       AxBarLight = game.add.sprite(100,100,'AxBar','AxBarLight.png');
@@ -149,7 +159,11 @@ demo.AxPage = {
       AxFX = game.add.audio('AxFX');
       
   },
-  update: function(){} 
+  update: function(){
+      if( AxBarSharpLevel2.x > -243 && AxBarSharpLevel2.x <= 100 ){
+          AxBarSharpLevel2.x -= 0.1;
+      }
+  } 
 }
 function ExitAxPage(){
     ExitBtn.inputEnabled = false;
@@ -204,7 +218,7 @@ function StartSharpening(){
     if( AxBarSharp.x < 100 ){
         FoxWithAx.alpha = 1;
         FoxWithAxAnimate = FoxWithAx.animations.play("FoxWithAxDynamic",15,true); 
-        /*
+        /* 
         if(FoxWithAxAnimate.frame == 0){
             AxFX.play();
         }
@@ -345,28 +359,46 @@ function CleanAxPageButton(){
         
     AxBarLight.alpha = 1;
     game.add.tween(AxBarLight).to({alpha:0},1000,'Quad.easeOut',true,0);
-    if( AxBarSharp.x >= -50 ){
+    /*
+    if( AxBarSharp.x >= AxBarCenterX ){
         level = 2;
     }
-    if( AxBarSharp.x < 100 ){
-        AxBarSharpPlusTween = game.add.tween(AxBarSharp).to({x:'+50'},250,'Quad.easeOut',true,0);
-        AxBarSharpPlusTween.onComplete.add(function () {	
+    */
     
-            if( AxBarSharp.x >= 100 ){
-                AxPageComplete = true;
-                console.log('Light');
-                AxBarFullLight.alpha = 1;
-                AxBarFullLightTween.resume();
-                FoxWithAx.alpha = 0;
-                FoxWithAx.animations.play("FoxWithAxDynamic",15,true); 
-                FoxWithGoldenAx.alpha = 1;
-                FoxWithGoldenAx.animations.play("FoxWithGoldenAxDynamic",17,true); 
-                 
-                game.add.tween(QuestionPanelGoldenTween).to({alpha:1},500,'Quad.easeOut',true,0);
-                QuestionPanelGoldenTween.resume();
-            }    
+    if( AxBarSharp.x < 100 ){
+        //AxBarSharpPlusTween = game.add.tween(AxBarSharp).to({x:'+50'},250,'Quad.easeOut',true,0);
+        AxBarSharpPlusTween = game.add.tween(AxBarSharp).to({x:'+30'},250,'Quad.easeOut',true,0);
+
+        AxBarSharpPlusTween.onComplete.add(function () {	
         }, this);
     }
+    
+    if( AxBarSharp.x >= 81 ){
+            
+        AxBarSharpLevel2Tween.resume();      
+        AxBarSharpLevel2.alpha = 1;
+        
+        AxPageComplete = true;
+        //console.log('Light');
+        AxBarFullLight.alpha = 1;
+        AxBarFullLightTween.resume();
+        FoxWithAx.alpha = 0;
+        FoxWithAx.animations.play("FoxWithAxDynamic",15,true); 
+        FoxWithGoldenAx.alpha = 1;
+        FoxWithGoldenAx.animations.play("FoxWithGoldenAxDynamic",17,true); 
+                     
+        game.add.tween(QuestionPanelGoldenTween).to({alpha:1},500,'Quad.easeOut',true,0);
+        QuestionPanelGoldenTween.resume();
+        level = 2;
+        
+    }
+    if( AxBarSharp.x >= 100 && AxBarSharpLevel2.x < 100){
+        game.add.tween(AxBarSharpLevel2).to({x:'+30'},250,'Quad.easeOut',true,0);
+    }
+    if( AxBarSharpLevel2.x < 71 ){
+        
+    }
+    
     
     //CleanAnswerPanel------------------------------------------------------------------------------
     AxPageRand = Math.floor(Math.random() * 2);
@@ -382,7 +414,7 @@ function CleanAxPageButton(){
         CreateAxPageAnswerNum(6);
     }
     //console.log(answercount);
-
+    console.log(level);
     answercount++;
     UpdateCreateAxPageNumber();
 }
@@ -454,7 +486,7 @@ function CreateAxPageAnswerNum(param){
 function createNumber(){
     
     var equation = createEquation(level);
-    console.log( equation );
+    //console.log( equation );
     var style = { font: "60px Arial", fill: "#ffffff", align: "center" };      
     if( level % 2 == 1 ){
         NumSum = game.add.text(centerX+200,centerY-265,'?', style);
@@ -585,7 +617,7 @@ function cleanPracticeButton(){
         
         createAnswerNum(6);
     }
-    console.log(answercount);
+    //console.log(answercount);
 
     answercount++;
     updatecreateNumber();

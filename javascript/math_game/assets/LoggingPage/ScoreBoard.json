@@ -10,10 +10,10 @@
 },
 {
 	"filename": "ScoreBoardBtn.png",
-	"frame": {"x":188,"y":261,"w":198,"h":44},
+	"frame": {"x":188,"y":261,"w":195,"h":44},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":779,"y":459,"w":198,"h":44},
+	"spriteSourceSize": {"x":779,"y":459,"w":195,"h":44},
 	"sourceSize": {"w":1600,"h":800}
 },
 {
@@ -55,6 +55,6 @@
 	"format": "RGBA8888",
 	"size": {"w":411,"h":386},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:acc6e255fe45eee5f85a47f52b001f8c:1904cc3a93ef42de1b3d04dd53dfafed:6d3db938edc0583b2ba66bf089a13798$"
+	"smartupdate": "$TexturePacker:SmartUpdate:3e4b64847de14ebe6fbda3134c0c964e:e274e3d910547c26f7f1033092d70c9d:6d3db938edc0583b2ba66bf089a13798$"
 }
 }

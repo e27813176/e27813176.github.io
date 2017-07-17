@@ -452,8 +452,9 @@ demo.HomeMenu.prototype = {
             DoorBtn.inputEnabled = true;
             HomeMailBtn.inputEnabled = true;
             SettingBtnSheet.inputEnabled = true;
-            HomeTreeBtn.inputEnabled = true; 
-            FoxStandingHover.inputEnabled = true;            
+            HomeTreeBtn.inputEnabled = true;
+            HomeTreeBtn.input.useHandCursor = true;
+            //FoxStandingHover.inputEnabled = true;            
             /*
             if(FromInside == true){
                 DoorBtn.inputEnabled = true;
@@ -649,6 +650,7 @@ function FoxDynamic(){
 }
 function FoxStandingAnimateComplete(){
     FoxStandingHover.inputEnabled = true;
+    FoxStandingHover.input.useHandCursor = true;
     FoxDynamicRand = Math.floor(Math.random() * 21);
     if( FoxDynamicRand <= 16 ){
         FoxStanding.animations.play("FoxStanding",15,false);
@@ -702,6 +704,7 @@ function FoxStandingAnimateComplete(){
 }
 function FoxTurnLeftStandingAnimateComplete(){
     FoxStandingHover.inputEnabled = true;
+    FoxStandingHover.input.useHandCursor = true;
     if( FoxStanding.x == 0 || FoxStanding.x == -200 ){
         FoxDynamicRand = Math.floor(Math.random() * 21);   
     }else{
@@ -732,6 +735,7 @@ function FoxTurnLeftStandingAnimateComplete(){
 }
 function FoxTurnRightStandingAnimateComplete(){
     FoxStandingHover.inputEnabled = true;
+    FoxStandingHover.input.useHandCursor = true;
     if( FoxStanding.x == 0 || FoxStanding.x == 200 ){
         FoxDynamicRand = Math.floor(Math.random() * 21);   
     }else{

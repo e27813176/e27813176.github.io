@@ -2,6 +2,9 @@ var AnswerNum = new Array();
 var AnswerTutorialNumber;
 demo.Tutorial = function() {};
 demo.Tutorial.prototype = {
+    init: function() {
+        TutorialMode = 0;
+    },    
     preload: function() {
        
         game.load.image('TutorialBG','javascript/math_game/assets/Tutorial/TutorialBG.jpg');
@@ -35,13 +38,30 @@ demo.Tutorial.prototype = {
         StartTutorialBtn.events.onInputOut.add(StartTutorialBtnOut, this);
         StartTutorialBtn.inputEnabled = true;
         
-        BackTutorialBtn = game.add.sprite(centerX-90,centerY,'Panel','BackPanel.png');
+        HomeTutorialBtn = game.add.sprite(centerX-90,centerY,'Panel','HomePanel.png');
+        HomeTutorialBtn.anchor.setTo(0.5);
+        HomeTutorialBtn.events.onInputDown.add(HomeTutorialBtnDown, this);
+        HomeTutorialBtn.events.onInputOver.add(HomeTutorialBtnOver, this);
+        HomeTutorialBtn.events.onInputOut.add(HomeTutorialBtnOut, this);
+        HomeTutorialBtn.inputEnabled = true;
+
+        BackTutorialBtn = game.add.sprite(centerX+250,centerY+100,'Panel','BackPanel.png');
+        BackTutorialBtn.scale.setTo(0.5);
         BackTutorialBtn.anchor.setTo(0.5);
         BackTutorialBtn.events.onInputDown.add(BackTutorialBtnDown, this);
         BackTutorialBtn.events.onInputOver.add(BackTutorialBtnOver, this);
         BackTutorialBtn.events.onInputOut.add(BackTutorialBtnOut, this);
-        BackTutorialBtn.inputEnabled = true;
+        BackTutorialBtn.alpha = 0;
+        //BackTutorialBtn.inputEnabled = true;
         
+        ContinueTutorialBtn = game.add.sprite(centerX+350,centerY+100,'Panel','ContinuePanel.png');
+        ContinueTutorialBtn.scale.setTo(0.5);
+        ContinueTutorialBtn.anchor.setTo(0.5);
+        ContinueTutorialBtn.events.onInputDown.add(ContinueTutorialBtnDown, this);
+        ContinueTutorialBtn.events.onInputOver.add(ContinueTutorialBtnOver, this);
+        ContinueTutorialBtn.events.onInputOut.add(ContinueTutorialBtnOut, this);
+        ContinueTutorialBtn.alpha = 0;
+        //ContinueTutorialBtn.inputEnabled = true;        
         //Panel----------------------------------------------------------------------
         QuestionTutorialPanel = game.add.sprite(0,100,'Panel','QuestionPanel.png');
         QuestionTutorialPanel.alpha = 0;
@@ -66,39 +86,80 @@ demo.Tutorial.prototype = {
     update: function() {}
     
 };
-function BackTutorialBtnDown(){
+function HomeTutorialBtnDown(){
     game.state.start('LevelMap',true,true); 
 }
-function BackTutorialBtnOver(){}
-function BackTutorialBtnOut(){}
+function HomeTutorialBtnOver(){}
+function HomeTutorialBtnOut(){}
 
 function StartTutorialBtnDown(){
     game.add.tween(StartTutorialBtn).to({alpha:0},500,'Linear',true);
-    game.add.tween(BackTutorialBtn).to({alpha:0},500,'Linear',true);
+    game.add.tween(HomeTutorialBtn).to({alpha:0},500,'Linear',true);
 
     StartTutorialBtn.inputEnabled = false;
-    BackTutorialBtn.inputEnabled = false;
+    HomeTutorialBtn.inputEnabled = false;
     
     QuestionTutorialPanelTween = game.add.tween(QuestionTutorialPanel).to({alpha:1},500,'Linear',true,1000);
     QuestionTutorialPanelTween.onComplete.add(function(){
         var style = { font: "60px Arial", fill: "#ffffff", align: "center" };      
         var equation = createEquation('Tutorial');
-        AnswerTutorialNumber = equation[2];
-        console.log(equation);
-        NumSum = game.add.text(centerX-140,centerY-115,'?', style);
-        NumSum.anchor.set(0.5);
-        NumTutorialSum = game.add.text(centerX-140,centerY-115,'?', style);
-        NumTutorialSum.anchor.set(0.5);
+        console.log('TutorialMode:'+TutorialMode);
+        
+        if( TutorialMode == 0 ){
+            AnswerTutorialNumber = equation[2];
+       
+            NumSum = game.add.text(centerX-140,centerY-115,'?', style);
+            NumSum.anchor.set(0.5);
+            NumTutorialSum = game.add.text(centerX-140,centerY-115,'?', style);
+            NumTutorialSum.anchor.set(0.5);
+            NumSum.alpha = 0;
+            NumTutorialSum.alpha = 0;
     
-        NumAdd1 = game.add.text(centerX-240,centerY-20,equation[0], style);
-        NumAdd1.anchor.set(0.5);    
-        NumTutorialAdd1 = game.add.text(centerX-240,centerY-20,equation[0], style);
-        NumTutorialAdd1.anchor.set(0.5);
+            NumAdd1 = game.add.text(centerX-240,centerY-20,equation[0], style);
+            NumAdd1.anchor.set(0.5);    
+            NumTutorialAdd1 = game.add.text(centerX-240,centerY-20,equation[0], style);
+            NumTutorialAdd1.anchor.set(0.5);
+            NumAdd1.alpha = 0;
+            NumTutorialAdd1.alpha = 0;
 
-        NumAdd2 = game.add.text(centerX-40,centerY-20,equation[1], style);
-        NumAdd2.anchor.set(0.5); 
-        NumTutorialAdd2 = game.add.text(centerX-40,centerY-20,equation[1], style);
-        NumTutorialAdd2.anchor.set(0.5);
+            NumAdd2 = game.add.text(centerX-40,centerY-20,equation[1], style);
+            NumAdd2.anchor.set(0.5); 
+            NumTutorialAdd2 = game.add.text(centerX-40,centerY-20,equation[1], style);
+            NumTutorialAdd2.anchor.set(0.5);
+            NumAdd2.alpha = 0;
+            NumTutorialAdd2.alpha = 0;
+        }
+        if( TutorialMode == 1 ){
+            AnswerTutorialNumber = equation[1];
+       
+            NumSum = game.add.text(centerX-140,centerY-115,equation[2], style);
+            NumSum.anchor.set(0.5);
+            NumTutorialSum = game.add.text(centerX-140,centerY-115,equation[2], style);
+            NumTutorialSum.anchor.set(0.5);
+            NumSum.alpha = 0;
+            NumTutorialSum.alpha = 0;
+    
+            NumAdd1 = game.add.text(centerX-240,centerY-20,equation[0], style);
+            NumAdd1.anchor.set(0.5);    
+            NumTutorialAdd1 = game.add.text(centerX-240,centerY-20,equation[0], style);
+            NumTutorialAdd1.anchor.set(0.5);
+            NumAdd1.alpha = 0;
+            NumTutorialAdd1.alpha = 0;
+
+            NumAdd2 = game.add.text(centerX-40,centerY-20,'?', style);
+            NumAdd2.anchor.set(0.5); 
+            NumTutorialAdd2 = game.add.text(centerX-40,centerY-20,'?', style);
+            NumTutorialAdd2.anchor.set(0.5);
+            NumAdd2.alpha = 0;
+            NumTutorialAdd2.alpha = 0;
+        }
+        
+        game.add.tween(NumSum).to({alpha:1},500,'Linear',true);
+        game.add.tween(NumTutorialSum).to({alpha:1},500,'Linear',true);
+        game.add.tween(NumAdd1).to({alpha:1},500,'Linear',true);
+        game.add.tween(NumTutorialAdd1).to({alpha:1},500,'Linear',true);
+        game.add.tween(NumAdd2).to({alpha:1},500,'Linear',true);
+        game.add.tween(NumTutorialAdd2).to({alpha:1},500,'Linear',true);
         
         for(let i = 0;i<5;i++){
             AnswerNum[i] = game.add.text(centerX-136-200+100*i,centerY+148,i+1, style);
@@ -126,13 +187,19 @@ function StartTutorialBtnDown(){
 
         NumTutorialSumTween = game.add.tween(NumTutorialSum).to({x:1200,y:centerY-20},1000,'Quad.easeOut',true,3000);        
         NumTutorialSumTween.onComplete.add(function(){
-         
-            AnswerPanelLight.x = centerX-130-200+100*( equation[2] - 1 );
+            if( TutorialMode == 0 ){
+                AnswerPanelLight.x = centerX-130-200+100*( equation[2] - 1 );
+                
+            }else{
+                AnswerPanelLight.x = centerX-130-200+100*( equation[1] - 1 );
+                
+            }
             AnswerPanelLight.y = centerY+150;
             AnswerPanelLight.alpha = 1;
             AnswerPanelLightTween.resume();
             for(let i = 0;i<5;i++){
                 AnswerPanel[i].inputEnabled = true;
+                AnswerPanel[i].input.useHandCursor = true;
                 
             }
         },this);
@@ -171,8 +238,82 @@ function CorrectTutorial(){
     CorrectText = game.add.text(1070,centerY-20,'答對囉!!!', style);
     CorrectText.anchor.set(0.5);
     CorrectText.alpha = 0;
-    game.add.tween(CorrectText).to({alpha:1},500,Phaser.Easing.Elastic.Out,true);         
+    game.add.tween(CorrectText).to({alpha:1},500,Phaser.Easing.Elastic.Out,true);   
+    
+    BackTutorialBtnTween = game.add.tween(BackTutorialBtn).to({alpha:1},500,'Linear',true,1000);
+    game.add.tween(ContinueTutorialBtn).to({alpha:1},500,'Linear',true,1000);
+    BackTutorialBtnTween.onComplete.add(function (){
+        
+        BackTutorialBtn.inputEnabled = true;
+        BackTutorialBtn.input.useHandCursor = true;
+        ContinueTutorialBtn.inputEnabled = true;
+        ContinueTutorialBtn.input.useHandCursor = true;
+        
+    },this);
+    
 }
+function BackTutorialBtnDown(){
+    ContinueTutorialBtn.inputEnabled = false;
+    BackTutorialBtn.inputEnabled = false;
+    
+    game.add.tween(ContinueTutorialBtn).to({alpha:0},500,'Linear',true);
+    game.add.tween(BackTutorialBtn).to({alpha:0},500,'Linear',true);
+    for(let i = 0;i<5;i++){
+        game.add.tween(AnswerPanel[i]).to({alpha:0},500,'Linear',true);
+        game.add.tween(AnswerNum[i]).to({alpha:0},500,'Linear',true);
+        
+                
+    }
+    game.add.tween(QuestionTutorialPanel).to({alpha:0},500,'Linear',true);
+    game.add.tween(CorrectText).to({alpha:0},500,'Linear',true);
+    game.add.tween(NumSum).to({alpha:0},500,'Linear',true);
+    game.add.tween(NumAdd1).to({alpha:0},500,'Linear',true);
+    game.add.tween(NumAdd2).to({alpha:0},500,'Linear',true);
+
+    game.add.tween(StartTutorialBtn).to({alpha:1},500,'Linear',true,1000);
+    TutorialBtnShowUpTween = game.add.tween(HomeTutorialBtn).to({alpha:1},500,'Linear',true,1000);
+    TutorialBtnShowUpTween.onComplete.add(TutorialBtnShowUpTweenComplete,this);
+}
+function TutorialBtnShowUpTweenComplete(){
+    HomeTutorialBtn.inputEnabled = true;
+    StartTutorialBtn.inputEnabled = true;
+    NumSum.destroy();
+    NumAdd1.destroy();
+    NumAdd2.destroy();
+    for(let i = 0;i<5;i++){
+        AnswerNum[i].destroy();
+        //AnswerNum[i].anchor.setTo(0.5);
+        //AnswerNum[i].alpha = 0;
+           
+    }    
+}
+function BackTutorialBtnOver(){}
+function BackTutorialBtnOut(){}
+
+function ContinueTutorialBtnDown(){
+    game.add.tween(BackTutorialBtn).to({alpha:0},500,'Linear',true);
+    game.add.tween(ContinueTutorialBtn).to({alpha:0},500,'Linear',true);
+    ContinueTutorialBtn.inputEnabled = false;
+    BackTutorialBtn.inputEnabled = false; 
+    
+    NumSum.destroy();
+    NumAdd1.destroy();
+    NumAdd2.destroy();
+    for(let i = 0;i<5;i++){
+        AnswerNum[i].destroy();
+           
+    }        
+    CorrectText.destroy();
+    if( TutorialMode == 0 ){
+        TutorialMode = 1;
+    }
+    else{
+        TutorialMode = 0;
+    }    
+    StartTutorialBtnDown(); 
+}
+function ContinueTutorialBtnOver(){}
+function ContinueTutorialBtnOut(){}
 
 /*
 
