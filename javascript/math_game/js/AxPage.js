@@ -146,7 +146,7 @@ demo.AxPage = {
       //EnergyNumSum = game.add.sprite(0,100,'Panel','PanelGlowNumSum.png');
       //EnergyNumSum.alpha = 0;
       
-      EnergyNumAdd = game.add.sprite(0,100,'Panel','PanelGlowNumAdd.png');
+      EnergyNumAdd = game.add.sprite(0,100,'AxBar','AxBarEnergyBall.png');
       EnergyNumAdd.alpha = 0;      
       //ArrowSheet------------------------------------------------------------------------------------------------------------------
         

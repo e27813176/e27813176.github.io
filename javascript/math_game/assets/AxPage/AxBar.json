@@ -10,7 +10,7 @@
 },
 {
 	"filename": "AxBarBG.png",
-	"frame": {"x":101,"y":381,"w":360,"h":35},
+	"frame": {"x":148,"y":290,"w":360,"h":35},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":149,"y":81,"w":360,"h":35},
@@ -25,8 +25,16 @@
 	"sourceSize": {"w":1600,"h":800}
 },
 {
+	"filename": "AxBarEnergyBall.png",
+	"frame": {"x":1,"y":290,"w":145,"h":145},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1055,"y":263,"w":145,"h":145},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
 	"filename": "AxBarLight.png",
-	"frame": {"x":101,"y":290,"w":89,"h":89},
+	"frame": {"x":248,"y":327,"w":89,"h":89},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":68,"y":54,"w":89,"h":89},
@@ -34,7 +42,7 @@
 },
 {
 	"filename": "AxBarLightFull.png",
-	"frame": {"x":1,"y":290,"w":98,"h":98},
+	"frame": {"x":148,"y":327,"w":98,"h":98},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":64,"y":49,"w":98,"h":98},
@@ -61,8 +69,8 @@
 	"version": "1.0",
 	"image": "AxBar.png",
 	"format": "RGBA8888",
-	"size": {"w":510,"h":417},
+	"size": {"w":510,"h":436},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:0a610da3a9a1211492301aae65e57215:4e73ac41722c413a62d77f73a3a400ef:dedb8f3a729a0d988323cb6713174418$"
+	"smartupdate": "$TexturePacker:SmartUpdate:0ebe15611a39a27c81f2f349f7c2724f:dfa4ccd0b2c01e295de63f1302767ea3:dedb8f3a729a0d988323cb6713174418$"
 }
 }
