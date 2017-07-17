@@ -42,10 +42,10 @@ game.state.add("HomeInsidePage", demo.HomeInsidePage);
 game.state.add("LevelMap", demo.LevelMap);
 
 
-//game.state.start("GameBootPage");
+game.state.start("GameBootPage");
 //game.state.start("LoadingFishingPage");
 //game.state.start("LevelMap");
-game.state.start("BootAxPage");
+//game.state.start("BootAxPage");
 //game.state.start("LoggingPage");
 
 //game.state.start("Tutorial");
