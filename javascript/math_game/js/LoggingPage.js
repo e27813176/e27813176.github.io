@@ -92,9 +92,16 @@ demo.LoggingPage = {
             FoxLogging002.alpha = 0;
             FoxLogging003.alpha = 1;
             FoxLogging003.animations.play("FoxLogging003Dynamic",30,false);
-            if( AxBarSharp.x > -243 ){
-                game.add.tween(AxBarSharp).to({x:'-20'},500,'Quad.easeOut',true,0); 
+            if( AxBarSharpLevel2.x > -243  ){
+                game.add.tween(AxBarSharpLevel2).to({x:'-20'},500,'Quad.easeOut',true,0); 
             }
+            if( AxBarSharp.x > -243 && AxBarSharpLevel2.x <= -243){
+                game.add.tween(AxBarSharp).to({x:'-20'},500,'Quad.easeOut',true,0); 
+                AxBarSharpLevel2.alpha = 0;
+                AxBarSharpLevel2Tween.pause();
+
+            }
+            
         }, this);
         
         FoxLogging003Animation.onComplete.add(function () {	
@@ -157,16 +164,17 @@ demo.LoggingPage = {
         AxBarSharpTween.pause();      
         AxBarSharp.alpha = 0;
 
-        /*
-        AxBarSharpLevel2 = game.add.sprite(AxBarXLevel2,100,'AxBar','AxBarSharpLevel2.png');
+        
+        AxBarSharpLevel2 = game.add.sprite(AxBarLevel2X,100,'AxBar','AxBarSharpLevel2.png');
         AxBarSharpLevel2Tween = game.add.tween(AxBarSharpLevel2).to({alpha:'-0.4'},500,'Quad.easeInOut',true,0,false,true).loop(true);
         AxBarSharpLevel2Tween.pause();      
         AxBarSharpLevel2.alpha = 0;
-        */
+        
         AxBarmask = game.add.graphics();
         AxBarmask.beginFill(0xffffff);
         AxBarmask.drawRect(250,170,350,50);
         AxBarSharp.mask = AxBarmask;
+        AxBarSharpLevel2.mask = AxBarmask;
      
         AxBar = game.add.sprite(100,100,'AxBar','AxBar.png');
         AxBar.alpha = 0;
@@ -248,6 +256,7 @@ demo.LoggingPage = {
 }
 function ExitLoggingPage(){
     AxBarX = AxBarSharp.x;
+    AxBarLevel2X = AxBarSharpLevel2.x;    
     TreeBloodBarX = TreeBloodBar.x;
     LoggingPageClosingTween001 = game.add.tween(BlackBGClosing).to({alpha:1},500,'Linear',true,0);        
 
@@ -283,6 +292,13 @@ function StartLogging(){
     AxBarBG.alpha = 1;
     AxBarSharp.alpha = 1;
     AxBarSharpTween.resume();
+    
+    AxBarSharp.alpha = 1;
+    AxBarSharpTween.resume();
+    if( AxBarSharpLevel2.x > -243){
+        AxBarSharpLevel2.alpha = 1;
+        AxBarSharpLevel2Tween.resume();
+    }    
     AxBar.alpha = 1;
     
     game.add.tween(TreeBloodBarTop).to({alpha:1},300,'Linear',true,0);
@@ -337,6 +353,9 @@ function StopLogging(){
     AxBarSharpTween.pause();
     AxBarSharp.alpha = 0;
     
+    AxBarSharpLevel2.alpha = 0;
+    AxBarSharpLevel2Tween.pause();    
+    
     AxBar.alpha = 0;
     AxBarLight.alpha = 0;
     AxBarFullLightTween.pause();
@@ -384,6 +403,8 @@ function FinishLogging(){
     AxBarBG.alpha = 0;
     AxBarSharpTween.pause();
     AxBarSharp.alpha = 0;
+    AxBarSharpLevel2Tween.pause();
+    AxBarSharpLevel2.alpha = 0;
     
     AxBar.alpha = 0;
     AxBarLight.alpha = 0;
@@ -408,7 +429,9 @@ function FinishLogging(){
 }
 
 function ScoreBoardHomeBtnDown(){
-        
+    AxBarX = AxBarSharp.x;
+    AxBarLevel2X = AxBarSharpLevel2.x;
+    
     ScoreBoardHomeBtn.inputEnabled = false;
     ScoreBoardContinueBtn.inputEnabled = false;    
     LoggingPageClosingTween002 = game.add.tween(BlackBGClosing).to({alpha:1},1000,'Linear',true,0);        
@@ -509,8 +532,8 @@ function CleanLoggingPageButton(){
         //game.add.tween(TreeBloodBar).to({x:'-200'},300,'Linear',true,0);
     }
     if( AxBarSharp.x > -243 ){
-        //TreeBloodBarMinusTween = game.add.tween(TreeBloodBar).to({x:'-20'},300,'Linear',true,0);
-        TreeBloodBarMinusTween = game.add.tween(TreeBloodBar).to({x:'-200'},300,'Linear',true,0);
+        TreeBloodBarMinusTween = game.add.tween(TreeBloodBar).to({x:'-20'},300,'Linear',true,0);
+        //TreeBloodBarMinusTween = game.add.tween(TreeBloodBar).to({x:'-200'},300,'Linear',true,0);
         TreeBloodBarMinusTween.onComplete.add(function () {	
             if( TreeBloodBar.x <= -362 ){
                 

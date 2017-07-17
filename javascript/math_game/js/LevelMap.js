@@ -1,4 +1,4 @@
-
+var FoxLoggingBtnShowUp = false;
 demo.LevelMap = function() {};
 demo.LevelMap.prototype = {
     init: function(){
@@ -56,7 +56,7 @@ demo.LevelMap.prototype = {
         //LoggingPageBtn----------------------------------------------------------------------
         FoxLoggingBtn = game.add.sprite(0, 100, 'LevelBtn','FoxLoggingBtn.png');
         //FoxLoggingBtn.alpha = 0; 
-        if( AxPageComplete == false ){
+        if( AxPageComplete == false || FoxLoggingBtnShowUp == false ){
             FoxLoggingBtn.alpha = 0;
             
         }
@@ -109,8 +109,12 @@ demo.LevelMap.prototype = {
             if( AxPageComplete == true ){
                 FoxLoggingBtnHoverArea.inputEnabled = true;
                 FoxLoggingBtnHoverArea.input.useHandCursor = true; 
-                
-                //game.add.tween(FoxLoggingBtn).to({alpha:1},1000,'Linear',true,0); 
+                if( FoxLoggingBtnShowUp == false ){
+                    console.log('ShowUp');
+                    FoxLoggingBtnShowUp = true;
+                    game.add.tween(FoxLoggingBtn).to({alpha:1},1000,'Linear',true,0); 
+                    
+                }
                 
             }
             if( LoggingPageComplete == true ){

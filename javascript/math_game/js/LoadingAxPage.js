@@ -41,6 +41,9 @@ demo.LoadingAxPage.prototype = {
         //Text-----------------------------------------------------------------------------------------------------------------------------
         game.load.atlas('AxPageText', 'javascript/math_game/assets/AxPage/AxPageText.png', 'javascript/math_game/assets/AxPage/AxPageText.json');
       
+        //Board-----------------------------------------------------------------------------------------------------------------------------
+        game.load.atlas('Board', 'javascript/math_game/assets/AxPage/Board.png', 'javascript/math_game/assets/AxPage/Board.json');
+            
         //BlackBG------------------------------------------------------------------------------------------------------------------------
         game.load.image('BlackBG','javascript/math_game/assets/fishingpage/blackBG.jpg');
       
@@ -50,7 +53,8 @@ demo.LoadingAxPage.prototype = {
         //audio-----------------------------------------------------------------------------------------------------------------------   
     
         game.load.audio('rightFX', 'javascript/math_game/assets/audio/rightFX.mp3');      
-        game.load.audio('AxFX', 'javascript/math_game/assets/audio/AxFX.mp3');      
+        game.load.audio('AxFX', 'javascript/math_game/assets/audio/AxFX.mp3');    
+        game.load.audio('AddEnergyFX', 'javascript/math_game/assets/audio/add_energyFX.mp3'); 
         
     },
     create: function() {

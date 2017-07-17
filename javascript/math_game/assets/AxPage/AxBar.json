@@ -2,7 +2,7 @@
 
 {
 	"filename": "AxBar.png",
-	"frame": {"x":1,"y":55,"w":439,"h":86},
+	"frame": {"x":1,"y":202,"w":439,"h":86},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":70,"y":55,"w":439,"h":86},
@@ -10,23 +10,39 @@
 },
 {
 	"filename": "AxBarBG.png",
-	"frame": {"x":92,"y":143,"w":360,"h":35},
+	"frame": {"x":101,"y":381,"w":360,"h":35},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":149,"y":81,"w":360,"h":35},
 	"sourceSize": {"w":1600,"h":800}
 },
 {
+	"filename": "AxBarEnergy.png",
+	"frame": {"x":1,"y":1,"w":508,"h":145},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":40,"y":26,"w":508,"h":145},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
 	"filename": "AxBarLight.png",
-	"frame": {"x":1,"y":143,"w":89,"h":89},
+	"frame": {"x":101,"y":290,"w":89,"h":89},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":68,"y":54,"w":89,"h":89},
 	"sourceSize": {"w":1600,"h":800}
 },
 {
+	"filename": "AxBarLightFull.png",
+	"frame": {"x":1,"y":290,"w":98,"h":98},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":64,"y":49,"w":98,"h":98},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
 	"filename": "AxBarSharp.png",
-	"frame": {"x":1,"y":1,"w":451,"h":25},
+	"frame": {"x":1,"y":148,"w":451,"h":25},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":50,"y":86,"w":451,"h":25},
@@ -34,7 +50,7 @@
 },
 {
 	"filename": "AxBarSharpLevel2.png",
-	"frame": {"x":1,"y":28,"w":446,"h":25},
+	"frame": {"x":1,"y":175,"w":446,"h":25},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":56,"y":86,"w":446,"h":25},
@@ -45,8 +61,8 @@
 	"version": "1.0",
 	"image": "AxBar.png",
 	"format": "RGBA8888",
-	"size": {"w":453,"h":233},
+	"size": {"w":510,"h":417},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:c1243204bf8cb30ca0e595f33f38f9d5:3dea38defed8938c28305e5ea19f4c8f:dedb8f3a729a0d988323cb6713174418$"
+	"smartupdate": "$TexturePacker:SmartUpdate:0a610da3a9a1211492301aae65e57215:4e73ac41722c413a62d77f73a3a400ef:dedb8f3a729a0d988323cb6713174418$"
 }
 }

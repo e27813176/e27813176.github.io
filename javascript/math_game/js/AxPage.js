@@ -9,6 +9,7 @@ demo.AxPage = {
     
     
   init: function(){
+      Sharpening = false;
       AxPageRand = 0;
       answercount = 1;
       level = 1;
@@ -53,10 +54,18 @@ demo.AxPage = {
       AxBarLight.alpha = 0;
       
         
-      AxBarFullLight = game.add.sprite(100,100,'AxBar','AxBarLight.png');
-      AxBarFullLightTween = game.add.tween(AxBarFullLight).to({alpha:'-0.4'},500,'Quad.easeInOut',true,0,false,true).loop(true);
-      AxBarFullLightTween.pause();  
-      AxBarFullLight.alpha = 0;      
+      AxBarLightLevel1 = game.add.sprite(100,100,'AxBar','AxBarLight.png');
+      AxBarLightLevel1Tween = game.add.tween(AxBarLightLevel1).to({alpha:'-0.4'},500,'Quad.easeInOut',true,0,false,true).loop(true);
+      AxBarLightLevel1Tween.pause();  
+      AxBarLightLevel1.alpha = 0;     
+      
+      AxBarEnergy = game.add.sprite(100,100,'AxBar','AxBarEnergy.png');
+      AxBarEnergy.alpha = 0;      
+
+      AxBarLightLevel2 = game.add.sprite(100,100,'AxBar','AxBarLightFull.png');
+      AxBarLightLevel2Tween = game.add.tween(AxBarLightLevel2).to({alpha:'-0.4'},500,'Quad.easeInOut',true,0,false,true).loop(true);
+      AxBarLightLevel2Tween.pause();  
+      AxBarLightLevel2.alpha = 0;      
       
       //FoxSitting------------------------------------------------------------------------------------------------------
       FoxSitting = game.add.sprite(300,400,'FoxWithAx001');
@@ -90,7 +99,6 @@ demo.AxPage = {
       FoxWithGoldenAx.inputEnabled = false;      
 
       //Text-----------------------------------------------------------------------------------------------------------------
-        
       StartSharpenText = game.add.sprite(centerX,0,'AxPageText',"StartSharpenText.jpg");
       StartSharpenText.anchor.setTo(0.5,0);
   
@@ -107,6 +115,7 @@ demo.AxPage = {
       StartSharpenText.mask = AxPagemask;
       StopSharpenText.mask = AxPagemask;
       ExitAxPageText.mask = AxPagemask;
+      
       //Panel---------------------------------------------------------------------------------------------------------------------
       QuestionPanel = game.add.sprite(0,100,'Panel','QuestionPanel.png');
       QuestionPanel.alpha = 0;
@@ -132,12 +141,40 @@ demo.AxPage = {
       PanelGlowNumAdd = game.add.sprite(0,100,'Panel','PanelGlowNumAdd.png');
         
       PanelGlowNumAdd.alpha = 0;
+      
+      //EnergyTransfer-------------------------------------------------------------------------------------------------------------
+      //EnergyNumSum = game.add.sprite(0,100,'Panel','PanelGlowNumSum.png');
+      //EnergyNumSum.alpha = 0;
+      
+      EnergyNumAdd = game.add.sprite(0,100,'Panel','PanelGlowNumAdd.png');
+      EnergyNumAdd.alpha = 0;      
       //ArrowSheet------------------------------------------------------------------------------------------------------------------
         
       ArrowSheet = game.add.sprite(0,100,'ArrowSheet');
       ArrowSheet.animations.add("ArrowSheetDynamic",Phaser.Animation.generateFrameNames('ArrowSheet_',0,8,'.png',5),10,true);
       ArrowSheet.alpha = 0;
-      
+      //Board-----------------------------------------------------------------------------------------------------------
+      BoardBG = game.add.sprite(centerX,centerY,'Board','BoardBG.png');
+      BoardBG.anchor.setTo(0.5);
+      BoardBG.alpha = 0;
+
+      BoardSeal = game.add.sprite(0,100,'Board','BoardSeal.png');
+      BoardSeal.alpha = 0;
+
+      BoardBackBtn = game.add.sprite(0,100,'Board','BoardBackBtn.png');
+      BoardBackBtn.alpha = 0;
+
+      BoardBackBtnHover = game.add.sprite(0,100,'Board','BoardBackBtnHover.png');
+      BoardBackBtnHoverTween = game.add.tween(BoardBackBtnHover).to({alpha:'-0.5'},500,'Quad.easeInOut',true,0,false,true).loop(true);
+      BoardBackBtnHoverTween.pause();
+      BoardBackBtnHover.alpha = 0;
+
+      BoardBackBtnHoverArea = game.add.sprite(858,576,'Board','BoardBackBtnHoverArea.png');
+      BoardBackBtnHoverArea.alpha = 0;
+      BoardBackBtnHoverArea.events.onInputDown.add(BoardBackBtnDown, this);
+      BoardBackBtnHoverArea.events.onInputOver.add(BoardBackBtnOver, this);
+      BoardBackBtnHoverArea.events.onInputOut.add(BoardBackBtnOut, this);
+      //BoardBackBtnHoverArea.inputEnabled = true;      
       //ExitBtn---------------------------------------------------------------------------------------------------
       ExitBtn = game.add.sprite(1150,550,'ExitBtn');
       ExitBtn.alpha = 0;      
@@ -157,17 +194,37 @@ demo.AxPage = {
       //sound----------------------------------------------------------------------------------------------------------------
       rightFX = game.add.audio('rightFX');
       AxFX = game.add.audio('AxFX');
+      AddEnergyFX = game.add.audio('AddEnergyFX');
       
   },
   update: function(){
-      if( AxBarSharpLevel2.x > -243 && AxBarSharpLevel2.x <= 100 ){
+      if( AxBarSharpLevel2.x > -243 && AxBarSharpLevel2.x <= 100 && Sharpening == true ){
           AxBarSharpLevel2.x -= 0.1;
       }
   } 
 }
+function BoardBackBtnDown(){
+    
+    AxBarX = AxBarSharp.x;
+    AxBarLevel2X = AxBarSharpLevel2.x;
+    AxPageClosingTween = game.add.tween(AxPageClosing).to({alpha:1},500,'Linear',true,0);
+    AxPageClosingTween.onComplete.add(function(){
+        game.state.start('LevelMap');
+
+    },this);    
+}
+function BoardBackBtnOver(){
+    BoardBackBtnHoverTween.resume();
+    BoardBackBtnHover.alpha = 1;    
+}
+function BoardBackBtnOut(){
+    BoardBackBtnHoverTween.pause();
+    BoardBackBtnHover.alpha = 0;
+}
 function ExitAxPage(){
     ExitBtn.inputEnabled = false;
     AxBarX = AxBarSharp.x;
+    AxBarLevel2X = AxBarSharpLevel2.x;    
     AxPageClosingTween = game.add.tween(AxPageClosing).to({alpha:1},500,'Linear',true,0);  
     AxPageClosingTween.onComplete.add(function(){
         game.state.start('LevelMap');
@@ -202,6 +259,7 @@ function FoxWithAxOut(){
 
 function StartSharpening(){
     //game.add.tween(StartSharpenText).to({y:0},500,'Quad.easeOut',true,0);
+    Sharpening = true;
     
     FoxSitting.alpha = 0;
     FoxSitting.animations.stop();
@@ -212,8 +270,8 @@ function StartSharpening(){
     if( AxBarSharp.x > 100 ){
         FoxWithGoldenAx.alpha = 1;
         FoxWithGoldenAx.animations.play("FoxWithGoldenAxDynamic",15,true); 
-        AxBarFullLight.alpha = 1;
-        AxBarFullLightTween.resume();       
+        AxBarLightLevel1.alpha = 1;
+        AxBarLightLevel1Tween.resume();       
     }
     if( AxBarSharp.x < 100 ){
         FoxWithAx.alpha = 1;
@@ -223,6 +281,10 @@ function StartSharpening(){
             AxFX.play();
         }
         */
+    }
+    if( AxBarSharpLevel2.x > -243){
+        AxBarSharpLevel2.alpha = 1;
+        AxBarSharpLevel2Tween.resume();
     }
     AxFX.loopFull(1);
     FoxWithAx.inputEnabled = true;
@@ -244,6 +306,7 @@ function StartSharpening(){
 }
 
 function StopSharpening(){
+    Sharpening = false;
     AxFX.stop();
     game.add.tween(StopSharpenText).to({y:0},500,'Quad.easeOut',true,0); 
     FoxWithAx.alpha = 0;
@@ -271,11 +334,14 @@ function StopSharpening(){
     AxBarBG.alpha = 0;
     AxBarSharpTween.pause();
     AxBarSharp.alpha = 0;
+
+    AxBarSharpLevel2Tween.pause();
+    AxBarSharpLevel2.alpha = 0;
     
     AxBar.alpha = 0;
     AxBarLight.alpha = 0;
-    AxBarFullLightTween.pause();
-    AxBarFullLight.alpha = 0;
+    AxBarLightLevel1Tween.pause();
+    AxBarLightLevel1.alpha = 0;
     game.add.tween(QuestionPanel).to({alpha:0},500,'Quad.easeOut',true,0);
     game.add.tween(QuestionPanelGolden).to({alpha:0},500,'Quad.easeOut',true,0);
         
@@ -359,11 +425,16 @@ function CleanAxPageButton(){
         
     AxBarLight.alpha = 1;
     game.add.tween(AxBarLight).to({alpha:0},1000,'Quad.easeOut',true,0);
-    /*
-    if( AxBarSharp.x >= AxBarCenterX ){
-        level = 2;
+    
+    if( AxBarSharp.x >= AxBarCenterX - 30){
+        AxPageRand = 1;
     }
-    */
+    if( AxBarSharpLevel2.x >= AxBarCenterX - 30 ){
+        AxPageRand = 1;
+    }
+    if( AxBarSharpLevel2.x < AxBarCenterX - 30 && AxBarSharp.x >= 100 ){
+        AxPageRand = 0;
+    }
     
     if( AxBarSharp.x < 100 ){
         //AxBarSharpPlusTween = game.add.tween(AxBarSharp).to({x:'+50'},250,'Quad.easeOut',true,0);
@@ -373,15 +444,15 @@ function CleanAxPageButton(){
         }, this);
     }
     
-    if( AxBarSharp.x >= 81 ){
-            
+    if( AxBarSharp.x >= 81 && AxBarSharpLevel2.x == -243 ){
+        AxPageRand = 0;
         AxBarSharpLevel2Tween.resume();      
         AxBarSharpLevel2.alpha = 1;
         
-        AxPageComplete = true;
+        
         //console.log('Light');
-        AxBarFullLight.alpha = 1;
-        AxBarFullLightTween.resume();
+        AxBarLightLevel1.alpha = 1;
+        AxBarLightLevel1Tween.resume();
         FoxWithAx.alpha = 0;
         FoxWithAx.animations.play("FoxWithAxDynamic",15,true); 
         FoxWithGoldenAx.alpha = 1;
@@ -392,16 +463,19 @@ function CleanAxPageButton(){
         level = 2;
         
     }
+    //Level2-----------------------------------------------------------------------------------
     if( AxBarSharp.x >= 100 && AxBarSharpLevel2.x < 100){
-        game.add.tween(AxBarSharpLevel2).to({x:'+30'},250,'Quad.easeOut',true,0);
-    }
-    if( AxBarSharpLevel2.x < 71 ){
+        AxPageEnergyTranfer();
         
+    }
+    if( AxBarSharpLevel2.x > 71 ){
+        AxPageComplete = true;
+        FinishSharpening();
     }
     
     
     //CleanAnswerPanel------------------------------------------------------------------------------
-    AxPageRand = Math.floor(Math.random() * 2);
+    //AxPageRand = Math.floor(Math.random() * 2);
     for(let i = 0;i<5;i++){
         answer_panel[i].inputEnabled = false;
     }
@@ -418,7 +492,68 @@ function CleanAxPageButton(){
     answercount++;
     UpdateCreateAxPageNumber();
 }
+function AxPageEnergyTranfer(){
+    EnergyNumAdd.alpha = 1;
+    EnergyNumAdd.x = 0;
+    EnergyNumAdd.y = 100;
+    EnergyNumAddTween = game.add.tween(EnergyNumAdd).to({x:AxBarSharpLevel2.x-600,y:-130},300,'Quad.easeIn',true,0);
+    EnergyNumAddTween.onComplete.add(function(){
+        EnergyNumAdd.alpha = 0;
+        game.add.tween(AxBarSharpLevel2).to({x:'+30'},250,'Quad.easeOut',true,0);
+        AddEnergyFX.play();
+        AxBarEnergy.alpha = 1;
+        game.add.tween(AxBarEnergy).to({alpha:0},1000,'Quad.easeOut',true,0);
+    },this);
+}
+function FinishSharpening(){
+    Sharpening = false;
+    AxFX.stop();
+    game.add.tween(StopSharpenText).to({y:0},500,'Quad.easeOut',true,0); 
+    FoxWithAx.alpha = 0;
+    FoxWithAx.animations.stop();
+    FoxWithGoldenAx.alpha = 0;
+    FoxWithGoldenAx.animations.stop(); 
+    FoxWithAx.inputEnabled = false;
+    
+    if( AxBarSharp.x >= 0 ){
+        FoxSitting002.alpha = 1;
+        FoxSitting002.animations.play("FoxSitting002Dynamic",15,true); 
+        
+    }else{
+        FoxSitting.alpha = 1;
+        FoxSittingAnimate.play();
+        
+    }
 
+    game.add.tween(QuestionPanel).to({alpha:0},500,'Quad.easeOut',true,0);
+    game.add.tween(QuestionPanelGolden).to({alpha:0},500,'Quad.easeOut',true,0);
+        
+    QuestionPanelGoldenTween.pause();    
+    //QuestionPanel.alpha = 0;
+    for(let i = 0;i<5;i++){
+        game.add.tween(answer_panel[i]).to({alpha:0},500,'Quad.easeOut',true,0); 
+        //answer_panel[i].alpha = 0;    
+    }
+    NumSum.destroy();
+    NumAdd1.destroy();
+    NumAdd2.destroy();
+    for(let i = 0;i<5;i++){
+        answerNum[i].destroy();
+    }    
+    AxBarLightLevel2.alpha = 1;
+    AxBarLightLevel2Tween.resume();
+    
+    BoardBG.scale.setTo(0);
+    BoardBG.alpha = 1;
+    game.add.tween(BoardBG.scale).to({x:1,y:1},500,'Quad.easeOut',true,1000);
+    game.add.tween(BoardSeal).to({alpha:1},500,'Quad.easeOut',true,1500);
+    BoardBackBtnTween = game.add.tween(BoardBackBtn).to({alpha:1},500,'Quad.easeOut',true,2500);
+    BoardBackBtnTween.onComplete.add(function(){
+        BoardBackBtnHoverArea.inputEnabled = true;
+        BoardBackBtnHoverArea.input.useHandCursor = true;
+    },this);
+
+}
 function UpdateCreateAxPageNumber(){
 
     //AxPageRand = Math.floor(Math.random() * 2);
