@@ -337,7 +337,12 @@ function StartSharpening(){
     }
     if( AxBarSharp.x < 100 ){
         FoxWithAx.alpha = 1;
+        AxFX.play();
         FoxWithAxAnimate = FoxWithAx.animations.play("FoxWithAxDynamic",15,true); 
+        FoxWithAxAnimate.onLoop.add(function(){
+            console.log("Start");
+            AxFX.play();
+        }, this);
         /* 
         if(FoxWithAxAnimate.frame == 0){
             AxFX.play();
@@ -348,7 +353,7 @@ function StartSharpening(){
         AxBarSharpLevel2.alpha = 1;
         AxBarSharpLevel2Tween.resume();
     }
-    AxFX.loopFull(1);
+    //AxFX.loopFull(1);
     FoxWithAx.inputEnabled = true;
     FoxWithAx.input.useHandCursor = true;
     ExitBtn.inputEnabled = false;
@@ -369,7 +374,7 @@ function StartSharpening(){
 
 function StopSharpening(){
     Sharpening = false;
-    AxFX.stop();
+    //AxFX.stop();
     game.add.tween(StopSharpenText).to({y:0},500,'Quad.easeOut',true,0); 
     FoxWithAx.alpha = 0;
     FoxWithAx.animations.stop();
@@ -508,6 +513,7 @@ function CleanAxPageButton(){
     
     if( AxBarSharp.x >= 81 && AxBarSharpLevel2.x <= -243 ){
         AxPageRand = 0;
+        
         AxBarSharpLevel2Tween.resume();      
         AxBarSharpLevel2.alpha = 1;
         
@@ -516,10 +522,14 @@ function CleanAxPageButton(){
         AxBarLightLevel1.alpha = 1;
         AxBarLightLevel1Tween.resume();
         FoxWithAx.alpha = 0;
-        FoxWithAx.animations.play("FoxWithAxDynamic",15,true); 
+        FoxWithAxAnimate.stop();
+        AxFX.play();
         FoxWithGoldenAx.alpha = 1;
         FoxWithGoldenAx.animations.play("FoxWithGoldenAxDynamic",17,true); 
-                     
+        FoxWithGoldenAxAnimate.onLoop.add(function(){
+            AxFX.play();                     
+        },this);
+            
         game.add.tween(QuestionPanelGoldenTween).to({alpha:1},500,'Quad.easeOut',true,0);
         QuestionPanelGoldenTween.resume();
         level = 2;
@@ -527,6 +537,7 @@ function CleanAxPageButton(){
     }
     //Level2-----------------------------------------------------------------------------------
     if( AxBarSharp.x >= 100 && AxBarSharpLevel2.x < 100){
+        
         AxPageEnergyTranfer();
         
     }
