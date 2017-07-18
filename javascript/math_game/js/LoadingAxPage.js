@@ -24,6 +24,7 @@ demo.LoadingAxPage.prototype = {
         //Panel-----------------------------------------------------------------------------------------------------------------------
         game.load.atlas('Panel', 'javascript/math_game/assets/AxPage/Panel.png', 'javascript/math_game/assets/AxPage/Panel.json');
         //Btn------------------------------------------------------------------------------------------------------------------------
+        game.load.atlas('Btn', 'javascript/math_game/assets/AxPage/Btn.png', 'javascript/math_game/assets/AxPage/Btn.json');
         
         game.load.image('ExitBtn','javascript/math_game/assets/AxPage/ExitBtn.jpg');
       
@@ -48,7 +49,7 @@ demo.LoadingAxPage.prototype = {
         game.load.image('BlackBG','javascript/math_game/assets/fishingpage/blackBG.jpg');
       
       
-        //---------------------------------------------------------------------------------------------------------------------------------
+        //ArrowSheet----------------------------------------------------------------------------------------------------------------
         game.load.atlas('ArrowSheet', 'javascript/math_game/assets/HomePage/ArrowSheet.png', 'javascript/math_game/assets/HomePage/ArrowSheet.json');
         //audio-----------------------------------------------------------------------------------------------------------------------   
     

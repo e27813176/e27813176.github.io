@@ -1,4 +1,5 @@
 var FoxLoggingBtnShowUp = false;
+var FoxFishingBtnShowUp = false;
 demo.LevelMap = function() {};
 demo.LevelMap.prototype = {
     init: function(){
@@ -14,7 +15,7 @@ demo.LevelMap.prototype = {
         game.load.audio('BtnOver', 'javascript/math_game/assets/audio/BtnOver.mp3');
     },
     create: function() {
-        //define backgroung
+        //define backgroung------------------------------------------------------------------------
         game.stage.backgroundColor = "#000000";
         game.add.sprite(0,100,'LevelMapBG');
         //HomeMenuBtn---------------------------------------------------------------------------
@@ -58,8 +59,8 @@ demo.LevelMap.prototype = {
         //FoxLoggingBtn.alpha = 0; 
         if( AxPageComplete == false || FoxLoggingBtnShowUp == false ){
             FoxLoggingBtn.alpha = 0;
-            
         }
+
         
         FoxLoggingBtnHover = game.add.sprite(0, 100, 'LevelBtn','FoxLoggingBtnHover.png');
         FoxLoggingBtnHover.alpha = 0; 
@@ -75,14 +76,13 @@ demo.LevelMap.prototype = {
         //FishingPageBtn-----------------------------------------------------------------------
         FoxFishingBtn = game.add.sprite(0, 100, 'LevelBtn','FoxFishingBtn.png'); 
         //FoxFishingBtn.alpha = 0;
-        if( LoggingPageComplete == false ){
+        if( LoggingPageComplete == false || FoxFishingBtnShowUp == false ){
             FoxFishingBtn.alpha = 0;
             
         }
                
         FoxFishingBtnHover = game.add.sprite(0, 100, 'LevelBtn','FoxFishingBtnHover.png'); 
         FoxFishingBtnHover.alpha = 0;
-
         
         FoxFishingBtnHoverArea =  game.add.sprite(1190, 510, 'LevelBtn','BtnHover.png');
         FoxFishingBtnHoverArea.alpha = 0;       
@@ -120,7 +120,13 @@ demo.LevelMap.prototype = {
             if( LoggingPageComplete == true ){
                 FoxFishingBtnHoverArea.inputEnabled = true;
                 FoxFishingBtnHoverArea.input.useHandCursor = true; 
-                
+                 
+                if( FoxFishingBtnShowUp == false ){
+                    console.log('ShowUp');
+                    FoxFishingBtnShowUp = true;
+                    game.add.tween(FoxFishingBtn).to({alpha:1},1000,'Linear',true,0); 
+                    
+                }               
                 
             }
         
@@ -211,7 +217,7 @@ function LevelMapClosing(Page){
     LevelMapClosingBGTween = game.add.tween(LevelMapClosingBG).to({alpha:1},500,'Linear',true,0); 
     LevelMapClosingBGTween.onComplete.add(function () {	
             
-        game.state.start(Page,true,false);
+        game.state.start(Page,true,true);
     }, this);
 
 }

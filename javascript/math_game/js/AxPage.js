@@ -71,7 +71,7 @@ demo.AxPage = {
       FoxSitting = game.add.sprite(300,400,'FoxWithAx001');
       FoxSittingAnimate = FoxSitting.animations.add("FoxSittingDynamic",Phaser.Animation.generateFrameNames('FoxWithAx001_',10,17,'.png',5),10,true);
       FoxSitting.animations.play("FoxSittingDynamic",5,true); 
-      FoxSitting.events.onInputDown.add(StartSharpening, this);
+      FoxSitting.events.onInputDown.add(FoxSittingDown, this);
       FoxSitting.events.onInputOver.add(FoxSittingOver, this);
       FoxSitting.events.onInputOut.add(FoxSittingOut, this);
       FoxSitting.inputEnabled = true;
@@ -181,7 +181,22 @@ demo.AxPage = {
       ExitBtn.events.onInputDown.add(ExitAxPage, this);
       ExitBtn.inputEnabled = true;
       ExitBtn.input.useHandCursor = true; 
-      
+      //Btn-----------------------------------------------------------------------------------------------------------------
+      AxPageBackBtn = game.add.sprite(458,376,'Btn','BackBtn.png');
+      AxPageBackBtn.alpha = 1;
+      AxPageBackBtn.scale.setTo(0);
+      AxPageBackBtn.anchor.setTo(1,1);
+      AxPageBackBtn.events.onInputDown.add(AxPageBackBtnDown, this);
+      AxPageBackBtn.events.onInputOver.add(AxPageBackBtnOver, this);
+      AxPageBackBtn.events.onInputOut.add(AxPageBackBtnOut, this);
+
+      AxPageStartBtn = game.add.sprite(481,376,'Btn','StartBtn.png');
+      AxPageStartBtn.alpha = 1;
+      AxPageStartBtn.scale.setTo(0)
+      AxPageStartBtn.anchor.setTo(0,1);
+      AxPageStartBtn.events.onInputDown.add(AxPageStartBtnDown, this);
+      AxPageStartBtn.events.onInputOver.add(AxPageStartBtnOver, this);
+      AxPageStartBtn.events.onInputOut.add(AxPageStartBtnOut, this);      
       //AxPageOpening--------------------------------------------------------------------------------------------------------
       AxPageOpening = game.add.sprite(0,100,'BlackBG');
       AxPageOpening.alpha = 1;      
@@ -203,6 +218,37 @@ demo.AxPage = {
       }
   } 
 }
+
+function AxPageBackBtnDown(){
+    AxBarX = AxBarSharp.x;
+    AxBarLevel2X = AxBarSharpLevel2.x;
+    AxPageClosingTween = game.add.tween(AxPageClosing).to({alpha:1},500,'Linear',true,0);
+    AxPageClosingTween.onComplete.add(function(){
+        game.state.start('LevelMap');
+
+    },this);    
+}
+function AxPageBackBtnOver(){
+    AxPageBackBtnScaleTween = game.add.tween(AxPageBackBtn.scale).to({x:1.1,y:1.1},500,'Quad.easeInOut',true,0,false,true).loop(true);
+    
+}
+function AxPageBackBtnOut(){
+    AxPageBackBtnScaleTween.pause();
+    AxPageBackBtn.scale.setTo(1);
+}
+
+function AxPageStartBtnDown(){
+    StartSharpening();
+}
+function AxPageStartBtnOver(){
+    AxPageStartBtnScaleTween = game.add.tween(AxPageStartBtn.scale).to({x:1.1,y:1.1},500,'Quad.easeInOut',true,0,false,true).loop(true);
+}
+function AxPageStartBtnOut(){
+    AxPageStartBtnScaleTween.pause();
+    AxPageStartBtn.scale.setTo(1);
+    //game.add.tween(AxPageStartBtn.scale).to({x:1,y:1},100,'Linear',true,0);
+}
+
 function BoardBackBtnDown(){
     
     AxBarX = AxBarSharp.x;
@@ -229,6 +275,17 @@ function ExitAxPage(){
     AxPageClosingTween.onComplete.add(function(){
         game.state.start('LevelMap');
 
+    },this);
+}
+function FoxSittingDown(){
+    FoxSitting.inputEnabled = false;
+    game.add.tween(AxPageBackBtn.scale).to({x:1,y:1},500,Phaser.Easing.Back.Out,true,0);
+    AxPageStartBtnTween = game.add.tween(AxPageStartBtn.scale).to({x:1,y:1},500,Phaser.Easing.Back.Out,true,0);
+    AxPageStartBtnTween.onComplete.add(function(){
+        AxPageBackBtn.inputEnabled = true;
+        AxPageBackBtn.input.useHandCursor = true;
+        AxPageStartBtn.inputEnabled = true;
+        AxPageStartBtn.input.useHandCursor = true;
     },this);
 }
 function FoxSittingOver(){
@@ -260,7 +317,12 @@ function FoxWithAxOut(){
 function StartSharpening(){
     //game.add.tween(StartSharpenText).to({y:0},500,'Quad.easeOut',true,0);
     Sharpening = true;
+    game.add.tween(AxPageBackBtn.scale).to({x:0,y:0},300,'Quad.easeIn',true,0);
+    game.add.tween(AxPageStartBtn.scale).to({x:0,y:0},300,'Quad.easeIn',true,0);
+    AxPageBackBtn.inputEnabled = false;
+    AxPageStartBtn.inputEnabled = false;
     
+    AxPageStartBtnScaleTween.pause();
     FoxSitting.alpha = 0;
     FoxSitting.animations.stop();
     
@@ -444,7 +506,7 @@ function CleanAxPageButton(){
         }, this);
     }
     
-    if( AxBarSharp.x >= 81 && AxBarSharpLevel2.x == -243 ){
+    if( AxBarSharp.x >= 81 && AxBarSharpLevel2.x <= -243 ){
         AxPageRand = 0;
         AxBarSharpLevel2Tween.resume();      
         AxBarSharpLevel2.alpha = 1;

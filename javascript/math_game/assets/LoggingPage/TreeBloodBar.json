@@ -2,7 +2,31 @@
 
 {
 	"filename": "TreeBloodBar.png",
-	"frame": {"x":1,"y":54,"w":358,"h":12},
+	"frame": {"x":1,"y":19,"w":358,"h":12},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":827,"y":715,"w":358,"h":12},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "TreeBloodBar002.png",
+	"frame": {"x":361,"y":19,"w":358,"h":12},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":827,"y":715,"w":358,"h":12},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "TreeBloodBar003.png",
+	"frame": {"x":1,"y":33,"w":358,"h":12},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":827,"y":715,"w":358,"h":12},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "TreeBloodBar004.png",
+	"frame": {"x":361,"y":33,"w":358,"h":12},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":827,"y":715,"w":358,"h":12},
@@ -18,18 +42,10 @@
 },
 {
 	"filename": "TreeBloodBarTop.png",
-	"frame": {"x":1,"y":19,"w":366,"h":16},
+	"frame": {"x":369,"y":1,"w":366,"h":16},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":823,"y":713,"w":366,"h":16},
-	"sourceSize": {"w":1600,"h":800}
-},
-{
-	"filename": "TreeBloodMask.png",
-	"frame": {"x":1,"y":37,"w":357,"h":15},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":827,"y":713,"w":357,"h":15},
 	"sourceSize": {"w":1600,"h":800}
 }],
 "meta": {
@@ -37,8 +53,8 @@
 	"version": "1.0",
 	"image": "TreeBloodBar.png",
 	"format": "RGBA8888",
-	"size": {"w":368,"h":67},
+	"size": {"w":736,"h":46},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:74d79073bc1b6801d34186c7b12d95e6:22349fb69097010530ced91f377d0fc7:929d14a3d8cead229f76af3a9fb4d260$"
+	"smartupdate": "$TexturePacker:SmartUpdate:2424383fbef3de293c2332a1d6c5b3d7:aa03f90d3521e44d68664eeb4749adfe:929d14a3d8cead229f76af3a9fb4d260$"
 }
 }

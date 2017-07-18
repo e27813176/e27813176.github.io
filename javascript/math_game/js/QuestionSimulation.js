@@ -122,7 +122,7 @@ function createPlusLevelTwo() {
     var numberB;
 
     var numberSum = 100; //initialize numberSum,and make it bigger than 10.
-    if( answercount <= totalAnswerCount/2 ){
+    if( LoggingPageRand == 0 ){
         if( level == 3 ){
             while (numberSum > 5) {
        

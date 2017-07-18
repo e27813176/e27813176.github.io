@@ -1,6 +1,38 @@
 {"frames": [
 
 {
+	"filename": "GoldenWood.png",
+	"frame": {"x":1,"y":261,"w":123,"h":126},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":646,"y":331,"w":123,"h":126},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "GreenWood.png",
+	"frame": {"x":126,"y":261,"w":123,"h":126},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":646,"y":331,"w":123,"h":126},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "LightBlueWood.png",
+	"frame": {"x":251,"y":307,"w":123,"h":126},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":646,"y":331,"w":123,"h":126},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "RedWood.png",
+	"frame": {"x":376,"y":307,"w":123,"h":126},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":646,"y":331,"w":123,"h":126},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
 	"filename": "ScoreBoardBG.png",
 	"frame": {"x":1,"y":1,"w":409,"h":258},
 	"rotated": false,
@@ -10,7 +42,7 @@
 },
 {
 	"filename": "ScoreBoardBtn.png",
-	"frame": {"x":188,"y":261,"w":195,"h":44},
+	"frame": {"x":251,"y":261,"w":195,"h":44},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":779,"y":459,"w":195,"h":44},
@@ -18,7 +50,7 @@
 },
 {
 	"filename": "ScoreBoardBtnHover.png",
-	"frame": {"x":287,"y":348,"w":89,"h":37},
+	"frame": {"x":380,"y":435,"w":89,"h":37},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":89,"h":37},
@@ -26,7 +58,7 @@
 },
 {
 	"filename": "ScoreBoardContinueBtnHover.png",
-	"frame": {"x":188,"y":307,"w":97,"h":44},
+	"frame": {"x":188,"y":435,"w":97,"h":44},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":779,"y":459,"w":97,"h":44},
@@ -34,7 +66,7 @@
 },
 {
 	"filename": "ScoreBoardHomeBtnHover.png",
-	"frame": {"x":287,"y":307,"w":91,"h":39},
+	"frame": {"x":287,"y":435,"w":91,"h":39},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":883,"y":462,"w":91,"h":39},
@@ -42,7 +74,7 @@
 },
 {
 	"filename": "ScoreBoardSeal.png",
-	"frame": {"x":1,"y":261,"w":185,"h":109},
+	"frame": {"x":1,"y":389,"w":185,"h":109},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":781,"y":325,"w":185,"h":109},
@@ -53,8 +85,8 @@
 	"version": "1.0",
 	"image": "ScoreBoard.png",
 	"format": "RGBA8888",
-	"size": {"w":411,"h":386},
+	"size": {"w":500,"h":499},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:3e4b64847de14ebe6fbda3134c0c964e:e274e3d910547c26f7f1033092d70c9d:6d3db938edc0583b2ba66bf089a13798$"
+	"smartupdate": "$TexturePacker:SmartUpdate:f4c9d565821a55075b6f3a442dff202e:8b8eebf45a7f0c3effe38501c0fdd2a9:6d3db938edc0583b2ba66bf089a13798$"
 }
 }

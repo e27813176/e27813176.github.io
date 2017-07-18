@@ -57,7 +57,11 @@ demo.LoadingLoggingPage.prototype = {
         
         //Btn---------------------------------------------------------------------------------------------------------------------------
         game.load.image('ExitLoggingBtn','javascript/math_game/assets/LoggingPage/ExitLoggingPage.jpg');
-       
+        game.load.atlas('Btn', 'javascript/math_game/assets/AxPage/Btn.png', 'javascript/math_game/assets/AxPage/Btn.json');
+        
+        //ArrowSheet----------------------------------------------------------------------------------------------------------------
+        game.load.atlas('ArrowSheet', 'javascript/math_game/assets/HomePage/ArrowSheet.png', 'javascript/math_game/assets/HomePage/ArrowSheet.json');
+        
         //audio-----------------------------------------------------------------------------------------------------------------------   
         game.load.audio('rightFX', 'javascript/math_game/assets/audio/rightFX.mp3');      
         game.load.audio('Logging', 'javascript/math_game/assets/audio/Logging.mp3'); 
