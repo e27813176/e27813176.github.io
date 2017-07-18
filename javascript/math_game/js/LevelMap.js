@@ -281,11 +281,15 @@ function GetNewMedalConfirmBtnDown(){
     if( FoxFishingBtnShowUp == false && LoggingPageComplete == true ){
         FoxFishingBtnShowUp = true;
         game.add.tween(FoxFishingBtn).to({alpha:1},1000,'Linear',true,500); 
+        FoxLoggingBtnHoverArea.inputEnabled = true;
+        FoxLoggingBtnHoverArea.input.useHandCursor = true;          
         FoxFishingBtnHoverArea.inputEnabled = true;
         FoxFishingBtnHoverArea.input.useHandCursor = true;         
     }
     if( FishingPageComplete == true && FishMedalShowUp == false ){
         FishMedalShowUp = true;
+        FoxLoggingBtnHoverArea.inputEnabled = true;
+        FoxLoggingBtnHoverArea.input.useHandCursor = true;         
         FoxFishingBtnHoverArea.inputEnabled = true;
         FoxFishingBtnHoverArea.input.useHandCursor = true;         
     }
