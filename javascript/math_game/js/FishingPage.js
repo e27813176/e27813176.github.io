@@ -1,4 +1,5 @@
 var AnswerPanelLight =  new Array();
+var FishingPageComplete = false;
 demo.FishingPage = function() {};
 demo.FishingPage.prototype = {
     init: function(){
@@ -653,7 +654,7 @@ function finishfishing(){
     fishingrodpullingsheet.alpha = 0;
     
     success = true;
-    
+    FishingPageComplete = true;
 
     showupfishboard();    
     game_fishing_music.stop();
