@@ -599,7 +599,10 @@ function CleanAxBar(){
 }
 
 function ScoreBoardHomeBtnDown(){
-  
+    TreeBloodBar.x = 0;
+    TreeBloodBar002.x = 0;
+    TreeBloodBar003.x = 0;
+    TreeBloodBar004.x = 0;  
     ExitLoggingPage();
 }
 function ScoreBoardHomeBtnOver(){

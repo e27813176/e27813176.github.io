@@ -499,7 +499,7 @@ function CleanAxPageButton(){
     }
     
     if( AxBarSharp.x < 100 ){
-        //AxBarSharpPlusTween = game.add.tween(AxBarSharp).to({x:'+50'},250,'Quad.easeOut',true,0);
+        //AxBarSharpPlusTween = game.add.tween(AxBarSharp).to({x:'+300'},250,'Quad.easeOut',true,0);
         AxBarSharpPlusTween = game.add.tween(AxBarSharp).to({x:'+30'},250,'Quad.easeOut',true,0);
 
         AxBarSharpPlusTween.onComplete.add(function () {	
@@ -561,6 +561,8 @@ function AxPageEnergyTranfer(){
     EnergyNumAddTween = game.add.tween(EnergyNumAdd).to({x:AxBarSharpLevel2.x-600,y:-130},300,'Quad.easeIn',true,0);
     EnergyNumAddTween.onComplete.add(function(){
         EnergyNumAdd.alpha = 0;
+        //game.add.tween(AxBarSharpLevel2).to({x:'+300'},250,'Quad.easeOut',true,0);
+        
         game.add.tween(AxBarSharpLevel2).to({x:'+30'},250,'Quad.easeOut',true,0);
         AddEnergyFX.play();
         AxBarEnergy.alpha = 1;
