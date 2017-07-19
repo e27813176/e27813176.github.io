@@ -11,9 +11,11 @@ function createEquation(level){
     if( level == 7 || level == 8 ){
         return createPlusLevelFour();
     }
+    /*
     if( level == 20 ){
         return createFishingEquation();
     }
+    */
     if( level == 'Tutorial' ){
         return createTutorialEquation();
         
@@ -38,20 +40,118 @@ function createTutorialEquation(){
     return plusEquation;
     
 }
-function createFishingEquation() {
+
+function createFishingEquation( ModeRand ) {
     var numberA;
-    var numberB;
+    var numberB = -100;
 
     var numberSum = 100; //initialize numberSum,and make it bigger than 10.
-            while (numberSum > 20) {
-
-       
-                numberA = Math.floor(Math.random() * 19) + 1;
-                numberB = Math.floor(Math.random() * 19) + 1;
-
-                numberSum = numberA + numberB;
-            }
+    if( FishingLevel == 1 ){
+        while (numberSum > 10) {
+            numberA = Math.floor(Math.random() * 8) + 2;
+            numberB = Math.floor(Math.random() * 2) + 1;
             
+            numberSum = numberA + numberB;
+        }
+    }else if( FishingLevel == 2 ){
+        while (numberB < 1) {
+            numberSum = Math.floor(Math.random() * 9) + 1; 
+            numberA = Math.floor(Math.random() * 2) + 1;
+            numberB = numberSum - numberA;
+        }
+    }else if( FishingLevel == 3 ){
+        while (numberSum > 10) {
+            numberA = Math.floor(Math.random() * 9) + 1;
+            numberB = Math.floor(Math.random() * 9) + 1;
+            
+            numberSum = numberA + numberB;
+        }
+    }else if( FishingLevel == 4 ){
+        while (numberB < 1 ) {
+            numberSum = Math.floor(Math.random() * 9) + 1;
+            numberA = Math.floor(Math.random() * 8) + 1;
+            
+            numberB = numberSum - numberA;
+        }
+    }else if( FishingLevel == 5 ){
+
+        this.rand = Math.floor(Math.random()*2)+1;
+        console.log(this.rand);
+        switch(this.rand)
+        {
+            case 1:
+                console.log('case1');
+                numberA = Math.floor(Math.random() * 9) + 1;
+                numberB = 10;
+                break;
+            case 2:
+                console.log('case2');
+                numberA = 10;
+                numberB = Math.floor(Math.random() * 9) + 1;
+                break;  
+        }
+        numberSum = numberA + numberB;
+    }else if( FishingLevel == 6 ){
+        while( numberB < 1 || numberB > 10 ){
+            numberSum = Math.floor(Math.random() * 9) + 11;
+            numberA = Math.floor(Math.random() * 10) + 1;
+                   
+            numberB = numberSum - numberA;
+            
+        }
+    }else if( FishingLevel == 7 ){
+        numberA = Math.floor(Math.random() * 10) + 1;
+        numberB = numberA;
+                   
+        numberSum = numberA + numberB;
+    }else if( FishingLevel == 8 ){
+        while( numberB < 1 || numberB > 10 ){
+            numberSum = 10;    
+            numberA = Math.floor(Math.random() * 9) + 1;
+            numberB = numberSum - numberA;
+            
+        }        
+    }else if( FishingLevel == 9 ){
+        
+        numberA = Math.floor(Math.random() * 10) + 1;
+        numberB = Math.floor(Math.random() * 10) + 1;
+            
+        numberSum = numberA + numberB;
+        
+    }else if( FishingLevel == 10 ){
+        while( numberB > 10 || numberB < 1 ){
+            numberSum = Math.floor(Math.random() * 8) + 11;
+            numberA = Math.floor(Math.random() * 9) + 1;
+            
+            numberB = numberSum - numberA;
+        }
+    }else if( FishingLevel == 11 ){
+        numberA = Math.floor(Math.random() * 10) + 1;
+        numberB = Math.floor(Math.random() * 10) + 1;
+            
+        numberSum = numberA + numberB;
+    }else if( FishingLevel == 12 ){
+        while( numberB < 0 || numberB > 10  ){
+            numberSum = Math.floor(Math.random() * 18) + 1;
+            numberA = Math.floor(Math.random() * 9) + 1;
+            
+            numberB = numberSum - numberA;
+        }
+    }else if( FishingLevel == 13 && ModeRand == 0 ){
+
+        numberA = Math.floor(Math.random() * 10) + 1;
+        numberB = Math.floor(Math.random() * 10) + 1;
+                
+        numberSum = numberA + numberB;
+        
+    }else if( FishingLevel == 13 && ModeRand == 1 ){
+        while( numberB < 0 || numberB > 10  ){
+            numberSum = Math.floor(Math.random() * 18) + 1;
+            numberA = Math.floor(Math.random() * 9) + 1;
+            
+            numberB = numberSum - numberA;
+        }
+    }       
 
     var plusEquation = [numberA, numberB, numberSum];
     return plusEquation;

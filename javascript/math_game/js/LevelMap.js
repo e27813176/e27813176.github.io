@@ -335,6 +335,7 @@ function MedalBoardConfirmBtnDown(){
     
 }
 function MedalBoardConfirmBtnOver(){
+    
         MedalBoardConfirmBtnHoverTween.resume();
         MedalBoardConfirmBtnHover.alpha = 1;
 }
@@ -345,6 +346,8 @@ function MedalBoardConfirmBtnOut(){
 //------------------------------------------------------------------------------------------------------------
 function MedalBtnDown(){
     
+    MedalBtnHoverTween.pause();
+    MedalBtnHover.alpha = 0;
     game.add.tween(MedalBoard).to({alpha:1},500,'Linear',true,0); 
     MedalBoardConfirmBtnShowUp = game.add.tween(MedalBoardConfirmBtn).to({alpha:1},500,'Linear',true,500);
     MedalBoardConfirmBtnShowUp.onComplete.add(function(){
@@ -375,6 +378,7 @@ function MedalBtnDown(){
 
 }
 function MedalBtnOver(){
+    BtnOver.play();    
     MedalBtnHoverTween.resume();
     MedalBtnHover.alpha = 1;
 }

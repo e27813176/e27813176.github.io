@@ -107,30 +107,30 @@ function CreateFishingPagePanel(){
         PanelStartFx002.alpha = 0;
         PanelStartFx003.alpha = 0;
     }, this);
-    /*
-    question_green_pannel.animations.play("question_green_pannel_dyn",10,true);
-    question_blue_pannel1.animations.play("question_blue_pannel_dyn1",10,true);
-    question_blue_pannel2.animations.play("question_blue_pannel_dyn2",10,true);
-    
-    game.add.tween(question_green_pannel).to({alpha:1},300,'Linear',true,300);
-    game.add.tween(question_blue_pannel1).to({alpha:1},300,'Linear',true,300);
-    game.add.tween(question_blue_pannel2).to({alpha:1},300,'Linear',true,300);
-    game.add.tween(bonds).to({alpha:1},500,'Linear',true,300);
-    */
+
     game.add.tween(QuestionPanel).to({alpha:1},300,'Linear',true,300);
     UpdateQuestion();
 }
 
 function UpdateQuestion(){
-    var equation = createEquation(20);
-    console.log(equation)
     //rand = Math.floor(Math.random()*6);   
     //rand = Math.floor(Math.random()*3)*2+mode;
     var style = { font: "60px Arial", fill: "#5981A7", align: "center" };
-    rand = Math.floor(Math.random()*3);
+    var ModeRand;
+    if( FishingLevel == 13 ){
+        ModeRand = Math.floor(Math.random()*2);    
+    }else if( FishingLevel%2 == 1 ){
+        ModeRand = 0;
+    }else if( FishingLevel%2 == 0 ){
+        ModeRand = 1;
+    }
+    
+    var equation = createFishingEquation( ModeRand );
+    console.log(equation)
+    
     //console.log(answercount);
     if( answercount == 0 ){
-        if( rand%2 == 0 ){
+        if( ModeRand == 0 ){
             NumSum = game.add.text(centerX+295,centerY-229,'?', style);
             NumSum.anchor.set(0.5);
         
@@ -148,7 +148,7 @@ function UpdateQuestion(){
             addmode = true;
 
         }
-        if( rand%2 == 1 ){
+        if( ModeRand == 1 ){
             NumSum = game.add.text(centerX+295,centerY-229,equation[2], style);
             NumSum.anchor.set(0.5);
     
@@ -168,7 +168,7 @@ function UpdateQuestion(){
     }
     if( answercount >= 1 ){
         //console.log('UpdateQuestion');
-        if( rand%2 == 0 ){
+        if( ModeRand%2 == 0 ){
             NumSum.setText('?');
             NumAdd1.setText(equation[0]);
             NumAdd2.setText(equation[1]);
@@ -176,7 +176,7 @@ function UpdateQuestion(){
             addmode = true;
 
         }   
-        if( rand%2 == 1 ){
+        if( ModeRand%2 == 1 ){
             NumAdd1.setText(equation[0]);
             NumAdd2.setText('?');
             NumSum.setText(equation[2]);
@@ -209,10 +209,11 @@ function create_answerstring(equation){
     var style = { font: "40px Arial", fill: "#ffffff", align: "center" };
     var answerindex = 0;
     createanswervalue(equation);
-   console.log(answer);
+    //console.log(answer);
+    var AnswerRand = Math.floor(Math.random()*3);
     for(var i = 0;i<=2;i++){
         if( answercount == 0 ){
-            if( rand%3 == i ){
+            if( AnswerRand%3 == i ){
                 if(addmode == true){
                     FishingAnswerNum[i] = game.add.text(1000+100*i, 552,equation[2], style);
                     FishingAnswerNum[i].anchor.set(0.5);
@@ -235,7 +236,7 @@ function create_answerstring(equation){
             }
         }
         if( answercount >= 1 ){
-             if( rand%3 == i ){
+             if( AnswerRand%3 == i ){
                 if(addmode == true){
                     FishingAnswerNum[i].setText(equation[2]);
              

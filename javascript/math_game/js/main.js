@@ -43,9 +43,9 @@ game.state.add("LevelMap", demo.LevelMap);
 
 
 //game.state.start("GameBootPage");
-//game.state.start("LoadingFishingPage");
+game.state.start("BootFishingPage");
 //game.state.start("LevelMap");
-game.state.start("BootAxPage");
+//game.state.start("BootAxPage");
 //game.state.start("BootLoggingPage");
 
 //game.state.start("Tutorial");
