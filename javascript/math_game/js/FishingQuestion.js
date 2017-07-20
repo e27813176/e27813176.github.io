@@ -19,16 +19,19 @@ function checkanswer_fishing0(){
     
     if(answerpannelcheck[0] == true && minusmode == true){
         energy_transfer(0);
+        CorrectCount++;
         answercount++;
         UpdateQuestion();
         
 
     }else if(answerpannelcheck[0] == false && minusmode == true){
         scorebar_wrong_fx(0);
+        answercount++;
         //update_question();
         
     }else if(answerpannelcheck[0] == true && addmode == true){
-        energy_transfer(0);     
+        energy_transfer(0);
+        CorrectCount++;
         answercount++;
         UpdateQuestion();
         
@@ -36,6 +39,7 @@ function checkanswer_fishing0(){
         
     }else if(answerpannelcheck[0] == false && addmode == true){
         scorebar_wrong_fx(0);
+        answercount++;
         //update_question();
     }
 }
@@ -43,23 +47,27 @@ function checkanswer_fishing0(){
 function checkanswer_fishing1(){
     if(answerpannelcheck[1] == true && minusmode == true){
         energy_transfer(1);
+        CorrectCount++;
         answercount++;
         UpdateQuestion();
         
 
     }else if(answerpannelcheck[1] == false && minusmode == true){
-        scorebar_wrong_fx(1);      
+        scorebar_wrong_fx(1); 
+        answercount++;
         //update_question();
         
     }else if(answerpannelcheck[1] == true && addmode == true){
         energy_transfer(1);
+        CorrectCount++;
         answercount++;
         UpdateQuestion();
         
         
         
     }else if(answerpannelcheck[1] == false && addmode == true){
-        scorebar_wrong_fx(1);        
+        scorebar_wrong_fx(1);
+        answercount++;
         //update_question();
     }
 }
@@ -67,23 +75,27 @@ function checkanswer_fishing1(){
 function checkanswer_fishing2(){
     if(answerpannelcheck[2] == true && minusmode == true){
         energy_transfer(2);
+        CorrectCount++;
         answercount++;
         UpdateQuestion();
         
 
     }else if(answerpannelcheck[2] == false && minusmode == true){
-        scorebar_wrong_fx(2);     
+        scorebar_wrong_fx(2); 
+        answercount++;
         //update_question();
         
     }else if(answerpannelcheck[2] == true && addmode == true){
         energy_transfer(2);
+        CorrectCount++;
         answercount++;
         UpdateQuestion();
         
         
         
     }else if(answerpannelcheck[2] == false && addmode == true){      
-        scorebar_wrong_fx(2);      
+        scorebar_wrong_fx(2);
+        answercount++;
         //update_question();
     }
 }
@@ -126,7 +138,7 @@ function UpdateQuestion(){
     }
     
     var equation = createFishingEquation( ModeRand );
-    console.log(equation)
+    //console.log(equation)
     
     //console.log(answercount);
     if( answercount == 0 ){
@@ -263,7 +275,7 @@ function create_answerstring(equation){
 
 
 function createanswervalue(equation){
-    console.log(equation);
+    //console.log(equation);
     
     answer[0] = Math.floor(Math.random()*10);
     answer[1] = Math.floor(Math.random()*10);

@@ -15,52 +15,51 @@ demo.LoadingFishingPage.prototype = {
         LoadingBarFrame.alpha = 1;
         LoadingBarFrame.anchor.setTo(0.5,0.5);
         
-         game.load.atlas('fishingpage_sheet001', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas001.json');
-        game.load.atlas('fishingpage_sheet002', 'javascript/math_game/assets/fishingpage/fishingpage_atlas002.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas002.json');
-        game.load.atlas('fishingpage_sheet003', 'javascript/math_game/assets/fishingpage/fishingpage_atlas003.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas003.json');
-       
         
-        game.load.atlas('fishingpage_sheet005', 'javascript/math_game/assets/fishingpage/fishingpage_atlas005.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas005.json');
+        //game.load.atlas('fishingpage_sheet005', 'javascript/math_game/assets/fishingpage/fishingpage_atlas005.png', 'javascript/math_game/assets/fishingpage/fishingpage_atlas005.json');
         
         game.load.atlas('get_stone_fish_atlas', 'javascript/math_game/assets/fishingpage/get_stone_fish_atlas.png', 'javascript/math_game/assets/fishingpage/get_stone_fish_atlas.json');
+
         game.load.atlas('get_light_blue_fish_atlas', 'javascript/math_game/assets/fishingpage/get_light_blue_fish_atlas.png', 'javascript/math_game/assets/fishingpage/get_light_blue_fish_atlas.json');
-
-   
-
         
+        //FoxDynamic------------------------------------------------------------------------------------------------------------
+        game.load.atlas('FoxPulling', 'javascript/math_game/assets/fishingpage/FoxPulling.png', 'javascript/math_game/assets/fishingpage/FoxPulling.json');
+
+        game.load.atlas('FoxPullingRod', 'javascript/math_game/assets/fishingpage/FoxPullingRod.png', 'javascript/math_game/assets/fishingpage/FoxPullingRod.json');
+        
+        game.load.atlas('FoxSitting', 'javascript/math_game/assets/fishingpage/FoxSitting.png', 'javascript/math_game/assets/fishingpage/FoxSitting.json');        
+        
+        game.load.atlas('FoxSittingRod', 'javascript/math_game/assets/fishingpage/FoxSittingRod.png', 'javascript/math_game/assets/fishingpage/FoxSittingRod.json');     
+
+        game.load.atlas('FoxGetFish', 'javascript/math_game/assets/fishingpage/FoxGetFish.png', 'javascript/math_game/assets/fishingpage/FoxGetFish.json');     
+
+        game.load.atlas('FoxFalling', 'javascript/math_game/assets/fishingpage/FoxFalling.png', 'javascript/math_game/assets/fishingpage/FoxFalling.json');     
+
+        game.load.atlas('Fish', 'javascript/math_game/assets/fishingpage/Fish.png', 'javascript/math_game/assets/fishingpage/Fish.json');     
+                
         console.log(loading);
         loading++;
+        //EnergyTransfer----------------------------------------------------------------------------------------------------------
+        game.load.atlas('EnergyTransfer', 'javascript/math_game/assets/fishingpage/EnergyTransfer.png', 'javascript/math_game/assets/fishingpage/EnergyTransfer.json');         
+        
+        //GetFishBoard----------------------------------------------------------------------------------------------------------
+        game.load.atlas('GetFishBoard', 'javascript/math_game/assets/fishingpage/GetFishBoard.png', 'javascript/math_game/assets/fishingpage/GetFishBoard.json');   
+        
+        //GetFishBoard----------------------------------------------------------------------------------------------------------
+        game.load.atlas('FailBoard', 'javascript/math_game/assets/fishingpage/FailBoard.png', 'javascript/math_game/assets/fishingpage/FailBoard.json');   
+        
         //panel----------------------------------------------------------------------------------------------------------------------
 
         game.load.atlas('Panel', 'javascript/math_game/assets/fishingpage/Panel.png', 'javascript/math_game/assets/fishingpage/Panel.json');
         
         //scorebar-------------------------------------------------------------------------------------------------------------------
-
         game.load.atlas('ScoreBarAtlas', 'javascript/math_game/assets/fishingpage/ScoreBarAtlas.png', 'javascript/math_game/assets/fishingpage/ScoreBarAtlas.json');
         //BG--------------------------------------------------------------------------------------------
         game.load.image('blackBG','javascript/math_game/assets/fishingpage/blackBG.jpg');
         game.load.image('BG','javascript/math_game/assets/fishingpage/BG.jpg');
         game.load.image('correct_fx','javascript/math_game/assets/fishingpage/whiteBG.png');
         
-        
-        //panel----------------------------------------------------------------------------------------------------------------------
-        game.load.image('bonds','javascript/math_game/assets/fishingpage/bonds.png');
-        game.load.image('green_panel','javascript/math_game/assets/fishingpage/green_panel.png');
-        game.load.image('blue_panel','javascript/math_game/assets/fishingpage/blue_panel.png');
-        
-        game.load.image('answer_panel','javascript/math_game/assets/fishingpage/answer_panel.png');
-        game.load.image('answer_panel_circle','javascript/math_game/assets/fishingpage/answer_panel_circle.png');
-        
-
-        //button---------------------------------------------------------------------------------------------------------------------
-        game.load.spritesheet('button_getfish_continue','javascript/math_game/assets/fishingpage/button_continue_sheet.png',134,82);
-        game.load.spritesheet('button_getfish_backhome','javascript/math_game/assets/fishingpage/button_back_home_sheet.png',134,82);
-        game.load.spritesheet('button_finish_sheet','javascript/math_game/assets/fishingpage/button_finish_sheet.png',134,82);
-        game.load.spritesheet('button_restart_sheet','javascript/math_game/assets/fishingpage/button_restart_sheet.png',134,82);
-
         game.load.image('mark_tutorial','javascript/math_game/assets/fishingpage/mark.png');
-        game.load.image('skip_text','javascript/math_game/assets/fishingpage/skip_text.png');
-        
         
         //audio-----------------------------------------------------------------------------------------------------------------------   
         game.load.audio('fishing', 'javascript/math_game/assets/audio/fishing.mp3');

@@ -66,23 +66,23 @@ var energy_transfer_sheet_tween;
 function energy_transfer(i){
     
     if(minusmode == true){            
-        energy_transfer_sheet.x = 1200;
-        energy_transfer_sheet.y = 370;
+        EnergyTransfer.x = 1200;
+        EnergyTransfer.y = 370;
         //blue_FX_sheet.animations.play("blue_FX",20,false);
         //blue_FX_sheet.alpha = 1;
     }else if(addmode == true){
-        energy_transfer_sheet.x = 1100;
-        energy_transfer_sheet.y = 255;        
+        EnergyTransfer.x = 1100;
+        EnergyTransfer.y = 255;        
         //green_FX_sheet.animations.play("green_FX",20,false);
         //green_FX_sheet.alpha = 1;    
     }
     rightFX.play();
     //anwser_pannel_light[i].alpha = correctFX;
     //game.add.tween(anwser_pannel_light[i]).to({alpha:0},500,'Quad.easeOut',true);
-    energy_transfer_sheet.alpha = 1;
-    energy_transfer_sheet.animations.play("energy_transfer_sheet_dynamic",10,true);
-    energy_transfer_sheet_tween = game.add.tween(energy_transfer_sheet).to({x:1450,y:ScoreBar.y+150},200,'Quad.easeIn',true); 
-    energy_transfer_sheet_tween.onComplete.add(completed_energy_transfer_sheet, this);
+    EnergyTransfer.alpha = 1;
+    EnergyTransfer.animations.play("EnergyTransfer",30,true);
+    EnergyTransferTween = game.add.tween(EnergyTransfer).to({x:1450,y:ScoreBar.y+150},300,'Quad.easeIn',true); 
+    EnergyTransferTween.onComplete.add(EnergyTransferComplete, this);
     
     AnswerPanelLight[i].alpha = 1;
     game.add.tween(AnswerPanelLight[i]).to({alpha:0},500,'Quad.easeOut',true);
@@ -91,11 +91,11 @@ function energy_transfer(i){
 
 var correct_amount = 100;
 
-function completed_energy_transfer_sheet(){
-    energy_transfer_sheet.alpha = 0;
-    energy_transfer_sheet.animations.stop();
-    game.add.tween(ScoreBar).to({y:'-100'},200,'Linear',true); 
-    game.add.tween(ScoreBarRed).to({y:'-100'},200,'Linear',true);
+function EnergyTransferComplete(){
+    EnergyTransfer.alpha = 0;
+    EnergyTransfer.animations.stop();
+    game.add.tween(ScoreBar).to({y:'-60'},200,'Linear',true); 
+    game.add.tween(ScoreBarRed).to({y:'-60'},200,'Linear',true);
 
     
     ScoreBarTopLight.alpha = 1;
