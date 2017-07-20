@@ -75,7 +75,15 @@ function GetFishAnimation(){
         }, this);        
            
     }else if( FishingLevel == 13 ){
+        PurpleFish.animations.play("PurpleFish",20,false);
+        PurpleFish.alpha = 1;     
         
+        FoxGetFishAnimate.onComplete.add(function () {	
+            PurpleFish.alpha = 0;
+            PurpleFishStop.alpha = 1;
+            PurpleFishStop.animations.play("PurpleFishStop",30,true);
+            
+        }, this);            
     }
 
 }
