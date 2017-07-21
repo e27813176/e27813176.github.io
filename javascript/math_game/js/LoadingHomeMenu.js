@@ -11,8 +11,7 @@ demo.LoadingHomeMenu.prototype = {
         this.load.setPreloadSprite(loadingBar,0);
         
 
-        
-        FoxLogo = game.add.sprite(centerX,centerY,'FoxLogo');
+        FoxLogo = this.add.sprite(centerX,centerY,'FoxLogo');
         FoxLogo.anchor.setTo(0.5);
         //FoxLogoTween = game.add.tween(FoxLogo).to({alpha:0.3},800,'Quad.easeInOut',true,0,false,true).loop(true); 
 
