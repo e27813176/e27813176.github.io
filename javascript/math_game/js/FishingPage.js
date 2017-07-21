@@ -181,7 +181,49 @@ demo.FishingPage.prototype = {
         PurpleFishStopAnimate = PurpleFishStop.animations.add("PurpleFishStop",Phaser.Animation.generateFrameNames('PurpleFishStop_',20,25, '.png', 5), 10, true);
         PurpleFishStop.alpha = 0;        
 
+        GlowBlueFish = game.add.sprite(0,100,'Fish');
+        GlowBlueFishAnimate = GlowBlueFish.animations.add("GlowBlueFish",Phaser.Animation.generateFrameNames('GlowBlueFish_',0,20, '.png',5), 10, true);
+        GlowBlueFish.alpha = 0;             
+        
+        GlowBlueFishStop = game.add.sprite(0,100,'Fish');
+        GlowBlueFishStopAnimate = GlowBlueFishStop.animations.add("GlowBlueFishStop",Phaser.Animation.generateFrameNames('GlowBlueFishStop_',20,25, '.png', 5), 10, true);
+        GlowBlueFishStop.alpha = 0;  
 
+        ElectricFish = game.add.sprite(0,100,'Fish');
+        ElectricFishAnimate = ElectricFish.animations.add("ElectricFish",Phaser.Animation.generateFrameNames('ElectricFish_',0,20, '.png',5), 10, true);
+        ElectricFish.alpha = 0;             
+        
+        ElectricFishStop = game.add.sprite(0,100,'Fish');
+        ElectricFishStopAnimate = ElectricFishStop.animations.add("ElectricFishStop",Phaser.Animation.generateFrameNames('ElectricFishStop_',20,27, '.png', 5), 10, true);
+        ElectricFishStop.alpha = 0;           
+
+        FireFish = game.add.sprite(0,100,'Fish002');
+        FireFishAnimate = FireFish.animations.add("FireFish",Phaser.Animation.generateFrameNames('FireFish_',0,20, '.png',5), 10, true);
+        FireFish.alpha = 0;             
+        
+        FireFishStopFire = game.add.sprite(0,100,'Fish002');
+        FireFishStopFireAnimate = FireFishStopFire.animations.add("FireFishStopFire",Phaser.Animation.generateFrameNames('FireFishStopFire_',20,34, '.png', 5), 10, true);
+        FireFishStopFire.alpha = 0; 
+        
+        FireFishStop = game.add.sprite(0,100,'Fish002');
+        FireFishStopAnimate = FireFishStop.animations.add("FireFishStop",Phaser.Animation.generateFrameNames('FireFishStop_',20,27, '.png', 5), 10, true);
+        FireFishStop.alpha = 0;        
+
+        WifiFish = game.add.sprite(0,100,'Fish002');
+        WifiFishAnimate = WifiFish.animations.add("WifiFish",Phaser.Animation.generateFrameNames('WifiFish_',0,20, '.png',5), 10, true);
+        WifiFish.alpha = 0;             
+        
+        WifiFishStop = game.add.sprite(0,100,'Fish002');
+        WifiFishStopAnimate = WifiFishStop.animations.add("WifiFishStop",Phaser.Animation.generateFrameNames('WifiFishStop_',20,35, '.png', 5), 10, true);
+        WifiFishStop.alpha = 0;    
+        
+        MedicineFish = game.add.sprite(0,100,'Fish002');
+        MedicineFishAnimate = MedicineFish.animations.add("MedicineFish",Phaser.Animation.generateFrameNames('MedicineFish_',0,20, '.png',5), 10, true);
+        MedicineFish.alpha = 0;             
+        
+        MedicineFishStop = game.add.sprite(0,100,'Fish002');
+        MedicineFishStopAnimate = MedicineFishStop.animations.add("MedicineFishStop",Phaser.Animation.generateFrameNames('MedicineFishStop_',20,32, '.png', 5), 10, true);
+        MedicineFishStop.alpha = 0;           
         //fishboard---------------------------------------------------------------------------------------------------------------------
         var getfishboardX = centerX,
             getfishboardY = 500;
@@ -197,6 +239,10 @@ demo.FishingPage.prototype = {
         GetFishBoardSeal = game.add.sprite(centerX,centerY,'GetFishBoard', "GetFishBoardSeal.png");
         GetFishBoardSeal.anchor.setTo(0.5);
         GetFishBoardSeal.alpha = 0;
+        
+        GetFishAmazingSeal = game.add.sprite(centerX,centerY,'GetFishBoard', "AmazingSeal.png");
+        GetFishAmazingSeal.anchor.setTo(0.5);
+        GetFishAmazingSeal.alpha = 0;        
         
         GetFishContinueBtnHover = game.add.sprite(centerX,centerY,'GetFishBoard', "ContinueBtnHover.png");
         GetFishContinueBtnHover.anchor.setTo(0.5);
@@ -288,7 +334,27 @@ demo.FishingPage.prototype = {
         PurpleFishBox = game.add.sprite(centerX,centerY,'GetFishBoard', "PurpleFishBox.png");
         PurpleFishBox.anchor.setTo(0.5);
         PurpleFishBox.alpha = 0;              
+        
+        GlowBlueFishBox = game.add.sprite(centerX,centerY,'GetFishBoard', "GlowBlueBox.png");
+        GlowBlueFishBox.anchor.setTo(0.5);
+        GlowBlueFishBox.alpha = 0;              
+        
+        ElectricFishBox = game.add.sprite(centerX,centerY,'GetFishBoard', "ElectricFishBox.png");
+        ElectricFishBox.anchor.setTo(0.5);
+        ElectricFishBox.alpha = 0;         
 
+        FireFishBox = game.add.sprite(centerX,centerY,'GetFishBoard', "FireFishBox.png");
+        FireFishBox.anchor.setTo(0.5);
+        FireFishBox.alpha = 0;  
+        
+        WifiFishBox = game.add.sprite(centerX,centerY,'GetFishBoard', "WifiFishBox.png");
+        WifiFishBox.anchor.setTo(0.5);
+        WifiFishBox.alpha = 0;         
+
+        MedicineFishBox = game.add.sprite(centerX,centerY,'GetFishBoard', "MedicineFishBox.png");
+        MedicineFishBox.anchor.setTo(0.5);
+        MedicineFishBox.alpha = 0;         
+                
         GetFishBoxHighlight = game.add.sprite(centerX,centerY,'GetFishBoard');
         GetFishBoxHighlight.anchor.setTo(0.5,0.5);
         GetFishBoxHighlight.alpha = 0;
@@ -431,11 +497,11 @@ demo.FishingPage.prototype = {
            failfishing();
             
         }
-        
+        /*
         if(ScoreBar.y <= 100 && playing_status == true){
             finishfishing();
         }
-
+        */
     },
     render: function() {
 
@@ -612,11 +678,12 @@ function startfishing(){
     game_fishing_music.loopFull(1);
 
 }
-function clean_pannel(){
+function CleanPannel(){
 
     NumSum.destroy();
     NumAdd1.destroy();
     NumAdd2.destroy();
+    
     for(let i = 0;i<3;i++){
         FishingAnswerNum[i].destroy();
     }
@@ -644,7 +711,7 @@ function finishfishing(){
     complete_status = true;
     playing_status = false; 
     
-    clean_pannel();
+    CleanPannel();
     GetFishAnimation();
     /*
     scorebar_full.alpha = 1;
@@ -695,7 +762,7 @@ function failfishing(){
     ScoreBarTween.pause();
     ScoreBar.alpha = 0;
     
-    clean_pannel();
+    CleanPannel();
     
     /*
     foxpulling.animations.stop("fishing");
@@ -748,6 +815,7 @@ function ContinueFishing(){
     game.add.tween(GetFishBoardBG).to({alpha:0},250,'Quad.easeOut',true,0);
     game.add.tween(GetFishBoardBtn).to({alpha:0},250,'Quad.easeOut',true,0);
     game.add.tween(GetFishBoardSeal).to({alpha:0},250,'Quad.easeOut',true,0);
+    game.add.tween(GetFishAmazingSeal).to({alpha:0},250,'Quad.easeOut',true,0);
     
     game.add.tween(ScoreBarBG).to({alpha:0},300,'Quad.easeInOut',true);
     game.add.tween(ScoreBarTop).to({alpha:0},300,'Quad.easeInOut',true);

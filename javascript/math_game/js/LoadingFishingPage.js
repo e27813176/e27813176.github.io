@@ -35,7 +35,9 @@ demo.LoadingFishingPage.prototype = {
 
         game.load.atlas('FoxFalling', 'javascript/math_game/assets/fishingpage/FoxFalling.png', 'javascript/math_game/assets/fishingpage/FoxFalling.json');     
 
-        game.load.atlas('Fish', 'javascript/math_game/assets/fishingpage/Fish.png', 'javascript/math_game/assets/fishingpage/Fish.json');     
+        game.load.atlas('Fish', 'javascript/math_game/assets/fishingpage/Fish.png', 'javascript/math_game/assets/fishingpage/Fish.json');  
+        
+        game.load.atlas('Fish002', 'javascript/math_game/assets/fishingpage/Fish002.png', 'javascript/math_game/assets/fishingpage/Fish002.json');           
                 
         console.log(loading);
         loading++;

@@ -131,7 +131,7 @@ function createFishingEquation( ModeRand ) {
             
         numberSum = numberA + numberB;
     }else if( FishingLevel == 12 ){
-        while( numberB < 0 || numberB > 10  ){
+        while( numberB < 1 || numberB > 10  ){
             numberSum = Math.floor(Math.random() * 18) + 1;
             numberA = Math.floor(Math.random() * 9) + 1;
             
@@ -145,7 +145,7 @@ function createFishingEquation( ModeRand ) {
         numberSum = numberA + numberB;
         
     }else if( FishingLevel == 13 && ModeRand == 1 ){
-        while( numberB < 0 || numberB > 10  ){
+        while( numberB < 1 || numberB > 10  ){
             numberSum = Math.floor(Math.random() * 18) + 1;
             numberA = Math.floor(Math.random() * 9) + 1;
             

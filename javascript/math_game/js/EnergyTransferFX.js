@@ -86,7 +86,9 @@ function energy_transfer(i){
     
     AnswerPanelLight[i].alpha = 1;
     game.add.tween(AnswerPanelLight[i]).to({alpha:0},500,'Quad.easeOut',true);
-
+    if(ScoreBar.y <= (100 + 58) && playing_status == true){
+        finishfishing();
+    } 
 }
 
 var correct_amount = 100;
@@ -101,8 +103,8 @@ function EnergyTransferComplete(){
     ScoreBarTopLight.alpha = 1;
     game.add.tween(ScoreBarTopLight).to({alpha:0},1000,'Quad.easeOut',true);
     
-    correct_fx.alpha = correctFX;    
-    game.add.tween(correct_fx).to({alpha:0},200,'Quad.easeOut',true);
+    //correct_fx.alpha = correctFX;    
+    //game.add.tween(correct_fx).to({alpha:0},200,'Quad.easeOut',true);
     
     ScorebarRightFx.alpha= 1;
     ScorebarRightFx.animations.play("ScorebarRightFx",30,false);
