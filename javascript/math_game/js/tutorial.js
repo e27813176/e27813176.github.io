@@ -28,7 +28,7 @@ demo.Tutorial.prototype = {
         ClickFX = game.add.audio('ClickFX');
 
         
-        //BG---------------------------------------------------------------
+        //BG--------------------------------------------------------------
         game.add.sprite(0,100,'TutorialBG');
         //Btn------------------------------------------------------------
         StartTutorialBtn = game.add.sprite(centerX+110,centerY,'Panel','StartPanel.png');
