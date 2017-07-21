@@ -8,7 +8,6 @@ demo.Tutorial.prototype = {
     preload: function() {
        
         game.load.image('TutorialBG','javascript/math_game/assets/Tutorial/TutorialBG.jpg');
-        
         //Panel-----------------------------------------------------------------------------------------------------------------------
         game.load.atlas('Panel', 'javascript/math_game/assets/Tutorial/Panel.png', 'javascript/math_game/assets/Tutorial/Panel.json');
         //audio-----------------------------------------------------------------------------------------------------------------------   
