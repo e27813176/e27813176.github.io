@@ -1,5 +1,6 @@
 var AnswerNum = new Array();
 var AnswerTutorialNumber;
+
 demo.Tutorial = function() {};
 demo.Tutorial.prototype = {
     init: function() {
