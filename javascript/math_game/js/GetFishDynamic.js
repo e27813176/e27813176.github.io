@@ -2,7 +2,7 @@ var FishRand;
 function GetFishAnimation(){
     
     if( FishingLevel == 13 ){
-        FishRand = Math.floor(Math.random()*0);
+        FishRand = Math.floor(Math.random()*31);
     }
     FoxGetFish.animations.play("FoxGetFish",20,false);
     FoxGetFish.alpha = 1;
@@ -88,9 +88,30 @@ function GetFishAnimation(){
                 GlowBlueFishStop.alpha = 1;
                 GlowBlueFishStop.animations.play("GlowBlueFishStop",30,true);
             },this);      
-        /*
-        }else if( FishRand >= 1 ){
-        */    
+        
+        }else if( FishRand >= 1 && FishRand < 6 ){
+            OrangeFish.animations.play("OrangeFish",20,false);
+            OrangeFish.alpha = 1;    
+        }else if( FishRand >= 6 && FishRand < 10 ){
+            FireFish.animations.play("FireFish",20,false);
+            FireFish.alpha = 1;    
+            
+        }else if( FishRand >= 10 && FishRand < 16 ){
+            ElectricFish.animations.play("ElectricFish",20,false);
+            ElectricFish.alpha = 1;    
+            
+        }else if( FishRand >= 16 && FishRand < 20 ){
+            WifiFish.animations.play("WifiFish",20,false);
+            WifiFish.alpha = 1;    
+            
+        }else if( FishRand >= 20 && FishRand < 26 ){
+            LightBlueFish.animations.play("LightBlueFish",20,false);
+            LightBlueFish.alpha = 1;    
+           
+        }else if( FishRand >= 26 && FishRand < 30 ){
+            MedicineFish.animations.play("MedicineFish",20,false);
+            MedicineFish.alpha = 1;    
+            
         }
         
           
@@ -169,10 +190,25 @@ function FishBoxDynamic(){
 
         game.add.tween(MedicineFishBox).to({alpha:1},500,'Quad.easeOut',true,2500);
     
-    }else if ( FishingLevel == 13 ){
- 
-        game.add.tween(GlowBlueFishBox).to({alpha:1},500,'Quad.easeOut',true,2500);
-    
+    }else if( FishingLevel == 13 ){
+        if( FishRand == 0 ){
+            
+            game.add.tween(GlowBlueFishBox).to({alpha:1},500,'Quad.easeOut',true,2500);     
+        
+        }else if( FishRand >= 1 && FishRand < 6 ){
+            game.add.tween(OrangeFishBox).to({alpha:1},500,'Quad.easeOut',true,2500);
+        }else if( FishRand >= 6 && FishRand < 10 ){
+            game.add.tween(FireFishBox).to({alpha:1},500,'Quad.easeOut',true,2500);
+        }else if( FishRand >= 10 && FishRand < 16 ){
+            game.add.tween(ElectricFishBox).to({alpha:1},500,'Quad.easeOut',true,2500);
+        }else if( FishRand >= 16 && FishRand < 20 ){
+            game.add.tween(WifiFishBox).to({alpha:1},500,'Quad.easeOut',true,2500);    
+        }else if( FishRand >= 20 && FishRand < 26 ){
+            game.add.tween(LightBlueFishBox).to({alpha:1},500,'Quad.easeOut',true,2500);
+        }else if( FishRand >= 26 && FishRand < 30 ){
+            game.add.tween(MedicineFishBox).to({alpha:1},500,'Quad.easeOut',true,2500);    
+        }
+       
     }
     if( FishingLevel < 13 ){
         GetFishBoardSeal.alpha = 0;
@@ -181,11 +217,19 @@ function FishBoxDynamic(){
         game.add.tween(GetFishBoardSeal).to({alpha:1},1000,'Quad.easeIn',true,3000);
         
     }else if( FishingLevel == 13 ){
-    
-        GetFishAmazingSeal.alpha = 0;
-        GetFishAmazingSeal.scale.setTo(20);
-        game.add.tween(GetFishAmazingSeal.scale).to({x:1,y:1},1000,'Quad.easeIn',true,3000);
-        game.add.tween(GetFishAmazingSeal).to({alpha:1},1000,'Quad.easeIn',true,3000);    
+        if( FishRand == 0 ){
+            GetFishAmazingSeal.alpha = 0;
+            GetFishAmazingSeal.scale.setTo(20);
+            game.add.tween(GetFishAmazingSeal.scale).to({x:1,y:1},1000,'Quad.easeIn',true,3000);
+            game.add.tween(GetFishAmazingSeal).to({alpha:1},1000,'Quad.easeIn',true,3000);    
+            
+        }else{
+            GetFishBoardSeal.alpha = 0;
+            GetFishBoardSeal.scale.setTo(20);
+            game.add.tween(GetFishBoardSeal.scale).to({x:1,y:1},1000,'Quad.easeIn',true,3000);
+            game.add.tween(GetFishBoardSeal).to({alpha:1},1000,'Quad.easeIn',true,3000);
+            
+        }
     }
 
 }

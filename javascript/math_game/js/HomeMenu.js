@@ -31,19 +31,22 @@ demo.HomeMenu.prototype = {
         BtnOver = game.add.audio('BtnOver');
        
         //btn---------------------------------------------------------------------------------------------------------------------
+        JunyiIconBtn = game.add.sprite(1300,800,'JunyiIconBtn');
+        JunyiIconBtn.alpha = 1;
+        JunyiIconBtn.events.onInputDown.add(JunyiIconBtnDown, this);
         /*
         DoorBtn = game.add.button(830, 422, 'DoorBtn', GoInsideHouse, this, 'DoorBtnHover.png','DoorBtn.png'); 
         DoorBtn.onInputOver.add(DoorBtnOver, this);
         DoorBtn.onInputOut.add(DoorBtnOut, this);
         DoorBtn.inputEnabled = false;
         DoorBtn.alpha = 1;
-        */
+        
         HomeMailBtn = game.add.button(1246, 320, 'HomeMailBtn', OpenMail, this, 'HomeMailHover.png','HomeMail.png');
         HomeMailBtn.onInputOver.add(HomeMailOver, this);
         HomeMailBtn.onInputOut.add(HomeMailOut, this);
         HomeMailBtn.inputEnabled = false;
         HomeMailBtn.alpha = 1;
-        /*
+        
         SettingBtnBG = game.add.sprite(1506, 200, 'SettingBtnBG');
         SettingBtnBG.anchor.setTo(0.5);
         
@@ -163,8 +166,10 @@ demo.HomeMenu.prototype = {
         BlackOpeningTween = game.add.tween(blackBG_opening).to({alpha:0},2000,'Linear',true,0);           
         BlackOpeningTween.onComplete.add(function () {	
             //DoorBtn.inputEnabled = true;
-            HomeMailBtn.inputEnabled = true;
+            //HomeMailBtn.inputEnabled = true;
             //SettingBtnSheet.inputEnabled = true;
+            JunyiIconBtn.inputEnabled = true;
+            JunyiIconBtn.input.useHandCursor = true;
             HomeTreeBtn.inputEnabled = true;
             HomeTreeBtn.input.useHandCursor = true;
             //FoxStandingHover.inputEnabled = true;            
@@ -182,6 +187,11 @@ demo.HomeMenu.prototype = {
     },     
     update: function() {}    
 }
+function JunyiIconBtnDown(){
+     window.open("https://www.junyiacademy.org/");
+    
+}
+
 function FoxStandingDown(){
     BlackClosingTween1 = game.add.tween(blackBG_opening).to({alpha:1},1000,'Quad.easeOut',true,0); 
     BlackClosingTween1.onComplete.add(function () {	
@@ -249,7 +259,7 @@ function SettingBtnOut(){
 }
 
 function OpenMail(){
-    
+     window.open("https://www.junyiacademy.org/");
 }
 function HomeMailOver(){
     ArrowSheet.x = 625;

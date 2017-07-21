@@ -614,7 +614,7 @@ function ScoreBoardHomeBtnOut(){
     ScoreBoardHomeBtnHoverTween.pause();
 }
 function ScoreBoardContinueBtnDown(){
-    game.add.tween(ScoreBoardBG).to({alpha:0},500,'Quad.easeIn',true);
+    ScoreBoardCleanTween = game.add.tween(ScoreBoardBG).to({alpha:0},500,'Quad.easeIn',true);
     game.add.tween(ScoreBoardBtn).to({alpha:0},500,'Quad.easeIn',true);
     game.add.tween(ScoreBoardSeal).to({alpha:0},500,'Quad.easeIn',true);
     
@@ -625,10 +625,13 @@ function ScoreBoardContinueBtnDown(){
     
     ScoreBoardHomeBtn.inputEnabled = false;
     ScoreBoardContinueBtn.inputEnabled = false;
-    TreeBloodBar.x = 0;
-    TreeBloodBar002.x = 0;
-    TreeBloodBar003.x = 0;
-    TreeBloodBar004.x = 0;
+    ScoreBoardCleanTween.onComplete.add(function(){
+        TreeBloodBar.x = 0;
+        TreeBloodBar002.x = 0;
+        TreeBloodBar003.x = 0;
+        TreeBloodBar004.x = 0;
+        
+    },this);
     
     StopLogging();
     

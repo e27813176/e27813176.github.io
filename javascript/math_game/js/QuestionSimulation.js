@@ -80,12 +80,12 @@ function createFishingEquation( ModeRand ) {
         switch(this.rand)
         {
             case 1:
-                console.log('case1');
+                //console.log('case1');
                 numberA = Math.floor(Math.random() * 9) + 1;
                 numberB = 10;
                 break;
             case 2:
-                console.log('case2');
+                //console.log('case2');
                 numberA = 10;
                 numberB = Math.floor(Math.random() * 9) + 1;
                 break;  
@@ -160,7 +160,7 @@ function createFishingEquation( ModeRand ) {
 //Create plus_questions of level one, including 3 numbers - A, B, Sum (A + B = Sum).  
 function createPlusLevelOne() {
     var numberA;
-    var numberB;
+    var numberB = -100;
     console.log(AxPageRand);
     var numberSum = 100; //initialize numberSum,and make it bigger than 10.
     if( AxPageRand == 0 ){
@@ -175,13 +175,17 @@ function createPlusLevelOne() {
             }
         }
         if( level%2 == 0 ){
-            while (numberSum > 5) {
+            while (numberB < 1 || numberB > 5 ) {
 
-       
+                numberSum = Math.floor(Math.random() * 9) + 1; 
+                numberA = Math.floor(Math.random() * 2) + 1;
+                numberB = numberSum - numberA;       
+                /*
                 numberA = Math.floor(Math.random() * 2) + 1;
                 numberB = Math.floor(Math.random() * 5) + 1;
 
                 numberSum = numberA + numberB;
+                */
             }
             
         }
@@ -199,12 +203,16 @@ function createPlusLevelOne() {
             
         }
         if( level%2 == 0 ){
-            while (numberSum > 10 ) {
-       
+            while (numberB > 10 || numberB < 6 ) {
+                numberSum = Math.floor(Math.random() * 9) + 1; 
+                numberA = Math.floor(Math.random() * 2) + 1;
+                numberB = numberSum - numberA; 
+                /*
                 numberA = Math.floor(Math.random() * 2) + 1;
                 numberB = Math.floor(Math.random() * 5) + 6;
 
                 numberSum = numberA + numberB;
+                */
             }
             
         }
@@ -219,7 +227,7 @@ function createPlusLevelOne() {
 //Create plus_questions of level two, including 3 numbers - A, B, Sum (A + B = Sum).  
 function createPlusLevelTwo() {
     var numberA;
-    var numberB;
+    var numberB = -100;
 
     var numberSum = 100; //initialize numberSum,and make it bigger than 10.
     if( LoggingPageRand == 0 ){
@@ -233,13 +241,18 @@ function createPlusLevelTwo() {
             }
         }
         if( level == 4 ){
-            while (numberSum > 9) {
-
-       
+            while ( numberB < 1 || numberB > 5 ) {
+                
+                numberSum = Math.floor(Math.random() * 9) + 1;
+                numberA = Math.floor(Math.random() * 8) + 1;
+            
+                numberB = numberSum - numberA;
+                /*   
                 numberA = Math.floor(Math.random() * 5) + 1;
                 numberB = Math.floor(Math.random() * 5) + 1;
 
                 numberSum = numberA + numberB;
+                */
             }
             
         }
@@ -256,12 +269,18 @@ function createPlusLevelTwo() {
             
         }
         if( level == 4 ){
-            while (numberSum > 9 ) {
-       
+            while ( numberB > 10 || numberB < 6 ) {
+                
+                numberSum = Math.floor(Math.random() * 9) + 1;
+                numberA = Math.floor(Math.random() * 8) + 1;
+            
+                numberB = numberSum - numberA;            
+                /*
                 numberA = Math.floor(Math.random() * 5) + 1;
                 numberB = Math.floor(Math.random() * 5) + 6;
 
                 numberSum = numberA + numberB;
+                */
             }
             
         }

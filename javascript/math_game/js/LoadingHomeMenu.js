@@ -42,8 +42,9 @@ demo.LoadingHomeMenu.prototype = {
         
         game.load.atlas('ArrowSheet', 'javascript/math_game/assets/HomePage/ArrowSheet.png', 'javascript/math_game/assets/HomePage/ArrowSheet.json');  
         
-        game.load.image('RoadHover', 'javascript/math_game/assets/HomePage/RoadHover.png');
+        //game.load.image('RoadHover', 'javascript/math_game/assets/HomePage/RoadHover.png');
         game.load.image('HomeTreeHover', 'javascript/math_game/assets/HomePage/HomeTreeHover.jpg');
+        game.load.image('JunyiIconBtn', 'javascript/math_game/assets/HomePage/JunyiIconBtn.png');
 
         //Text----------------------------------------------------------------------------------------------------------------------------
         game.load.image('FoxHomeText','javascript/math_game/assets/HomePage/FoxHomeText.jpg');
