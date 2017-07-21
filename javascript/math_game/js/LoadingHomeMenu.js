@@ -11,9 +11,9 @@ demo.LoadingHomeMenu.prototype = {
         this.load.setPreloadSprite(loadingBar,0);
         
 
-        FoxLogo = this.add.sprite(centerX,centerY,'FoxLogo');
-        FoxLogo.anchor.setTo(0.5);
-        //FoxLogoTween = game.add.tween(FoxLogo).to({alpha:0.3},800,'Quad.easeInOut',true,0,false,true).loop(true); 
+        this.FoxLogo = this.add.sprite(centerX,centerY,'FoxLogo');
+        this.FoxLogo.anchor.setTo(0.5);
+        FoxLogoTween = game.add.tween(this.FoxLogo).to({alpha:0.5},800,'Quad.easeInOut',true,0,false,true).loop(true); 
 
         LoadingBarFrame = this.add.sprite(game.width/2,720,"LoadingBarFrame");
         LoadingBarFrame.alpha = 1;
@@ -70,8 +70,8 @@ demo.LoadingHomeMenu.prototype = {
             game.add.tween(FoxIconCenter).to({alpha:1},1000,'Linear',true);
             //loadingBarTween.pause();
             //loadingBarTween = game.add.tween(loadingBar).to({alpha:'-0.5'},400,'Quad.easeInOut',true,0,false,true).loop(true); 
-            //FoxLogoTween.pause();  
-            game.add.tween(FoxLogo).to({alpha:0},500,'Linear',true);
+            FoxLogoTween.pause();  
+            game.add.tween(this.FoxLogo).to({alpha:0},500,'Linear',true);
         
             StartText = game.add.sprite(0,100,'StartText');
             StartText.alpha = 1;
