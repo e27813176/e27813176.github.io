@@ -2,7 +2,7 @@ var FishRand;
 function GetFishAnimation(){
     
     if( FishingLevel == 13 ){
-        FishRand = Math.floor(Math.random()*31);
+        FishRand = Math.floor(Math.random()*30);
     }
     FoxGetFish.animations.play("FoxGetFish",20,false);
     FoxGetFish.alpha = 1;

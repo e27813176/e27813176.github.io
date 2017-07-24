@@ -56,6 +56,9 @@ demo.LoadingAxPage.prototype = {
         game.load.audio('rightFX', 'javascript/math_game/assets/audio/rightFX.mp3');      
         game.load.audio('AxFX', 'javascript/math_game/assets/audio/AxFX.mp3');    
         game.load.audio('AddEnergyFX', 'javascript/math_game/assets/audio/add_energyFX.mp3'); 
+        game.load.audio('AxPagePlay', 'javascript/math_game/assets/audio/AxPageBG002.mp3'); 
+        game.load.audio('AxPageSuccess', 'javascript/math_game/assets/audio/AxPageSuccess.mp3'); 
+        //game.load.audio('AxPageMusicBG', 'javascript/math_game/assets/audio/AxPageBG003.mp3'); 
         
     },
     create: function() {

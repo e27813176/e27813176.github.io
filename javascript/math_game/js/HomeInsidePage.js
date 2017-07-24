@@ -16,6 +16,7 @@ demo.HomeInsidePage.prototype = {
         game.load.image('blackBG','javascript/math_game/assets/fishingpage/blackBG.jpg');
     },
     create: function() {
+        console.log(game_menu_music.isPlaying);
         //define backgroung
         game.stage.backgroundColor = "#000000";
         HomeInsidePageBG = game.add.sprite(0,100,'HomeInsidePageBG');

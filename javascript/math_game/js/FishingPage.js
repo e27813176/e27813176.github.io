@@ -488,9 +488,15 @@ demo.FishingPage.prototype = {
             
         if(ScoreBar.y < 500 && playing_status == true){
 
-            //console.log(PlayingTime);
-            ScoreBar.y += 0.6;
-            ScoreBarRed.y += 0.6;
+            if( FishingLevel == 13 ){
+                ScoreBar.y += 0.6;
+                ScoreBarRed.y += 0.6;
+                
+            }else{
+                ScoreBar.y += 0.5;
+                ScoreBarRed.y += 0.5;
+                
+            }
             
         }
         if(ScoreBar.y >= 500 && playing_status == true){

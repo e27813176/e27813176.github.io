@@ -19,6 +19,7 @@ demo.LevelMap.prototype = {
         game.load.image('blackBG','javascript/math_game/assets/fishingpage/blackBG.jpg');
         //Audio--------------------------------------------------------------------------------
         game.load.audio('BtnOver', 'javascript/math_game/assets/audio/BtnOver.mp3');
+        game.load.audio('GetMedal', 'javascript/math_game/assets/audio/GetMedal.mp3');
     },
     create: function() {
         //define backgroung------------------------------------------------------------------------
@@ -160,6 +161,7 @@ demo.LevelMap.prototype = {
         GetNewMedalConfirmBtnArea.events.onInputOut.add(GetNewMedalConfirmBtnOut, this);          
         //Audio----------------------------------------------------------------------------------------
         BtnOver = game.add.audio('BtnOver');
+        GetMedal = game.add.audio('GetMedal');
         
         //LevelMapOpening--------------------------------------------------------------------------------
         LevelMapOpening = game.add.sprite(0,0,'blackBG');
@@ -187,7 +189,7 @@ demo.LevelMap.prototype = {
                     TutorialBtnHoverArea.inputEnabled = false;
                     FoxAxBtnHoverArea.inputEnabled = false;
                     FoxLoggingBtnHoverArea.inputEnabled = false;
-                
+                    GetMedal.play();
                     game.add.tween(GetNewMedalText).to({alpha:1},300,'Linear',true,0); 
                     GetNewMedalTextShowUpTween = game.add.tween(GetNewMedalTextLight).to({alpha:1},300,'Linear',true,0); 
                     GetNewMedalTextShowUpTween.onComplete.add(function(){
@@ -212,6 +214,7 @@ demo.LevelMap.prototype = {
                     FoxLoggingBtnHoverArea.inputEnabled = false;
                     FoxFishingBtnHoverArea.inputEnabled = false;
                     
+                    GetMedal.play();
                     game.add.tween(GetNewMedalText).to({alpha:1},300,'Linear',true,0); 
                     GetNewMedalTextShowUpTween = game.add.tween(GetNewMedalTextLight).to({alpha:1},300,'Linear',true,0); 
                     GetNewMedalTextShowUpTween.onComplete.add(function(){
@@ -232,7 +235,7 @@ demo.LevelMap.prototype = {
                 FoxAxBtnHoverArea.inputEnabled = false;
                 FoxLoggingBtnHoverArea.inputEnabled = false;
                 FoxFishingBtnHoverArea.inputEnabled = false; 
-                
+                GetMedal.play();
                 game.add.tween(GetNewMedalText).to({alpha:1},300,'Linear',true,0); 
                 GetNewMedalTextShowUpTween = game.add.tween(GetNewMedalTextLight).to({alpha:1},300,'Linear',true,0); 
                 GetNewMedalTextShowUpTween.onComplete.add(function(){

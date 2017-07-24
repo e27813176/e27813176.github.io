@@ -20,27 +20,42 @@ demo.HomeMenu.prototype = {
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
         
         HomePageBG = game.add.sprite(0,100,'HomePageBG');
-    
+
+        //sound-------------------------------------------------------------------------------------------------------------------
+        rightFX = game.add.audio('rightFX');
+        wrongFX = game.add.audio('wrongFX');
+        successFX = game.add.audio('successFX');
+        startFX = game.add.audio('startFX');
+        failureFX = game.add.audio('failureFX');
+        clickFX = game.add.audio('clickFX');
+        add_energyFX = game.add.audio('add_energyFX');            
+        alertFX = game.add.audio('alertFX');      
+        //game_menu_music = game.add.audio('menu');
         //Audio-------------------------------------------------------------------------------------------
-        if(FromInside == false){
-    
-            game_menu_music = game.add.audio('menu');
+        console.log(game_menu_music.isPlaying);
         
-            game_menu_music.loopFull(1);        
+        if(game_menu_music.isPlaying == false){
+            game_menu_music.loopFull(1);  
         }
+        
+        //console.log(game_menu_music.isPlaying);
+           
+        
+                  
+        
         BtnOver = game.add.audio('BtnOver');
        
         //btn---------------------------------------------------------------------------------------------------------------------
         JunyiIconBtn = game.add.sprite(1300,800,'JunyiIconBtn');
         JunyiIconBtn.alpha = 1;
         JunyiIconBtn.events.onInputDown.add(JunyiIconBtnDown, this);
-        /*
+        
         DoorBtn = game.add.button(830, 422, 'DoorBtn', GoInsideHouse, this, 'DoorBtnHover.png','DoorBtn.png'); 
         DoorBtn.onInputOver.add(DoorBtnOver, this);
         DoorBtn.onInputOut.add(DoorBtnOut, this);
         DoorBtn.inputEnabled = false;
         DoorBtn.alpha = 1;
-        
+        /*
         HomeMailBtn = game.add.button(1246, 320, 'HomeMailBtn', OpenMail, this, 'HomeMailHover.png','HomeMail.png');
         HomeMailBtn.onInputOver.add(HomeMailOver, this);
         HomeMailBtn.onInputOut.add(HomeMailOut, this);
@@ -150,22 +165,13 @@ demo.HomeMenu.prototype = {
         ArrowSheet.animations.add("ArrowSheetDynamic",Phaser.Animation.generateFrameNames('ArrowSheet_',0,8,'.png',5),10,true);
         ArrowSheet.alpha = 0;
         
-
-        //sound-------------------------------------------------------------------------------------------------------------------
-        rightFX = game.add.audio('rightFX');
-        wrongFX = game.add.audio('wrongFX');
-        successFX = game.add.audio('successFX');
-        startFX = game.add.audio('startFX');
-        failureFX = game.add.audio('failureFX');
-        clickFX = game.add.audio('clickFX');
-        add_energyFX = game.add.audio('add_energyFX');            
-        alertFX = game.add.audio('alertFX');        
+    
         
         blackBG_opening = game.add.sprite(0,0,'blackBG');
         blackBG_opening.alpha = 1;
         BlackOpeningTween = game.add.tween(blackBG_opening).to({alpha:0},2000,'Linear',true,0);           
         BlackOpeningTween.onComplete.add(function () {	
-            //DoorBtn.inputEnabled = true;
+            DoorBtn.inputEnabled = true;
             //HomeMailBtn.inputEnabled = true;
             //SettingBtnSheet.inputEnabled = true;
             JunyiIconBtn.inputEnabled = true;
@@ -193,6 +199,8 @@ function JunyiIconBtnDown(){
 }
 
 function FoxStandingDown(){
+    game.add.tween(game_menu_music).to({volume:0},1000,'Quad.easeOut',true,0); 
+ 
     BlackClosingTween1 = game.add.tween(blackBG_opening).to({alpha:1},1000,'Quad.easeOut',true,0); 
     BlackClosingTween1.onComplete.add(function () {	
         game.state.start('LevelMap',true,true);
@@ -307,35 +315,7 @@ function GoInsideHouse(){
         game.state.start('HomeInsidePage',true);
     }, this); 
 }
-/*
 
-function skip_tutorial(){
-    game.add.tween(button_start_sheet).to({alpha:0},500,'Linear',true);
-    game.add.tween(BG_tutorial).to({alpha:0},500,'Linear',true);
-    button_tutorial_sheet.inputEnabled = false;
-    game.add.tween(button_tutorial_sheet).to({alpha:0},500,'Linear',true);
-    button_start_sheet.inputEnabled = false;    
-    fishingpage_center_tween = game.add.tween(fishingpage_center).to({alpha:0},500,'Linear',true);
-    
-    
-    first_try = false;
-    
-    fishingrod_tween.resume();
-    foxbody_tween.resume();
-    foxtail_tween.resume();
-    
-    game.add.tween(foxtail).to({alpha:1},500,'Linear',true);
-    game.add.tween(foxbody).to({alpha:1},500,'Linear',true);
-    game.add.tween(fishingrod).to({alpha:1},500,'Linear',true);
-    
-    
-    fishingpage_center_tween.onComplete.add(completed_fishingpage_center_tween, this);    
-}
-
-function completed_fishingpage_center_tween(){
-    game.state.start('fishingLevel');
-}
-*/
 
 function FoxDynamic(){
     

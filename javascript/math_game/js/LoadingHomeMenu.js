@@ -62,6 +62,7 @@ demo.LoadingHomeMenu.prototype = {
     },
 
     create: function() {
+        game_menu_music = game.add.audio('menu');
         if( FirstStart == true ){
             FirstStart = false;
             FoxIconCenter = game.add.sprite(0,100, 'FoxIconCenter');
@@ -95,6 +96,7 @@ demo.LoadingHomeMenu.prototype = {
     
 };
 function StartGame(){
+    
     StartBtnDown.play();
     console.log('Hello');
     StartTextTween.stop();

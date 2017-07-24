@@ -66,6 +66,8 @@ demo.LoadingLoggingPage.prototype = {
         game.load.audio('rightFX', 'javascript/math_game/assets/audio/rightFX.mp3');      
         game.load.audio('Logging', 'javascript/math_game/assets/audio/Logging.mp3'); 
         game.load.audio('LoggingBounce', 'javascript/math_game/assets/audio/LoggingBounce.mp3'); 
+        game.load.audio('LoggingPagePlay', 'javascript/math_game/assets/audio/LoggingPageBG003.mp3'); 
+
         
         //ScoreBoard------------------------------------------------------------------------------------------------------------------
         game.load.atlas('ScoreBoard', 'javascript/math_game/assets/LoggingPage/ScoreBoard.png', 'javascript/math_game/assets/LoggingPage/ScoreBoard.json');

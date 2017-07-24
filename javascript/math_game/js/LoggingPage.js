@@ -24,6 +24,7 @@ demo.LoggingPage = {
         rightFX = game.add.audio('rightFX');
         Logging = game.add.audio('Logging');
         LoggingBounce = game.add.audio('LoggingBounce');
+        LoggingPagePlay = game.add.audio('LoggingPagePlay');
                 
         //FoxBounceAnimation------------------------------------------------------------------------------------------------------
         FoxBounce001 = game.add.sprite(-10,100,'FoxBounce001');
@@ -242,11 +243,13 @@ demo.LoggingPage = {
         TreeBloodBarTop = game.add.sprite(0,100,'TreeBloodBar','TreeBloodBarTop.png');
         TreeBloodBarTop.alpha = 0;
         //ExitLoggingBtn-----------------------------------------------------------------------------------------------------
+        /*
         ExitLoggingBtn = game.add.sprite(150,420,'ExitLoggingBtn');
         ExitLoggingBtn.alpha = 0;
         ExitLoggingBtn.events.onInputDown.add(ExitLoggingPage, this);
         ExitLoggingBtn.inputEnabled = true;
         ExitLoggingBtn.input.useHandCursor = true; 
+        */
         //ScoreBoard------------------------------------------------------------------------------------------------------------
         ScoreBoardBG = game.add.sprite(800,500,'ScoreBoard','ScoreBoardBG.png');
         ScoreBoardBG.anchor.set(0.5);
@@ -382,6 +385,7 @@ function ExitLoggingPage(){
 }
 
 function StartLogging(){
+    //LoggingPagePlay.loopFull(1);
     game.add.tween(LoggingPageBackBtn.scale).to({x:0,y:0},300,'Quad.easeIn',true,0);
     game.add.tween(LoggingPageStartBtn.scale).to({x:0,y:0},300,'Quad.easeIn',true,0);
     LoggingPageBackBtn.inputEnabled = false;
@@ -456,7 +460,7 @@ function StartLogging(){
     }        
     
     CreateLoggingPageNumber();
-    ExitLoggingBtn.inputEnabled = false;
+    //ExitLoggingBtn.inputEnabled = false;
 }
 
 
@@ -494,8 +498,8 @@ function StopLogging(){
     }    
     CleanAxBar();
         
-    ExitLoggingBtn.inputEnabled = true;
-    ExitLoggingBtn.input.useHandCursor = true;     
+    //ExitLoggingBtn.inputEnabled = true;
+   // ExitLoggingBtn.input.useHandCursor = true;     
     
 }
 
@@ -520,9 +524,10 @@ function FinishLogging(){
 
     game.add.tween(QuestionPanel).to({alpha:0},300,'Linear',true,0); 
     for(let i = 0;i<5;i++){
+        AnswerPanel[i].inputEnabled = false;
         game.add.tween(AnswerPanel[i]).to({alpha:0},300,'Linear',true,0);
+ 
     }
-
     
     NumSum.destroy();
     NumAdd1.destroy();
@@ -715,14 +720,7 @@ function CleanLoggingPageButton(){
         game.add.tween(TreeBloodBar002).to({x:'-1'},300,'Linear',true,0);
         game.add.tween(TreeBloodBar003).to({x:'-1'},300,'Linear',true,0);
         game.add.tween(TreeBloodBar004).to({x:'-1'},300,'Linear',true,0);
-        /*
-        TreeBloodBarMinusBounceTween.onComplete.add(function(){
-             if( TreeBloodBar.x <= -362 ){
-                
-                FinishLogging();
-            }           
-        },this);
-        */
+
     }
     if( AxBarSharp.x > -243 ){
         TreeBloodBarMinusTween = game.add.tween(TreeBloodBar).to({x:'-20'},300,'Linear',true,0);
@@ -730,18 +728,13 @@ function CleanLoggingPageButton(){
         game.add.tween(TreeBloodBar002).to({x:'-20'},300,'Linear',true,0);
         game.add.tween(TreeBloodBar003).to({x:'-20'},300,'Linear',true,0);
         game.add.tween(TreeBloodBar004).to({x:'-20'},300,'Linear',true,0);
-        /*
-        TreeBloodBarMinusTween.onComplete.add(function () {	
-            if( TreeBloodBar.x <= -362 ){
-                
-                FinishLogging();
-            }
-        }, this);
-    */
     }
     if( TreeBloodBar.x <= -362+20 && AxBarSharp.x > -243 ){
+        TreeBloodBar004.alpha = 0;
         FinishLogging();
-    }        
+        
+    }
+   
     
     if( TreeBloodBar.x <= -362/4 + 10 && TreeBloodBar.x > 2*(-362/4) + 10 ){
         LoggingPageRand = 1;
@@ -773,6 +766,7 @@ function CleanLoggingPageButton(){
 
     for(let i = 0;i<5;i++){
         AnswerPanel[i].inputEnabled = false;
+        console.log('clean');
     }
     if( LoggingPageRand == 0 ){
         
@@ -782,10 +776,13 @@ function CleanLoggingPageButton(){
         
         CreateAxPageAnswerNum(6);
     }
-
+    
+    if( TreeBloodBar.x > -362+20 ){
+        UpdateCreateLoggingPageNumber();
+    }     
 
     answercount++;
-    UpdateCreateLoggingPageNumber();
+    
 }
 
 function UpdateCreateLoggingPageNumber(){
