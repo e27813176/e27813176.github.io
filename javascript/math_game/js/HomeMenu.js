@@ -43,6 +43,7 @@ demo.HomeMenu.prototype = {
         JunyiIconBtn = game.add.sprite(1300,800,'JunyiIconBtn');
         JunyiIconBtn.alpha = 1;
         JunyiIconBtn.events.onInputDown.add(JunyiIconBtnDown, this);
+        
         /*
         DoorBtn = game.add.button(830, 422, 'DoorBtn', GoInsideHouse, this, 'DoorBtnHover.png','DoorBtn.png'); 
         DoorBtn.onInputOver.add(DoorBtnOver, this);

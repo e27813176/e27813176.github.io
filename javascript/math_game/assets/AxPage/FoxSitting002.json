@@ -2,31 +2,31 @@
 
 {
 	"filename": "FoxSitting002_00010.png",
-	"frame": {"x":1,"y":1,"w":354,"h":378},
+	"frame": {"x":1,"y":1,"w":400,"h":400},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":46,"y":22,"w":354,"h":378},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":400},
 	"sourceSize": {"w":400,"h":400}
 },
 {
 	"filename": "FoxSitting002_00011.png",
-	"frame": {"x":1420,"y":760,"w":348,"h":378},
+	"frame": {"x":1207,"y":805,"w":391,"h":400},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":46,"y":22,"w":348,"h":378},
+	"spriteSourceSize": {"x":9,"y":0,"w":391,"h":400},
 	"sourceSize": {"w":400,"h":400}
 },
 {
 	"filename": "FoxSitting002_00012.png",
-	"frame": {"x":1425,"y":381,"w":341,"h":370},
+	"frame": {"x":1609,"y":1,"w":354,"h":400},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":46,"y":23,"w":341,"h":370},
+	"spriteSourceSize": {"x":46,"y":0,"w":354,"h":400},
 	"sourceSize": {"w":400,"h":400}
 },
 {
 	"filename": "FoxSitting002_00013.png",
-	"frame": {"x":1069,"y":381,"w":354,"h":377},
+	"frame": {"x":1609,"y":403,"w":354,"h":377},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":46,"y":23,"w":354,"h":377},
@@ -34,90 +34,90 @@
 },
 {
 	"filename": "FoxSitting002_00014.png",
-	"frame": {"x":1,"y":381,"w":354,"h":378},
+	"frame": {"x":1600,"y":805,"w":354,"h":400},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":46,"y":22,"w":354,"h":378},
+	"spriteSourceSize": {"x":46,"y":0,"w":354,"h":400},
 	"sourceSize": {"w":400,"h":400}
 },
 {
 	"filename": "FoxSitting002_00015.png",
-	"frame": {"x":1425,"y":1,"w":343,"h":378},
+	"frame": {"x":1,"y":403,"w":400,"h":400},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":46,"y":22,"w":343,"h":378},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":400},
 	"sourceSize": {"w":400,"h":400}
 },
 {
 	"filename": "FoxSitting002_00016.png",
-	"frame": {"x":1069,"y":760,"w":349,"h":378},
+	"frame": {"x":1,"y":805,"w":400,"h":400},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":46,"y":22,"w":349,"h":378},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":400},
 	"sourceSize": {"w":400,"h":400}
 },
 {
 	"filename": "FoxSitting002_00017.png",
-	"frame": {"x":1,"y":761,"w":354,"h":378},
+	"frame": {"x":403,"y":1,"w":400,"h":400},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":46,"y":22,"w":354,"h":378},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":400},
 	"sourceSize": {"w":400,"h":400}
 },
 {
 	"filename": "FoxSitting002_00018.png",
-	"frame": {"x":357,"y":1,"w":354,"h":378},
+	"frame": {"x":403,"y":403,"w":400,"h":400},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":46,"y":22,"w":354,"h":378},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":400},
 	"sourceSize": {"w":400,"h":400}
 },
 {
 	"filename": "FoxSitting002_00019.png",
-	"frame": {"x":357,"y":381,"w":354,"h":378},
+	"frame": {"x":403,"y":805,"w":400,"h":400},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":46,"y":22,"w":354,"h":378},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":400},
 	"sourceSize": {"w":400,"h":400}
 },
 {
 	"filename": "FoxSitting002_00020.png",
-	"frame": {"x":357,"y":761,"w":354,"h":378},
+	"frame": {"x":805,"y":1,"w":400,"h":400},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":46,"y":22,"w":354,"h":378},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":400},
 	"sourceSize": {"w":400,"h":400}
 },
 {
 	"filename": "FoxSitting002_00021.png",
-	"frame": {"x":713,"y":1,"w":354,"h":378},
+	"frame": {"x":1207,"y":1,"w":400,"h":400},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":46,"y":22,"w":354,"h":378},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":400},
 	"sourceSize": {"w":400,"h":400}
 },
 {
 	"filename": "FoxSitting002_00022.png",
-	"frame": {"x":1069,"y":1,"w":354,"h":378},
+	"frame": {"x":805,"y":403,"w":400,"h":400},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":46,"y":22,"w":354,"h":378},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":400},
 	"sourceSize": {"w":400,"h":400}
 },
 {
 	"filename": "FoxSitting002_00023.png",
-	"frame": {"x":713,"y":381,"w":354,"h":378},
+	"frame": {"x":805,"y":805,"w":400,"h":400},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":46,"y":22,"w":354,"h":378},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":400},
 	"sourceSize": {"w":400,"h":400}
 },
 {
 	"filename": "FoxSitting002_00024.png",
-	"frame": {"x":713,"y":761,"w":354,"h":378},
+	"frame": {"x":1207,"y":403,"w":400,"h":400},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":46,"y":22,"w":354,"h":378},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":400},
 	"sourceSize": {"w":400,"h":400}
 }],
 "meta": {
@@ -125,8 +125,8 @@
 	"version": "1.0",
 	"image": "FoxSitting002.png",
 	"format": "RGBA8888",
-	"size": {"w":1769,"h":1140},
+	"size": {"w":1964,"h":1206},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:0786b84053778b2803ceea117da03747:4ac79b16d0fbcfc0b44ccf397f216313:591d47717555858d24c1733c7513aa2e$"
+	"smartupdate": "$TexturePacker:SmartUpdate:8e7369049bf5bf413bdfd29c3b158bb5:ffc1dbae704bf1ad8a578c733175af29:591d47717555858d24c1733c7513aa2e$"
 }
 }

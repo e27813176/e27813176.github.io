@@ -48,11 +48,13 @@ demo.LoggingPage = {
             FoxBounce001.animations.play("FoxBounce001Dynamic",15,false);
         }, this);   
         //FoxLoggingAnimation------------------------------------------------------------------------------------------------------
+        
         /*
         FoxLogging = game.add.sprite(420,420,'FoxLogging');
         FoxLogging.animations.add("FoxLoggingDynamic",Phaser.Animation.generateFrameNames('foxLogging004_',0,18,'.png',5),10,true);
         FoxLogging.animations.play("FoxLoggingDynamic",10,true);     
         */
+        
         FoxLogging001 = game.add.sprite(-10,100,'FoxLogging001');
         FoxLogging001Animation = FoxLogging001.animations.add("FoxLogging001Dynamic",Phaser.Animation.generateFrameNames('FoxLogging_',0,28,'.png',5),10,true);
         FoxLogging001.alpha = 0;
@@ -123,6 +125,7 @@ demo.LoggingPage = {
         FoxStanding = game.add.sprite(-10,100,'FoxStanding');
         FoxStandingAnimation = FoxStanding.animations.add("FoxStandingDynamic",Phaser.Animation.generateFrameNames('FoxStanding_',78,99,'.png',5),10,true);
         FoxStanding.animations.play("FoxStandingDynamic",15,true);
+        
         /*
         FoxStanding.events.onInputDown.add(StartLogging, this);
         FoxStanding.events.onInputOver.add(StartLoggingOver, this);
@@ -371,6 +374,7 @@ function ExitLoggingPage(){
     AxBarLevel2X = AxBarSharpLevel2.x;    
     TreeBloodBarX = TreeBloodBar.x;
     
+
     LoggingPageBackBtn.inputEnabled = false;
     LoggingPageStartBtn.inputEnabled = false;
     ScoreBoardHomeBtn.inputEnabled = false;
@@ -536,6 +540,14 @@ function FinishLogging(){
         answerNum[i].destroy();
     }    
     CleanAxBar();
+    
+    /*
+    TreeBloodBar.alpha = 0;
+    TreeBloodBar002.alpha = 0;
+    TreeBloodBar003.alpha = 0;
+    TreeBloodBar004.alpha = 0;
+    */
+    
     CleanTreeBloodBar();
     
     ScoreBoardBG.scale.set(0);
@@ -577,6 +589,11 @@ function FinishLogging(){
     }, this);      
 }
 function CleanTreeBloodBar(){
+    TreeBloodBarTween.pause();      
+    TreeBloodBar002Tween.pause();
+    TreeBloodBar003Tween.pause();
+    TreeBloodBar004Tween.pause();    
+    
     game.add.tween(TreeBloodBarTop).to({alpha:0},300,'Linear',true,0);
     game.add.tween(TreeBloodBar).to({alpha:0},300,'Linear',true,0);
     game.add.tween(TreeBloodBar002).to({alpha:0},300,'Linear',true,0);
@@ -585,10 +602,7 @@ function CleanTreeBloodBar(){
     
     game.add.tween(TreeBloodBarBG).to({alpha:0},300,'Linear',true,0);    
     
-    TreeBloodBarTween.pause();      
-    TreeBloodBar002Tween.pause();
-    TreeBloodBar003Tween.pause();
-    TreeBloodBar004Tween.pause();    
+
 }
 function CleanAxBar(){
     game.add.tween(AxBarBG).to({alpha:0},300,'Linear',true,0);
@@ -604,10 +618,12 @@ function CleanAxBar(){
 }
 
 function ScoreBoardHomeBtnDown(){
+    console.log('clean');
     TreeBloodBar.x = 0;
     TreeBloodBar002.x = 0;
     TreeBloodBar003.x = 0;
     TreeBloodBar004.x = 0;  
+ 
     ExitLoggingPage();
 }
 function ScoreBoardHomeBtnOver(){
@@ -729,11 +745,7 @@ function CleanLoggingPageButton(){
         game.add.tween(TreeBloodBar003).to({x:'-20'},300,'Linear',true,0);
         game.add.tween(TreeBloodBar004).to({x:'-20'},300,'Linear',true,0);
     }
-    if( TreeBloodBar.x <= -362+20 && AxBarSharp.x > -243 ){
-        TreeBloodBar004.alpha = 0;
-        FinishLogging();
-        
-    }
+
    
     
     if( TreeBloodBar.x <= -362/4 + 10 && TreeBloodBar.x > 2*(-362/4) + 10 ){
@@ -763,10 +775,17 @@ function CleanLoggingPageButton(){
         game.add.tween(TreeBloodBar004).to({alpha:1},300,'Linear',true,0);
         TreeBloodBar004Tween.resume(); 
     }
+    if( TreeBloodBar.x <= -362+20 && AxBarSharp.x > -243 ){
+        console.log('Finish');
+        TreeBloodBar004Tween.pause();
+        TreeBloodBar004.alpha = 0;
+        FinishLogging();
+        
+    }    
 
     for(let i = 0;i<5;i++){
         AnswerPanel[i].inputEnabled = false;
-        console.log('clean');
+        //console.log('clean');
     }
     if( LoggingPageRand == 0 ){
         

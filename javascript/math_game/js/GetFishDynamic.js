@@ -106,36 +106,70 @@ function GetFishAnimation(){
             BackPackFish.push("OrangeFish");
             
             OrangeFish.animations.play("OrangeFish",20,false);
-            OrangeFish.alpha = 1;    
+            OrangeFish.alpha = 1;  
+            OrangeFishAnimate.onComplete.add(function () {
+                OrangeFish.alpha = 0;
+                OrangeFishStop.alpha = 1;
+                OrangeFishStop.animations.play("OrangeFishStop",30,true);
+        
+            }, this); 	            
         }else if( FishRand >= 6 && FishRand < 10 ){
             BackPackFish.push("FireFish");
             
             FireFish.animations.play("FireFish",20,false);
             FireFish.alpha = 1;    
             
+            FireFishAnimate.onComplete.add(function () {      
+                FireFish.alpha = 0;
+                FireFishStop.alpha = 1;
+                FireFishStop.animations.play("FireFishStop",30,true);
+                FireFishStopFire.alpha = 1;
+                FireFishStopFire.animations.play("FireFishStopFire",30,false);
+
+            },this);            
         }else if( FishRand >= 10 && FishRand < 16 ){
             BackPackFish.push("ElectricFish");
             
             ElectricFish.animations.play("ElectricFish",20,false);
             ElectricFish.alpha = 1;    
-            
+ 
+            ElectricFishAnimate.onComplete.add(function () {      
+                ElectricFish.alpha = 0;
+                ElectricFishStop.alpha = 1;
+                ElectricFishStop.animations.play("ElectricFishStop",30,true);
+            },this);            
         }else if( FishRand >= 16 && FishRand < 20 ){
             BackPackFish.push("WifiFish");
             
             WifiFish.animations.play("WifiFish",20,false);
             WifiFish.alpha = 1;    
             
+            WifiFishAnimate.onComplete.add(function () {      
+                WifiFish.alpha = 0;
+                WifiFishStop.alpha = 1;
+                WifiFishStop.animations.play("WifiFishStop",30,true);
+            },this);            
         }else if( FishRand >= 20 && FishRand < 26 ){
             BackPackFish.push("LightBlueFish");
             
             LightBlueFish.animations.play("LightBlueFish",20,false);
             LightBlueFish.alpha = 1;    
-           
+
+            LightBlueFishAnimate.onComplete.add(function () {      
+                LightBlueFish.alpha = 0;
+                LightBlueFishStop.alpha = 1;
+                LightBlueFishStop.animations.play("LightBlueFishStop",30,true);
+            },this);            
         }else if( FishRand >= 26 && FishRand < 30 ){
             BackPackFish.push("MedicineFish");
             
             MedicineFish.animations.play("MedicineFish",20,false);
-            MedicineFish.alpha = 1;    
+            MedicineFish.alpha = 1;   
+            MedicineFishAnimate.onComplete.add(function () {      
+                MedicineFish.alpha = 0;
+                MedicineFishStop.alpha = 1;
+                MedicineFishStop.animations.play("MedicineFishStop",30,true);
+            },this);            
         }
     }
 }

@@ -858,6 +858,7 @@ function showupfailboard(){
     game.add.tween(FailBoardBG.scale).to({x:1,y:1},500,'Quad.easeOut',true,2000);
     FailBoardBtnTween = game.add.tween(FailBoardBtn).to({alpha:1},500,'Quad.easeOut',true,3000);
     FailBoardBtnTween.onComplete.add(function(){
+        ScorebarWrongFx.alpha = 0;
         FailBoardExitBtnHoverArea.inputEnabled = true;
         FailBoardRestartBtnHoverArea.inputEnabled = true;          
     },this); 
