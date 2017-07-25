@@ -43,12 +43,14 @@ demo.HomeMenu.prototype = {
         JunyiIconBtn = game.add.sprite(1300,800,'JunyiIconBtn');
         JunyiIconBtn.alpha = 1;
         JunyiIconBtn.events.onInputDown.add(JunyiIconBtnDown, this);
-        
+        /*
         DoorBtn = game.add.button(830, 422, 'DoorBtn', GoInsideHouse, this, 'DoorBtnHover.png','DoorBtn.png'); 
         DoorBtn.onInputOver.add(DoorBtnOver, this);
         DoorBtn.onInputOut.add(DoorBtnOut, this);
         DoorBtn.inputEnabled = false;
         DoorBtn.alpha = 1;
+        
+        */
         /*
         HomeMailBtn = game.add.button(1246, 320, 'HomeMailBtn', OpenMail, this, 'HomeMailHover.png','HomeMail.png');
         HomeMailBtn.onInputOver.add(HomeMailOver, this);
@@ -165,7 +167,7 @@ demo.HomeMenu.prototype = {
         blackBG_opening.alpha = 1;
         BlackOpeningTween = game.add.tween(blackBG_opening).to({alpha:0},2000,'Linear',true,0);           
         BlackOpeningTween.onComplete.add(function () {	
-            DoorBtn.inputEnabled = true;
+            //DoorBtn.inputEnabled = true;
             //HomeMailBtn.inputEnabled = true;
             //SettingBtnSheet.inputEnabled = true;
             JunyiIconBtn.inputEnabled = true;
