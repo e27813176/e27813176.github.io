@@ -503,11 +503,7 @@ demo.FishingPage.prototype = {
            failfishing();
             
         }
-        /*
-        if(ScoreBar.y <= 100 && playing_status == true){
-            finishfishing();
-        }
-        */
+
     },
     render: function() {
 

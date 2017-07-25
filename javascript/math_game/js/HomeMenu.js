@@ -16,7 +16,6 @@ demo.HomeMenu.prototype = {
         //define backgroung
         
         game.stage.backgroundColor = "#000000";
-        
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
         
         HomePageBG = game.add.sprite(0,100,'HomePageBG');
@@ -37,12 +36,7 @@ demo.HomeMenu.prototype = {
         if(game_menu_music.isPlaying == false){
             game_menu_music.loopFull(1);  
         }
-        
         //console.log(game_menu_music.isPlaying);
-           
-        
-                  
-        
         BtnOver = game.add.audio('BtnOver');
        
         //btn---------------------------------------------------------------------------------------------------------------------

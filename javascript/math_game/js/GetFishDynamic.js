@@ -8,10 +8,13 @@ function GetFishAnimation(){
     FoxGetFish.alpha = 1;
         
     FoxGetFishRod.animations.play("FoxGetFishRod",20,false);
-    FoxGetFishRod.alpha = 1;        
+    FoxGetFishRod.alpha = 1;       
+    
     
     
     if( FishingLevel == 1 || FishingLevel == 2 ){
+        BackPackFish.push("OrangeFish");
+        
         OrangeFish.animations.play("OrangeFish",20,false);
         OrangeFish.alpha = 1;     
 
@@ -23,7 +26,8 @@ function GetFishAnimation(){
         }, this); 	
 
     }else if( FishingLevel == 3 || FishingLevel == 4 ){
-
+        BackPackFish.push("FireFish");
+        
         FireFish.animations.play("FireFish",20,false);
         FireFish.alpha = 1;     
         
@@ -37,6 +41,8 @@ function GetFishAnimation(){
         },this);
 
     }else if( FishingLevel == 5 || FishingLevel == 6 ){
+        BackPackFish.push("ElectricFish");
+        
         ElectricFish.animations.play("ElectricFish",20,false);
         ElectricFish.alpha = 1;     
         
@@ -47,6 +53,8 @@ function GetFishAnimation(){
         },this);
         
     }else if( FishingLevel == 7 || FishingLevel == 8 ){
+        BackPackFish.push("WifiFish");
+        
         WifiFish.animations.play("WifiFish",20,false);
         WifiFish.alpha = 1;     
         
@@ -58,6 +66,8 @@ function GetFishAnimation(){
             
        
     }else if( FishingLevel == 9 || FishingLevel == 10 ){
+        BackPackFish.push("IceFish");
+        
         LightBlueFish.animations.play("LightBlueFish",20,false);
         LightBlueFish.alpha = 1;     
         LightBlueFishAnimate.onComplete.add(function () {      
@@ -67,6 +77,8 @@ function GetFishAnimation(){
         },this);
            
     }else if( FishingLevel == 11 || FishingLevel == 12 ){
+        BackPackFish.push("MedicineFish");
+        
         MedicineFish.animations.play("MedicineFish",20,false);
         MedicineFish.alpha = 1;     
         
@@ -79,6 +91,7 @@ function GetFishAnimation(){
 
     }else if( FishingLevel == 13 ){
         if( FishRand == 0 ){
+            BackPackFish.push("GlowBlueFish");
             
             GlowBlueFish.animations.play("GlowBlueFish",20,false);
             GlowBlueFish.alpha = 1;     
@@ -90,35 +103,41 @@ function GetFishAnimation(){
             },this);      
         
         }else if( FishRand >= 1 && FishRand < 6 ){
+            BackPackFish.push("OrangeFish");
+            
             OrangeFish.animations.play("OrangeFish",20,false);
             OrangeFish.alpha = 1;    
         }else if( FishRand >= 6 && FishRand < 10 ){
+            BackPackFish.push("FireFish");
+            
             FireFish.animations.play("FireFish",20,false);
             FireFish.alpha = 1;    
             
         }else if( FishRand >= 10 && FishRand < 16 ){
+            BackPackFish.push("ElectricFish");
+            
             ElectricFish.animations.play("ElectricFish",20,false);
             ElectricFish.alpha = 1;    
             
         }else if( FishRand >= 16 && FishRand < 20 ){
+            BackPackFish.push("WifiFish");
+            
             WifiFish.animations.play("WifiFish",20,false);
             WifiFish.alpha = 1;    
             
         }else if( FishRand >= 20 && FishRand < 26 ){
+            BackPackFish.push("LightBlueFish");
+            
             LightBlueFish.animations.play("LightBlueFish",20,false);
             LightBlueFish.alpha = 1;    
            
         }else if( FishRand >= 26 && FishRand < 30 ){
+            BackPackFish.push("MedicineFish");
+            
             MedicineFish.animations.play("MedicineFish",20,false);
             MedicineFish.alpha = 1;    
-            
         }
-        
-          
     }
-                 
- 
-
 }
 function clean_fish_dynamic(){
     game.add.tween(OrangeFishBox).to({alpha:0},250,'Quad.easeOut',true,0);

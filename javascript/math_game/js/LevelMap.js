@@ -1,6 +1,7 @@
 var FoxLoggingBtnShowUp = false;
 var FoxFishingBtnShowUp = false;
 var FishMedalShowUp = false;
+var BackPackFish = [];
 
 demo.LevelMap = function() {};
 demo.LevelMap.prototype = {

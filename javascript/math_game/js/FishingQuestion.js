@@ -1,4 +1,5 @@
 var answerpannelcheck = new Array();
+var answer = new Array();
 
 var answer_number0 = new Array();
 var answer_number1 = new Array();

@@ -128,6 +128,10 @@ function StartTutorialBtnDown(){
             NumTutorialAdd2.anchor.set(0.5);
             NumAdd2.alpha = 0;
             NumTutorialAdd2.alpha = 0;
+        
+            game.add.tween(NumTutorialAdd1).to({x:1000},1000,'Quad.easeOut',true,1000);
+            game.add.tween(NumTutorialAdd2).to({x:1100},1000,'Quad.easeOut',true,1000);
+            
         }
         if( TutorialMode == 1 ){
             AnswerTutorialNumber = equation[1];
@@ -152,6 +156,10 @@ function StartTutorialBtnDown(){
             NumTutorialAdd2.anchor.set(0.5);
             NumAdd2.alpha = 0;
             NumTutorialAdd2.alpha = 0;
+        
+            game.add.tween(NumTutorialSum).to({x:1000,y:'+95'},1000,'Quad.easeOut',true,1000);
+            game.add.tween(NumTutorialAdd1).to({x:1100},1000,'Quad.easeOut',true,1000);
+        
         }
         
         game.add.tween(NumSum).to({alpha:1},500,'Linear',true);
@@ -171,38 +179,66 @@ function StartTutorialBtnDown(){
            
         }
         
-        game.add.tween(NumTutorialAdd1).to({x:1000},1000,'Quad.easeOut',true,1000);
-        game.add.tween(NumTutorialAdd2).to({x:1100},1000,'Quad.easeOut',true,1000);
-        
         Add = game.add.text(1050,centerY-20,'+', style);
         Add.anchor.set(0.5);    
         Add.alpha = 0;
         
+        Minus = game.add.text(1050,centerY-25,'-', style);
+        Minus.anchor.set(0.5);    
+        Minus.alpha = 0;        
+        
         Equal = game.add.text(1150,centerY-20,'=', style);
         Equal.anchor.set(0.5);    
         Equal.alpha = 0;
-        
-        game.add.tween(Add).to({alpha:1},500,Phaser.Easing.Elastic.Out,true,2000);        
+        if( TutorialMode == 0 ){
+            game.add.tween(Add).to({alpha:1},500,Phaser.Easing.Elastic.Out,true,2000);        
+            
+        }else{
+            game.add.tween(Minus).to({alpha:1},500,Phaser.Easing.Elastic.Out,true,2000);        
+            
+        }
         game.add.tween(Equal).to({alpha:1},500,Phaser.Easing.Elastic.Out,true,2000);        
+        if( TutorialMode == 0 ){
+            NumTutorialSumTween = game.add.tween(NumTutorialSum).to({x:1200,y:centerY-20},1000,'Quad.easeOut',true,3000);        
+            NumTutorialSumTween.onComplete.add(function(){
+                if( TutorialMode == 0 ){
+                    AnswerPanelLight.x = centerX-130-200+100*( equation[2] - 1 );
+                
+                }else{
+                    AnswerPanelLight.x = centerX-130-200+100*( equation[1] - 1 );
+                
+                }
+                AnswerPanelLight.y = centerY+150;
+                AnswerPanelLight.alpha = 1;
+                AnswerPanelLightTween.resume();
+                for(let i = 0;i<5;i++){
+                    AnswerPanel[i].inputEnabled = true;
+                    AnswerPanel[i].input.useHandCursor = true;
+                
+                }
+            },this);
 
-        NumTutorialSumTween = game.add.tween(NumTutorialSum).to({x:1200,y:centerY-20},1000,'Quad.easeOut',true,3000);        
-        NumTutorialSumTween.onComplete.add(function(){
-            if( TutorialMode == 0 ){
-                AnswerPanelLight.x = centerX-130-200+100*( equation[2] - 1 );
+        }else{
+            NumTutorialAdd2Tween = game.add.tween(NumTutorialAdd2).to({x:1200,y:centerY-20},1000,'Quad.easeOut',true,3000);        
+            NumTutorialAdd2Tween.onComplete.add(function(){
+                if( TutorialMode == 0 ){
+                    AnswerPanelLight.x = centerX-130-200+100*( equation[2] - 1 );
                 
-            }else{
-                AnswerPanelLight.x = centerX-130-200+100*( equation[1] - 1 );
+                }else{
+                    AnswerPanelLight.x = centerX-130-200+100*( equation[1] - 1 );
                 
-            }
-            AnswerPanelLight.y = centerY+150;
-            AnswerPanelLight.alpha = 1;
-            AnswerPanelLightTween.resume();
-            for(let i = 0;i<5;i++){
-                AnswerPanel[i].inputEnabled = true;
-                AnswerPanel[i].input.useHandCursor = true;
+                }
+                AnswerPanelLight.y = centerY+150;
+                AnswerPanelLight.alpha = 1;
+                AnswerPanelLightTween.resume();
+                for(let i = 0;i<5;i++){
+                    AnswerPanel[i].inputEnabled = true;
+                    AnswerPanel[i].input.useHandCursor = true;
                 
-            }
-        },this);
+                }
+            },this);
+
+        }
     
     },this);
     
@@ -229,6 +265,7 @@ function CorrectTutorial(){
     AnswerPanelLightTween.pause();
     AnswerPanelLight.alpha = 0;
     Add.alpha = 0;
+    Minus.alpha = 0;
     Equal.alpha = 0;
     NumTutorialAdd1.alpha = 0;
     NumTutorialAdd2.alpha = 0;
