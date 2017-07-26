@@ -160,7 +160,12 @@ demo.AxPage = {
         
       ArrowSheet = game.add.sprite(0,100,'ArrowSheet');
       ArrowSheet.animations.add("ArrowSheetDynamic",Phaser.Animation.generateFrameNames('ArrowSheet_',0,8,'.png',5),10,true);
-      ArrowSheet.alpha = 0;
+      //ArrowSheet.alpha = 0;
+      ArrowSheet.x = -330;
+      ArrowSheet.y = -50;
+      ArrowSheet.animations.play("ArrowSheetDynamic",15,true);
+      ArrowSheet.alpha = 1;     
+          
       //Board-----------------------------------------------------------------------------------------------------------
       BoardBG = game.add.sprite(centerX,centerY,'Board','BoardBG.png');
       BoardBG.anchor.setTo(0.5);
@@ -293,6 +298,9 @@ function ExitAxPage(){
 }
 //FoxSittingDown---------------------------------------------------------------------------------------------------------------------------
 function FoxSittingDown(){
+    ArrowSheet.animations.stop();
+    ArrowSheet.alpha = 0;     
+    
     FoxSitting.inputEnabled = false;
     game.add.tween(AxPageBackBtn.scale).to({x:1,y:1},500,Phaser.Easing.Back.Out,true,0);
     AxPageStartBtnTween = game.add.tween(AxPageStartBtn.scale).to({x:1,y:1},500,Phaser.Easing.Back.Out,true,0);
@@ -304,29 +312,33 @@ function FoxSittingDown(){
     },this);
 }
 function FoxSittingOver(){
+    /*
     ArrowSheet.x = -330;
     ArrowSheet.y = -50;
     ArrowSheet.animations.play("ArrowSheetDynamic",15,true);
     ArrowSheet.alpha = 1;    
+    */
     //game.add.tween(StartSharpenText).to({y:150},500,'Quad.easeOut',true,0); 
 }
 function FoxSittingOut(){
      
-    ArrowSheet.animations.stop();
-    ArrowSheet.alpha = 0;      
+    //ArrowSheet.animations.stop();
+    //ArrowSheet.alpha = 0;      
     //game.add.tween(StartSharpenText).to({y:0},500,'Quad.easeOut',true,0); 
 }
 //FoxWithAxOverBtn------------------------------------------------------------------------------------------------------------------------
 function FoxWithAxOver(){
+    /*
     ArrowSheet.x = -330;
     ArrowSheet.y = -50;
     ArrowSheet.animations.play("ArrowSheetDynamic",15,true);
     ArrowSheet.alpha = 1;     
+    */
     //game.add.tween(StopSharpenText).to({y:150},500,'Quad.easeOut',true,0); 
 }
 function FoxWithAxOut(){
-    ArrowSheet.animations.stop();
-    ArrowSheet.alpha = 0;      
+    //ArrowSheet.animations.stop();
+    //ArrowSheet.alpha = 0;      
     //game.add.tween(StopSharpenText).to({y:0},500,'Quad.easeOut',true,0); 
 }
 
@@ -391,6 +403,9 @@ function StartSharpening(){
 }
 
 function StopSharpening(){
+      ArrowSheet.animations.play("ArrowSheetDynamic",15,true);
+      ArrowSheet.alpha = 1;     
+    
     AxPagePlay.stop();
     Sharpening = false;
     //AxFX.stop();

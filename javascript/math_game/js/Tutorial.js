@@ -87,7 +87,7 @@ demo.Tutorial.prototype = {
     
 };
 function HomeTutorialBtnDown(){
-    game.state.start('LevelMap',true,true); 
+    game.state.start('BootLevelMap',true,true); 
 }
 function HomeTutorialBtnOver(){}
 function HomeTutorialBtnOut(){}

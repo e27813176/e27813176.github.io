@@ -39,10 +39,7 @@ demo.HomeMenu.prototype = {
         //console.log(game_menu_music.isPlaying);
         BtnOver = game.add.audio('BtnOver');
        
-        //btn---------------------------------------------------------------------------------------------------------------------
-        JunyiIconBtn = game.add.sprite(1300,800,'JunyiIconBtn');
-        JunyiIconBtn.alpha = 1;
-        JunyiIconBtn.events.onInputDown.add(JunyiIconBtnDown, this);
+
         
         /*
         DoorBtn = game.add.button(830, 422, 'DoorBtn', GoInsideHouse, this, 'DoorBtnHover.png','DoorBtn.png'); 
@@ -139,19 +136,35 @@ demo.HomeMenu.prototype = {
      
         FoxTurnRightWalking.alpha = 0;        
         
-        
+        /*
         FoxStandingHover = game.add.sprite(535,600,'FoxStanding','FoxStandingHover.jpg');
         FoxStandingHover.events.onInputDown.add(FoxStandingDown, this);
         FoxStandingHover.events.onInputOver.add(FoxStandingOver, this);
         FoxStandingHover.events.onInputOut.add(FoxStandingOut, this);
         FoxStandingHover.inputEnabled = false;
         FoxStandingHover.alpha = 0;
-        
+        */
         FoxDynamic();        
+        //TaskBoardBtn----------------------------------------------------------------------------------------------------------------
+        TaskBoard = game.add.sprite(0,100,'TaskBoard','TaskBoard.png');
         
+        TaskBoardHover = game.add.sprite(0,100,'TaskBoard','TaskBoardHover.png');
+        TaskBoardHoverTween = game.add.tween(TaskBoardHover).to({alpha:0.2},500,'Linear',true,0,false,true).loop(true);
+        TaskBoardHoverTween.pause();
+        TaskBoardHover.alpha = 0;
         
+        TaskBoardBtnArea = game.add.sprite(1272,507,'TaskBoard','TaskBoardBtnArea.png');
+        TaskBoardBtnArea.events.onInputUp.add(TaskBoardBtnAreaUp, this);
+        TaskBoardBtnArea.events.onInputOver.add(TaskBoardBtnAreaOver, this);
+        TaskBoardBtnArea.events.onInputOut.add(TaskBoardBtnAreaOut, this);
+        TaskBoardBtnArea.inputEnabled = false;
+        TaskBoardBtnArea.alpha = 0;
+                
+        //btn---------------------------------------------------------------------------------------------------------------------
+        JunyiIconBtn = game.add.sprite(1300,800,'JunyiIconBtn');
+        JunyiIconBtn.alpha = 1;
+        JunyiIconBtn.events.onInputDown.add(JunyiIconBtnDown, this);        
         
-        //animation----------------------------------------------------------------------------------------------------------------------
         
 
         
@@ -175,6 +188,8 @@ demo.HomeMenu.prototype = {
             JunyiIconBtn.input.useHandCursor = true;
             HomeTreeBtn.inputEnabled = true;
             HomeTreeBtn.input.useHandCursor = true;
+            TaskBoardBtnArea.inputEnabled = true;
+            TaskBoardBtnArea.input.useHandCursor = true;
             //FoxStandingHover.inputEnabled = true;            
             /*
             if(FromInside == true){
@@ -190,18 +205,43 @@ demo.HomeMenu.prototype = {
     },     
     update: function() {}    
 }
+function TaskBoardBtnAreaUp(){
+
+    TaskBoardHoverTween.pause();    
+    TaskBoardHover.alpha = 0;
+    ExitHomePage();
+}
+function TaskBoardBtnAreaOver(){
+    ArrowSheet.x = 620;
+    ArrowSheet.y = -100;    
+    ArrowSheet.animations.play("ArrowSheetDynamic",15,true);
+    ArrowSheet.alpha = 1;    
+    game.add.tween(FoxGoFishingText).to({y:150},500,'Quad.easeOut',true,0); 
+    TaskBoardHoverTween.resume();
+    TaskBoardHover.alpha = 1;
+}
+function TaskBoardBtnAreaOut(){
+    ArrowSheet.animations.stop();
+    ArrowSheet.alpha = 0;   
+    game.add.tween(FoxGoFishingText).to({y:0},500,'Quad.easeOut',true,0); 
+    TaskBoardHoverTween.pause();
+    TaskBoardHover.alpha = 0;
+}
+
 function JunyiIconBtnDown(){
      window.open("https://www.junyiacademy.org/");
     
 }
-
-function FoxStandingDown(){
+function ExitHomePage(){
     game.add.tween(game_menu_music).to({volume:0},1000,'Quad.easeOut',true,0); 
  
     BlackClosingTween1 = game.add.tween(blackBG_opening).to({alpha:1},1000,'Quad.easeOut',true,0); 
     BlackClosingTween1.onComplete.add(function () {	
         game.state.start('BootLevelMap',true,true);
     }, this); 
+    
+}
+function FoxStandingDown(){
 }
 function FoxStandingOver(){
     ArrowSheet.x = FoxStanding.x -232;
@@ -349,8 +389,10 @@ function FoxDynamic(){
     }
 }
 function FoxStandingAnimateComplete(){
+    /*
     FoxStandingHover.inputEnabled = true;
     FoxStandingHover.input.useHandCursor = true;
+    */
     FoxDynamicRand = Math.floor(Math.random() * 21);
     if( FoxDynamicRand <= 16 ){
         FoxStanding.animations.play("FoxStanding",15,false);
@@ -403,8 +445,10 @@ function FoxStandingAnimateComplete(){
     
 }
 function FoxTurnLeftStandingAnimateComplete(){
+    /*
     FoxStandingHover.inputEnabled = true;
     FoxStandingHover.input.useHandCursor = true;
+    */
     if( FoxStanding.x == 0 || FoxStanding.x == -200 ){
         FoxDynamicRand = Math.floor(Math.random() * 21);   
     }else{
@@ -434,8 +478,10 @@ function FoxTurnLeftStandingAnimateComplete(){
     }    
 }
 function FoxTurnRightStandingAnimateComplete(){
+    /*
     FoxStandingHover.inputEnabled = true;
     FoxStandingHover.input.useHandCursor = true;
+    */
     if( FoxStanding.x == 0 || FoxStanding.x == 200 ){
         FoxDynamicRand = Math.floor(Math.random() * 21);   
     }else{
@@ -466,13 +512,13 @@ function FoxTurnRightStandingAnimateComplete(){
 
 }
 function FoxTurnRightWalkingAnimateComplete(){
-    FoxStandingHover.inputEnabled = false;
+    //FoxStandingHover.inputEnabled = false;
     FoxTurnLeftStanding.x -= 200;
     FoxTurnRightStanding.x -= 200;
     FoxStanding.x -= 200;
     FoxTurnRightWalking.x -= 200;
     FoxTurnLeftWalking.x -= 200;
-    FoxStandingHover.x -= 200;
+    //FoxStandingHover.x -= 200;
 
     
     if( FoxStanding.x == 0){
@@ -505,13 +551,13 @@ function FoxTurnRightWalkingAnimateComplete(){
     }     
 }
 function FoxTurnLeftWalkingAnimateComplete(){
-    FoxStandingHover.inputEnabled = false;
+    //FoxStandingHover.inputEnabled = false;
     FoxTurnLeftStanding.x += 200;
     FoxTurnRightStanding.x += 200;
     FoxStanding.x += 200;
     FoxTurnRightWalking.x += 200;
     FoxTurnLeftWalking.x += 200;
-    FoxStandingHover.x += 200;
+    //FoxStandingHover.x += 200;
 
     
     if( FoxStanding.x == 0){

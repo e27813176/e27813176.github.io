@@ -316,8 +316,11 @@ demo.LoggingPage = {
         
         ArrowSheet = game.add.sprite(0,100,'ArrowSheet');
         ArrowSheet.animations.add("ArrowSheetDynamic",Phaser.Animation.generateFrameNames('ArrowSheet_',0,8,'.png',5),10,true);
-        ArrowSheet.alpha = 0;
-        
+        //ArrowSheet.alpha = 0;
+        ArrowSheet.x = -110;
+        ArrowSheet.y = -20;
+        ArrowSheet.animations.play("ArrowSheetDynamic",15,true);
+        ArrowSheet.alpha = 1;            
         //BlackBGOpening-----------------------------------------------------------------------------------------
         BlackBGOpening = game.add.sprite(0,100,'BlackBG');
         BlackBGOpening.alpha = 1;
@@ -346,6 +349,8 @@ function LoggingPageBackBtnOut(){
 }
 
 function LoggingPageStartBtnDown(){
+    ArrowSheet.animations.stop();
+    ArrowSheet.alpha = 0;        
     StartLogging();
 }
 function LoggingPageStartBtnOver(){
@@ -357,6 +362,9 @@ function LoggingPageStartBtnOut(){
 }
 
 function FoxLoggingPageBtnDown(){
+    ArrowSheet.animations.stop();
+    ArrowSheet.alpha = 0; 
+    
     FoxLoggingPageBtn.inputEnabled = false;
     game.add.tween(LoggingPageBackBtn.scale).to({x:1,y:1},500,Phaser.Easing.Back.Out,true,0);
     LoggingPageStartBtnTween = game.add.tween(LoggingPageStartBtn.scale).to({x:1,y:1},500,Phaser.Easing.Back.Out,true,0);
@@ -368,18 +376,18 @@ function FoxLoggingPageBtnDown(){
     },this);    
 }
 function FoxLoggingPageBtnOver(){
-    
+    /*
     ArrowSheet.x = -110;
     ArrowSheet.y = -20;
     ArrowSheet.animations.play("ArrowSheetDynamic",15,true);
     ArrowSheet.alpha = 1;    
-    
+    */
 }
 function FoxLoggingPageBtnOut(){
-    
+    /*
     ArrowSheet.animations.stop();
     ArrowSheet.alpha = 0;      
-    
+    */
 }
 
 function ExitLoggingPage(){
@@ -485,6 +493,9 @@ function StartLogging(){
 
 
 function StopLogging(){
+    ArrowSheet.animations.play("ArrowSheetDynamic",15,true);
+    ArrowSheet.alpha = 1;  
+    
     LoggingBGVolumeMute = game.add.tween(LoggingBG).to({volume:0},500,'Linear',true,0);
     LoggingBGVolumeMute.onComplete.add(function(){
         LoggingBG.stop();
@@ -717,16 +728,18 @@ function ScoreBoardContinueBtnOut(){
     ScoreBoardContinueBtnHoverTween.pause();
 }
 function StopLoggingOver(){
+    /*
     ArrowSheet.x = -110;
     ArrowSheet.y = -20;
     ArrowSheet.animations.play("ArrowSheetDynamic",15,true);
     ArrowSheet.alpha = 1;       
+    */
 }
 function StopLoggingOut(){
-    
+    /*
     ArrowSheet.animations.stop();
     ArrowSheet.alpha = 0;      
-        
+    */    
 }
 
 function CreateLoggingPageNumber(){

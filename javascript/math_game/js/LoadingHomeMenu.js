@@ -37,6 +37,7 @@ demo.LoadingHomeMenu.prototype = {
         game.load.atlas('SettingBtnSheet', 'javascript/math_game/assets/HomePage/SettingBtnSheet.png', 'javascript/math_game/assets/HomePage/SettingBtnSheet.json');
          
         game.load.atlas('HomePageTreeSheet', 'javascript/math_game/assets/HomePage/HomeTree.png', 'javascript/math_game/assets/HomePage/HomeTree.json');  
+        game.load.atlas('TaskBoard', 'javascript/math_game/assets/HomePage/TaskBoard.png', 'javascript/math_game/assets/HomePage/TaskBoard.json');  
         
         game.load.atlas('ArrowSheet', 'javascript/math_game/assets/HomePage/ArrowSheet.png', 'javascript/math_game/assets/HomePage/ArrowSheet.json');  
         

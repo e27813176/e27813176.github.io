@@ -1,0 +1,36 @@
+{"frames": [
+
+{
+	"filename": "TaskBoard.png",
+	"frame": {"x":343,"y":1,"w":324,"h":488},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1257,"y":273,"w":324,"h":488},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "TaskBoardBtnArea.png",
+	"frame": {"x":669,"y":1,"w":292,"h":195},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":292,"h":195},
+	"sourceSize": {"w":292,"h":195}
+},
+{
+	"filename": "TaskBoardHover.png",
+	"frame": {"x":1,"y":1,"w":340,"h":505},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1249,"y":265,"w":340,"h":505},
+	"sourceSize": {"w":1600,"h":800}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "TaskBoard.png",
+	"format": "RGBA8888",
+	"size": {"w":962,"h":507},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d7def6f39545463f269569d9b828fa55:8a6f3620dc1348323276ce4d755fde36:ff62bcf6c6dfd96adcf9def29f33ef3c$"
+}
+}
