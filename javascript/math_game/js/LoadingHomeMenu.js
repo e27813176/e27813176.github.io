@@ -28,6 +28,8 @@ demo.LoadingHomeMenu.prototype = {
         game.load.image('blackBG','javascript/math_game/assets/fishingpage/blackBG.jpg');
  
         game.load.audio('menu', 'javascript/math_game/assets/audio/game_menu_BG.mp3');
+
+        game.load.atlas('FruitDrop', 'javascript/math_game/assets/HomePage/FruitDrop.png', 'javascript/math_game/assets/HomePage/FruitDrop.json');
         
         //btn---------------------------------------------------------------------------------------------------------------
         game.load.atlas('DoorBtn', 'javascript/math_game/assets/HomePage/DoorBtn.png', 'javascript/math_game/assets/HomePage/DoorBtn.json');

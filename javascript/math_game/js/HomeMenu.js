@@ -93,6 +93,7 @@ demo.HomeMenu.prototype = {
         FoxGoFishingText.mask = HomeTextmask;
         
         
+        
         HomeTreeFrame1 = game.add.sprite(-10,100, 'HomePageTreeSheet','HomeTree_00001.png');
         HomeTreeFrame1.alpha = 1;
         
@@ -103,6 +104,10 @@ demo.HomeMenu.prototype = {
         HomeTreeBtn.events.onInputUp.add(HomeTreeBtnUp, this);
         HomeTreeBtn.inputEnabled = false; 
         HomeTreeBtn.alpha = 0; 
+        
+        FruitDrop = game.add.sprite(-10,100,'FruitDrop');
+        FruitDrop.animations.add("FruitDrop",Phaser.Animation.generateFrameNames('FruitDrop_',0,23,'.png',5),10,true);
+        FruitDrop.alpha = 0;        
         
         
         HomeTreeAnimate = game.add.sprite(-10,100,'HomePageTreeSheet');
@@ -270,6 +275,11 @@ function HomeTreeBtnUp(){
     HomeTreeAnimation.onComplete.add(function () {	
         HomeTreeAnimate.alpha = 0;
         HomeTreeFrame1.alpha = 1;
+    }, this);
+    FruitDrop.alpha = 1;
+    FruitDropAnimate = FruitDrop.play("FruitDrop",15,false);
+    FruitDropAnimate.onComplete.add(function () {	
+        FruitDrop.alpha = 0;
     }, this);
 }
 function HomeTreeBtnOver(){
