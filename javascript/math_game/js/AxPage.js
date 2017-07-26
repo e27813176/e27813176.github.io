@@ -416,7 +416,7 @@ function StopSharpening(){
     FoxWithGoldenAx.animations.stop(); 
     FoxWithAx.inputEnabled = false;
     
-    if( AxBarSharp.x >= 0 ){
+    if( AxBarSharp.x >= 100 ){
         FoxSitting002.alpha = 1;
         FoxSitting002.animations.play("FoxSitting002Dynamic",15,true); 
         

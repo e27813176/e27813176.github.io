@@ -70,6 +70,7 @@ demo.LoadingLoggingPage.prototype = {
         game.load.audio('LoggingPagePlay', 'javascript/math_game/assets/audio/LoggingPageBG003.mp3'); 
         game.load.audio('LoggingBG', 'javascript/math_game/assets/audio/LoggingBG.mp3'); 
         game.load.audio('wrongFX', 'javascript/math_game/assets/audio/wrongFX.mp3');
+        game.load.audio('LoggingSuccess', 'javascript/math_game/assets/audio/LoggingSuccess.mp3');
 
         
         //ScoreBoard------------------------------------------------------------------------------------------------------------------

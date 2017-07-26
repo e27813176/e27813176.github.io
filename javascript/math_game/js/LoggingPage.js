@@ -28,6 +28,7 @@ demo.LoggingPage = {
         LoggingPagePlay = game.add.audio('LoggingPagePlay');
         LoggingBG = game.add.audio('LoggingBG');
         WrongFX = game.add.audio('wrongFX');
+        LoggingSuccess = game.add.audio('LoggingSuccess');
                 
 
         //FoxBounceAnimation------------------------------------------------------------------------------------------------------
@@ -541,6 +542,9 @@ function StopLogging(){
 }
 
 function FinishLogging(){
+    LoggingSuccess.play();
+    LoggingSuccess.volume = 0.5;
+    
     LoggingBGVolumeMute = game.add.tween(LoggingBG).to({volume:0},500,'Linear',true,0);
     LoggingBGVolumeMute.onComplete.add(function(){
         LoggingBG.stop();

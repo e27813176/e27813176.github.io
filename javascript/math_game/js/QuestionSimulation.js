@@ -34,7 +34,6 @@ function createTutorialEquation(){
 
         numberSum = numberA + numberB;
     }
-            
 
     var plusEquation = [numberA, numberB, numberSum];
     return plusEquation;

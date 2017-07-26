@@ -278,8 +278,11 @@ function create_answerstring(equation){
 function createanswervalue(equation){
     //console.log(equation);
     
-    answer[0] = Math.floor(Math.random()*10);
-    answer[1] = Math.floor(Math.random()*10);
+    answer[0] = Math.floor(Math.random()*10) + 1;
+    answer[1] = Math.floor(Math.random()*10) + 1;
+    
+    
+    
     if(addmode == true){
         if(answer[0] == answer[1] || answer[0] == equation[2] || answer[1] == equation[2]){
             createanswervalue(equation);
