@@ -23,6 +23,9 @@ demo.LoadingAxPage.prototype = {
         game.load.image('AxPageBG','javascript/math_game/assets/AxPage/AxPage.jpg');
         //Panel-----------------------------------------------------------------------------------------------------------------------
         game.load.atlas('Panel', 'javascript/math_game/assets/AxPage/Panel.png', 'javascript/math_game/assets/AxPage/Panel.json');
+        game.load.atlas('QuestionPanelWrongFx', 'javascript/math_game/assets/AxPage/QuestionPanelWrongFx.png', 'javascript/math_game/assets/AxPage/QuestionPanelWrongFx.json');
+        game.load.atlas('QuestionPanelRightFx', 'javascript/math_game/assets/AxPage/QuestionPanelRightFx.png', 'javascript/math_game/assets/AxPage/QuestionPanelRightFx.json');
+
         //Btn------------------------------------------------------------------------------------------------------------------------
         game.load.atlas('Btn', 'javascript/math_game/assets/AxPage/Btn.png', 'javascript/math_game/assets/AxPage/Btn.json');
         
@@ -58,6 +61,8 @@ demo.LoadingAxPage.prototype = {
         game.load.audio('AddEnergyFX', 'javascript/math_game/assets/audio/add_energyFX.mp3'); 
         game.load.audio('AxPagePlay', 'javascript/math_game/assets/audio/AxPageBG002.mp3'); 
         game.load.audio('AxPageSuccess', 'javascript/math_game/assets/audio/AxPageSuccess.mp3'); 
+        game.load.audio('wrongFX', 'javascript/math_game/assets/audio/wrongFX.mp3');
+        
         //game.load.audio('AxPageMusicBG', 'javascript/math_game/assets/audio/AxPageBG003.mp3'); 
         
     },

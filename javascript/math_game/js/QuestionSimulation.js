@@ -161,7 +161,7 @@ function createFishingEquation( ModeRand ) {
 function createPlusLevelOne() {
     var numberA;
     var numberB = -100;
-    console.log(AxPageRand);
+    //console.log(AxPageRand);
     var numberSum = 100; //initialize numberSum,and make it bigger than 10.
     if( AxPageRand == 0 ){
         if( level%2 == 1 ){
@@ -171,7 +171,7 @@ function createPlusLevelOne() {
                 numberB = Math.floor(Math.random() * 2) + 1;
 
                 numberSum = numberA + numberB;
-                console.log(numberSum);
+                //console.log(numberSum);
             }
         }
         if( level%2 == 0 ){

@@ -1,7 +1,7 @@
 var answer_panel = new Array();
 var AxBarX = -243,AxBarLevel2X = - 243;
 var AxPageComplete = false;
-
+var AxPageCorrectAnswer;
 var AxBarCenterX = (AxBarX + 100) /2; 
 
 demo.AxPage = function(){};
@@ -11,16 +11,14 @@ demo.AxPage = {
   init: function(){
       Sharpening = false;
       AxPageRand = 0;
-      answercount = 1;
+      answercount = 0;
       level = 1;
   },
   preload: function(){
 
   },
   create: function(){
-      
- 
-        console.log(level); 
+      console.log(level); 
         
       game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
         
@@ -131,7 +129,8 @@ demo.AxPage = {
           
           answer_panel[i].alpha = 0;
           
-          answer_panel[i].events.onInputDown.add(CleanAxPageButton, this);
+          answer_panel[i].events.onInputDown.add(AxPageCheckAnswerDown, this);
+          answer_panel[i].variable = i+1;
           answer_panel[i].inputEnabled = false;
       }
       //PanelGlow------------------------------------------------------------------------------------------------------------------
@@ -141,6 +140,15 @@ demo.AxPage = {
       PanelGlowNumAdd = game.add.sprite(0,100,'Panel','PanelGlowNumAdd.png');
         
       PanelGlowNumAdd.alpha = 0;
+      
+      
+      QuestionPanelWrongFx = game.add.sprite(0,100,'QuestionPanelWrongFx');
+      QuestionPanelWrongFxAnimate = QuestionPanelWrongFx.animations.add("QuestionPanelWrongFx",Phaser.Animation.generateFrameNames('QuestionPanelWrongFx_',0,20,'.png',5),10,true);
+      QuestionPanelWrongFx.alpha = 0;
+      
+      QuestionPanelRightFx = game.add.sprite(0,100,'QuestionPanelRightFx');
+      QuestionPanelRightFxAnimate = QuestionPanelRightFx.animations.add("QuestionPanelRightFx",Phaser.Animation.generateFrameNames('QuestionPanelRightFx_',0,20,'.png',5),10,true);
+      QuestionPanelRightFx.alpha = 0;      
       
       //EnergyTransfer-------------------------------------------------------------------------------------------------------------
       //EnergyNumSum = game.add.sprite(0,100,'Panel','PanelGlowNumSum.png');
@@ -214,6 +222,7 @@ demo.AxPage = {
       AddEnergyFX = game.add.audio('AddEnergyFX');
       AxPagePlay = game.add.audio('AxPagePlay');
       AxPageSuccess = game.add.audio('AxPageSuccess');
+      WrongFX = game.add.audio('wrongFX');
       
       //AxPageMusicBG.loopFull(1);
   },
@@ -223,7 +232,7 @@ demo.AxPage = {
       }
   } 
 }
-
+//AxPageBackBtnDown-----------------------------------------------------------------------------------------------------------------------
 function AxPageBackBtnDown(){
     AxBarX = AxBarSharp.x;
     AxBarLevel2X = AxBarSharpLevel2.x;
@@ -241,7 +250,7 @@ function AxPageBackBtnOut(){
     AxPageBackBtnScaleTween.pause();
     AxPageBackBtn.scale.setTo(1);
 }
-
+//AxPageStartBtnDown------------------------------------------------------------------------------------------------------------------------
 function AxPageStartBtnDown(){
     StartSharpening();
 }
@@ -253,7 +262,7 @@ function AxPageStartBtnOut(){
     AxPageStartBtn.scale.setTo(1);
     //game.add.tween(AxPageStartBtn.scale).to({x:1,y:1},100,'Linear',true,0);
 }
-
+//BoardBackBtnDown---------------------------------------------------------------------------------------------------------------------------
 function BoardBackBtnDown(){
     
     AxBarX = AxBarSharp.x;
@@ -272,6 +281,7 @@ function BoardBackBtnOut(){
     BoardBackBtnHoverTween.pause();
     BoardBackBtnHover.alpha = 0;
 }
+//----------------------------------------------------------------------------------------------------------------------------------------------
 function ExitAxPage(){
     ExitBtn.inputEnabled = false;
     AxBarX = AxBarSharp.x;
@@ -279,9 +289,9 @@ function ExitAxPage(){
     AxPageClosingTween = game.add.tween(AxPageClosing).to({alpha:1},500,'Linear',true,0);  
     AxPageClosingTween.onComplete.add(function(){
         game.state.start('LevelMap');
-
     },this);
 }
+//FoxSittingDown---------------------------------------------------------------------------------------------------------------------------
 function FoxSittingDown(){
     FoxSitting.inputEnabled = false;
     game.add.tween(AxPageBackBtn.scale).to({x:1,y:1},500,Phaser.Easing.Back.Out,true,0);
@@ -306,6 +316,7 @@ function FoxSittingOut(){
     ArrowSheet.alpha = 0;      
     //game.add.tween(StartSharpenText).to({y:0},500,'Quad.easeOut',true,0); 
 }
+//FoxWithAxOverBtn------------------------------------------------------------------------------------------------------------------------
 function FoxWithAxOver(){
     ArrowSheet.x = -330;
     ArrowSheet.y = -50;
@@ -347,7 +358,7 @@ function StartSharpening(){
         AxFX.play();
         FoxWithAxAnimate = FoxWithAx.animations.play("FoxWithAxDynamic",15,true); 
         FoxWithAxAnimate.onLoop.add(function(){
-            console.log("Start");
+            //console.log("Start");
             AxFX.play();
         }, this);
         /* 
@@ -403,9 +414,6 @@ function StopSharpening(){
     FoxSitting.inputEnabled = true;
     FoxSitting.input.useHandCursor = true;
       
-    //ExitBtn.inputEnabled = true;
-    //ExitBtn.input.useHandCursor = true;     
-    
     AxBarBG.alpha = 0;
     AxBarSharpTween.pause();
     AxBarSharp.alpha = 0;
@@ -434,6 +442,7 @@ function StopSharpening(){
     }
         
 }
+//Question-----------------------------------------------------------------------------------------------------------
 var NumSum,NumAdd1,NumAdd2;
 
 function CreateAxPageNumber(){
@@ -463,30 +472,62 @@ function CreateAxPageNumber(){
 
     if( level == 1 ){
         CreateAxPageAnswerNum(0);
+        
         if( AxPageRand == 0 ){
-            answer_panel[equation[2]-1].inputEnabled = true;
+            //answer_panel[equation[2]-1].inputEnabled = true;
+            AxPageCorrectAnswer = equation[2];
         }
-        /*
-        else{
-            answer_panel[equation[2]-6].inputEnabled = true;    
-        }
-        */
+        
     }
     if( level == 2 ){
         CreateAxPageAnswerNum(0);
+        
+        
         if( AxPageRand == 0 ){
-            answer_panel[equation[1]-1].inputEnabled = true;
+            //answer_panel[equation[1]-1].inputEnabled = true;
+            AxPageCorrectAnswer = equation[1];
         }
-        /*
-        else{
-            answer_panel[equation[1]-6].inputEnabled = true;    
-        }
-        */
+        
+    }
+    for(let i = 0;i<5;i++){
+        answer_panel[i].inputEnabled = true;   
     }
 }
+function AxPageCheckAnswerDown(answer_panel){
 
-function CleanAxPageButton(){
+    if( answer_panel.variable == AxPageCorrectAnswer ){
+        console.log('answer_panel.variable');
+        QuestionPanelRightFx.alpha = 1;
+        game.add.tween(QuestionPanelRightFx).to({alpha:0},500,'Quad.easeOut',true,200);
+        QuestionPanelRightFx.animations.play("QuestionPanelRightFx",30,false);
+        /*
+        QuestionPanelRightFxAnimate.onComplete.add(function(){
+            QuestionPanelRightFx.alpha = 0;
+        },this);
+        */
+        answercount++;            
+        AxPageCheckAnswer();
+        answercount++;
+    }else{
+        WrongFX.play();
+        QuestionPanelWrongFx.alpha = 1;
+        QuestionPanelWrongFx.animations.play("QuestionPanelWrongFx",45,false);
+        QuestionPanelWrongFxAnimate.onComplete.add(function(){
+            QuestionPanelWrongFx.alpha = 0;
+        },this);
+        answercount++;
+    }
+    
+}
+
+
+function AxPageCheckAnswer(){
+    //RightFx-------------------------------
     rightFX.play();
+    
+    AxBarLight.alpha = 1;
+    game.add.tween(AxBarLight).to({alpha:0},1000,'Quad.easeOut',true,0);
+
     if( level == 1 ){
         PanelGlowNumSum.alpha = 1;
         game.add.tween(PanelGlowNumSum).to({alpha:0},500,'Quad.easeOut',true,0);
@@ -494,40 +535,34 @@ function CleanAxPageButton(){
     }else if( level == 2 ){
         PanelGlowNumAdd.alpha = 1;
         game.add.tween(PanelGlowNumAdd).to({alpha:0},500,'Quad.easeOut',true,0);
-        
     }
         
-    AxBarLight.alpha = 1;
-    game.add.tween(AxBarLight).to({alpha:0},1000,'Quad.easeOut',true,0);
-    
-    if( AxBarSharp.x >= AxBarCenterX - 30){
+    //AxPageRand Change---------------------------------------------------------------
+    if( AxBarSharp.x >= AxBarCenterX - 30 && level == 1 ){
         AxPageRand = 1;
     }else if( AxBarSharpLevel2.x >= AxBarCenterX - 30 ){
+        console.log(AxPageRand);
         AxPageRand = 1;
-    }else if( AxBarSharpLevel2.x < AxBarCenterX - 30 && AxBarSharp.x >= 100 ){
-        AxPageRand = 0;
     }
-    
+    //-----------------------------------------------------------------------------------------------
     if( AxBarSharp.x < 100 ){
         //AxBarSharpPlusTween = game.add.tween(AxBarSharp).to({x:'+300'},250,'Quad.easeOut',true,0);
         AxBarSharpPlusTween = game.add.tween(AxBarSharp).to({x:'+30'},250,'Quad.easeOut',true,0);
-
-        AxBarSharpPlusTween.onComplete.add(function () {	
-        }, this);
     }
     
     if( AxBarSharp.x >= 81 && AxBarSharpLevel2.x <= -243 ){
         AxPageRand = 0;
+        level = 2;
         
         AxBarSharpLevel2Tween.resume();      
         AxBarSharpLevel2.alpha = 1;
-        //AxPagePlay.loopFull(1);     
-        //AxPageMusicBG.stop();
-        //console.log('Light');
+ 
         AxBarLightLevel1.alpha = 1;
         AxBarLightLevel1Tween.resume();
+        
         FoxWithAx.alpha = 0;
         FoxWithAxAnimate.stop();
+        
         AxFX.play();
         FoxWithGoldenAx.alpha = 1;
         FoxWithGoldenAx.animations.play("FoxWithGoldenAxDynamic",17,true); 
@@ -537,7 +572,7 @@ function CleanAxPageButton(){
             
         game.add.tween(QuestionPanelGoldenTween).to({alpha:1},500,'Quad.easeOut',true,0);
         QuestionPanelGoldenTween.resume();
-        level = 2;
+        
         
     }
     //Level2-----------------------------------------------------------------------------------
@@ -553,10 +588,11 @@ function CleanAxPageButton(){
         FinishSharpening();
     }
     
-    
+    /*
     for(let i = 0;i<5;i++){
         answer_panel[i].inputEnabled = false;
     }
+    */
     if( AxPageRand == 0 ){
         
         CreateAxPageAnswerNum(1);
@@ -566,8 +602,8 @@ function CleanAxPageButton(){
         CreateAxPageAnswerNum(6);
     }
     //console.log(answercount);
-    console.log(level);
-    answercount++;
+    //console.log(level);
+    
     if( AxBarSharpLevel2.x <= 71 ){
         UpdateCreateAxPageNumber();
     }    
@@ -646,9 +682,12 @@ function UpdateCreateAxPageNumber(){
         NumAdd1.setText(equation[0]);
         NumAdd2.setText(equation[1]);        
         if( AxPageRand == 0 ){
-            answer_panel[equation[2]-1].inputEnabled = true;
+            
+            AxPageCorrectAnswer = equation[2];
+            //answer_panel[equation[2]-1].inputEnabled = true;
         }else{
-            answer_panel[equation[2]-6].inputEnabled = true;    
+            AxPageCorrectAnswer = equation[2] - 5;
+            //answer_panel[equation[2]-6].inputEnabled = true;    
         }
     }
     if( level == 2 ){
@@ -657,9 +696,11 @@ function UpdateCreateAxPageNumber(){
         NumSum.setText(equation[2]);
         
         if( AxPageRand == 0 ){
-            answer_panel[equation[1]-1].inputEnabled = true;
+            AxPageCorrectAnswer = equation[1];
+            //answer_panel[equation[1]-1].inputEnabled = true;
         }else{
-            answer_panel[equation[1]-6].inputEnabled = true;    
+            AxPageCorrectAnswer = equation[1]-5;
+            //answer_panel[equation[1]-6].inputEnabled = true;    
         }
     }
 }

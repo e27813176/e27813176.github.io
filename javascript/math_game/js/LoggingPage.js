@@ -1,5 +1,6 @@
 var AnswerPanel = new Array();
 var TreeBloodBarX = 0;
+var LoggingPageCorrectAnswer;
 var LoggingPageComplete = false;
 demo.LoggingPage = function(){};
 demo.LoggingPage = {
@@ -25,7 +26,10 @@ demo.LoggingPage = {
         Logging = game.add.audio('Logging');
         LoggingBounce = game.add.audio('LoggingBounce');
         LoggingPagePlay = game.add.audio('LoggingPagePlay');
+        LoggingBG = game.add.audio('LoggingBG');
+        WrongFX = game.add.audio('wrongFX');
                 
+
         //FoxBounceAnimation------------------------------------------------------------------------------------------------------
         FoxBounce001 = game.add.sprite(-10,100,'FoxBounce001');
         FoxBounce001Animation = FoxBounce001.animations.add("FoxBounce001Dynamic",Phaser.Animation.generateFrameNames('FoxBounce_',100,128,'.png',5),10,true);
@@ -149,8 +153,9 @@ demo.LoggingPage = {
             AnswerPanel[i].alpha = 0;
       
           
-            AnswerPanel[i].events.onInputDown.add(CleanLoggingPageButton, this);
+            AnswerPanel[i].events.onInputDown.add(LoggingPageAnswerPanelDown, this);
             AnswerPanel[i].inputEnabled = false;
+            AnswerPanel[i].variable = i+1;
         }
         //PanelGlow-------------------------------------------------------------------------------------------------
       
@@ -160,6 +165,14 @@ demo.LoggingPage = {
         PanelGlowNumAdd = game.add.sprite(0,100,'Panel','PanelGlowAdd.png');
         
         PanelGlowNumAdd.alpha = 0;        
+        
+        QuestionPanelRightFx = game.add.sprite(0,100,'QuestionPanelFx');
+        QuestionPanelRightFxAnimation = QuestionPanelRightFx.animations.add("QuestionPanelRightFx",Phaser.Animation.generateFrameNames('QuestionPanelRightFx_',0,12,'.png',5),10,true);
+        QuestionPanelRightFx.alpha = 0;
+        
+        QuestionPanelWrongFx = game.add.sprite(0,100,'QuestionPanelFx');
+        QuestionPanelWrongFxAnimation = QuestionPanelWrongFx.animations.add("QuestionPanelWrongFx",Phaser.Animation.generateFrameNames('QuestionPanelWrongFx_',0,12,'.png',5),10,true);
+        QuestionPanelWrongFx.alpha = 0;        
         //AxBar------------------------------------------------------------------------------------------------------
         AxBarBG = game.add.sprite(100,100,'AxBar','AxBarBG.png');
         AxBarBG.alpha = 0;
@@ -390,6 +403,8 @@ function ExitLoggingPage(){
 
 function StartLogging(){
     //LoggingPagePlay.loopFull(1);
+    LoggingBG.loopFull(1);
+    LoggingBG.volume = 0.6;    
     game.add.tween(LoggingPageBackBtn.scale).to({x:0,y:0},300,'Quad.easeIn',true,0);
     game.add.tween(LoggingPageStartBtn.scale).to({x:0,y:0},300,'Quad.easeIn',true,0);
     LoggingPageBackBtn.inputEnabled = false;
@@ -416,6 +431,7 @@ function StartLogging(){
         
     for(let i = 0;i<5;i++){
         game.add.tween(AnswerPanel[i]).to({alpha:1},300,'Linear',true,0);
+        AnswerPanel[i].inputEnabled = true;
     }
     
     AxBarBG.alpha = 1;
@@ -469,6 +485,12 @@ function StartLogging(){
 
 
 function StopLogging(){
+    LoggingBGVolumeMute = game.add.tween(LoggingBG).to({volume:0},500,'Linear',true,0);
+    LoggingBGVolumeMute.onComplete.add(function(){
+        LoggingBG.stop();
+    },this);
+    
+    
     FoxStanding.alpha = 1;
     FoxStanding.animations.play("FoxStandingDynamic",15,true);
     
@@ -508,6 +530,12 @@ function StopLogging(){
 }
 
 function FinishLogging(){
+    LoggingBGVolumeMute = game.add.tween(LoggingBG).to({volume:0},500,'Linear',true,0);
+    LoggingBGVolumeMute.onComplete.add(function(){
+        LoggingBG.stop();
+    },this);
+
+    
     LoggingPageComplete = true;
     FoxStanding.alpha = 1;
     FoxStanding.animations.play("FoxStandingDynamic",15,true);
@@ -587,6 +615,29 @@ function FinishLogging(){
         ScoreBoardContinueBtn.inputEnabled = true;
         
     }, this);      
+}
+function LoggingPageAnswerPanelDown(AnswerPanel){
+    if( AnswerPanel.variable == LoggingPageCorrectAnswer ){
+            console.log('Correct');
+
+        QuestionPanelRightFx.alpha = 1;
+        QuestionPanelRightFx.animations.play("QuestionPanelRightFx",30,false);        
+        QuestionPanelRightFxAnimation.onComplete.add(function(){
+            QuestionPanelRightFx.alpha = 0;
+            
+        },this);
+        CleanLoggingPageButton();
+    }else{
+        QuestionPanelWrongFx.alpha = 1;
+        QuestionPanelWrongFx.animations.play("QuestionPanelWrongFx",30,false);        
+        QuestionPanelWrongFxAnimation.onComplete.add(function(){
+            QuestionPanelWrongFx.alpha = 0;
+            
+        },this);
+
+        WrongFX.play();
+    }
+    
 }
 function CleanTreeBloodBar(){
     TreeBloodBarTween.pause();      
@@ -707,19 +758,24 @@ function CreateLoggingPageNumber(){
     if( level == 3 ){
         CreateLoggingPageAnswerNum(0);
         if( LoggingPageRand == 0 ){
-            AnswerPanel[equation[2]-1].inputEnabled = true;
+            LoggingPageCorrectAnswer = equation[2];
+            //AnswerPanel[equation[2]-1].inputEnabled = true;
         }else{
-            AnswerPanel[equation[2]-6].inputEnabled = true;    
+            LoggingPageCorrectAnswer = equation[2] - 5;
+            //AnswerPanel[equation[2]-6].inputEnabled = true;    
         }
         
     }
     if( level == 4 ){
         CreateLoggingPageAnswerNum(0);
         if( LoggingPageRand == 0 ){
-            AnswerPanel[equation[1]-1].inputEnabled = true;
+            LoggingPageCorrectAnswer = equation[1];
+            
+            //AnswerPanel[equation[1]-1].inputEnabled = true;
         }
         else{
-            AnswerPanel[equation[1]-6].inputEnabled = true;    
+            LoggingPageCorrectAnswer = equation[1] - 5;
+            //AnswerPanel[equation[1]-6].inputEnabled = true;    
         }
             
     }
@@ -782,11 +838,12 @@ function CleanLoggingPageButton(){
         FinishLogging();
         
     }    
-
+    /*
     for(let i = 0;i<5;i++){
         AnswerPanel[i].inputEnabled = false;
         //console.log('clean');
     }
+    */
     if( LoggingPageRand == 0 ){
         
         CreateAxPageAnswerNum(1);
@@ -813,11 +870,12 @@ function UpdateCreateLoggingPageNumber(){
         NumAdd1.setText(equation[0]);
         NumAdd2.setText(equation[1]);        
         if( LoggingPageRand == 0 ){
-            
-            AnswerPanel[equation[2]-1].inputEnabled = true;
+            LoggingPageCorrectAnswer = equation[2];      
+            //AnswerPanel[equation[2]-1].inputEnabled = true;
         
         }else{
-            AnswerPanel[equation[2]-6].inputEnabled = true;    
+            LoggingPageCorrectAnswer = equation[2] - 5;      
+            //AnswerPanel[equation[2]-6].inputEnabled = true;    
         }
         
     }
@@ -827,10 +885,12 @@ function UpdateCreateLoggingPageNumber(){
         NumSum.setText(equation[2]);
         
         if( LoggingPageRand == 0 ){
-            AnswerPanel[equation[1]-1].inputEnabled = true;
+            LoggingPageCorrectAnswer = equation[1];      
+            //AnswerPanel[equation[1]-1].inputEnabled = true;
         
         }else{
-            AnswerPanel[equation[1]-6].inputEnabled = true;    
+            LoggingPageCorrectAnswer = equation[1] - 5;      
+            //AnswerPanel[equation[1]-6].inputEnabled = true;    
         }
         
     }

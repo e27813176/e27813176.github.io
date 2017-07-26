@@ -21,6 +21,7 @@ demo.LoadingLoggingPage.prototype = {
                  
         //Panel------------------------------------------------------------------------------------------
         game.load.atlas('Panel','javascript/math_game/assets/LoggingPage/Panel.png', 'javascript/math_game/assets/LoggingPage/Panel.json');
+        game.load.atlas('QuestionPanelFx','javascript/math_game/assets/LoggingPage/QuestionPanelFx.png', 'javascript/math_game/assets/LoggingPage/QuestionPanelFx.json');
         //game.load.image('answer_panel','javascript/math_game/assets/practiceMode/answer_panel.png');
         
         game.load.image('LoggingPage','javascript/math_game/assets/LoggingPage/LoggingPage.jpg');
@@ -67,6 +68,8 @@ demo.LoadingLoggingPage.prototype = {
         game.load.audio('Logging', 'javascript/math_game/assets/audio/Logging.mp3'); 
         game.load.audio('LoggingBounce', 'javascript/math_game/assets/audio/LoggingBounce.mp3'); 
         game.load.audio('LoggingPagePlay', 'javascript/math_game/assets/audio/LoggingPageBG003.mp3'); 
+        game.load.audio('LoggingBG', 'javascript/math_game/assets/audio/LoggingBG.mp3'); 
+        game.load.audio('wrongFX', 'javascript/math_game/assets/audio/wrongFX.mp3');
 
         
         //ScoreBoard------------------------------------------------------------------------------------------------------------------
