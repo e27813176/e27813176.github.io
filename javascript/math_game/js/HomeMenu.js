@@ -200,7 +200,7 @@ function FoxStandingDown(){
  
     BlackClosingTween1 = game.add.tween(blackBG_opening).to({alpha:1},1000,'Quad.easeOut',true,0); 
     BlackClosingTween1.onComplete.add(function () {	
-        game.state.start('LevelMap',true,true);
+        game.state.start('BootLevelMap',true,true);
     }, this); 
 }
 function FoxStandingOver(){

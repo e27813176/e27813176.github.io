@@ -9,18 +9,6 @@ demo.LevelMap.prototype = {
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     },
     preload: function() {
-        game.load.image('LevelMapBG','javascript/math_game/assets/LevelMap/LevelMapBG.jpg');
-        game.load.atlas('LevelBtn', 'javascript/math_game/assets/LevelMap/LevelBtn.png', 'javascript/math_game/assets/LevelMap/LevelBtn.json');
-       
-        //Medal-------------------------------------------------------------------------------------------------
-        game.load.atlas('Medal', 'javascript/math_game/assets/LevelMap/Medal.png', 'javascript/math_game/assets/LevelMap/Medal.json');
-        game.load.atlas('GetNewMedal', 'javascript/math_game/assets/LevelMap/GetNewMedal.png', 'javascript/math_game/assets/LevelMap/GetNewMedal.json');
-        
-        //BlackBG------------------------------------------------------------------------------
-        game.load.image('blackBG','javascript/math_game/assets/fishingpage/blackBG.jpg');
-        //Audio--------------------------------------------------------------------------------
-        game.load.audio('BtnOver', 'javascript/math_game/assets/audio/BtnOver.mp3');
-        game.load.audio('GetMedal', 'javascript/math_game/assets/audio/GetMedal.mp3');
     },
     create: function() {
         //define backgroung------------------------------------------------------------------------

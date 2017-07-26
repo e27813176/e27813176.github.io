@@ -796,7 +796,7 @@ var blackBG_close_fishing_tween;
 function ExitFishingPage(){
     blackBG_close_fishing_tween = game.add.tween(blackBG_close_fishing).to({alpha:1},1000,'Quad.easeIn',true); 
     blackBG_close_fishing_tween.onComplete.add(function () {
-        game.state.start('LevelMap',true,true); 
+        game.state.start('BootLevelMap',true,true); 
         //game.state.clearCurrentState();
 
       }, this);

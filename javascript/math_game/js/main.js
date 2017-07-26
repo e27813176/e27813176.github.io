@@ -39,6 +39,8 @@ game.state.add("LoggingPage", demo.LoggingPage);
 
 game.state.add("fishingLevel", demo.fishingLevel);
 game.state.add("HomeInsidePage", demo.HomeInsidePage);
+game.state.add("BootLevelMap", demo.BootLevelMap);
+game.state.add("LoadingLevelMap", demo.LoadingLevelMap);
 game.state.add("LevelMap", demo.LevelMap);
 
 

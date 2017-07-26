@@ -238,7 +238,7 @@ function AxPageBackBtnDown(){
     AxBarLevel2X = AxBarSharpLevel2.x;
     AxPageClosingTween = game.add.tween(AxPageClosing).to({alpha:1},500,'Linear',true,0);
     AxPageClosingTween.onComplete.add(function(){
-        game.state.start('LevelMap');
+        game.state.start('BootLevelMap');
 
     },this);    
 }
@@ -269,7 +269,7 @@ function BoardBackBtnDown(){
     AxBarLevel2X = AxBarSharpLevel2.x;
     AxPageClosingTween = game.add.tween(AxPageClosing).to({alpha:1},500,'Linear',true,0);
     AxPageClosingTween.onComplete.add(function(){
-        game.state.start('LevelMap');
+        game.state.start('BootLevelMap');
 
     },this);    
 }
@@ -288,7 +288,7 @@ function ExitAxPage(){
     AxBarLevel2X = AxBarSharpLevel2.x;    
     AxPageClosingTween = game.add.tween(AxPageClosing).to({alpha:1},500,'Linear',true,0);  
     AxPageClosingTween.onComplete.add(function(){
-        game.state.start('LevelMap');
+        game.state.start('BootLevelMap');
     },this);
 }
 //FoxSittingDown---------------------------------------------------------------------------------------------------------------------------
@@ -855,12 +855,7 @@ function updatecreateNumber(){
 
 function cleanPracticeButton(){
 
-    /* 
-    if( answercount == totalAnswerCount ){
-        LevelOneComplete = true;
-        game.state.start('LevelMap',true,false);
-    } 
-    */
+
     for(let i = 0;i<5;i++){
         answer_panel[i].inputEnabled = false;
     }

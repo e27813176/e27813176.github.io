@@ -396,7 +396,7 @@ function ExitLoggingPage(){
     LoggingPageClosingTween001 = game.add.tween(BlackBGClosing).to({alpha:1},500,'Linear',true,0);        
 
     LoggingPageClosingTween001.onComplete.add(function () {	
-        game.state.start('LevelMap');
+        game.state.start('BootLevelMap');
     }, this);      
     
 }
