@@ -43,6 +43,7 @@ game.state.add("BootLevelMap", demo.BootLevelMap);
 game.state.add("LoadingLevelMap", demo.LoadingLevelMap);
 game.state.add("LevelMap", demo.LevelMap);
 
+game.state.add("MixingPage", demo.MixingPage);
 
 game.state.start("GameBootPage");
 //game.state.start("BootFishingPage");
@@ -51,3 +52,5 @@ game.state.start("GameBootPage");
 //game.state.start("BootLoggingPage");
 
 //game.state.start("state5");
+
+//game.state.start("MixingPage");
