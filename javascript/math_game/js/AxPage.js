@@ -165,7 +165,15 @@ demo.AxPage = {
       ArrowSheet.y = -50;
       ArrowSheet.animations.play("ArrowSheetDynamic",15,true);
       ArrowSheet.alpha = 1;     
-          
+    
+      //Fire---------------------------------------------------------------------------------------------------------------
+      Fire001 = game.add.sprite(0,0,'Fire');
+      Fire001.animations.add("Fire001",Phaser.Animation.generateFrameNames('Fire001_',0,25,'.png',5),10,true);
+      Fire001.animations.play("Fire001",30,true);
+      
+      Fire002 = game.add.sprite(0,0,'Fire');
+      Fire002.animations.add("Fire002",Phaser.Animation.generateFrameNames('Fire002_',0,25,'.png',5),10,true);
+      Fire002.animations.play("Fire002",25,true);      
       //Board-----------------------------------------------------------------------------------------------------------
       BoardBG = game.add.sprite(centerX,centerY,'Board','BoardBG.png');
       BoardBG.anchor.setTo(0.5);

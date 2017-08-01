@@ -41,7 +41,11 @@ demo.LoadingAxPage.prototype = {
     
         //AxBar-----------------------------------------------------------------------------------------------------------------------------
         game.load.atlas('AxBar', 'javascript/math_game/assets/AxPage/AxBar.png', 'javascript/math_game/assets/AxPage/AxBar.json');
-      
+        
+        //Fire-----------------------------------------------------------------------------------------------------------------------------
+        game.load.atlas('Fire', 'javascript/math_game/assets/AxPage/Fire.png', 'javascript/math_game/assets/AxPage/Fire.json');
+
+        
         //Text-----------------------------------------------------------------------------------------------------------------------------
         game.load.atlas('AxPageText', 'javascript/math_game/assets/AxPage/AxPageText.png', 'javascript/math_game/assets/AxPage/AxPageText.json');
       

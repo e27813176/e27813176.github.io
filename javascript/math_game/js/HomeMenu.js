@@ -14,7 +14,6 @@ demo.HomeMenu.prototype = {
     },
     create: function() {
         //define backgroung
-        
         game.stage.backgroundColor = "#000000";
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
         
@@ -155,8 +154,8 @@ demo.HomeMenu.prototype = {
         
         TaskBoardHover = game.add.sprite(0,100,'TaskBoard','TaskBoardHover.png');
         TaskBoardHoverTween = game.add.tween(TaskBoardHover).to({alpha:0.2},500,'Linear',true,0,false,true).loop(true);
-        TaskBoardHoverTween.pause();
-        TaskBoardHover.alpha = 0;
+        //TaskBoardHoverTween.pause();
+        //TaskBoardHover.alpha = 0;
         
         TaskBoardBtnArea = game.add.sprite(1272,507,'TaskBoard','TaskBoardBtnArea.png');
         TaskBoardBtnArea.events.onInputUp.add(TaskBoardBtnAreaUp, this);
@@ -222,15 +221,15 @@ function TaskBoardBtnAreaOver(){
     ArrowSheet.animations.play("ArrowSheetDynamic",15,true);
     ArrowSheet.alpha = 1;    
     game.add.tween(FoxGoFishingText).to({y:150},500,'Quad.easeOut',true,0); 
-    TaskBoardHoverTween.resume();
-    TaskBoardHover.alpha = 1;
+   // TaskBoardHoverTween.resume();
+   // TaskBoardHover.alpha = 1;
 }
 function TaskBoardBtnAreaOut(){
     ArrowSheet.animations.stop();
     ArrowSheet.alpha = 0;   
     game.add.tween(FoxGoFishingText).to({y:0},500,'Quad.easeOut',true,0); 
-    TaskBoardHoverTween.pause();
-    TaskBoardHover.alpha = 0;
+    //TaskBoardHoverTween.pause();
+    //TaskBoardHover.alpha = 0;
 }
 
 function JunyiIconBtnDown(){
