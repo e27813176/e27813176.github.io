@@ -31,6 +31,12 @@ demo.LoggingPage = {
         LoggingSuccess = game.add.audio('LoggingSuccess');
                 
 
+        //Text---------------------------------------------------------------------------------------------------
+        NeedSharpeningText = game.add.sprite(0,100,'Panel',"NeedSharpeningText.png");
+        NeedSharpeningTextTween = game.add.tween(NeedSharpeningText).to({alpha:0.1},500,'Quad.easeInOut',true,0,false,true).loop(true);
+        NeedSharpeningTextTween.pause();
+        NeedSharpeningText.alpha = 0;
+        
         //FoxBounceAnimation------------------------------------------------------------------------------------------------------
         FoxBounce001 = game.add.sprite(-10,100,'FoxBounce001');
         FoxBounce001Animation = FoxBounce001.animations.add("FoxBounce001Dynamic",Phaser.Animation.generateFrameNames('FoxBounce_',100,128,'.png',5),10,true);
@@ -116,6 +122,8 @@ demo.LoggingPage = {
         FoxLogging003Animation.onComplete.add(function () {	
             FoxLogging003.alpha = 0;
             if( AxBarSharp.x <= -243 ){
+                NeedSharpeningTextTween.resume();
+                NeedSharpeningText.alpha = 1;
                 FoxBounce001.alpha = 1;
                 FoxBounce001.animations.play("FoxBounce001Dynamic",15,false);        
             }
@@ -158,6 +166,7 @@ demo.LoggingPage = {
             AnswerPanel[i].inputEnabled = false;
             AnswerPanel[i].variable = i+1;
         }
+
         //PanelGlow-------------------------------------------------------------------------------------------------
       
         PanelGlowNumSum = game.add.sprite(0,100,'Panel','PanelGlowSum.png');
@@ -444,7 +453,9 @@ function StartLogging(){
     FoxStanding.animations.stop();
     if( AxBarSharp.x <= -243 ){
         FoxBounce001.alpha = 1;
-        FoxBounce001.animations.play("FoxBounce001Dynamic",15,false);        
+        FoxBounce001.animations.play("FoxBounce001Dynamic",15,false);  
+        NeedSharpeningTextTween.resume();
+        NeedSharpeningText.alpha = 1;
     }
     if( AxBarSharp.x > -243 ){
         FoxLogging001.alpha = 1;
@@ -528,6 +539,8 @@ function StopLogging(){
     //LoggingPageExitTextTween.resume();
     //LoggingPageExitText.alpha = 1;
     
+    NeedSharpeningTextTween.pause();
+    NeedSharpeningText.alpha = 0;
     
     FoxStanding.alpha = 1;
     FoxStanding.animations.play("FoxStandingDynamic",15,true);
