@@ -397,6 +397,18 @@ function FoxLoggingPageBtnOut(){
 }
 
 function ExitLoggingPage(){
+    NumSum.destroy();
+    NumAdd1.destroy();
+    NumAdd2.destroy();
+    for(let i = 0;i<5;i++){
+        answerNum[i].destroy();
+    }    
+    
+    LoggingBGVolumeMute = game.add.tween(LoggingBG).to({volume:0},500,'Linear',true,0);
+    LoggingBGVolumeMute.onComplete.add(function(){
+        LoggingBG.stop();
+    },this);
+    
     AxBarX = AxBarSharp.x;
     AxBarLevel2X = AxBarSharpLevel2.x;    
     TreeBloodBarX = TreeBloodBar.x;
@@ -424,7 +436,7 @@ function StartLogging(){
     LoggingPageBackBtn.inputEnabled = false;
     LoggingPageStartBtn.inputEnabled = false;
     
-    LoggingPageExitBtnArea.inputEnabled = false;
+    //LoggingPageExitBtnArea.inputEnabled = false;
     LoggingPageExitTextTween.pause();
     LoggingPageExitText.alpha = 0;
     
@@ -511,8 +523,8 @@ function StopLogging(){
         LoggingBG.stop();
     },this);
 
-    LoggingPageExitBtnArea.inputEnabled = true;
-    LoggingPageExitBtnArea.input.useHandCursor = true;    
+    //LoggingPageExitBtnArea.inputEnabled = true;
+    //LoggingPageExitBtnArea.input.useHandCursor = true;    
     LoggingPageExitTextTween.resume();
     LoggingPageExitText.alpha = 1;
     

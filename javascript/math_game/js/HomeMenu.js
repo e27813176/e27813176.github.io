@@ -152,10 +152,12 @@ demo.HomeMenu.prototype = {
         //TaskBoardBtn----------------------------------------------------------------------------------------------------------------
         TaskBoard = game.add.sprite(0,100,'TaskBoard','TaskBoard.png');
         
+        
         TaskBoardHover = game.add.sprite(0,100,'TaskBoard','TaskBoardHover.png');
         TaskBoardHoverTween = game.add.tween(TaskBoardHover).to({alpha:0.2},500,'Linear',true,0,false,true).loop(true);
         //TaskBoardHoverTween.pause();
         //TaskBoardHover.alpha = 0;
+        
         
         TaskBoardBtnArea = game.add.sprite(1272,507,'TaskBoard','TaskBoardBtnArea.png');
         TaskBoardBtnArea.events.onInputUp.add(TaskBoardBtnAreaUp, this);
@@ -163,7 +165,16 @@ demo.HomeMenu.prototype = {
         TaskBoardBtnArea.events.onInputOut.add(TaskBoardBtnAreaOut, this);
         TaskBoardBtnArea.inputEnabled = false;
         TaskBoardBtnArea.alpha = 0;
-                
+        
+        
+        TaskBoardNewIcon = game.add.sprite(0,100,'TaskBoard','NewIcon.png');
+        if( LevelState.LevelMapCount == 0 ){
+           TaskBoardNewIconTween = game.add.tween(TaskBoardNewIcon).to({alpha:0.2},500,'Linear',true,0,false,true).loop(true);                
+        }else{
+            TaskBoardNewIcon.alpha = 0;
+        }
+        
+        
         //btn---------------------------------------------------------------------------------------------------------------------
         JunyiIconBtn = game.add.sprite(1300,800,'JunyiIconBtn');
         JunyiIconBtn.alpha = 1;
@@ -210,9 +221,10 @@ demo.HomeMenu.prototype = {
     update: function() {}    
 }
 function TaskBoardBtnAreaUp(){
-
+    
     TaskBoardHoverTween.pause();    
     TaskBoardHover.alpha = 0;
+    
     ExitHomePage();
 }
 function TaskBoardBtnAreaOver(){
@@ -237,6 +249,7 @@ function JunyiIconBtnDown(){
     
 }
 function ExitHomePage(){
+    LevelState.LevelMapCount++;
     game.add.tween(game_menu_music).to({volume:0},1000,'Quad.easeOut',true,0); 
  
     BlackClosingTween1 = game.add.tween(blackBG_opening).to({alpha:1},1000,'Quad.easeOut',true,0); 

@@ -4,6 +4,8 @@ var FishMedalShowUp = false;
 var BackPackFish = [];
 
 var LevelState = { 
+    LevelMapCount:0,
+    
     CheckNewMedal:false,
     
     AxPageCount:0,

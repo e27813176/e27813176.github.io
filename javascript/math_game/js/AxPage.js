@@ -301,6 +301,17 @@ function BoardBackBtnOut(){
 }
 //----------------------------------------------------------------------------------------------------------------------------------------------
 function ExitAxPage(){
+    AxPagePlayVolumeMute = game.add.tween(AxPagePlay).to({volume:0},500,'Linear',true,0);
+    AxPagePlayVolumeMute.onComplete.add(function(){
+        AxPagePlay.stop();
+    },this);
+    
+    NumSum.destroy();
+    NumAdd1.destroy();
+    NumAdd2.destroy();
+    for(let i = 0;i<5;i++){
+        answerNum[i].destroy();
+    }    
     
     AxBarX = AxBarSharp.x;
     AxBarLevel2X = AxBarSharpLevel2.x;    
@@ -313,10 +324,10 @@ function ExitAxPage(){
 function FoxSittingDown(){
     ArrowSheet.animations.stop();
     ArrowSheet.alpha = 0;     
-    ExitAxPageTextBoardTween.pause();
-    ExitAxPageTextBoard.alpha = 0;
+    //ExitAxPageTextBoardTween.pause();
+    //ExitAxPageTextBoard.alpha = 0;
     FoxSitting.inputEnabled = false;
-    ExitAxPageBtnArea.inputEnabled = false;
+    //ExitAxPageBtnArea.inputEnabled = false;
     StartSharpening();
     /*
     game.add.tween(AxPageBackBtn.scale).to({x:1,y:1},500,Phaser.Easing.Back.Out,true,0);
@@ -427,10 +438,10 @@ function StopSharpening(){
     AxPagePlay.stop();
     Sharpening = false;
     //AxFX.stop();
-    ExitAxPageBtnArea.inputEnabled = true;
-    ExitAxPageBtnArea.input.useHandCursor = true; 
-    ExitAxPageTextBoardTween.resume();
-    ExitAxPageTextBoard.alpha = 1;
+    //ExitAxPageBtnArea.inputEnabled = true;
+    //ExitAxPageBtnArea.input.useHandCursor = true; 
+   // ExitAxPageTextBoardTween.resume();
+    //ExitAxPageTextBoard.alpha = 1;
     game.add.tween(StopSharpenText).to({y:0},500,'Quad.easeOut',true,0); 
     FoxWithAx.alpha = 0;
     FoxWithAx.animations.stop();
