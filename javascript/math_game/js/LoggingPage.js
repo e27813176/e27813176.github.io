@@ -1,7 +1,7 @@
 var AnswerPanel = new Array();
 var TreeBloodBarX = 0;
 var LoggingPageCorrectAnswer;
-var LoggingPageComplete = false;
+
 demo.LoggingPage = function(){};
 demo.LoggingPage = {
     
@@ -565,7 +565,12 @@ function FinishLogging(){
     },this);
 
     
-    LoggingPageComplete = true;
+    LevelState.LoggingPageComplete = true;
+    LevelState.LoggingPageCompleteCount++;
+    if( LevelState.LoggingPageCompleteCount == 1 ){
+        LevelState.CheckNewMedal = true;
+    }
+    
     FoxStanding.alpha = 1;
     FoxStanding.animations.play("FoxStandingDynamic",15,true);
     

@@ -1,6 +1,5 @@
 var FishingLevel = 1;
-var AnswerPanelLight =  new Array();
-var FishingPageComplete = false;
+var AnswerPanelLight = new Array();
 var text = 0;
 var timer;
 demo.FishingPage = function() {};
@@ -737,7 +736,11 @@ function finishfishing(){
     FoxPullingRodAnimate.stop();
 
     success = true;
-    FishingPageComplete = true;
+    LevelState.FishingPageComplete = true;
+    LevelState.FishingPageCompleteCount++;
+    if( LevelState.FishingPageCompleteCount == 1 ){
+        LevelState.CheckNewMedal = true;
+    }
 
     showupfishboard();    
     game_fishing_music.stop();

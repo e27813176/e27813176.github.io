@@ -1,6 +1,6 @@
 var answer_panel = new Array();
 var AxBarX = -243,AxBarLevel2X = - 243;
-var AxPageComplete = false;
+
 var AxPageCorrectAnswer;
 var AxBarCenterX = (AxBarX + 100) /2; 
 
@@ -619,7 +619,13 @@ function AxPageCheckAnswer(){
         
     }
     if( AxBarSharpLevel2.x > 71 ){
-        AxPageComplete = true;
+        
+        LevelState.AxPageComplete = true;
+        LevelState.AxPageCompleteCount++;
+        if( LevelState.AxPageCompleteCount == 1 ){
+            LevelState.CheckNewMedal = true;    
+        }
+
         AxPageSuccess.play();
         AxPagePlay.stop(); 
         FinishSharpening();

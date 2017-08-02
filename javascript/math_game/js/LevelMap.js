@@ -3,6 +3,22 @@ var FoxFishingBtnShowUp = false;
 var FishMedalShowUp = false;
 var BackPackFish = [];
 
+var LevelState = { 
+    CheckNewMedal:false,
+    
+    AxPageCount:0,
+    AxPageCompleteCount:0,
+    AxPageComplete:false, 
+     
+    LoggingPageCount:0,
+    LoggingPageCompleteCount:0,
+    LoggingPageComplete:false,
+    
+    FishingPageCount:0,
+    FishingPageCompleteCount:0,
+    FishingPageComplete:false 
+};
+
 demo.LevelMap = function() {};
 demo.LevelMap.prototype = {
     init: function(){
@@ -28,17 +44,9 @@ demo.LevelMap.prototype = {
         HomeBtnHover.alpha = 0; 
                 
         //TutorialBtn---------------------------------------------------------------------------
-        TutorialBtnHoverArea =  game.add.sprite(155, 580, 'LevelBtn','BtnHover.png');
-        TutorialBtnHoverArea.scale.setTo(1.2,0.8);
-        TutorialBtnHoverArea.alpha = 0; 
-        TutorialBtnHoverArea.events.onInputDown.add(TutorialBtnDown, this);
-        TutorialBtnHoverArea.events.onInputOver.add(TutorialBtnOver, this);
-        TutorialBtnHoverArea.events.onInputOut.add(TutorialBtnOut, this);
+        TutorialBtn = game.add.sprite(55, 270, 'LevelBtn','TutorialBtn.png');
+        TutorialBtn.events.onInputDown.add(TutorialBtnDown, this);
 
-        
-        TutorialBtnHover = game.add.sprite(0, 100, 'LevelBtn','TutorialBtnHover.png');
-        TutorialBtnHover.alpha = 0; 
-        
         //AxPageBtn---------------------------------------------------------------------------
         FoxAxBtnHoverArea =  game.add.sprite(270, 350, 'LevelBtn','BtnHover.png');
         FoxAxBtnHoverArea.alpha = 0; 
@@ -53,7 +61,7 @@ demo.LevelMap.prototype = {
         //LoggingPageBtn----------------------------------------------------------------------
         FoxLoggingBtn = game.add.sprite(0, 100, 'LevelBtn','FoxLoggingBtn.png');
         //FoxLoggingBtn.alpha = 0; 
-        if( AxPageComplete == false || FoxLoggingBtnShowUp == false ){
+        if( LevelState.AxPageComplete == false || FoxLoggingBtnShowUp == false ){
             FoxLoggingBtn.alpha = 0;
         }
 
@@ -72,7 +80,7 @@ demo.LevelMap.prototype = {
         //FishingPageBtn-----------------------------------------------------------------------
         FoxFishingBtn = game.add.sprite(0, 100, 'LevelBtn','FoxFishingBtn.png'); 
         //FoxFishingBtn.alpha = 0;
-        if( LoggingPageComplete == false || FoxFishingBtnShowUp == false ){
+        if( LevelState.LoggingPageComplete == false || FoxFishingBtnShowUp == false ){
             FoxFishingBtn.alpha = 0;
             
         }
@@ -99,6 +107,60 @@ demo.LevelMap.prototype = {
         MedalBtnHoverTween = game.add.tween(MedalBtnHover).to({alpha:0.5},500,'Linear',true,0,false,true).loop(true);
         MedalBtnHoverTween.pause();
         MedalBtnHover.alpha = 0;
+
+        
+        //GetNewMedal------------------------------------------------------------------------------------
+        GetNewMedalText = game.add.sprite(0, 100, 'GetNewMedal','GetNewMedalText.png');
+        GetNewMedalText.alpha = 0;        
+        
+        GetNewMedalTextLight = game.add.sprite(0, 100, 'GetNewMedal','GetNewMedalTextLight.png');
+        GetNewMedalTextLightTween = game.add.tween(GetNewMedalTextLight).to({alpha:0.4},500,'Linear',true,0,false,true).loop(true);
+        GetNewMedalTextLightTween.pause();
+        GetNewMedalTextLight.alpha = 0;        
+        
+        GetNewMedalConfirmBtn = game.add.sprite(0, 100, 'GetNewMedal','GetNewMedalConfirmBtn.png');
+        GetNewMedalConfirmBtn.alpha = 0; 
+        
+        GetNewMedalConfirmBtnHover = game.add.sprite(0, 100, 'GetNewMedal','GetNewMedalConfirmBtnHover.png');
+        GetNewMedalConfirmBtnHoverTween = game.add.tween(GetNewMedalConfirmBtnHover).to({alpha:0.4},500,'Linear',true,0,false,true).loop(true);
+        GetNewMedalConfirmBtnHoverTween.pause();
+        GetNewMedalConfirmBtnHover.alpha = 0; 
+        
+        GetNewMedalConfirmBtnArea = game.add.sprite(978, 496, 'GetNewMedal','GetNewMedalConfirmBtnArea.png');
+        GetNewMedalConfirmBtnArea.alpha = 0;  
+        GetNewMedalConfirmBtnArea.events.onInputDown.add(GetNewMedalConfirmBtnDown, this);
+        GetNewMedalConfirmBtnArea.events.onInputOver.add(GetNewMedalConfirmBtnOver, this);
+        GetNewMedalConfirmBtnArea.events.onInputOut.add(GetNewMedalConfirmBtnOut, this);          
+        //NextIcon---------------------------------------------------------------------------------------
+        NextIconAxPage = game.add.sprite(0, 100, 'LevelBtn','NextIconAxPage.png');
+        if( LevelState.AxPageCount == 0 ){
+            NextIconAxPageTween = game.add.tween(NextIconAxPage).to({alpha:0.2},500,'Linear',true,0,false,true).loop(true);
+        }else{
+            NextIconAxPage.alpha = 0;
+        }
+        
+        NextIconLoggingPage = game.add.sprite(0, 100, 'LevelBtn','NextIconLoggingPage.png');
+        if( LevelState.LoggingPageCount == 0 && LevelState.AxPageComplete == true ){
+            NextIconLoggingPageTween = game.add.tween(NextIconLoggingPage).to({alpha:0.2},500,'Linear',true,0,false,true).loop(true);
+        }else{
+            NextIconLoggingPage.alpha = 0;
+        } 
+        
+        NextIconFishingPage = game.add.sprite(0, 100, 'LevelBtn','NextIconFishingPage.png');
+        if( LevelState.FishingPageCount == 0 && LevelState.LoggingPageComplete == true ){
+            NextIconFishingPageTween = game.add.tween(NextIconFishingPage).to({alpha:0.2},500,'Linear',true,0,false,true).loop(true);
+        }else{
+            NextIconFishingPage.alpha = 0;
+        }         
+
+        NewIconMedal = game.add.sprite(-12, 80, 'LevelBtn','NewIconMedal.png');
+        NewIconMedalTween = game.add.tween(NewIconMedal).to({alpha:0.2},500,'Linear',true,0,false,true).loop(true);
+        if( LevelState.CheckNewMedal == false ){
+            NewIconMedalTween.pause();
+            NewIconMedal.alpha = 0;
+        }
+            //NewIconMedalTween.pause();
+        //NewIconMedal.alpha = 0;
         //MedalBoard--------------------------------------------------------------------------------------        
         MedalBoard =  game.add.sprite(0, 100, 'Medal','MedalBoard.png');
         MedalBoard.alpha = 0;        
@@ -124,30 +186,7 @@ demo.LevelMap.prototype = {
         MedalBoardConfirmBtnArea.alpha = 0;
         MedalBoardConfirmBtnArea.events.onInputDown.add(MedalBoardConfirmBtnDown, this);
         MedalBoardConfirmBtnArea.events.onInputOver.add(MedalBoardConfirmBtnOver, this);
-        MedalBoardConfirmBtnArea.events.onInputOut.add(MedalBoardConfirmBtnOut, this);  
-        
-        //GetNewMedal------------------------------------------------------------------------------------
-        GetNewMedalText = game.add.sprite(0, 100, 'GetNewMedal','GetNewMedalText.png');
-        GetNewMedalText.alpha = 0;        
-        
-        GetNewMedalTextLight = game.add.sprite(0, 100, 'GetNewMedal','GetNewMedalTextLight.png');
-        GetNewMedalTextLightTween = game.add.tween(GetNewMedalTextLight).to({alpha:0.4},500,'Linear',true,0,false,true).loop(true);
-        GetNewMedalTextLightTween.pause();
-        GetNewMedalTextLight.alpha = 0;        
-        
-        GetNewMedalConfirmBtn = game.add.sprite(0, 100, 'GetNewMedal','GetNewMedalConfirmBtn.png');
-        GetNewMedalConfirmBtn.alpha = 0; 
-        
-        GetNewMedalConfirmBtnHover = game.add.sprite(0, 100, 'GetNewMedal','GetNewMedalConfirmBtnHover.png');
-        GetNewMedalConfirmBtnHoverTween = game.add.tween(GetNewMedalConfirmBtnHover).to({alpha:0.4},500,'Linear',true,0,false,true).loop(true);
-        GetNewMedalConfirmBtnHoverTween.pause();
-        GetNewMedalConfirmBtnHover.alpha = 0; 
-        
-        GetNewMedalConfirmBtnArea = game.add.sprite(978, 496, 'GetNewMedal','GetNewMedalConfirmBtnArea.png');
-        GetNewMedalConfirmBtnArea.alpha = 0;  
-        GetNewMedalConfirmBtnArea.events.onInputDown.add(GetNewMedalConfirmBtnDown, this);
-        GetNewMedalConfirmBtnArea.events.onInputOver.add(GetNewMedalConfirmBtnOver, this);
-        GetNewMedalConfirmBtnArea.events.onInputOut.add(GetNewMedalConfirmBtnOut, this);          
+        MedalBoardConfirmBtnArea.events.onInputOut.add(MedalBoardConfirmBtnOut, this);          
         //Audio----------------------------------------------------------------------------------------
         BtnOver = game.add.audio('BtnOver');
         GetMedal = game.add.audio('GetMedal');
@@ -162,20 +201,21 @@ demo.LevelMap.prototype = {
             MedalBtn.input.useHandCursor = true;             
             HomeBtnHoverArea.inputEnabled = true;
             HomeBtnHoverArea.input.useHandCursor = true; 
-            TutorialBtnHoverArea.inputEnabled = true;
-            TutorialBtnHoverArea.input.useHandCursor = true;  
+            TutorialBtn.inputEnabled = true;
+            TutorialBtn.input.useHandCursor = true;  
             FoxAxBtnHoverArea.inputEnabled = true;
             FoxAxBtnHoverArea.input.useHandCursor = true;  
 
         
-            if( AxPageComplete == true ){
+            if( LevelState.AxPageComplete == true ){
                 FoxLoggingBtnHoverArea.inputEnabled = true;
                 FoxLoggingBtnHoverArea.input.useHandCursor = true; 
+
 
                 if( FoxLoggingBtnShowUp == false ){
                     MedalBtn.inputEnabled = false;
                     HomeBtnHoverArea.inputEnabled = false;
-                    TutorialBtnHoverArea.inputEnabled = false;
+                    TutorialBtn.inputEnabled = false;
                     FoxAxBtnHoverArea.inputEnabled = false;
                     FoxLoggingBtnHoverArea.inputEnabled = false;
                     GetMedal.play();
@@ -191,14 +231,15 @@ demo.LevelMap.prototype = {
                 }
                 
             }
-            if( LoggingPageComplete == true ){
+            if( LevelState.LoggingPageComplete == true ){
                 FoxFishingBtnHoverArea.inputEnabled = true;
                 FoxFishingBtnHoverArea.input.useHandCursor = true; 
+
                  
                 if( FoxFishingBtnShowUp == false ){
                     MedalBtn.inputEnabled = false;
                     HomeBtnHoverArea.inputEnabled = false;
-                    TutorialBtnHoverArea.inputEnabled = false;
+                    TutorialBtn.inputEnabled = false;
                     FoxAxBtnHoverArea.inputEnabled = false;
                     FoxLoggingBtnHoverArea.inputEnabled = false;
                     FoxFishingBtnHoverArea.inputEnabled = false;
@@ -216,11 +257,12 @@ demo.LevelMap.prototype = {
                 }               
                 
             }
-            if( FishingPageComplete == true && FishMedalShowUp == false ){
+            if( LevelState.FishingPageComplete == true && FishMedalShowUp == false ){
+
                 
                 MedalBtn.inputEnabled = false;
                 HomeBtnHoverArea.inputEnabled = false;
-                TutorialBtnHoverArea.inputEnabled = false;
+                TutorialBtn.inputEnabled = false;
                 FoxAxBtnHoverArea.inputEnabled = false;
                 FoxLoggingBtnHoverArea.inputEnabled = false;
                 FoxFishingBtnHoverArea.inputEnabled = false; 
@@ -247,6 +289,7 @@ function GetNewMedalConfirmBtnComplete(){
 }
 //Get New Medal---------------------------------------------------------------------------------------------------
 function GetNewMedalConfirmBtnDown(){
+
     GetNewMedalConfirmBtnArea.inputEnabled = false;
     game.add.tween(GetNewMedalText).to({alpha:0},500,'Linear',true,0); 
     game.add.tween(GetNewMedalTextLight).to({alpha:0},500,'Linear',true,0); 
@@ -259,8 +302,8 @@ function GetNewMedalConfirmBtnDown(){
     MedalBtn.input.useHandCursor = true;             
     HomeBtnHoverArea.inputEnabled = true;
     HomeBtnHoverArea.input.useHandCursor = true; 
-    TutorialBtnHoverArea.inputEnabled = true;
-    TutorialBtnHoverArea.input.useHandCursor = true;  
+    TutorialBtn.inputEnabled = true;
+    TutorialBtn.input.useHandCursor = true;  
     FoxAxBtnHoverArea.inputEnabled = true;
     FoxAxBtnHoverArea.input.useHandCursor = true;     
     
@@ -270,7 +313,7 @@ function GetNewMedalConfirmBtnDown(){
         FoxLoggingBtnHoverArea.inputEnabled = true;
         FoxLoggingBtnHoverArea.input.useHandCursor = true;        
     }
-    if( FoxFishingBtnShowUp == false && LoggingPageComplete == true ){
+    if( FoxFishingBtnShowUp == false && LevelState.LoggingPageComplete == true ){
         FoxFishingBtnShowUp = true;
         game.add.tween(FoxFishingBtn).to({alpha:1},1000,'Linear',true,500); 
         FoxLoggingBtnHoverArea.inputEnabled = true;
@@ -278,7 +321,7 @@ function GetNewMedalConfirmBtnDown(){
         FoxFishingBtnHoverArea.inputEnabled = true;
         FoxFishingBtnHoverArea.input.useHandCursor = true;         
     }
-    if( FishingPageComplete == true && FishMedalShowUp == false ){
+    if( LevelState.FishingPageComplete == true && FishMedalShowUp == false ){
         FishMedalShowUp = true;
         FoxLoggingBtnHoverArea.inputEnabled = true;
         FoxLoggingBtnHoverArea.input.useHandCursor = true;         
@@ -311,15 +354,15 @@ function MedalBoardConfirmBtnDown(){
     MedalBtn.input.useHandCursor = true;             
     HomeBtnHoverArea.inputEnabled = true;
     HomeBtnHoverArea.input.useHandCursor = true; 
-    TutorialBtnHoverArea.inputEnabled = true;
-    TutorialBtnHoverArea.input.useHandCursor = true;  
+    TutorialBtn.inputEnabled = true;
+    TutorialBtn.input.useHandCursor = true;  
     FoxAxBtnHoverArea.inputEnabled = true;
     FoxAxBtnHoverArea.input.useHandCursor = true;  
-    if( AxPageComplete == true ){
+    if( LevelState.AxPageComplete == true ){
         FoxLoggingBtnHoverArea.inputEnabled = true;
         FoxLoggingBtnHoverArea.input.useHandCursor = true; 
     }
-    if( LoggingPageComplete == true ){
+    if( LevelState.LoggingPageComplete == true ){
         FoxFishingBtnHoverArea.inputEnabled = true;
         FoxFishingBtnHoverArea.input.useHandCursor = true;                 
     }    
@@ -337,6 +380,9 @@ function MedalBoardConfirmBtnOut(){
 }
 //------------------------------------------------------------------------------------------------------------
 function MedalBtnDown(){
+    NewIconMedal.alpha = 0;
+    NewIconMedalTween.pause();
+    LevelState.CheckNewMedal = false;
     
     MedalBtnHoverTween.pause();
     MedalBtnHover.alpha = 0;
@@ -346,24 +392,24 @@ function MedalBtnDown(){
         MedalBoardConfirmBtnArea.inputEnabled = true;
         
     },this);
-    if( AxPageComplete == true ){
+    if( LevelState.AxPageComplete == true ){
         game.add.tween(AxMedal).to({alpha:1},500,'Linear',true,500); 
         
         if( FoxLoggingBtnShowUp == false ){
                     
         }
     }
-    if( LoggingPageComplete == true ){
+    if( LevelState.LoggingPageComplete == true ){
         game.add.tween(LoggingMedal).to({alpha:1},500,'Linear',true,600); 
     
     }
-    if( FishingPageComplete == true ){
+    if( LevelState.FishingPageComplete == true ){
         game.add.tween(FishMedal).to({alpha:1},500,'Linear',true,700); 
     
     }
     MedalBtn.inputEnabled = false;
     HomeBtnHoverArea.inputEnabled = false;
-    TutorialBtnHoverArea.inputEnabled = false;
+    TutorialBtn.inputEnabled = false;
     FoxAxBtnHoverArea.inputEnabled = false;
     FoxLoggingBtnHoverArea.inputEnabled = false;
     FoxFishingBtnHoverArea.inputEnabled = false;
@@ -410,6 +456,7 @@ function TutorialBtnOut(){
 
 //Ax Page function-----------------------------------------------------------------------------------------------------    
 function FoxAxBtnDown(){
+    LevelState.AxPageCount++;
     LevelMapClosing('BootAxPage');
 }
 function FoxAxBtnOver(){
@@ -424,7 +471,7 @@ function FoxAxBtnOut(){
 }
 //Logging Page function-------------------------------------------------------------------------------------------------
 function FoxLoggingBtnDown(){
-    
+    LevelState.LoggingPageCount++;
     LevelMapClosing('BootLoggingPage');    
 }
 function FoxLoggingBtnOver(){
@@ -438,6 +485,7 @@ function FoxLoggingBtnOut(){
 }
 //Fishing Page function--------------------------------------------------------------------------------------------------
 function FoxFishingBtnDown(){
+    LevelState.FishingPageCount++;
     LevelMapClosing('BootFishingPage',true);
 }
 function FoxFishingBtnOver(){
@@ -452,7 +500,7 @@ function FoxFishingBtnOut(){
 //LevelMapClosing--------------------------------------------------------------------------------------------------------
 function LevelMapClosing(Page){
     HomeBtnHoverArea.inputEnabled = false;
-    TutorialBtnHoverArea.inputEnabled = false;
+    TutorialBtn.inputEnabled = false;
     FoxAxBtnHoverArea.inputEnabled = false;
     FoxLoggingBtnHoverArea.inputEnabled = false;
     FoxFishingBtnHoverArea.inputEnabled = false;
