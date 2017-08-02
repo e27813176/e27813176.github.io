@@ -437,7 +437,7 @@ function StartLogging(){
     LoggingPageStartBtn.inputEnabled = false;
     
     //LoggingPageExitBtnArea.inputEnabled = false;
-    LoggingPageExitTextTween.pause();
+    //LoggingPageExitTextTween.pause();
     LoggingPageExitText.alpha = 0;
     
     FoxStanding.alpha = 0;
@@ -525,8 +525,8 @@ function StopLogging(){
 
     //LoggingPageExitBtnArea.inputEnabled = true;
     //LoggingPageExitBtnArea.input.useHandCursor = true;    
-    LoggingPageExitTextTween.resume();
-    LoggingPageExitText.alpha = 1;
+    //LoggingPageExitTextTween.resume();
+    //LoggingPageExitText.alpha = 1;
     
     
     FoxStanding.alpha = 1;
