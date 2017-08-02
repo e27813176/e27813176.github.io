@@ -2,11 +2,19 @@
 
 {
 	"filename": "AnswerPanel.png",
-	"frame": {"x":347,"y":141,"w":83,"h":84},
+	"frame": {"x":487,"y":1,"w":83,"h":84},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":4,"y":3,"w":83,"h":84},
 	"sourceSize": {"w":90,"h":90}
+},
+{
+	"filename": "LoggingPageExitText.png",
+	"frame": {"x":347,"y":141,"w":163,"h":88},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":60,"y":541,"w":163,"h":88},
+	"sourceSize": {"w":1600,"h":800}
 },
 {
 	"filename": "PanelGlowAdd.png",
@@ -37,8 +45,8 @@
 	"version": "1.0",
 	"image": "Panel.png",
 	"format": "RGBA8888",
-	"size": {"w":486,"h":243},
+	"size": {"w":571,"h":243},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:f04f7f32d92952ff5aff030b9d4ef5f4:f0b469ff0114fcd947d473e7a7ceb9e2:484f28e93f06386cc2110410f9ccc8a0$"
+	"smartupdate": "$TexturePacker:SmartUpdate:f39f35284d94906141ef8a68e022a3df:42a12faa840f6c8a5fa5953ebb3adc2b:484f28e93f06386cc2110410f9ccc8a0$"
 }
 }

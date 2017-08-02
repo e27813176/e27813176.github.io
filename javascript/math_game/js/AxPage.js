@@ -25,6 +25,7 @@ demo.AxPage = {
       game.stage.backgroundColor = "#000000";
       game.add.sprite(0,100,'AxPageBG');
      
+      
       //AxBar------------------------------------------------------------------------------------------------------
       AxBarBG = game.add.sprite(100,100,'AxBar','AxBarBG.png');
       AxBarBG.alpha = 0;
@@ -174,6 +175,10 @@ demo.AxPage = {
       Fire002 = game.add.sprite(0,0,'Fire');
       Fire002.animations.add("Fire002",Phaser.Animation.generateFrameNames('Fire002_',0,25,'.png',5),10,true);
       Fire002.animations.play("Fire002",25,true);      
+      
+      Fire003 = game.add.sprite(0,0,'Fire');
+      Fire003.animations.add("Fire003",Phaser.Animation.generateFrameNames('Fire003_',0,25,'.png',5),10,true);
+      Fire003.animations.play("Fire003",25,true);            
       //Board-----------------------------------------------------------------------------------------------------------
       BoardBG = game.add.sprite(centerX,centerY,'Board','BoardBG.png');
       BoardBG.anchor.setTo(0.5);
@@ -220,6 +225,15 @@ demo.AxPage = {
       AxPageStartBtn.events.onInputDown.add(AxPageStartBtnDown, this);
       AxPageStartBtn.events.onInputOver.add(AxPageStartBtnOver, this);
       AxPageStartBtn.events.onInputOut.add(AxPageStartBtnOut, this);      
+
+      ExitAxPageTextBoard = game.add.sprite(0,100,'Btn','ExitAxPageText.png');
+      ExitAxPageTextBoardTween = game.add.tween(ExitAxPageTextBoard).to({alpha:0.5},500,'Quad.easeInOut',true,0,false,true).loop(true);
+      
+      ExitAxPageBtnArea = game.add.sprite(1420,430,'Btn','ExitAxPageBtnArea.jpg');
+      ExitAxPageBtnArea.events.onInputDown.add(ExitAxPageBtnDown, this);
+      ExitAxPageBtnArea.alpha = 0;
+      ExitAxPageBtnArea.inputEnabled = true;
+      ExitAxPageBtnArea.input.useHandCursor = true; 
       //AxPageOpening--------------------------------------------------------------------------------------------------------
       AxPageOpening = game.add.sprite(0,100,'BlackBG');
       AxPageOpening.alpha = 1;      
@@ -245,15 +259,13 @@ demo.AxPage = {
       }
   } 
 }
+function ExitAxPageBtnDown(){
+    ExitAxPage();
+}
+
 //AxPageBackBtnDown-----------------------------------------------------------------------------------------------------------------------
 function AxPageBackBtnDown(){
-    AxBarX = AxBarSharp.x;
-    AxBarLevel2X = AxBarSharpLevel2.x;
-    AxPageClosingTween = game.add.tween(AxPageClosing).to({alpha:1},500,'Linear',true,0);
-    AxPageClosingTween.onComplete.add(function(){
-        game.state.start('BootLevelMap');
-
-    },this);    
+    ExitAxPage();   
 }
 function AxPageBackBtnOver(){
     AxPageBackBtnScaleTween = game.add.tween(AxPageBackBtn.scale).to({x:1.1,y:1.1},500,'Quad.easeInOut',true,0,false,true).loop(true);
@@ -277,14 +289,7 @@ function AxPageStartBtnOut(){
 }
 //BoardBackBtnDown---------------------------------------------------------------------------------------------------------------------------
 function BoardBackBtnDown(){
-    
-    AxBarX = AxBarSharp.x;
-    AxBarLevel2X = AxBarSharpLevel2.x;
-    AxPageClosingTween = game.add.tween(AxPageClosing).to({alpha:1},500,'Linear',true,0);
-    AxPageClosingTween.onComplete.add(function(){
-        game.state.start('BootLevelMap');
-
-    },this);    
+    ExitAxPage();  
 }
 function BoardBackBtnOver(){
     BoardBackBtnHoverTween.resume();
@@ -296,7 +301,7 @@ function BoardBackBtnOut(){
 }
 //----------------------------------------------------------------------------------------------------------------------------------------------
 function ExitAxPage(){
-    ExitBtn.inputEnabled = false;
+    
     AxBarX = AxBarSharp.x;
     AxBarLevel2X = AxBarSharpLevel2.x;    
     AxPageClosingTween = game.add.tween(AxPageClosing).to({alpha:1},500,'Linear',true,0);  
@@ -308,8 +313,12 @@ function ExitAxPage(){
 function FoxSittingDown(){
     ArrowSheet.animations.stop();
     ArrowSheet.alpha = 0;     
-    
+    ExitAxPageTextBoardTween.pause();
+    ExitAxPageTextBoard.alpha = 0;
     FoxSitting.inputEnabled = false;
+    ExitAxPageBtnArea.inputEnabled = false;
+    StartSharpening();
+    /*
     game.add.tween(AxPageBackBtn.scale).to({x:1,y:1},500,Phaser.Easing.Back.Out,true,0);
     AxPageStartBtnTween = game.add.tween(AxPageStartBtn.scale).to({x:1,y:1},500,Phaser.Easing.Back.Out,true,0);
     AxPageStartBtnTween.onComplete.add(function(){
@@ -318,6 +327,7 @@ function FoxSittingDown(){
         AxPageStartBtn.inputEnabled = true;
         AxPageStartBtn.input.useHandCursor = true;
     },this);
+    */
 }
 function FoxSittingOver(){
     /*
@@ -355,12 +365,12 @@ function StartSharpening(){
    
     AxPagePlay.loopFull(1);
     Sharpening = true;
-    game.add.tween(AxPageBackBtn.scale).to({x:0,y:0},300,'Quad.easeIn',true,0);
-    game.add.tween(AxPageStartBtn.scale).to({x:0,y:0},300,'Quad.easeIn',true,0);
+    //game.add.tween(AxPageBackBtn.scale).to({x:0,y:0},300,'Quad.easeIn',true,0);
+    //game.add.tween(AxPageStartBtn.scale).to({x:0,y:0},300,'Quad.easeIn',true,0);
     AxPageBackBtn.inputEnabled = false;
     AxPageStartBtn.inputEnabled = false;
     
-    AxPageStartBtnScaleTween.pause();
+    //AxPageStartBtnScaleTween.pause();
     FoxSitting.alpha = 0;
     FoxSitting.animations.stop();
     
@@ -417,6 +427,10 @@ function StopSharpening(){
     AxPagePlay.stop();
     Sharpening = false;
     //AxFX.stop();
+    ExitAxPageBtnArea.inputEnabled = true;
+    ExitAxPageBtnArea.input.useHandCursor = true; 
+    ExitAxPageTextBoardTween.resume();
+    ExitAxPageTextBoard.alpha = 1;
     game.add.tween(StopSharpenText).to({y:0},500,'Quad.easeOut',true,0); 
     FoxWithAx.alpha = 0;
     FoxWithAx.animations.stop();

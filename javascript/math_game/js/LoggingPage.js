@@ -224,7 +224,14 @@ demo.LoggingPage = {
         LoggingPageStartBtn.events.onInputOver.add(LoggingPageStartBtnOver, this);
         LoggingPageStartBtn.events.onInputOut.add(LoggingPageStartBtnOut, this);              
         
+        LoggingPageExitText = game.add.sprite(0,100,'Panel','LoggingPageExitText.png');
+        LoggingPageExitTextTween = game.add.tween(LoggingPageExitText).to({alpha:0.5},500,'Quad.easeInOut',true,0,false,true).loop(true);
         
+        LoggingPageExitBtnArea = game.add.sprite(50,640,'LoggingPageExitBtnArea');
+        LoggingPageExitBtnArea.events.onInputDown.add(LoggingPageExitBtnDown, this);        
+        LoggingPageExitBtnArea.inputEnabled = true;
+        LoggingPageExitBtnArea.input.useHandCursor = true;
+        LoggingPageExitBtnArea.alpha = 0;
         //TreeBloodBar------------------------------------------------------------------------------------------------------
         TreeBloodBarBG = game.add.sprite(0,100,'TreeBloodBar','TreeBloodBarBG.png');
         TreeBloodBarBG.alpha = 0;
@@ -259,14 +266,7 @@ demo.LoggingPage = {
         
         TreeBloodBarTop = game.add.sprite(0,100,'TreeBloodBar','TreeBloodBarTop.png');
         TreeBloodBarTop.alpha = 0;
-        //ExitLoggingBtn-----------------------------------------------------------------------------------------------------
-        /*
-        ExitLoggingBtn = game.add.sprite(150,420,'ExitLoggingBtn');
-        ExitLoggingBtn.alpha = 0;
-        ExitLoggingBtn.events.onInputDown.add(ExitLoggingPage, this);
-        ExitLoggingBtn.inputEnabled = true;
-        ExitLoggingBtn.input.useHandCursor = true; 
-        */
+
         //ScoreBoard------------------------------------------------------------------------------------------------------------
         ScoreBoardBG = game.add.sprite(800,500,'ScoreBoard','ScoreBoardBG.png');
         ScoreBoardBG.anchor.set(0.5);
@@ -337,6 +337,9 @@ demo.LoggingPage = {
 
     } 
 }
+function LoggingPageExitBtnDown(){
+    ExitLoggingPage();
+}
 function LoggingPageBackBtnDown(){
 
     ExitLoggingPage();
@@ -365,7 +368,8 @@ function LoggingPageStartBtnOut(){
 function FoxLoggingPageBtnDown(){
     ArrowSheet.animations.stop();
     ArrowSheet.alpha = 0; 
-    
+    StartLogging();
+    /*
     FoxLoggingPageBtn.inputEnabled = false;
     game.add.tween(LoggingPageBackBtn.scale).to({x:1,y:1},500,Phaser.Easing.Back.Out,true,0);
     LoggingPageStartBtnTween = game.add.tween(LoggingPageStartBtn.scale).to({x:1,y:1},500,Phaser.Easing.Back.Out,true,0);
@@ -374,7 +378,8 @@ function FoxLoggingPageBtnDown(){
         LoggingPageBackBtn.input.useHandCursor = true;
         LoggingPageStartBtn.inputEnabled = true;
         LoggingPageStartBtn.input.useHandCursor = true;
-    },this);    
+    },this);
+    */
 }
 function FoxLoggingPageBtnOver(){
     /*
@@ -418,6 +423,10 @@ function StartLogging(){
     game.add.tween(LoggingPageStartBtn.scale).to({x:0,y:0},300,'Quad.easeIn',true,0);
     LoggingPageBackBtn.inputEnabled = false;
     LoggingPageStartBtn.inputEnabled = false;
+    
+    LoggingPageExitBtnArea.inputEnabled = false;
+    LoggingPageExitTextTween.pause();
+    LoggingPageExitText.alpha = 0;
     
     FoxStanding.alpha = 0;
     FoxStanding.animations.stop();
@@ -501,6 +510,11 @@ function StopLogging(){
     LoggingBGVolumeMute.onComplete.add(function(){
         LoggingBG.stop();
     },this);
+
+    LoggingPageExitBtnArea.inputEnabled = true;
+    LoggingPageExitBtnArea.input.useHandCursor = true;    
+    LoggingPageExitTextTween.resume();
+    LoggingPageExitText.alpha = 1;
     
     
     FoxStanding.alpha = 1;

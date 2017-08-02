@@ -57,7 +57,7 @@ demo.LoadingLoggingPage.prototype = {
         game.load.atlas('TreeBloodBar', 'javascript/math_game/assets/LoggingPage/TreeBloodBar.png', 'javascript/math_game/assets/LoggingPage/TreeBloodBar.json');
         
         //Btn---------------------------------------------------------------------------------------------------------------------------
-        game.load.image('ExitLoggingBtn','javascript/math_game/assets/LoggingPage/ExitLoggingPage.jpg');
+        game.load.image('LoggingPageExitBtnArea','javascript/math_game/assets/LoggingPage/LoggingPageExitBtnArea.jpg');
         game.load.atlas('Btn', 'javascript/math_game/assets/AxPage/Btn.png', 'javascript/math_game/assets/AxPage/Btn.json');
         
         //ArrowSheet----------------------------------------------------------------------------------------------------------------
