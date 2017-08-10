@@ -675,6 +675,7 @@ function FinishLogging(){
         
     }, this);      
 }
+
 function LoggingPageAnswerPanelDown(AnswerPanel){
     if( AnswerPanel.variable == LoggingPageCorrectAnswer ){
             console.log('Correct');

@@ -37,6 +37,8 @@ game.state.add("BootLoggingPage", demo.BootLoggingPage);
 game.state.add("LoadingLoggingPage", demo.LoadingLoggingPage);
 game.state.add("LoggingPage", demo.LoggingPage);
 
+game.state.add("CatchBugPage", demo.CatchBugPage);
+
 game.state.add("fishingLevel", demo.fishingLevel);
 game.state.add("HomeInsidePage", demo.HomeInsidePage);
 game.state.add("BootLevelMap", demo.BootLevelMap);
@@ -45,12 +47,13 @@ game.state.add("LevelMap", demo.LevelMap);
 
 game.state.add("MixingPage", demo.MixingPage);
 
-game.state.start("GameBootPage");
+
+
+//game.state.start("GameBootPage");
 //game.state.start("BootFishingPage");
 //game.state.start("BootLevelMap");
 //game.state.start("BootAxPage");
 //game.state.start("BootLoggingPage");
-
-//game.state.start("state5");
+game.state.start("CatchBugPage");
 
 //game.state.start("MixingPage");

@@ -1,0 +1,28 @@
+{"frames": [
+
+{
+	"filename": "Board.png",
+	"frame": {"x":1,"y":1,"w":262,"h":295},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":670,"y":251,"w":262,"h":295},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "BtnArea.png",
+	"frame": {"x":1,"y":298,"w":94,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":94,"h":42},
+	"sourceSize": {"w":94,"h":42}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Board.png",
+	"format": "RGBA8888",
+	"size": {"w":264,"h":341},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:4edc545aed91fb35150f75fa91070dae:e83f964fc856b271bcc6f1616775e573:96b6e30a73e9b924af2a866882accd56$"
+}
+}

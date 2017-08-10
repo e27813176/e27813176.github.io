@@ -296,7 +296,7 @@ function createPlusLevelThree() {
     var numberB;
 
     var numberSum = 100; //initialize numberSum,and make it bigger than 10.
-    if( answercount <= totalAnswerCount/2 ){
+    if( level == 5 ){
         if( level%2 == 1 ){
             while (numberSum > 15) {
                 this.rand = Math.floor(Math.random()*2)+1;

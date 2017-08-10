@@ -21,6 +21,7 @@ var LevelState = {
     FishingPageComplete:false 
 };
 
+
 demo.LevelMap = function() {};
 demo.LevelMap.prototype = {
     init: function(){
