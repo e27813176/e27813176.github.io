@@ -1,6 +1,8 @@
+var BackPackFish = [];
+
 var FishingLevel = 1;
 var AnswerPanelLight = new Array();
-var text = 0;
+
 var timer;
 demo.FishingPage = function() {};
 demo.FishingPage.prototype = {
@@ -14,6 +16,8 @@ demo.FishingPage.prototype = {
         
     },
     create: function() {
+        LevelState.FishingPageCount++;
+        
         //define backgroung
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
         
@@ -105,23 +109,7 @@ demo.FishingPage.prototype = {
 
         
         //get fish --------------------------------------------------------------------------------------------------------------     
-        /*
-        foxgetfishingsheet = game.add.sprite(foxpositionX+500, foxpositionY+300,'fishingpage_sheet002');
-        foxgetfishingsheet_animation = foxgetfishingsheet.animations.add("foxgetfishingsheet",  Phaser.Animation.generateFrameNames('fox_getfishsheet_',1,10, '.png', 5), 10, true);
-        foxgetfishingsheet.anchor.setTo(0.7,0.9);
-        foxgetfishingsheet.alpha = 0;
-        
-        
-        get_stone_fish = game.add.sprite(foxpositionX+500, foxpositionY+300,'get_stone_fish_atlas');
-        get_stone_fish_animation = get_stone_fish.animations.add("get_stone_fish",  Phaser.Animation.generateFrameNames('fox_get_stone_fish_',1,11, '.png',5), 10, true);
-        get_stone_fish.anchor.setTo(0.7,0.9);
-        get_stone_fish.alpha = 0;
-        
-        get_light_blue_fish = game.add.sprite(foxpositionX+504, foxpositionY+300,'get_light_blue_fish_atlas');
-        get_light_blue_fish_animation = get_light_blue_fish.animations.add("get_light_blue_fish",  Phaser.Animation.generateFrameNames('fox_get_light_blue_fish_',2,10,'.png',5),10, true);
-        get_light_blue_fish.anchor.setTo(0.7,0.9);
-        get_light_blue_fish.alpha = 0;
-        */
+
         FoxGetFishRod = game.add.sprite(0,100,'FoxGetFish');
         FoxGetFishRodAnimate = FoxGetFishRod.animations.add("FoxGetFishRod",Phaser.Animation.generateFrameNames('FoxGetFishRod_',0,20, '.png', 5), 10, true);
         FoxGetFishRod.alpha = 0; 
@@ -310,6 +298,7 @@ demo.FishingPage.prototype = {
 
         
         //fishbox-----------------------------------------------------------------------------------------------------------------------
+        demo.FishingPage.fishBox = {};
         OrangeFishBox = game.add.sprite(centerX,centerY,'GetFishBoard', "OrangeFishBox.png");
         OrangeFishBox.anchor.setTo(0.5);
         OrangeFishBox.alpha = 0; 

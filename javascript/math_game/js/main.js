@@ -5,7 +5,6 @@ var game = new Phaser.Game(1600, 1000, Phaser.AUTO,"phaser-canvas");
 game.state.add("GameBootPage", demo.GameBootPage);
 game.state.add("HomePage", demo.HomePage);
 
-
 game.state.add("practiceModeLevel3", demo.practiceModeLevel3);
 game.state.add("practiceModeLevel4", demo.practiceModeLevel4);
 game.state.add("practiceModeLevel5", demo.practiceModeLevel5);
@@ -49,11 +48,11 @@ game.state.add("MixingPage", demo.MixingPage);
 
 
 
-//game.state.start("GameBootPage");
+game.state.start("GameBootPage");
 //game.state.start("BootFishingPage");
 //game.state.start("BootLevelMap");
 //game.state.start("BootAxPage");
 //game.state.start("BootLoggingPage");
-game.state.start("CatchBugPage");
+//game.state.start("CatchBugPage");
 
 //game.state.start("MixingPage");

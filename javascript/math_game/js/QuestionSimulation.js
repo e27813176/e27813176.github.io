@@ -1,3 +1,90 @@
+demo.createQuestionNum = function(level,Range){
+    var equation = demo.createEquation(level,Range);
+    console.log(equation);
+    if( level%2 == 1 ){        
+        NumSum.setText('?');
+        NumSum.alpha = 1;
+        NumAdd1.setText(equation[0]);
+        NumAdd1.alpha = 1;
+        NumAdd2.setText(equation[1]);
+        NumAdd2.alpha = 1;
+    }
+    if( level%2 == 0 ){
+        NumSum.setText(equation[2]);
+        NumSum.alpha = 1;
+        NumAdd1.setText(equation[0]);
+        NumAdd1.alpha = 1;    
+        NumAdd2.setText('?');
+        NumAdd2.alpha = 1;  
+    }
+
+    if( level == 5 ){
+        if( Range == 0 ){
+            demo.createAnswerNum(11);
+            demo.CatchBugPage.correctAnswer = equation[2];
+            //AnswerPanel[equation[2]-1].inputEnabled = true;
+        }else{
+            demo.createAnswerNum(16);
+            demo.CatchBugPage.correctAnswer = equation[2] - 5;
+            //AnswerPanel[equation[2]-6].inputEnabled = true;    
+        }
+    }
+    if( level == 6 ){
+        demo.createAnswerNum(1);
+        if( Range == 0 ){
+            demo.CatchBugPage.correctAnswer = equation[1];
+            
+            //AnswerPanel[equation[1]-1].inputEnabled = true;
+        }
+        else{
+            demo.CatchBugPage.correctAnswer = equation[1] - 5;
+            //AnswerPanel[equation[1]-6].inputEnabled = true;    
+        }        
+    }  
+};
+demo.createEquation = function(level,Range){
+    var numberA;
+    var numberB = -100;
+    var numberSum = 100;
+
+    if( level == 5 && Range == 0 ){
+        this.rand = Math.floor(Math.random()*2)+1;
+        switch(this.rand)
+        {
+            case 1:
+                //console.log('case1');
+                numberA = Math.floor(Math.random() * 5) + 1;
+                numberB = 10;
+                break;
+            case 2:
+                //console.log('case2');
+                numberA = 10;
+                numberB = Math.floor(Math.random() * 5) + 1;
+                break;  
+        }
+        numberSum = numberA + numberB;
+    }else if( level == 5 && Range == 1 ){
+        this.rand = Math.floor(Math.random()*2)+1;
+        switch(this.rand)
+        {
+            case 1:
+                //console.log('case1');
+                numberA = Math.floor(Math.random() * 5) + 6;
+                numberB = 10;
+                break;
+            case 2:
+                //console.log('case2');
+                numberA = 10;
+                numberB = Math.floor(Math.random() * 5) + 6;
+                break;  
+        }
+        numberSum = numberA + numberB;             
+    }
+    var Equation = [numberA, numberB, numberSum];
+    return Equation;    
+    
+};
+
 function createEquation(level){
     if( level == 1 || level == 2 ){ 
         return createPlusLevelOne();

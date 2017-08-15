@@ -2,15 +2,23 @@
 
 {
 	"filename": "AxMedal.png",
-	"frame": {"x":1572,"y":1,"w":258,"h":258},
+	"frame": {"x":1225,"y":178,"w":173,"h":172},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":204,"y":238,"w":258,"h":258},
+	"spriteSourceSize": {"x":230,"y":267,"w":173,"h":172},
+	"sourceSize": {"w":1600,"h":800}
+},
+{
+	"filename": "BugMedal.png",
+	"frame": {"x":1048,"y":1,"w":175,"h":175},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":625,"y":265,"w":175,"h":175},
 	"sourceSize": {"w":1600,"h":800}
 },
 {
 	"filename": "ConFirmBtn.png",
-	"frame": {"x":1048,"y":396,"w":89,"h":50},
+	"frame": {"x":1,"y":455,"w":89,"h":50},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1081,"y":512,"w":89,"h":50},
@@ -18,7 +26,7 @@
 },
 {
 	"filename": "ConFirmBtnHover.png",
-	"frame": {"x":1139,"y":396,"w":89,"h":50},
+	"frame": {"x":92,"y":455,"w":89,"h":50},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1081,"y":512,"w":89,"h":50},
@@ -26,7 +34,7 @@
 },
 {
 	"filename": "ConFirmBtnHoverArea.png",
-	"frame": {"x":1230,"y":396,"w":87,"h":48},
+	"frame": {"x":183,"y":455,"w":87,"h":48},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":87,"h":48},
@@ -34,18 +42,18 @@
 },
 {
 	"filename": "FishMedal.png",
-	"frame": {"x":1048,"y":1,"w":260,"h":260},
+	"frame": {"x":1048,"y":178,"w":175,"h":175},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":805,"y":237,"w":260,"h":260},
+	"spriteSourceSize": {"x":822,"y":265,"w":175,"h":175},
 	"sourceSize": {"w":1600,"h":800}
 },
 {
 	"filename": "LoggingMedal.png",
-	"frame": {"x":1310,"y":1,"w":260,"h":260},
+	"frame": {"x":1225,"y":1,"w":175,"h":175},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":504,"y":235,"w":260,"h":260},
+	"spriteSourceSize": {"x":427,"y":265,"w":175,"h":175},
 	"sourceSize": {"w":1600,"h":800}
 },
 {
@@ -58,7 +66,7 @@
 },
 {
 	"filename": "MedalBtn.png",
-	"frame": {"x":1048,"y":263,"w":131,"h":131},
+	"frame": {"x":1048,"y":355,"w":131,"h":131},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":131,"h":131},
@@ -66,7 +74,7 @@
 },
 {
 	"filename": "MedalBtnOver.png",
-	"frame": {"x":1181,"y":263,"w":131,"h":131},
+	"frame": {"x":1181,"y":355,"w":131,"h":131},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":131,"h":131},
@@ -77,8 +85,8 @@
 	"version": "1.0",
 	"image": "Medal.png",
 	"format": "RGBA8888",
-	"size": {"w":1831,"h":454},
+	"size": {"w":1401,"h":506},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:443b9879c798dacfaf92158d81b428e6:7c6bc15628c28cef621844333a74aac5:1765fc49c9d3560a082d8c863839d814$"
+	"smartupdate": "$TexturePacker:SmartUpdate:7bbb384fb07da891bfd41315ff011a7e:67cfb3a4de05aa0f49c43efaaaa218ce:1765fc49c9d3560a082d8c863839d814$"
 }
 }

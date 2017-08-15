@@ -15,6 +15,8 @@ demo.LoggingPage = {
 
     },
     create: function(){
+        LevelState.LoggingPageCount++;
+        
         console.log('Level2');
         console.log(level);
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
