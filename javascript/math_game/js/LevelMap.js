@@ -1,6 +1,4 @@
 
-
-
 var LevelState = { 
     LevelMapCount:0,
     
@@ -103,7 +101,7 @@ demo.LevelMap.prototype = {
         CatchBugPageBtnHoverArea.scale.setTo(0.8);
         CatchBugPageBtnHoverArea.alpha = 0;
        
-        demo.LevelMap.SetLevelBtn( CatchBugPageBtnHoverArea,CatchBugPageBtnHover,CatchBugPageBtnHoverTween,'CatchBugPage');
+        demo.LevelMap.SetLevelBtn( CatchBugPageBtnHoverArea,CatchBugPageBtnHover,CatchBugPageBtnHoverTween,'BootCatchBugPage');
         //FishingPageBtn-----------------------------------------------------------------------
         FoxFishingBtn = game.add.sprite(0, 100, 'LevelBtn','FoxFishingBtn.png'); 
         //FoxFishingBtn.alpha = 0;

@@ -6,7 +6,7 @@ demo.LoggingPage = function(){};
 demo.LoggingPage = {
     
     init: function(){
-        LoggingPageRand = 0; 
+        demo.LoggingPage.Range = 0; 
         totalAnswerCount = 100;
         level = 3;
         answercount = 1;
@@ -157,7 +157,7 @@ demo.LoggingPage = {
         QuestionPanel.alpha = 0;
         //QuestionPanel.anchor.setTo(0.5);
         //QuestionPanel.scale.setTo(0.5);
-      
+        var style = { font: "50px Arial", fill: "#fef1ba", align: "center" };
         for(let i = 0;i<5;i++){
             AnswerPanel[i] = game.add.sprite(centerX+90*i+280,centerY+140,'Panel',"AnswerPanel.png");
             AnswerPanel[i].anchor.setTo(0.5);
@@ -167,8 +167,9 @@ demo.LoggingPage = {
             AnswerPanel[i].events.onInputDown.add(LoggingPageAnswerPanelDown, this);
             AnswerPanel[i].inputEnabled = false;
             AnswerPanel[i].variable = i+1;
+            answerNum[i] = game.add.text(centerX+90*i+280,centerY+140,'', style);
+            answerNum[i].anchor.setTo(0.5);
         }
-
         //PanelGlow-------------------------------------------------------------------------------------------------
       
         PanelGlowNumSum = game.add.sprite(0,100,'Panel','PanelGlowSum.png');
@@ -184,7 +185,18 @@ demo.LoggingPage = {
         
         QuestionPanelWrongFx = game.add.sprite(0,100,'QuestionPanelFx');
         QuestionPanelWrongFxAnimation = QuestionPanelWrongFx.animations.add("QuestionPanelWrongFx",Phaser.Animation.generateFrameNames('QuestionPanelWrongFx_',0,12,'.png',5),10,true);
-        QuestionPanelWrongFx.alpha = 0;        
+        QuestionPanelWrongFx.alpha = 0;  
+        
+        var style = { font: "60px Arial", fill: "#3a311f", align: "center" };      
+        
+        NumSum = game.add.text(centerX+462,centerY-178,'', style);
+        NumSum.anchor.set(0.5);
+    
+        NumAdd1 = game.add.text(centerX+462-106,centerY-71,'', style);
+        NumAdd1.anchor.set(0.5);    
+
+        NumAdd2 = game.add.text(centerX+462+106,centerY-71,'', style);
+        NumAdd2.anchor.set(0.5);         
         //AxBar------------------------------------------------------------------------------------------------------
         AxBarBG = game.add.sprite(100,100,'AxBar','AxBarBG.png');
         AxBarBG.alpha = 0;
@@ -380,17 +392,7 @@ function FoxLoggingPageBtnDown(){
     ArrowSheet.animations.stop();
     ArrowSheet.alpha = 0; 
     StartLogging();
-    /*
-    FoxLoggingPageBtn.inputEnabled = false;
-    game.add.tween(LoggingPageBackBtn.scale).to({x:1,y:1},500,Phaser.Easing.Back.Out,true,0);
-    LoggingPageStartBtnTween = game.add.tween(LoggingPageStartBtn.scale).to({x:1,y:1},500,Phaser.Easing.Back.Out,true,0);
-    LoggingPageStartBtnTween.onComplete.add(function(){
-        LoggingPageBackBtn.inputEnabled = true;
-        LoggingPageBackBtn.input.useHandCursor = true;
-        LoggingPageStartBtn.inputEnabled = true;
-        LoggingPageStartBtn.input.useHandCursor = true;
-    },this);
-    */
+
 }
 function FoxLoggingPageBtnOver(){
     /*
@@ -439,7 +441,7 @@ function ExitLoggingPage(){
 }
 
 function StartLogging(){
-    //LoggingPagePlay.loopFull(1);
+
     LoggingBG.loopFull(1);
     LoggingBG.volume = 0.6;    
     game.add.tween(LoggingPageBackBtn.scale).to({x:0,y:0},300,'Quad.easeIn',true,0);
@@ -475,8 +477,11 @@ function StartLogging(){
     for(let i = 0;i<5;i++){
         game.add.tween(AnswerPanel[i]).to({alpha:1},300,'Linear',true,0);
         AnswerPanel[i].inputEnabled = true;
+        answerNum[i].alpha = 1;
     }
-    
+    NumAdd1.alpha = 1;
+    NumAdd2.alpha = 1; 
+    NumSum.alpha = 1
     AxBarBG.alpha = 1;
     AxBarSharp.alpha = 1;
     AxBarSharpTween.resume();
@@ -495,13 +500,13 @@ function StartLogging(){
      
     //TreeBloodBarDynamic----------------------------------------------------------------------------------
     if( TreeBloodBar.x > -362/4 + 10 ){
-        LoggingPageRand = 0;
+        demo.LoggingPage.Range = 0;
         level = 3;
         
         game.add.tween(TreeBloodBar).to({alpha:1},300,'Linear',true,0);
         TreeBloodBarTween.resume();
     }else if( TreeBloodBar.x <= -362/4 + 10 && TreeBloodBar.x > 2*(-362/4) + 10 ){
-        LoggingPageRand = 1;
+        demo.LoggingPage.Range = 1;
         level = 3;
       
         game.add.tween(TreeBloodBar002).to({alpha:1},300,'Linear',true,0);
@@ -509,20 +514,20 @@ function StartLogging(){
         
         
     }else if( TreeBloodBar.x <= 2*(-362/4) + 10 && TreeBloodBar.x > 3*(-362/4) + 10 ){
-        LoggingPageRand = 0;
+        demo.LoggingPage.Range = 0;
         level = 4;
     
         game.add.tween(TreeBloodBar003).to({alpha:1},300,'Linear',true,0);
         TreeBloodBar003Tween.resume();        
     }else if( TreeBloodBar.x <= 3*(-362/4) + 10 ){
-        LoggingPageRand = 1;
+        demo.LoggingPage.Range = 1;
         level = 4;
 
         game.add.tween(TreeBloodBar004).to({alpha:1},300,'Linear',true,0);
         TreeBloodBar004Tween.resume(); 
     }        
-    
-    CreateLoggingPageNumber();
+    demo.createQuestionNum(level,demo.LoggingPage.Range);
+    //UpdateLoggingPageNumber();
     //ExitLoggingBtn.inputEnabled = false;
 }
 
@@ -535,11 +540,6 @@ function StopLogging(){
     LoggingBGVolumeMute.onComplete.add(function(){
         LoggingBG.stop();
     },this);
-
-    //LoggingPageExitBtnArea.inputEnabled = true;
-    //LoggingPageExitBtnArea.input.useHandCursor = true;    
-    //LoggingPageExitTextTween.resume();
-    //LoggingPageExitText.alpha = 1;
     
     NeedSharpeningTextTween.pause();
     NeedSharpeningText.alpha = 0;
@@ -563,18 +563,7 @@ function StopLogging(){
     FoxLoggingPageBtn.input.useHandCursor = true;
     FoxStopLoggingBtn.inputEnabled = false;
 
-    game.add.tween(QuestionPanel).to({alpha:0},300,'Linear',true,0); 
-    for(let i = 0;i<5;i++){
-        game.add.tween(AnswerPanel[i]).to({alpha:0},300,'Linear',true,0);
-    }
-    CleanTreeBloodBar();
-
-    NumSum.destroy();
-    NumAdd1.destroy();
-    NumAdd2.destroy();
-    for(let i = 0;i<5;i++){
-        answerNum[i].destroy();
-    }    
+    demo.cleanPanel();
     CleanAxBar();
         
     //ExitLoggingBtn.inputEnabled = true;
@@ -621,13 +610,7 @@ function FinishLogging(){
         game.add.tween(AnswerPanel[i]).to({alpha:0},300,'Linear',true,0);
  
     }
-    
-    NumSum.destroy();
-    NumAdd1.destroy();
-    NumAdd2.destroy();
-    for(let i = 0;i<5;i++){
-        answerNum[i].destroy();
-    }    
+    demo.cleanPanel();
     CleanAxBar();
     
     /*
@@ -677,7 +660,20 @@ function FinishLogging(){
         
     }, this);      
 }
+demo.cleanPanel = function(){
+    game.add.tween(QuestionPanel).to({alpha:0},300,'Linear',true,0); 
+    game.add.tween(NumSum).to({alpha:0},300,'Linear',true,0); 
+    game.add.tween(NumAdd1).to({alpha:0},300,'Linear',true,0); 
+    game.add.tween(NumAdd2).to({alpha:0},300,'Linear',true,0); 
 
+    for(let i = 0;i<5;i++){
+        AnswerPanel[i].inputEnabled = false;
+        game.add.tween(AnswerPanel[i]).to({alpha:0},300,'Linear',true,0);
+        game.add.tween(answerNum[i]).to({alpha:0},300,'Linear',true,0);
+ 
+    }
+  
+}
 function LoggingPageAnswerPanelDown(AnswerPanel){
     if( AnswerPanel.variable == LoggingPageCorrectAnswer ){
             console.log('Correct');
@@ -793,57 +789,7 @@ function StopLoggingOut(){
     */    
 }
 
-function CreateLoggingPageNumber(){
 
-    var equation = createEquation(level);
-    console.log(equation);
-    var style = { font: "60px Arial", fill: "#3a311f", align: "center" };      
-    if( level == 3 ){
-        NumSum = game.add.text(centerX+462,centerY-178,'?', style);
-        NumSum.anchor.set(0.5);
-    
-        NumAdd1 = game.add.text(centerX+462-106,centerY-71,equation[0], style);
-        NumAdd1.anchor.set(0.5);    
-
-        NumAdd2 = game.add.text(centerX+462+106,centerY-71,equation[1], style);
-        NumAdd2.anchor.set(0.5);  
-    }
-    if( level == 4 ){
-        NumSum = game.add.text(centerX+462,centerY-178,equation[2], style);
-        NumSum.anchor.set(0.5);
-    
-        NumAdd1 = game.add.text(centerX+462-106,centerY-71,equation[0], style);
-        NumAdd1.anchor.set(0.5);    
-
-        NumAdd2 = game.add.text(centerX+462+106,centerY-71,'?', style);
-        NumAdd2.anchor.set(0.5);  
-    }
-
-    if( level == 3 ){
-        CreateLoggingPageAnswerNum(0);
-        if( LoggingPageRand == 0 ){
-            LoggingPageCorrectAnswer = equation[2];
-            //AnswerPanel[equation[2]-1].inputEnabled = true;
-        }else{
-            LoggingPageCorrectAnswer = equation[2] - 5;
-            //AnswerPanel[equation[2]-6].inputEnabled = true;    
-        }
-        
-    }
-    if( level == 4 ){
-        CreateLoggingPageAnswerNum(0);
-        if( LoggingPageRand == 0 ){
-            LoggingPageCorrectAnswer = equation[1];
-            
-            //AnswerPanel[equation[1]-1].inputEnabled = true;
-        }
-        else{
-            LoggingPageCorrectAnswer = equation[1] - 5;
-            //AnswerPanel[equation[1]-6].inputEnabled = true;    
-        }
-            
-    }
-}
 
 function CleanLoggingPageButton(){
     PanelGlowNumSum.alpha = 1;
@@ -869,7 +815,7 @@ function CleanLoggingPageButton(){
    
     
     if( TreeBloodBar.x <= -362/4 + 10 && TreeBloodBar.x > 2*(-362/4) + 10 ){
-        LoggingPageRand = 1;
+        demo.LoggingPage.Range = 1;
         game.add.tween(TreeBloodBar).to({alpha:0},300,'Linear',true,0);
         TreeBloodBarTween.pause();
         
@@ -878,7 +824,7 @@ function CleanLoggingPageButton(){
         
         
     }else if( TreeBloodBar.x <= 2*(-362/4) + 10 && TreeBloodBar.x > 3*(-362/4) + 10 ){
-        LoggingPageRand = 0;
+        demo.LoggingPage.Range = 0;
         level = 4;
 
         game.add.tween(TreeBloodBar002).to({alpha:0},300,'Linear',true,0);
@@ -887,7 +833,7 @@ function CleanLoggingPageButton(){
         game.add.tween(TreeBloodBar003).to({alpha:1},300,'Linear',true,0);
         TreeBloodBar003Tween.resume();        
     }else if( TreeBloodBar.x <= 3*(-362/4) + 10 ){
-        LoggingPageRand = 1;
+        demo.LoggingPage.Range = 1;
         
         game.add.tween(TreeBloodBar003).to({alpha:0},300,'Linear',true,0);
         TreeBloodBar003Tween.pause();
@@ -900,98 +846,11 @@ function CleanLoggingPageButton(){
         TreeBloodBar004Tween.pause();
         TreeBloodBar004.alpha = 0;
         FinishLogging();
-        
     }    
-    /*
-    for(let i = 0;i<5;i++){
-        AnswerPanel[i].inputEnabled = false;
-        //console.log('clean');
-    }
-    */
-    if( LoggingPageRand == 0 ){
-        
-        CreateAxPageAnswerNum(1);
-    }    
-    if( LoggingPageRand == 1 ){
-        
-        CreateAxPageAnswerNum(6);
-    }
-    
     if( TreeBloodBar.x > -362+20 ){
-        UpdateCreateLoggingPageNumber();
+        demo.createQuestionNum(level,demo.LoggingPage.Range);
     }     
-
     answercount++;
-    
 }
 
-function UpdateCreateLoggingPageNumber(){
-
-    //AxPageRand = Math.floor(Math.random() * 2);
-    var equation = createEquation(level);
-    console.log(equation);
-    if( level == 3  ){
-        NumAdd1.setText(equation[0]);
-        NumAdd2.setText(equation[1]);        
-        if( LoggingPageRand == 0 ){
-            LoggingPageCorrectAnswer = equation[2];      
-            //AnswerPanel[equation[2]-1].inputEnabled = true;
-        
-        }else{
-            LoggingPageCorrectAnswer = equation[2] - 5;      
-            //AnswerPanel[equation[2]-6].inputEnabled = true;    
-        }
-        
-    }
-    if( level == 4 ){
-        NumAdd1.setText(equation[0]);
-        NumAdd2.setText('?');
-        NumSum.setText(equation[2]);
-        
-        if( LoggingPageRand == 0 ){
-            LoggingPageCorrectAnswer = equation[1];      
-            //AnswerPanel[equation[1]-1].inputEnabled = true;
-        
-        }else{
-            LoggingPageCorrectAnswer = equation[1] - 5;      
-            //AnswerPanel[equation[1]-6].inputEnabled = true;    
-        }
-        
-    }
-}
-
-function CreateLoggingPageAnswerNum(param){
-    
-    if( param == 0 ){
-        if( LoggingPageRand == 0 ){
-            for(let i = 0;i<5;i++){
-                var style = { font: "50px Arial", fill: "#fef1ba", align: "center" };
-                answerNum[i] = game.add.text(centerX+90*i+280,centerY+140,i+1, style);
-                answerNum[i].anchor.setTo(0.5);
-            
-            }
-        }
-        
-        if( LoggingPageRand == 1 ){
-            for(let i = 0;i<5;i++){
-                var style = { font: "50px Arial", fill: "#fef1ba", align: "center" };
-                answerNum[i] = game.add.text(centerX+90*i+280,centerY+140,i+6, style);
-                answerNum[i].anchor.setTo(0.5);
-            
-            }
-        }
-
-    }
-    if( param == 1 ){
-        for(let i = 0;i<5;i++){
-            answerNum[i].setText(i+1);
-            
-        }
-    }    
-    if( param == 6 ){
-        for(let i = 0;i<5;i++){
-            answerNum[i].setText(i+6);
-        }
-    }    
-}
 

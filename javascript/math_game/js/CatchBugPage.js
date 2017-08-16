@@ -8,23 +8,7 @@ demo.CatchBugPage.prototype = {
         demo.CatchBugPage.AnswerRange = 0;
     },
     preload: function() {
-        game.load.image('BG','javascript/math_game/assets/CatchBugPage/CatchBugPageBG.jpg');
-        game.load.atlas('FlyingBug', 'javascript/math_game/assets/CatchBugPage/FlyingBug.png', 'javascript/math_game/assets/CatchBugPage/FlyingBug.json'); 
-        game.load.atlas('FoxStanding', 'javascript/math_game/assets/CatchBugPage/FoxStanding.png', 'javascript/math_game/assets/CatchBugPage/FoxStanding.json');    
-        game.load.atlas('FoxCatching', 'javascript/math_game/assets/CatchBugPage/FoxCatching.png', 'javascript/math_game/assets/CatchBugPage/FoxCatching.json');     
-        game.load.atlas('FoxFalling', 'javascript/math_game/assets/CatchBugPage/FoxFalling.png', 'javascript/math_game/assets/CatchBugPage/FoxFalling.json');  
-        game.load.atlas('FoxHitting001', 'javascript/math_game/assets/CatchBugPage/FoxHitting001.png', 'javascript/math_game/assets/CatchBugPage/FoxHitting001.json');          
-        game.load.atlas('FoxHitting', 'javascript/math_game/assets/CatchBugPage/FoxHitting.png', 'javascript/math_game/assets/CatchBugPage/FoxHitting.json');    
-        game.load.atlas('FoxStandUp', 'javascript/math_game/assets/CatchBugPage/FoxStandUp.png', 'javascript/math_game/assets/CatchBugPage/FoxStandUp.json');    
-        game.load.atlas('FruitDrop', 'javascript/math_game/assets/CatchBugPage/FruitDrop.png', 'javascript/math_game/assets/CatchBugPage/FruitDrop.json');    
-        game.load.atlas('Board', 'javascript/math_game/assets/CatchBugPage/Board.png', 'javascript/math_game/assets/CatchBugPage/Board.json');
 
-        game.load.atlas('TutorialText', 'javascript/math_game/assets/CatchBugPage/TutorialText.png', 'javascript/math_game/assets/CatchBugPage/TutorialText.json');        
-        
-        
-        
-        game.load.image('blackBG','javascript/math_game/assets/CatchBugPage/blackBG.jpg');
-        game.load.atlas('Panel', 'javascript/math_game/assets/CatchBugPage/Panel.png', 'javascript/math_game/assets/CatchBugPage/Panel.json');   
         
     },
     create: function() {
@@ -91,22 +75,22 @@ demo.CatchBugPage.prototype = {
             AnswerPanel[i].input.useHandCursor = true;
             AnswerPanel[i].variable = i+1;
             var style = { font: "40px Arial", fill: "#3a42a5", align: "center" };
-            answerNum[i] = game.add.text(centerX+90*i-445,centerY+140+2,i+11, style);
+            answerNum[i] = game.add.text(centerX+90*i-445,centerY+140+2,'', style);
             answerNum[i].anchor.setTo(0.5);
-            answerNum[i].alpha = 0;
+            answerNum[i].alpha = 1;
         }
         var style = { font: "60px Arial", fill: "#74e4f3", align: "center" }; 
         NumSum = game.add.text(centerX-265,centerY-118,'', style);
         NumSum.anchor.set(0.5);
-        NumSum.alpha = 0;
+        NumSum.alpha = 1;
         
         NumAdd1 = game.add.text(centerX-265 - 110,centerY-5,'', style);
         NumAdd1.anchor.set(0.5);    
-        NumAdd1.alpha = 0;
+        NumAdd1.alpha = 1;
         
         NumAdd2 = game.add.text(centerX-265 + 105,centerY-5,'', style);
         NumAdd2.anchor.set(0.5);          
-        NumAdd2.alpha = 0;
+        NumAdd2.alpha = 1;
         
         CatchBugPageExitBtn = game.add.sprite(0,100,'Panel',"ExitBtn.png");
         CatchBugPageExitTextGlow = game.add.sprite(0,100,'Panel',"ExitTextGlow.png");
@@ -358,34 +342,7 @@ function ShowUpBugBoard(){
 }
 
 
-demo.createAnswerNum = function(startNum){
-    if( startNum == 1 ){
-        for(let i = 0;i<5;i++){
-            answerNum[i].alpha = 1;
-            answerNum[i].setText(i+1);
-        }
-    }    
-    if( startNum == 6 ){
-        for(let i = 0;i<5;i++){
-            answerNum[i].alpha = 1;
-            answerNum[i].setText(i+6);
-        }
-    }
-    if( startNum == 11 ){
-        for(let i = 0;i<5;i++){
-            answerNum[i].alpha = 1;
-            answerNum[i].setText(i+11);
-        }
-    }
-    if( startNum == 16 ){
-        for(let i = 0;i<5;i++){
-            answerNum[i].alpha = 1;
-            answerNum[i].setText(i+16);
-        }
-    }    
-    
-    
-};
+
 demo.createAnimation = function(Name,startFrame,endFrame,FrameRate){
     var String = Name;
     Name = game.add.sprite(0,100,String);
@@ -442,19 +399,6 @@ demo.CatchBugPage.tutorialFinish = function(){
         game.add.tween(TutorialText2).to({alpha:0},1000,'Quad.easeIn',true,2000);
         game.add.tween(TutorialText1).to({alpha:0},1000,'Quad.easeIn',true,2000);
             
-        //game.add.tween(NumSum).to({alpha:0},1000,'Quad.easeIn',true,2000);
-        //game.add.tween(NumAdd1).to({alpha:0},1000,'Quad.easeIn',true,2000);
-        //game.add.tween(NumAdd2).to({alpha:0},1000,'Quad.easeIn',true,2000);
-        //game.add.tween(QuestionPanel).to({alpha:0},1000,'Quad.easeIn',true,2000);
-        
-
-        /*
-        for(let i = 0;i<5;i++){
-            game.add.tween(answerNum[i]).to({alpha:0},1000,'Quad.easeIn',true,2000);
-            game.add.tween(AnswerPanel[i]).to({alpha:0},1000,'Quad.easeIn',true,2000);
-            
-        }
-        */
         TutorialText3FadeOut.onComplete.add(function(){
             StartText.ShowUp = game.add.tween(StartText).to({alpha:1},500,'Quad.easeIn',true,1000);
             StartText.ShowUp.onComplete.add(function(){

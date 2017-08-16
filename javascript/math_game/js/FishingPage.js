@@ -11,6 +11,7 @@ demo.FishingPage.prototype = {
         answercount = 0;
         CorrectCount = 0;
         PlayingTime = 0;
+        t2 = -10;
     },
     preload: function() {
         

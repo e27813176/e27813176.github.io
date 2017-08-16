@@ -1,23 +1,73 @@
+demo.equationList = [];
+var answerNum = [];
+
 demo.createQuestionNum = function(level,Range){
-    var equation = demo.createEquation(level,Range);
-    console.log(equation);
+    var equation = [];
+
+    //Check Number Repeat------------------------------------------------------------------------------------
+    var index = demo.equationList.length - 1;
+    
+    if(demo.equationList.length >= 1 ){
+        equation = demo.createEquation(level,Range);
+        while( equation[0] == demo.equationList[index][0] && equation[1] == demo.equationList[index][1] ){
+            equation = demo.createEquation(level,Range);          
+        }
+    }else{
+        equation = demo.createEquation(level,Range);
+    }
+    demo.equationList.push(equation);
+    
+    //QuestionPanel Show Number---------------------------------------------------------------------------
     if( level%2 == 1 ){        
+        //console.log('setText');
         NumSum.setText('?');
-        NumSum.alpha = 1;
         NumAdd1.setText(equation[0]);
-        NumAdd1.alpha = 1;
         NumAdd2.setText(equation[1]);
-        NumAdd2.alpha = 1;
     }
     if( level%2 == 0 ){
         NumSum.setText(equation[2]);
-        NumSum.alpha = 1;
         NumAdd1.setText(equation[0]);
-        NumAdd1.alpha = 1;    
         NumAdd2.setText('?');
-        NumAdd2.alpha = 1;  
     }
-
+    //AxPage create Answer Number------------------------------------------------
+    if( level == 1 ){
+        if( Range == 0 ){
+            demo.createAnswerNum(1);    
+            AxPageCorrectAnswer = equation[2];
+        }else{
+            demo.createAnswerNum(6);    
+            AxPageCorrectAnswer = equation[2]-5;
+        }
+    }
+    if( level == 2 ){
+        if( Range == 0 ){
+            demo.createAnswerNum(1);    
+            AxPageCorrectAnswer = equation[1];
+        }else{
+            demo.createAnswerNum(6);    
+            AxPageCorrectAnswer = equation[1]-5;
+        }        
+    }
+    //LoggingPage create Answer Number-----------------------------------------
+    if( level == 3  ){
+        if( Range == 0 ){
+            demo.createAnswerNum(1);
+            LoggingPageCorrectAnswer = equation[2];              
+        }else{
+            demo.createAnswerNum(6);
+            LoggingPageCorrectAnswer = equation[2] - 5;      
+        }
+    }
+    if( level == 4 ){
+        if( LoggingPageRand == 0 ){
+            demo.createAnswerNum(1);
+            LoggingPageCorrectAnswer = equation[1];      
+        }else{
+            demo.createAnswerNum(6);
+            LoggingPageCorrectAnswer = equation[1] - 5;      
+        }
+    }    
+    //---------------------------------------------------------------------------------
     if( level == 5 ){
         if( Range == 0 ){
             demo.createAnswerNum(11);
@@ -46,7 +96,73 @@ demo.createEquation = function(level,Range){
     var numberA;
     var numberB = -100;
     var numberSum = 100;
+    
+    //AxPage Question---------------------------------------------------
+    if( level == 1 ){
+        if( Range == 0 ){
+            while (numberSum > 5) {
+                numberA = Math.floor(Math.random() * 9) + 1;
+                numberB = Math.floor(Math.random() * 2) + 1;
+                numberSum = numberA + numberB;
+            }
+        }
+        if( Range == 1 ){
+            while (numberSum > 10 || numberSum < 6 ) {
+                numberA = Math.floor(Math.random() * 9) + 1;
+                numberB = Math.floor(Math.random() * 2) + 1;
+                numberSum = numberA + numberB;
+            }            
+        }
+    }    
+    if( level == 2 ){
+        if( Range == 0 ){
+            while (numberB < 1 || numberB > 5 ) {
 
+                numberSum = Math.floor(Math.random() * 9) + 1; 
+                numberA = Math.floor(Math.random() * 2) + 1;
+                numberB = numberSum - numberA;       
+            }    
+        }
+        if( Range == 1 ){
+             while (numberB > 10 || numberB < 6 ) {
+                numberSum = Math.floor(Math.random() * 9) + 1; 
+                numberA = Math.floor(Math.random() * 2) + 1;
+                numberB = numberSum - numberA; 
+            }           
+        }
+    }
+    //LoggingPage Question-------------------------------------------------------------------
+    if( level == 3 ){
+        if( Range == 0 ){
+             while (numberSum > 5) {
+                numberA = Math.floor(Math.random() * 9) + 1;
+                numberB = Math.floor(Math.random() * 9) + 1;
+                numberSum = numberA + numberB;
+            }          
+        }else{
+              while (numberSum > 10 || numberSum < 6 ) {
+                numberA = Math.floor(Math.random() * 9) + 1;
+                numberB = Math.floor(Math.random() * 9) + 1;
+                numberSum = numberA + numberB;
+            }          
+        }
+    }
+    if( level == 4 ){
+        if( Range == 0 ){
+             while ( numberB < 1 || numberB > 5 ) {
+                numberSum = Math.floor(Math.random() * 9) + 1;
+                numberA = Math.floor(Math.random() * 8) + 1;
+                numberB = numberSum - numberA;
+            }           
+        }else{
+            while ( numberB > 10 || numberB < 6 ) {
+                numberSum = Math.floor(Math.random() * 9) + 1;
+                numberA = Math.floor(Math.random() * 8) + 1;
+                numberB = numberSum - numberA;            
+            }            
+        }
+    }
+    //Catch Bug Page Question----------------------------------------------------------------------
     if( level == 5 && Range == 0 ){
         this.rand = Math.floor(Math.random()*2)+1;
         switch(this.rand)
@@ -84,6 +200,35 @@ demo.createEquation = function(level,Range){
     return Equation;    
     
 };
+
+demo.createAnswerNum = function(startNum){
+    if( startNum == 1 ){
+        for(let i = 0;i<5;i++){
+            //answerNum[i].alpha = 1;
+            answerNum[i].setText(i+1);
+        }
+    }    
+    if( startNum == 6 ){
+        for(let i = 0;i<5;i++){
+            //answerNum[i].alpha = 1;
+            answerNum[i].setText(i+6);
+        }
+    }
+    if( startNum == 11 ){
+        for(let i = 0;i<5;i++){
+            //answerNum[i].alpha = 1;
+            answerNum[i].setText(i+11);
+        }
+    }
+    if( startNum == 16 ){
+        for(let i = 0;i<5;i++){
+            //answerNum[i].alpha = 1;
+            answerNum[i].setText(i+16);
+        }
+    }    
+    
+};
+
 
 function createEquation(level){
     if( level == 1 || level == 2 ){ 
@@ -244,71 +389,7 @@ function createFishingEquation( ModeRand ) {
 }
 
 //Create plus_questions of level one, including 3 numbers - A, B, Sum (A + B = Sum).  
-function createPlusLevelOne() {
-    var numberA;
-    var numberB = -100;
-    //console.log(AxPageRand);
-    var numberSum = 100; //initialize numberSum,and make it bigger than 10.
-    if( AxPageRand == 0 ){
-        if( level%2 == 1 ){
-            while (numberSum > 5) {
-       
-                numberA = Math.floor(Math.random() * 9) + 1;
-                numberB = Math.floor(Math.random() * 2) + 1;
 
-                numberSum = numberA + numberB;
-                //console.log(numberSum);
-            }
-        }
-        if( level%2 == 0 ){
-            while (numberB < 1 || numberB > 5 ) {
-
-                numberSum = Math.floor(Math.random() * 9) + 1; 
-                numberA = Math.floor(Math.random() * 2) + 1;
-                numberB = numberSum - numberA;       
-                /*
-                numberA = Math.floor(Math.random() * 2) + 1;
-                numberB = Math.floor(Math.random() * 5) + 1;
-
-                numberSum = numberA + numberB;
-                */
-            }
-            
-        }
-        
-    }
-    if( AxPageRand == 1 ){
-        if( level%2 == 1 ){
-            while (numberSum > 10 || numberSum < 6 ) {
-       
-                numberA = Math.floor(Math.random() * 9) + 1;
-                numberB = Math.floor(Math.random() * 2) + 1;
-
-                numberSum = numberA + numberB;
-            }
-            
-        }
-        if( level%2 == 0 ){
-            while (numberB > 10 || numberB < 6 ) {
-                numberSum = Math.floor(Math.random() * 9) + 1; 
-                numberA = Math.floor(Math.random() * 2) + 1;
-                numberB = numberSum - numberA; 
-                /*
-                numberA = Math.floor(Math.random() * 2) + 1;
-                numberB = Math.floor(Math.random() * 5) + 6;
-
-                numberSum = numberA + numberB;
-                */
-            }
-            
-        }
-
-    }
-
-
-    var plusEquation = [numberA, numberB, numberSum];
-    return plusEquation;
-}
 
 //Create plus_questions of level two, including 3 numbers - A, B, Sum (A + B = Sum).  
 function createPlusLevelTwo() {
