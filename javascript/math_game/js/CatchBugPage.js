@@ -167,6 +167,9 @@ demo.CatchBugPage.prototype = {
             demo.CatchBugPage.OpeningBG.scale.setTo(0);
             if( LevelState.CatchBugPageCount == 1 ){
                 demo.CatchBugPage.AskToStartTutorial();
+            }else{
+                TutorialBlackBG.scale.setTo(0);
+                t = Math.floor(Math.random()*4)*60+60;    
             }    
         },this);
         CatchBugClosing = game.add.sprite(0,0,'blackBG');
