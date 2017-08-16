@@ -121,15 +121,7 @@ demo.CatchBugPage.prototype = {
 
         //CreateCatchBugPageAnswerNum(0);
         //Tutorial-------------------------------------------------------------------------------------------
-        TutorialText1 = game.add.sprite(0,100,'TutorialText','TutorialText1.png');
-        TutorialText1.alpha = 0;
-        TutorialText2 = game.add.sprite(0,100,'TutorialText','TutorialText2.png');
-        TutorialText2.alpha = 0;
-        TutorialText3 = game.add.sprite(0,100,'TutorialText','TutorialText3.png');
-        TutorialText3.alpha = 0;
-        StartText = game.add.sprite(0,100,'TutorialText','StartText.png');
-        StartText.alpha = 0;
-        
+
        
         
     
@@ -140,6 +132,17 @@ demo.CatchBugPage.prototype = {
         TutorialBlackBG.events.onInputDown.add(Block, this);
         TutorialBlackBG.inputEnabled = true;
         //TutorialBlackBG.scale.setTo(0);
+        TutorialText1 = game.add.sprite(0,100,'TutorialText','TutorialText1.png');
+        TutorialText1.alpha = 0;
+        TutorialText2 = game.add.sprite(0,100,'TutorialText','TutorialText2.png');
+        TutorialText2.alpha = 0;
+        TutorialText3 = game.add.sprite(0,100,'TutorialText','TutorialText3.png');
+        TutorialText3.alpha = 0;
+        StartText = game.add.sprite(centerX,centerY,'TutorialText','StartText.png');
+        StartText.anchor.setTo(0.5);
+        StartText.alpha = 0;
+        
+        
         TutorialAskBoard = game.add.sprite(0,100,'TutorialText','TutorialAsk.png');
         TutorialAskBoard.alpha = 0;              
         
@@ -376,8 +379,6 @@ demo.CatchBugPage.tutorialStart = function(){
     for(let i = 0;i<5;i++){
         AnswerPanel[i].inputEnabled = false;
     }    
-    TutorialText1ShowUp = game.add.tween(TutorialText1).to({alpha:1},300,'Quad.easeOut',true,1000);
-    TutorialText1ShowUp.onComplete.add(function(){
         TutorialText2ShowUp = game.add.tween(TutorialText2).to({alpha:1},300,'Quad.easeOut',true,1000);
         TutorialText2ShowUp.onComplete.add(function(){
             TutorialBlackBG.scale.setTo(0);
@@ -387,12 +388,11 @@ demo.CatchBugPage.tutorialStart = function(){
             t = 100;     
         },this);
 
-    },this);
 };
 demo.CatchBugPage.tutorialFinish = function(){
     t = -1;  
     FlyingBugAnimate.stop();
-    TutorialText2.alpha = 0;
+    //TutorialText2.alpha = 0;
     TutorialText3ShowUp = game.add.tween(TutorialText3).to({alpha:1},500,Phaser.Easing.Elastic.Out,true);
     TutorialText3ShowUp.onComplete.add(function(){
         TutorialText3FadeOut = game.add.tween(TutorialText3).to({alpha:0},1000,'Quad.easeIn',true,2000);
@@ -400,10 +400,16 @@ demo.CatchBugPage.tutorialFinish = function(){
         game.add.tween(TutorialText1).to({alpha:0},1000,'Quad.easeIn',true,2000);
             
         TutorialText3FadeOut.onComplete.add(function(){
-            StartText.ShowUp = game.add.tween(StartText).to({alpha:1},500,'Quad.easeIn',true,1000);
+            StartText.scale.setTo(0);
+            StartText.alpha = 1;
+            //TutorialBlackBG.scale.setTo(1);
+            //game.add.tween(TutorialBlackBG).to({alpha :0.5},100,'Quad.easeOut',true,1000);
+            StartText.ShowUp = game.add.tween(StartText.scale).to({x:1,y:1},200,'Quad.easeIn',true,1000);
             StartText.ShowUp.onComplete.add(function(){
-                StartText.FadeOut = game.add.tween(StartText).to({alpha:0},1000,'Quad.easeIn',true,1500);
+                //game.add.tween(TutorialBlackBG).to({alpha :0},100,'Quad.easeOut',true,1500);
+                StartText.FadeOut = game.add.tween(StartText.scale).to({x:0,y:0},200,'Quad.easeIn',true,1500);
                 StartText.FadeOut.onComplete.add(function(){
+                    //TutorialBlackBG.scale.setTo(0);
                     for(let i = 0;i<5;i++){
                         AnswerPanel[i].inputEnabled = true;
                     }
