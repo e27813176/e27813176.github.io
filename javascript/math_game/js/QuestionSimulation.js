@@ -59,7 +59,7 @@ demo.createQuestionNum = function(level,Range){
         }
     }
     if( level == 4 ){
-        if( LoggingPageRand == 0 ){
+        if( Range == 0 ){
             demo.createAnswerNum(1);
             LoggingPageCorrectAnswer = equation[1];      
         }else{
