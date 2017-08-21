@@ -57,13 +57,10 @@ demo.LoadingFishingPage.prototype = {
         //scorebar-------------------------------------------------------------------------------------------------------------------
         game.load.atlas('ScoreBarAtlas', 'javascript/math_game/assets/fishingpage/ScoreBarAtlas.png', 'javascript/math_game/assets/fishingpage/ScoreBarAtlas.json');
         //BG--------------------------------------------------------------------------------------------
-        game.load.image('blackBG','javascript/math_game/assets/fishingpage/blackBG.jpg');
-        game.load.image('BG','javascript/math_game/assets/fishingpage/BG.jpg');
-        game.load.image('correct_fx','javascript/math_game/assets/fishingpage/whiteBG.png');
-        
+        game.load.image('BG','javascript/math_game/assets/fishingpage/BG.jpg');        
         game.load.image('mark_tutorial','javascript/math_game/assets/fishingpage/mark.png');
         
-        //audio-----------------------------------------------------------------------------------------------------------------------   
+        //audio---------------------------------------------------------------------------------------------------------   
         game.load.audio('fishing', 'javascript/math_game/assets/audio/fishing.mp3');
         game.load.audio('rightFX', 'javascript/math_game/assets/audio/rightFX.mp3');
         game.load.audio('wrongFX', 'javascript/math_game/assets/audio/wrongFX.mp3');

@@ -2,7 +2,7 @@
 demo.state5 = function() {};
 demo.state5.prototype = {
     preload: function() {
-        game.load.image('button','assets/button/redbutton.png');
+        //game.load.image('button','assets/button/redbutton.png');
  
     },
     create: function() {

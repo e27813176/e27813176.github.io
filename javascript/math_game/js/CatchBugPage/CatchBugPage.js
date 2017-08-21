@@ -2,15 +2,12 @@
 demo.CatchBugPage = function() {};
 demo.CatchBugPage.prototype = {
     init: function(){
-        t = -1;
+        t = 100;
         level = 5;
         demo.CatchBugPage.correctAnswer = 0;
         demo.CatchBugPage.AnswerRange = 0;
     },
-    preload: function() {
 
-        
-    },
     create: function() {
         LevelState.CatchBugPageCount++;
         //define backgroung
@@ -19,6 +16,8 @@ demo.CatchBugPage.prototype = {
         game.add.sprite(0,100,'BG');
         
         FlyingBug = game.add.sprite(0,100,'FlyingBug');
+        
+        
         //game.add.tween(FlyingBug).to({alpha:0.5},500,'Quad.easeInOut',true,0,false,true).loop(true);
         FlyingBugAnimate = FlyingBug.animations.add("FlyingBug",Phaser.Animation.generateFrameNames('FlyingBug_',0,39,'.png',5),30,true);
 
@@ -26,8 +25,9 @@ demo.CatchBugPage.prototype = {
         FlyingBugAnimate.onComplete.add(function(){
             t = Math.floor(Math.random()*4)*60+60;    
         });        
-
+        //demo.createAnimate(FlyingBug,0,39,30);
         
+
         
         FoxStanding = game.add.sprite(0,100,'FoxStanding');
         FoxStanding.Animate = FoxStanding.animations.add("FoxStanding",Phaser.Animation.generateFrameNames('FoxStanding_',11,40,'.png',5),30,true);

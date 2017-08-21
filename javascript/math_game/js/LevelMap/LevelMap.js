@@ -224,15 +224,25 @@ demo.LevelMap.prototype = {
             
             'ConfirmBtnHover':game.add.sprite(0, 100, 'Medal','ConFirmBtnHover.png'),
             'ConfirmBtnArea':game.add.sprite(1082, 615, 'Medal','ConFirmBtnHoverArea.png'),
+            
         };
-
-        demo.LevelMap.MedalBoard['ConfirmBtnArea'].events.onInputDown.add(MedalBoardConfirmBtnDown,this);
-        demo.LevelMap.MedalBoard['ConfirmBtnTween'] = game.add.tween(demo.LevelMap.MedalBoard['ConfirmBtnHover']).to({alpha:0.2},500,'Linear',true,0,false,true).loop(true);
-        demo.LevelMap.MedalBoard['ConfirmBtnTween'].pause();
+        
+        {
+            demo.LevelMap.MedalBoard.ConfirmBtnArea.events.onInputDown.add(MedalBoardConfirmBtnDown,this);
+            demo.LevelMap.MedalBoard['ConfirmBtnTween'] = game.add.tween(demo.LevelMap.MedalBoard['ConfirmBtnHover']).to({alpha:0.2},500,'Linear',true,0,false,true).loop(true);
+            demo.LevelMap.MedalBoard['ConfirmBtnTween'].pause();
+        }
+        
+        for(let item in demo.LevelMap.MedalBoard ){
+            demo.LevelMap.MedalBoard[item].alpha = 0;
+        }
+        /*
+        
         for( let i = 0;i < Object.keys(demo.LevelMap.MedalBoard).length;i++ ){
             demo.LevelMap.MedalBoard[Object.keys(demo.LevelMap.MedalBoard)[i]].alpha = 0; 
         }        
-       
+        */
+        
         //Audio----------------------------------------------------------------------------------------
         BtnOver = game.add.audio('BtnOver');
         GetMedal = game.add.audio('GetMedal');

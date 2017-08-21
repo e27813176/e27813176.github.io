@@ -15,11 +15,10 @@ demo.createQuestionNum = function(level,Range){
     }else{
         equation = demo.createEquation(level,Range);
     }
-    demo.equationList.push(equation);
+    demo.equationList.push(equation); 
     
     //QuestionPanel Show Number---------------------------------------------------------------------------
     if( level%2 == 1 ){        
-        //console.log('setText');
         NumSum.setText('?');
         NumAdd1.setText(equation[0]);
         NumAdd2.setText(equation[1]);
@@ -92,6 +91,7 @@ demo.createQuestionNum = function(level,Range){
         }        
     }  
 };
+
 demo.createEquation = function(level,Range){
     var numberA;
     var numberB = -100;
@@ -414,12 +414,7 @@ function createPlusLevelTwo() {
                 numberA = Math.floor(Math.random() * 8) + 1;
             
                 numberB = numberSum - numberA;
-                /*   
-                numberA = Math.floor(Math.random() * 5) + 1;
-                numberB = Math.floor(Math.random() * 5) + 1;
 
-                numberSum = numberA + numberB;
-                */
             }
             
         }
@@ -442,12 +437,7 @@ function createPlusLevelTwo() {
                 numberA = Math.floor(Math.random() * 8) + 1;
             
                 numberB = numberSum - numberA;            
-                /*
-                numberA = Math.floor(Math.random() * 5) + 1;
-                numberB = Math.floor(Math.random() * 5) + 6;
 
-                numberSum = numberA + numberB;
-                */
             }
             
         }
