@@ -3,7 +3,7 @@ demo.BackPack = [];
 var FishingLevel = 1;
 var AnswerPanelLight = [];
 
-var timer;
+
 demo.FishingPage = function() {};
 demo.FishingPage.prototype = {
     
@@ -67,11 +67,13 @@ demo.FishingPage.prototype = {
         fishingBG = game.add.audio('fishingBG');
         fishingBG.loopFull(1);
 
+        demo.counter.create();
         // Create our Timer
-        timer = game.time.create(false);
+        //this.timer = game.time.create(false);
 
         // Set a TimerEvent to occur after 2 seconds
-        timer.loop(1000, updateCounter, this);    
+        //this.timer.loop(1000, this.updateCounter, this);    
+        //this.counter = 0;
         //start
         demo.FishingPage.waitToStart();
     },   
@@ -94,6 +96,11 @@ demo.FishingPage.prototype = {
     }
 }
 
+demo.FishingPage.updateCounter = function() {
+    if( playing_status == true ){
+        counter++;
+    }
+};
 demo.FishingPage.waitToStart = function(){
     waitingTime = Math.floor(Math.random()*4+2);
     
@@ -126,17 +133,11 @@ demo.FishingPage.restart = function(){
 
 
 
-var counter = 0;
 
-function updateCounter() {
-    if( playing_status == true ){
-        counter++;
-    }
-}
 
 demo.FishingPage.start = function(){
-    
-    timer.start();
+    demo.counter.count = 0;
+    demo.counter.timer.start();
     
     counter = 0;
     console.log('Level:'+FishingLevel);
@@ -172,7 +173,7 @@ demo.FishingPage.start = function(){
 var success;
 
 demo.FishingPage.finishfishing = function(){
-    timer.stop(false);
+    demo.counter.timer.stop(false);
     
     playing_status = false; 
     
@@ -200,7 +201,7 @@ demo.FishingPage.finishfishing = function(){
     
     console.log('答對題數:'+CorrectCount);
     console.log('總答題數:'+answercount);
-    console.log('完成時間:' + counter + '秒' );
+    console.log('完成時間:' + demo.counter.count + '秒' );
 };
 
 demo.FishingPage.fail = function(){
@@ -274,5 +275,18 @@ demo.BlackBG = {
         this.BG.tween.onComplete.add(function () {
             game.state.start(page,true,true); 
         }, this);
+    }
+};
+
+demo.counter = {
+    create:function(){
+        this.timer = game.time.create(false);
+        this.timer.loop(1000, this.updateCounter, this); 
+        this.count = 0;
+    },
+    updateCounter:function(){
+        if( playing_status == true ){
+            this.count++;
+        }
     }
 };

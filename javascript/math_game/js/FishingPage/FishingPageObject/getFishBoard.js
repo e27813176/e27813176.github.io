@@ -111,7 +111,7 @@ function GetFishExitBtnOut(){
 
 
 function GetFishContinueBtnDown(){
-    timer.stop(false);
+
     demo.FishingPage.continue();
     this.GetFishExitBtnHoverArea.inputEnabled = false;
     this.GetFishContinueBtnHoverArea.inputEnabled = false;       
