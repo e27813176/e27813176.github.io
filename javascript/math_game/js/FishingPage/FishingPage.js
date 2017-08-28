@@ -1,4 +1,3 @@
-demo.BackPack = [];
 
 var FishingLevel = 1;
 var AnswerPanelLight = [];
@@ -68,13 +67,8 @@ demo.FishingPage.prototype = {
         fishingBG.loopFull(1);
 
         demo.counter.create();
-        // Create our Timer
-        //this.timer = game.time.create(false);
 
-        // Set a TimerEvent to occur after 2 seconds
-        //this.timer.loop(1000, this.updateCounter, this);    
-        //this.counter = 0;
-        //start
+        
         demo.FishingPage.waitToStart();
     },   
             
@@ -256,37 +250,3 @@ function showupfailboard(){
 }
 
 
-demo.createAnimate = function(name,string,startframe,endframe,frameRate,loop){
-    name.animate = name.animations.add(string,Phaser.Animation.generateFrameNames(string + '_',startframe,endframe,'.png',5),frameRate,loop);
-};
-
-demo.BlackBG = {
-    create:function(){
-        this.BG = game.add.graphics();
-        this.BG.beginFill(0x000000);
-        this.BG.drawRect(0,0,1600,1000); 
-        this.opening();    
-    },
-    opening:function(){
-        game.add.tween(this.BG).to({alpha:0},1000,'Quad.easeIn',true); 
-    },
-    ExitPage:function(page){
-        this.BG.tween = game.add.tween(this.BG).to({alpha:1},1000,'Quad.easeIn',true);
-        this.BG.tween.onComplete.add(function () {
-            game.state.start(page,true,true); 
-        }, this);
-    }
-};
-
-demo.counter = {
-    create:function(){
-        this.timer = game.time.create(false);
-        this.timer.loop(1000, this.updateCounter, this); 
-        this.count = 0;
-    },
-    updateCounter:function(){
-        if( playing_status == true ){
-            this.count++;
-        }
-    }
-};

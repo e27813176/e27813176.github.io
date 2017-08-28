@@ -1,3 +1,5 @@
+
+
 demo.equationList = [];
 var answerNum = [];
 
@@ -659,4 +661,7 @@ function createMinusLevelSix() {
 
     var plusEquation = [numberA, numberB, numberDiff];
     return plusEquation;
+}
+demo.createQuestion = function(){
+    
 };

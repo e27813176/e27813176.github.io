@@ -91,7 +91,14 @@ demo.HomeMenu.prototype = {
         HomeTreeText.mask = HomeTextmask;
         FoxGoFishingText.mask = HomeTextmask;
         
-        
+        FruitDrop = game.add.sprite(-10,100,'FruitDrop');
+        FruitDrop.animations.add("FruitDrop",Phaser.Animation.generateFrameNames('FruitDrop_',0,23,'.png',5),10,true);
+        FruitDrop.alpha = 0;   
+        FruitDrop.animations.currentAnim.onComplete.add(function () {	
+    
+            console.log('FruitDrop');
+            FruitDrop.alpha = 0;
+        }, this);
         
         HomeTreeFrame1 = game.add.sprite(-10,100, 'HomePageTreeSheet','HomeTree_00001.png');
         HomeTreeFrame1.alpha = 1;
@@ -104,14 +111,17 @@ demo.HomeMenu.prototype = {
         HomeTreeBtn.inputEnabled = false; 
         HomeTreeBtn.alpha = 0; 
         
-        FruitDrop = game.add.sprite(-10,100,'FruitDrop');
-        FruitDrop.animations.add("FruitDrop",Phaser.Animation.generateFrameNames('FruitDrop_',0,23,'.png',5),10,true);
-        FruitDrop.alpha = 0;        
+       
         
         
         HomeTreeAnimate = game.add.sprite(-10,100,'HomePageTreeSheet');
         HomeTreeAnimate.animations.add("HomeTreeDynamic",Phaser.Animation.generateFrameNames('HomeTree_',0,8,'.png',5),10,true);
-        HomeTreeAnimate.alpha = 0;        
+        HomeTreeAnimate.alpha = 0; 
+        HomeTreeAnimate.animations.currentAnim.onComplete.add(function () {	
+                console.log('HomeTreeAnimation');
+                HomeTreeAnimate.alpha = 0;
+                HomeTreeFrame1.alpha = 1;
+            }, this);
         //FoxDynamic----------------------------------------------------------------------------------------------------------------------
         
         FoxStanding = game.add.sprite(0,100,'FoxStanding');
@@ -280,21 +290,16 @@ function FoxStandingOut(){
 
 
 function HomeTreeBtnUp(){
-     
     HomeTreeFrame1.alpha = 0;
     HomeTreeAnimate.alpha = 1;
-    HomeTreeAnimation = HomeTreeAnimate.animations.play("HomeTreeDynamic",15,false);  
-    HomeTreeAnimation.onComplete.add(function () {	
-        HomeTreeAnimate.alpha = 0;
-        HomeTreeFrame1.alpha = 1;
-    }, this);
+    HomeTreeAnimate.animations.play("HomeTreeDynamic",15,false);  
+
     FruitDrop.alpha = 1;
-    FruitDropAnimate = FruitDrop.play("FruitDrop",15,false);
-    FruitDropAnimate.onComplete.add(function () {	
-        FruitDrop.alpha = 0;
-    }, this);
+    FruitDrop.animations.play("FruitDrop",15,false);
+      
+
 }
-function HomeTreeBtnOver(){
+function HomeTreeBtnOver(){on
     ArrowSheet.x = -700;
     ArrowSheet.y = -200;
     ArrowSheet.animations.play("ArrowSheetDynamic",15,true);
@@ -411,6 +416,7 @@ function FoxDynamic(){
     }
 }
 function FoxStandingAnimateComplete(){
+    //console.log('FoxStanding');
     /*
     FoxStandingHover.inputEnabled = true;
     FoxStandingHover.input.useHandCursor = true;

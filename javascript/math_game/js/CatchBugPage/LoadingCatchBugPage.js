@@ -32,10 +32,13 @@ demo.LoadingCatchBugPage.prototype = {
 
         game.load.atlas('TutorialText', 'javascript/math_game/assets/CatchBugPage/TutorialText.png', 'javascript/math_game/assets/CatchBugPage/TutorialText.json');        
         
-        
+        game.load.atlas('TaskBoard', 'javascript/math_game/assets/CatchBugPage/TaskBoard.png', 'javascript/math_game/assets/CatchBugPage/TaskBoard.json');        
         
         game.load.image('blackBG','javascript/math_game/assets/CatchBugPage/blackBG.jpg');
-        game.load.atlas('Panel', 'javascript/math_game/assets/CatchBugPage/Panel.png', 'javascript/math_game/assets/CatchBugPage/Panel.json');           
+        game.load.atlas('Panel', 'javascript/math_game/assets/CatchBugPage/Panel.png', 'javascript/math_game/assets/CatchBugPage/Panel.json'); //audio--------------------------------------------------------------------------------------------
+        game.load.audio('GetMedal', 'javascript/math_game/assets/audio/GetMedal.mp3');
+        game.load.audio('CatchBugPageBG', 'javascript/math_game/assets/audio/CatchBugPageBG.mp3');
+
 
     },
     create: function() {

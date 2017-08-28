@@ -43,13 +43,13 @@ game.state.add("MixingPage", demo.MixingPage);
 
 
 
-game.state.start("GameBootPage");
+//game.state.start("GameBootPage");
 //game.state.start("BootFishingPage");
 //game.state.start("BootLevelMap");
 //game.state.start("BootAxPage");
 //game.state.start("BootLoggingPage");
-//game.state.start("BootCatchBugPage");
+game.state.start("BootCatchBugPage");
 
 //game.state.start("MixingPage");
-
+//game.state.start("state9");
 //game.state.start("Login");

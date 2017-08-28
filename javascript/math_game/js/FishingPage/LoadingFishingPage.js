@@ -39,8 +39,7 @@ demo.LoadingFishingPage.prototype = {
         
         game.load.atlas('Fish002', 'javascript/math_game/assets/fishingpage/Fish002.png', 'javascript/math_game/assets/fishingpage/Fish002.json');           
                 
-        console.log(loading);
-        loading++;
+
         //EnergyTransfer----------------------------------------------------------------------------------------------------------
         game.load.atlas('EnergyTransfer', 'javascript/math_game/assets/fishingpage/EnergyTransfer.png', 'javascript/math_game/assets/fishingpage/EnergyTransfer.json');         
         
