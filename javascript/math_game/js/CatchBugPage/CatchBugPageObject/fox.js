@@ -87,7 +87,7 @@ demo.CatchBugPage.fox = {
             FoxCatchingAnimate.play('',false);
 
         }else{
-
+            CatchBugPagefall.play();
             FoxStanding.alpha = 0;
             FoxStanding.Animate.stop();
             FoxFalling.alpha = 1;
@@ -96,6 +96,7 @@ demo.CatchBugPage.fox = {
         }        
     },
     fail:function(){
+        CatchBugPagefail.play();
         demo.CatchBugPage.panel.setAnswerPanelEnable(false);
         FoxStanding.alpha = 0;
         FoxStanding.Animate.stop();        

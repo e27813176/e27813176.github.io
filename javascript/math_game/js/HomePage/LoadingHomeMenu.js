@@ -58,7 +58,8 @@ demo.LoadingHomeMenu.prototype = {
         //Fox------------------------------------------------------------------------------------------------
         game.load.atlas('FoxStanding', 'javascript/math_game/assets/HomePage/FoxStanding.png', 'javascript/math_game/assets/HomePage/FoxStanding.json'); 
         
-
+        game.load.image('UserPanel','javascript/math_game/assets/HomePage/UserPanel.png');  
+        
         //Audio-----------------------------------------------------------------------------------------------
         game.load.audio('StartBtnDown', 'javascript/math_game/assets/audio/StartBtnDown.mp3');
         game.load.audio('BtnOver', 'javascript/math_game/assets/audio/BtnOver.mp3');
@@ -68,6 +69,7 @@ demo.LoadingHomeMenu.prototype = {
         game_menu_music = game.add.audio('menu');
         if( FirstStart == true ){
             FirstStart = false;
+            /*
             FoxIconCenter = game.add.sprite(0,100, 'FoxIconCenter');
             FoxIconCenter.alpha = 0;
             game.add.tween(FoxIconCenter).to({alpha:1},1000,'Linear',true);
@@ -82,10 +84,10 @@ demo.LoadingHomeMenu.prototype = {
             StartText.events.onInputDown.add(StartGame, this);
             StartText.inputEnabled = true;
             StartTextTween = game.add.tween(StartText).to({alpha:0.2},500,'Linear',true,0,false,false).loop(true);   
-        
-        
+            */
+            game.state.start('Login',true,false);
             //Audio-------------------------------------------------------------------------------------------------------
-            StartBtnDown = game.add.audio('StartBtnDown');
+            //StartBtnDown = game.add.audio('StartBtnDown');
             
         }else{
             game.state.start('HomeMenu',true,false);
@@ -101,7 +103,7 @@ demo.LoadingHomeMenu.prototype = {
 function StartGame(){
     
     StartBtnDown.play();
-    console.log('Hello');
+    //console.log('Hello');
     StartTextTween.stop();
     StartText.inputEnabled = false;
     //loadingBarTween.pause();

@@ -7,7 +7,6 @@ demo.CatchBugPage.bugdex = {
         console.log('completeCheck');
         if( this.FireBug != 0 && this.GoldenBug != 0 && this.IceBug != 0 ){
             this.complete = true;
-            //console.log('complete');
             demo.CatchBugPage.task.completeTask();
         }
     }

@@ -1,6 +1,6 @@
 demo.CatchBugPage.task = {
     create:function(){
-        this.complete = false;
+        this.completeShowUp = false;
         this.BG = game.add.sprite(0,100,'TaskBoard','TaskBoard.png');    
         this.BG.alpha = 0;
         
@@ -17,12 +17,18 @@ demo.CatchBugPage.task = {
         this.taskComplete.alpha = 0;
         this.taskComplete.events.onInputDown.add(this.cleanCompleteBoard, this);
         
-        this.GoldenBug = game.add.sprite(0,100,'TaskBoard','TaskBoardGoldenBug.png');            
-        this.GoldenBug.alpha = 0;
+        
+        this.GoldenBug = game.add.sprite(0,100,'TaskBoard','TaskBoardGoldenBug.png');   
+        this.GoldenBug.alpha = 0;   
+
+        
         this.IceBug = game.add.sprite(0,100,'TaskBoard','TaskBoardIceBug.png');    
-        this.IceBug.alpha = 0;
+        this.IceBug.alpha = 0;   
+
+        
         this.FireBug = game.add.sprite(0,100,'TaskBoard','TaskBoardFireBug.png');    
-        this.FireBug.alpha = 0;
+        this.FireBug.alpha = 0;   
+        
     },
     openBugdex:function(bug){
 
@@ -35,6 +41,13 @@ demo.CatchBugPage.task = {
         this.taskConfirm.inputEnabled = true;
         game.add.tween(this.taskConfirm).to({alpha:1},300,'Quad.easeOut',true);
         
+
+    },
+    showTaskBug:function(Bug){
+        if( demo.CatchBugPage.bugdex[Bug] != 0 ){
+            game.add.tween(this[Bug]).to({alpha:1},300,'Quad.easeOut',true,500);
+        }
+        
     },
     confirm:function(){
         this.taskConfirm.inputEnabled = false;
@@ -46,6 +59,10 @@ demo.CatchBugPage.task = {
         game.add.tween(this.BG).to({alpha :1},300,'Quad.easeOut',true,500);
         demo.CatchBugPage.flyingBug.createDelay();
         demo.CatchBugPage.panel.setAnswerPanelEnable(true);
+                
+        this.showTaskBug('IceBug');
+        this.showTaskBug('FireBug');
+        this.showTaskBug('GoldenBug');
 
     },
     completeTask:function(){
@@ -54,18 +71,28 @@ demo.CatchBugPage.task = {
 
         if( LevelState.CatchBugPageCompleteCount == 1 ){
             LevelState.CheckNewMedal = true;
-            this.showUpCompleteBoard();            
+            this.completeShowUp = true;    
         }
         LevelState.CatchBugPageComplete = true;           
         
     },
     showUpCompleteBoard:function(){
         GetMedal.play();
-        game.add.tween(this.BlackBG).to({alpha :0.5},300,'Quad.easeOut',true,500);
+        this.completeShowUp = false;
+        this.taskComplete.inputEnabled = true;
+        game.add.tween(this.BlackBG).to({alpha :0.5},500,'Quad.easeOut',true,500);
         game.add.tween(this.taskComplete)
-            .to({alpha :1},300,'Quad.easeOut',true,500)
+            .to({alpha :1},500,'Quad.easeOut',true,500)
             .onComplete.add(function(){
-            this.taskComplete.inputEnabled = true;
+            
+            game.add.tween(this.BlackBG).to({alpha :0},500,'Quad.easeOut',true,1500);
+            game.add.tween(this.taskComplete)
+                .to({alpha :0},500,'Quad.easeOut',true,1500)
+                .onComplete.add(function(){
+                this.taskComplete.scale.setTo(0);
+                this.taskComplete.inputEnabled = false;
+
+            },this);
             
         },this);
     },

@@ -38,7 +38,7 @@ demo.HomeMenu.prototype = {
         //console.log(game_menu_music.isPlaying);
         BtnOver = game.add.audio('BtnOver');
        
-
+        
         
         /*
         DoorBtn = game.add.button(830, 422, 'DoorBtn', GoInsideHouse, this, 'DoorBtnHover.png','DoorBtn.png'); 
@@ -150,14 +150,7 @@ demo.HomeMenu.prototype = {
      
         FoxTurnRightWalking.alpha = 0;        
         
-        /*
-        FoxStandingHover = game.add.sprite(535,600,'FoxStanding','FoxStandingHover.jpg');
-        FoxStandingHover.events.onInputDown.add(FoxStandingDown, this);
-        FoxStandingHover.events.onInputOver.add(FoxStandingOver, this);
-        FoxStandingHover.events.onInputOut.add(FoxStandingOut, this);
-        FoxStandingHover.inputEnabled = false;
-        FoxStandingHover.alpha = 0;
-        */
+
         FoxDynamic();        
         //TaskBoardBtn----------------------------------------------------------------------------------------------------------------
         TaskBoard = game.add.sprite(0,100,'TaskBoard','TaskBoard.png');
@@ -200,7 +193,7 @@ demo.HomeMenu.prototype = {
         ArrowSheet.animations.add("ArrowSheetDynamic",Phaser.Animation.generateFrameNames('ArrowSheet_',0,8,'.png',5),10,true);
         ArrowSheet.alpha = 0;
         
-    
+        demo.user.create();
         
         blackBG_opening = game.add.sprite(0,0,'blackBG');
         blackBG_opening.alpha = 1;

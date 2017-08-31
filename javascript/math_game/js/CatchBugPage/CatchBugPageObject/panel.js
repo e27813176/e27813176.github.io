@@ -30,7 +30,7 @@ demo.CatchBugPage.panel = {
         if( AnswerPanel.variable == demo.CatchBugPage.correctAnswer - 10 ){
             demo.CatchBugPage.fox.catch();    
         }else{
-            demo.CatchBugPage.fox.fail();
+            demo.CatchBugPage.fox.fail();            
         }
             
     },

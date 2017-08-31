@@ -28,7 +28,7 @@ demo.CatchBugPage.getBoard = {
         //console.log('create');
     },
     showUpBoard:function(){
-        
+        GetBug.play();
         let bug;
         bug = this.showUpBugBox();
         this.ContinueBtn.variable = bug;
@@ -98,7 +98,12 @@ demo.CatchBugPage.getBoard = {
         console.log(Btn.variable);
         demo.CatchBugPage.task.openBugdex(Btn.variable);
         demo.CatchBugPage.flyingBug.start();
-        this.cleanBoard();        
+        this.cleanBoard(); 
+        
+        if( demo.CatchBugPage.task.completeShowUp == true ){
+            demo.CatchBugPage.task.showUpCompleteBoard();
+        }
+        
     }
 };
 
