@@ -1,5 +1,5 @@
 var user = {
-    name:'FunFang',
+    name:'',
     password:'',
     level:1
 };
@@ -13,3 +13,31 @@ demo.user = {
         this.level = game.add.text(117,239,user.level, style);
     }
 }
+
+/*
+User
+|  |-- id
+|  |-- password
+|  |-- storage password
+|  |-- etc
+|
+Characters
+|  |-- name
+|  |-- id (User)
+|  |-- Equipment1 on head //store item by equipping
+|  |-- Equipment2 as armor
+|  |-- etc
+|
+Storage
+|  |--id_storage
+|  |--id (User)
+|  |--id_item (Item) //store item by storage
+|  |--etc
+|
+Item
+   |--id_item
+   |--item name
+   |--item description
+   |--etc
+   
+*/

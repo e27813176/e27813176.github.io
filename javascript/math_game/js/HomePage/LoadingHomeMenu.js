@@ -18,6 +18,7 @@ demo.LoadingHomeMenu.prototype = {
         LoadingBarFrame.alpha = 1;
         LoadingBarFrame.anchor.setTo(0.5,0.5);
 
+        
         game.load.image('HomePageBG','javascript/math_game/assets/HomePage/Home_page.jpg');
 
         game.load.image('FoxIconCenter','javascript/math_game/assets/loadingpage/FoxIconCenter.png');

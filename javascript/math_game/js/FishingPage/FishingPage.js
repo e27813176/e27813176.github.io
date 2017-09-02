@@ -39,7 +39,7 @@ demo.FishingPage.prototype = {
         //Fail Board
         demo.FishingPage.failBoard.create();
         
-        //fishbox
+        //fishbox----------------
         demo.FishingPage.FishBox.create();
         //fishing question
         demo.FishingPage.question.create();

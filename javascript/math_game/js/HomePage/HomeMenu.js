@@ -16,6 +16,7 @@ demo.HomeMenu.prototype = {
         //define backgroung
         game.stage.backgroundColor = "#000000";
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+        game.add.plugin(PhaserInput.Plugin);
         
         HomePageBG = game.add.sprite(0,100,'HomePageBG');
 
@@ -188,12 +189,15 @@ demo.HomeMenu.prototype = {
         
         grass = game.add.sprite(0,100,'grass');
         
+        
         //ArrowSheet------------------------------------------------------------------------------------------------------------------
         ArrowSheet = game.add.sprite(0,100,'ArrowSheet');
         ArrowSheet.animations.add("ArrowSheetDynamic",Phaser.Animation.generateFrameNames('ArrowSheet_',0,8,'.png',5),10,true);
         ArrowSheet.alpha = 0;
         
         demo.user.create();
+        demo.HomeMenu.chatroom.create();
+        demo.HomeMenu.chatIcon.create();
         
         blackBG_opening = game.add.sprite(0,0,'blackBG');
         blackBG_opening.alpha = 1;
@@ -292,7 +296,7 @@ function HomeTreeBtnUp(){
       
 
 }
-function HomeTreeBtnOver(){on
+function HomeTreeBtnOver(){
     ArrowSheet.x = -700;
     ArrowSheet.y = -200;
     ArrowSheet.animations.play("ArrowSheetDynamic",15,true);
