@@ -57,6 +57,7 @@ demo.CatchBugPage.fox = {
         FoxCatchingAnimate = FoxCatching.animations.add("FoxCatching",Phaser.Animation.generateFrameNames('FoxCatching_',0,10,'.png',5),30,true);
         FoxCatching.alpha = 0;
         FoxCatchingAnimate.onComplete.add(function(){
+            
             FoxCatchingAnimate.stop();
             
             FoxStanding.alpha = 1;
@@ -79,13 +80,13 @@ demo.CatchBugPage.fox = {
     catch:function(){
         demo.CatchBugPage.panel.setAnswerPanelEnable(false);
         
-        if( demo.CatchBugPage.flyingBug.flyingBug.animate.frame > 0 && demo.CatchBugPage.flyingBug.flyingBug.animate.frame < 22 ){
+        if( demo.CatchBugPage.flyingBug.flyingBug.animate.frame > 1 && demo.CatchBugPage.flyingBug.flyingBug.animate.frame < 22 ){
             
             FoxStanding.alpha = 0;
             FoxStanding.Animate.stop();
             FoxCatching.alpha = 1;
             FoxCatchingAnimate.play('',false);
-
+            
         }else{
             CatchBugPagefall.play();
             FoxStanding.alpha = 0;

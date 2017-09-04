@@ -194,11 +194,11 @@ demo.HomeMenu.prototype = {
         ArrowSheet = game.add.sprite(0,100,'ArrowSheet');
         ArrowSheet.animations.add("ArrowSheetDynamic",Phaser.Animation.generateFrameNames('ArrowSheet_',0,8,'.png',5),10,true);
         ArrowSheet.alpha = 0;
-        
+        /*
         demo.user.create();
         demo.HomeMenu.chatroom.create();
         demo.HomeMenu.chatIcon.create();
-        
+        */
         blackBG_opening = game.add.sprite(0,0,'blackBG');
         blackBG_opening.alpha = 1;
         BlackOpeningTween = game.add.tween(blackBG_opening).to({alpha:0},2000,'Linear',true,0);           

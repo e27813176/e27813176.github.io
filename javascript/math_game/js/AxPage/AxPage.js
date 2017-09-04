@@ -157,7 +157,7 @@ demo.AxPage = {
       QuestionPanelRightFxAnimate = QuestionPanelRightFx.animations.add("QuestionPanelRightFx",Phaser.Animation.generateFrameNames('QuestionPanelRightFx_',0,20,'.png',5),10,true);
       QuestionPanelRightFx.alpha = 0;  
       
-      var style = { font: "60px Arial", fill: "#d8cdaa", align: "center" }; 
+      var style = { font: "60px Arial", fill: "#f8ddba", align: "center" }; 
       NumSum = game.add.text(centerX+208,centerY-179,'', style);
       NumSum.anchor.set(0.5);
     

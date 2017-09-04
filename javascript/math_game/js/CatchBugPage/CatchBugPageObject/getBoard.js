@@ -42,7 +42,7 @@ demo.CatchBugPage.getBoard = {
         
     },
     showUpBugBox:function(){
-        this.random = Math.floor(Math.random()*6);
+        this.random = Math.floor(Math.random()*5);
         //console.log(this.random);
         this.IceBugBox.alpha = 1;
         this.IceBugBox.scale.setTo(0);
@@ -97,7 +97,7 @@ demo.CatchBugPage.getBoard = {
     continueBtnDown:function(Btn){
         console.log(Btn.variable);
         demo.CatchBugPage.task.openBugdex(Btn.variable);
-        demo.CatchBugPage.flyingBug.start();
+        demo.CatchBugPage.flyingBug.createDelay();
         this.cleanBoard(); 
         
         if( demo.CatchBugPage.task.completeShowUp == true ){

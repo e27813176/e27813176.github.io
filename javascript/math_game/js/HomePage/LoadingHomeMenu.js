@@ -1,4 +1,4 @@
-var FirstStart = true;
+var FirstStart = false;
 
 demo.LoadingHomeMenu = function() {};
 demo.LoadingHomeMenu.prototype = {

@@ -91,6 +91,7 @@ demo.CatchBugPage.task = {
                 .onComplete.add(function(){
                 this.taskComplete.scale.setTo(0);
                 this.taskComplete.inputEnabled = false;
+                
 
             },this);
             
@@ -104,6 +105,7 @@ demo.CatchBugPage.task = {
             .to({alpha :0},300,'Quad.easeOut',true,0)
             .onComplete.add(function(){
             this.taskComplete.scale.setTo(0);
+            this.BlackBG.scale.setTo(0);
         },this);
     }
 };

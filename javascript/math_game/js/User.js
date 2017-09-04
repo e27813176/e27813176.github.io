@@ -1,6 +1,6 @@
 var user = {
-    name:'',
-    password:'',
+    name:'111',
+    password:'111',
     level:1
 };
 
